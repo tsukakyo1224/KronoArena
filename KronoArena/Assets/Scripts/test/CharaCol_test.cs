@@ -80,7 +80,7 @@ public class CharaCol_test : MonoBehaviour
     {
         if (stream.isWriting)
         {
-            stream.SendNext(transform.position);
+            stream.SendNext(this.transform.position);
 
         }
         else

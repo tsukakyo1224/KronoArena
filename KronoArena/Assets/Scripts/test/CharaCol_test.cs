@@ -47,7 +47,7 @@ public class CharaCol_test : MonoBehaviour
                     //動かした指の位置から角度を計算　　　　　　　　　
                     float rad = Mathf.Atan2(currentTapPoint.y - tapPoint.y, currentTapPoint.x - tapPoint.x);
                     float rot = (rad * 180 / Mathf.PI) + 90;
-                    //キャラクターの向きを決定    
+                    //キャラクターの向きを決定
                     player.transform.rotation = Quaternion.Euler(0f, rot * -1, 0f);
                     player.transform.Translate(0f, 0f, playerSpeed);
                     //一定以上画面をドラッグしたときは移動速度を上げる

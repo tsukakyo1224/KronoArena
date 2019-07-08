@@ -85,7 +85,7 @@ public class CharaCol_test : MonoBehaviour
         }
         else
         {
-
+            this.transform.position = (Vector3)stream.ReceiveNext();　//現在のポジションを受信
         }
     }
 }

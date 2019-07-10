@@ -84,7 +84,7 @@ public class PhotonManager : Photon.MonoBehaviour
         GameObject.Find("StatusText").GetComponent<Text>().text = "OnJoinedRoom";
 
         Vector3 initPos = new Vector3(6.34f, 3f, 7.17f);
-        cube = PhotonNetwork.Instantiate("Cube", initPos, Quaternion.Euler(Vector3.zero), 0);
+        cube = PhotonNetwork.Instantiate("Player1", initPos, Quaternion.Euler(Vector3.zero), 0);
 
         startflag = true;
     }

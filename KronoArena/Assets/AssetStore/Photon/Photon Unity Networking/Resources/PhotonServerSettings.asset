@@ -44,4 +44,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - SendFunc
+  - RPC_AutomaticSend
   DisableAutoOpenWizard: 1

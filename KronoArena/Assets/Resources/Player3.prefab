@@ -3681,6 +3681,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3840929120554113213}
   - {fileID: 3840929120554113212}
+  - {fileID: 2090286207066451537}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -3705,15 +3706,44 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3840929120098322604}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 2
+    Name: Jab
+  - Type: 9
+    SynchronizeType: 2
+    Name: Hikick
+  - Type: 9
+    SynchronizeType: 2
+    Name: Spinkick
+  - Type: 9
+    SynchronizeType: 0
+    Name: Rising_P
+  - Type: 9
+    SynchronizeType: 0
+    Name: Headspring
+  - Type: 9
+    SynchronizeType: 0
+    Name: Land
+  - Type: 4
+    SynchronizeType: 2
+    Name: Run
+  - Type: 9
+    SynchronizeType: 0
+    Name: ScrewK
+  - Type: 9
+    SynchronizeType: 0
+    Name: DamageDown
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &3840929120098322606
 GameObject:
   m_ObjectHideFlags: 0

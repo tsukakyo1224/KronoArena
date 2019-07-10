@@ -32,6 +32,15 @@ public class CharaCol_test : MonoBehaviour
     {
         if (photonView.isMine)
         {
+            if(PhotonNetwork.player.ID==1 && TurnCol.P1_Turn == false)
+            {
+                return;
+            }
+            if(PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false)
+            {
+                return;
+            }
+
             if (Input.GetMouseButtonDown(0))
             {
                 //押下した位置を取得

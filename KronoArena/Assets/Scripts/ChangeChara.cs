@@ -26,7 +26,6 @@ public class ChangeChara : MonoBehaviour
             nowChara = charaLists.Count;
             Debug.Log(nowChara);
             ChangeCharacter(nowChara);
-            //nowChara = 1;
             FollowingCamera.cameraflag = false;
         }
         //　Qキーが押されたら操作キャラクターを次のキャラクターに変更する

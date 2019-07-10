@@ -33,7 +33,6 @@ public class ButtonCol : MonoBehaviour
             animator2 = Player2.GetComponent<Animator>();
             Player3 = GameObject.Find("Player3(Clone)");
             animator3 = Player3.GetComponent<Animator>();
-            //Debug.Log("s");
         }
     }
 

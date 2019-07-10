@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     public static GameObject CharaChangeButton2;
     public static GameObject CharaChangeButton3;
 
+    //キャラ攻撃ボタン用オブジェクト
+    public static GameObject AttackButton1;
+    public static GameObject AttackButton2;
+    public static GameObject AttackButton3;
+
     //ターン切り替えボタン
     public static GameObject TurnChangeButton;
 
@@ -43,6 +48,11 @@ public class GameManager : MonoBehaviour
         CharaAttackTime2 = GameObject.Find("AttackTime2");
         CharaAttackTime3 = GameObject.Find("AttackTime3");
 
+        //キャラ攻撃ボタン用オブジェクト
+        AttackButton1 = GameObject.Find("Attack1");
+        AttackButton2 = GameObject.Find("Attack2");
+        AttackButton3 = GameObject.Find("Attack3");
+
         //キャラ切り替えボタン用オブジェクト
         CharaChangeButton1 = GameObject.Find("ChangeChara1");
         CharaChangeButton2 = GameObject.Find("ChangeChara2");
@@ -57,6 +67,11 @@ public class GameManager : MonoBehaviour
         CharaAttackTime1.SetActive(false);
         CharaAttackTime2.SetActive(false);
         CharaAttackTime3.SetActive(false);
+
+        //最初は非表示に
+        AttackButton1.SetActive(false);
+        AttackButton2.SetActive(false);
+        AttackButton3.SetActive(false);
 
         //最初は押せないように
         CharaChangeButton1.GetComponent<Button>().interactable = false;
@@ -73,11 +88,17 @@ public class GameManager : MonoBehaviour
             CharaChangeButton1.GetComponent<Button>().interactable = true;
             CharaChangeButton2.GetComponent<Button>().interactable = true;
             CharaChangeButton3.GetComponent<Button>().interactable = true;
+            AttackButton1.SetActive(true);
+            AttackButton2.SetActive(true);
+            AttackButton3.SetActive(true);
             TurnText.GetComponent<Text>().text = "My turn";
             //TurnChangeButton.SetActive(true);
         }
         else if(TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) 
         {
+            AttackButton1.SetActive(false);
+            AttackButton2.SetActive(false);
+            AttackButton3.SetActive(false);
             CharaChangeButton1.GetComponent<Button>().interactable = false;
             CharaChangeButton2.GetComponent<Button>().interactable = false;
             CharaChangeButton3.GetComponent<Button>().interactable = false;
@@ -89,6 +110,9 @@ public class GameManager : MonoBehaviour
             CharaChangeButton1.GetComponent<Button>().interactable = true;
             CharaChangeButton2.GetComponent<Button>().interactable = true;
             CharaChangeButton3.GetComponent<Button>().interactable = true;
+            AttackButton1.SetActive(true);
+            AttackButton2.SetActive(true);
+            AttackButton3.SetActive(true);
             TurnText.GetComponent<Text>().text = "My turn";
             //TurnChangeButton.SetActive(true);
         }
@@ -97,6 +121,9 @@ public class GameManager : MonoBehaviour
             CharaChangeButton1.GetComponent<Button>().interactable = false;
             CharaChangeButton2.GetComponent<Button>().interactable = false;
             CharaChangeButton3.GetComponent<Button>().interactable = false;
+            AttackButton1.SetActive(false);
+            AttackButton2.SetActive(false);
+            AttackButton3.SetActive(false);
             TurnText.GetComponent<Text>().text = "Your turn";
             //TurnChangeButton.SetActive(f alse);
         }

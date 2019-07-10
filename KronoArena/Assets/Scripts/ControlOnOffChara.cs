@@ -43,7 +43,7 @@ public class ControlOnOffChara : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.turn == 0)
+        if (PhotonNetwork.playerList.Length == 1 && TurnCol.P1_Turn == true)
         {
             //Aを押すとjab
             if (Input.GetKeyDown(KeyCode.A))

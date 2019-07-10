@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public static GameObject TurnChangeButton;
 
     //ターン(turn==0:自分、turn==1:相手)
-    public static int turn;
+    //public static int turn;
 
     //ターン用テキスト
     public static GameObject TurnText;
@@ -65,26 +65,18 @@ public class GameManager : MonoBehaviour
 
         //TurnChangeButton.SetActive(false);
 
-        /*
-        //先行後攻を決める
-        turn = Random.Range(0, 1);
-        if (turn == 0)
-        {
-            Debug.Log("My Turn");
-        }
-        else if (turn==1)
-        {
-            Debug.Log("Your Turn");
-        }*/
+        //ターン切り替え
         if (PhotonNetwork.playerList.Length == 1)
         {
-            turn = 0;
+            TurnCol.P1_Turn = true;
+            TurnCol.P2_Turn = false;
             TurnText.GetComponent<Text>().text = "My turn";
 
         }
         else
         {
-            turn = 1;
+            TurnCol.P1_Turn = false;
+            TurnCol.P2_Turn = true;
             TurnText.GetComponent<Text>().text = "Your turn";
         }
     }
@@ -92,7 +84,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (turn == 0)
+        if (TurnCol.P1_Turn == true)
         {
             CharaChangeButton1.GetComponent<Button>().interactable = true;
             CharaChangeButton2.GetComponent<Button>().interactable = true;
@@ -100,7 +92,7 @@ public class GameManager : MonoBehaviour
             TurnText.GetComponent<Text>().text = "My turn";
             //TurnChangeButton.SetActive(true);
         }
-        else if(turn == 1)
+        else if(TurnCol.P1_Turn == false)
         {
             CharaChangeButton1.GetComponent<Button>().interactable = false;
             CharaChangeButton2.GetComponent<Button>().interactable = false;

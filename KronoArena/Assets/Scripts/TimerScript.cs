@@ -24,22 +24,25 @@ public class TimerScript : MonoBehaviour
     void Update()
     {
         //時間
-        TotalTime -= Time.deltaTime;
-        TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+        if (!(PhotonNetwork.playerList.Length == 1))
+        {
+            TotalTime -= Time.deltaTime;
+            TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+        }
 
         //ターン切り替え
         if(TotalTime < 0.0f)
         {
             TotalTime = 30.0f;
-            if (GameManager.turn == 0)
+            if (TurnCol.P1_Turn == true)
             {
-                GameManager.turn = 1;
-                Debug.Log("Your Turn");
+                TurnCol.P2_Turn = true;
+                TurnCol.P1_Turn = false;
             }
             else
             {
-                GameManager.turn = 0;
-                Debug.Log("My Turn");
+                TurnCol.P1_Turn = true;
+                TurnCol.P2_Turn = false;
             }
         }
     }

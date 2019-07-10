@@ -39,15 +39,14 @@ public class ButtonCol : MonoBehaviour
 
     public void TurnChange()
     {
-        if (GameManager.turn == 1)
-        {
-            GameManager.turn = 0;
-            Debug.Log("My Turn");
+        if (PhotonNetwork.playerList.Length==1){
+            TurnCol.P1_Turn = false;
+            TurnCol.P2_Turn = true;
         }
         else
         {
-            GameManager.turn = 1;
-            Debug.Log("Your Turn");
+            TurnCol.P2_Turn = false;
+            TurnCol.P1_Turn = true;
         }
         TimerScript.TotalTime = 30.0f;
     }

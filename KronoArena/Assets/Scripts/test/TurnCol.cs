@@ -4,28 +4,50 @@ using UnityEngine;
 
 public class TurnCol : MonoBehaviour
 {
-
-    public static bool P1_Turn=false;
+    [SerializeField]
+    public static bool P1_Turn = false;
+    [SerializeField]
     public static bool P2_Turn = false;
+
+    [SerializeField]
+    public bool p1turn;
+    [SerializeField]
+    public bool p2turn;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //プレイヤー1なら
+        if (PhotonNetwork.player.ID == 1)
+        {
+            P1_Turn = true;
+        }
+        //プレイヤー2なら
+        else
+        {
+            P2_Turn = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //プレイヤー1なら
-        if (PhotonNetwork.playerList.Length == 1)
-        {
+        p1turn = P1_Turn;
+        p2turn = P2_Turn;
+    }
 
+    public static void ChangeTurn()
+    {
+        if (P1_Turn == true)
+        {
+            P2_Turn = true;
+            P1_Turn = false;
         }
-        //プレイヤー2なら
         else
         {
-
+            P1_Turn = true;
+            P2_Turn = false;
         }
     }
 

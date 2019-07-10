@@ -63,28 +63,12 @@ public class GameManager : MonoBehaviour
         CharaChangeButton2.GetComponent<Button>().interactable = false;
         CharaChangeButton3.GetComponent<Button>().interactable = false;
 
-        //TurnChangeButton.SetActive(false);
-
-        //ターン切り替え
-        if (PhotonNetwork.playerList.Length == 1)
-        {
-            TurnCol.P1_Turn = true;
-            TurnCol.P2_Turn = false;
-            TurnText.GetComponent<Text>().text = "My turn";
-
-        }
-        else
-        {
-            TurnCol.P1_Turn = false;
-            TurnCol.P2_Turn = true;
-            TurnText.GetComponent<Text>().text = "Your turn";
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (TurnCol.P1_Turn == true)
+        if (TurnCol.P1_Turn == true && PhotonNetwork.player.ID==1)
         {
             CharaChangeButton1.GetComponent<Button>().interactable = true;
             CharaChangeButton2.GetComponent<Button>().interactable = true;
@@ -92,13 +76,29 @@ public class GameManager : MonoBehaviour
             TurnText.GetComponent<Text>().text = "My turn";
             //TurnChangeButton.SetActive(true);
         }
-        else if(TurnCol.P1_Turn == false)
+        else if(TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) 
         {
             CharaChangeButton1.GetComponent<Button>().interactable = false;
             CharaChangeButton2.GetComponent<Button>().interactable = false;
             CharaChangeButton3.GetComponent<Button>().interactable = false;
             TurnText.GetComponent<Text>().text = "Your turn";
             //TurnChangeButton.SetActive(false);
+        }
+        if (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2)
+        {
+            CharaChangeButton1.GetComponent<Button>().interactable = true;
+            CharaChangeButton2.GetComponent<Button>().interactable = true;
+            CharaChangeButton3.GetComponent<Button>().interactable = true;
+            TurnText.GetComponent<Text>().text = "My turn";
+            //TurnChangeButton.SetActive(true);
+        }
+        else if (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)
+        {
+            CharaChangeButton1.GetComponent<Button>().interactable = false;
+            CharaChangeButton2.GetComponent<Button>().interactable = false;
+            CharaChangeButton3.GetComponent<Button>().interactable = false;
+            TurnText.GetComponent<Text>().text = "Your turn";
+            //TurnChangeButton.SetActive(f alse);
         }
     }
 }

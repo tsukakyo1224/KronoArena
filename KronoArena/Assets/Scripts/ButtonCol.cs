@@ -39,16 +39,8 @@ public class ButtonCol : MonoBehaviour
 
     public void TurnChange()
     {
-        if (PhotonNetwork.playerList.Length==1){
-            TurnCol.P1_Turn = false;
-            TurnCol.P2_Turn = true;
-        }
-        else
-        {
-            TurnCol.P2_Turn = false;
-            TurnCol.P1_Turn = true;
-        }
-        TimerScript.TotalTime = 30.0f;
+        TurnCol.ChangeTurn();
+        //TimerScript.TotalTime = 5.0f;
     }
 
     //攻撃ボタン1

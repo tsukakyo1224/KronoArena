@@ -29,6 +29,7 @@ public class NetWork_02 : MonoBehaviour
                 GameObject player2 = PhotonNetwork.Instantiate("Player2", pos, Quaternion.identity, 0);
                 pos = new Vector3(-3.5f, 0f, 0f);
                 GameObject player3 = PhotonNetwork.Instantiate("Player3", pos, Quaternion.identity, 0);
+                GameObject Cube = PhotonNetwork.Instantiate("Cube", pos, Quaternion.identity, 0);
                 FollowingCamera.cameraflag = true;
             }
             else

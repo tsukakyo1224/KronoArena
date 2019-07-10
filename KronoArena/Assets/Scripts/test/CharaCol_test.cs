@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharaCol_test : MonoBehaviour
 {
-    private CharacterController characterController;
     private Vector3 tapPoint;
     private GameObject player;
     private Vector3 velocity = Vector3.zero;
@@ -13,18 +12,20 @@ public class CharaCol_test : MonoBehaviour
 
     private PhotonView photonView;
     private PhotonTransformView photonTransformView;
+    private CharacterController characterController;
 
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        photonTransformView = GetComponent<PhotonTransformView>();
         player = this.gameObject;
         playerSpeed = ControlOnOffChara.walkSpeed;
         animator = GetComponent<Animator>();
 
-        photonTransformView = GetComponent<PhotonTransformView>();
         photonView = PhotonView.Get(this);
-    }
+
+}
 
     // Update is called once per frame
     void Update()
@@ -72,6 +73,12 @@ public class CharaCol_test : MonoBehaviour
             {
                 animator.SetBool("Run", false);
             }
+
+            //現在の移動速度
+            velocity = characterController.velocity;
+            //移動速度を指定
+            photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
+
         }
 
     }

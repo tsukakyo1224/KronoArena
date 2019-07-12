@@ -27,19 +27,40 @@ public class FollowingCamera : MonoBehaviour
     {
         if (Network_01.gameplayflag == true)
         {
-            //カメラのターゲット変更
-            if (ChangeChara.nowChara == 0)
+            if (PhotonNetwork.player.ID == 1)
             {
-                target = GameObject.Find("Player1(Clone)");
+                //カメラのターゲット変更
+                if (ChangeChara.nowChara == 0)
+                {
+                    target = GameObject.Find("P1_" + CharaData1.CharaName);
+                }
+
+                else if (ChangeChara.nowChara == 1)
+                {
+                    target = GameObject.Find("P1_" + CharaData2.CharaName);
+                }
+                else if (ChangeChara.nowChara == 2)
+                {
+                    target = GameObject.Find("P1_" + CharaData3.CharaName); ;
+                }
             }
 
-            else if (ChangeChara.nowChara == 1)
+            else if(PhotonNetwork.player.ID == 2)
             {
-                target = GameObject.Find("Player2(Clone)");
-            }
-            else if (ChangeChara.nowChara == 2)
-            {
-                target = GameObject.Find("Player3(Clone)");
+                //カメラのターゲット変更
+                if (ChangeChara.nowChara == 0)
+                {
+                    target = GameObject.Find("P2_" + CharaData1.CharaName);
+                }
+
+                else if (ChangeChara.nowChara == 1)
+                {
+                    target = GameObject.Find("P2_" + CharaData2.CharaName);
+                }
+                else if (ChangeChara.nowChara == 2)
+                {
+                    target = GameObject.Find("P2_" + CharaData3.CharaName); ;
+                }
             }
 
             var lookAtPos = target.transform.position + offset;

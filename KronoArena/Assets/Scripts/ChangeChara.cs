@@ -19,9 +19,19 @@ public class ChangeChara : MonoBehaviour
     {
         if (FollowingCamera.cameraflag == true)
         {
-            charaLists.Add(GameObject.Find("Player1(Clone)"));
-            charaLists.Add(GameObject.Find("Player2(Clone)"));
-            charaLists.Add(GameObject.Find("Player3(Clone)"));
+            if (PhotonNetwork.player.ID == 1)
+            {
+                charaLists.Add(GameObject.Find("P1_" + CharaData1.CharaName));
+                charaLists.Add(GameObject.Find("P1_" + CharaData2.CharaName));
+                charaLists.Add(GameObject.Find("P1_" + CharaData3.CharaName));
+            }
+            else if(PhotonNetwork.player.ID == 2)
+            {
+                charaLists.Add(GameObject.Find("P2_" + CharaData1.CharaName));
+                charaLists.Add(GameObject.Find("P2_" + CharaData2.CharaName));
+                charaLists.Add(GameObject.Find("P2_" + CharaData3.CharaName));
+
+            }
             //　最初の操作キャラクターを0番目のキャラクターにする為、キャラクターの総数をnowCharaに設定し最初のキャラクターが設定されるようにする
             nowChara = charaLists.Count;
             Debug.Log(nowChara);

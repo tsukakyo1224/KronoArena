@@ -29,16 +29,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/AssetStore/Photon/Photon Unity Networking/Demos/DemoPickup/DemoPickup-Scene.unity
     guid: 42026d6c332a6b5438ed37ef7af9fba8
-  - enabled: 1
+  - enabled: 0
     path: Assets/AssetStore/Photon/Photon Unity Networking/Demos/DemoRockPaperScissors/DemoRPS-Connect-Scene.unity
     guid: 96da012e5ddf34c42832a2b67bb519a7
   - enabled: 0
     path: Assets/AssetStore/Photon/Photon Unity Networking/Demos/DemoRockPaperScissors/DemoRPS-Scene.unity
     guid: 8a3480dd507edcd40b9a02e219e22da6
-  - enabled: 1
+  - enabled: 0
     path: Assets/AssetStore/Photon/Photon Unity Networking/Demos/DemoRPGMovement/DemoRPGMovement-Scene.unity
     guid: 04d0690ecf8bf94489c8427dd8186299
-  - enabled: 1
+  - enabled: 0
     path: Assets/AssetStore/Photon/Photon Unity Networking/Demos/DemoSynchronization/DemoSynchronization-Scene.unity
     guid: caec1ee6e27780946b8db3d1aebaa478
   - enabled: 0

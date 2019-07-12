@@ -45,6 +45,7 @@ public class TurnCol : MonoBehaviour
         {
             P1_Turn = true;
             P2_Turn = false;
+            GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         }
 
     }

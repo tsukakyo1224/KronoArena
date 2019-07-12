@@ -45,10 +45,9 @@ public class ButtonCol : MonoBehaviour
     //攻撃ボタン1
     public void Attack1()
     {
-        if (ChangeChara.nowChara == 0 && CharaData1.AttackFlag == false)
+        if (ChangeChara.nowChara == 0)
         {
             animator1.SetBool("Jab", true);
-            CharaData1.AttackFlag = true;
             GameManager.CharaAttackTime1.SetActive(true);
         }
         else if (ChangeChara.nowChara == 1)
@@ -67,11 +66,10 @@ public class ButtonCol : MonoBehaviour
     //スペシャル攻撃1
     public void Special1()
     {
-        if (ChangeChara.nowChara == 0 && CharaData1.AttackFlag == false)
+        if (ChangeChara.nowChara == 0)
         {
            animator1.SetBool("Hikick", true);
-           CharaData1.AttackFlag = true;
-            CharaData1.AT1Text3.SetActive(true);
+           //CharaData1.AttackFlag = true;
         }
         else if (ChangeChara.nowChara == 1)
         {
@@ -86,10 +84,10 @@ public class ButtonCol : MonoBehaviour
     //スペシャル攻撃2
     public void Special2()
     {
-        if (ChangeChara.nowChara == 0 && CharaData1.AttackFlag == false)
+        if (ChangeChara.nowChara == 0)
         {
             animator1.SetBool("Spinkick", true);
-            CharaData1.AttackFlag = true;
+            //CharaData1.AttackFlag = true;
         }
         else if (ChangeChara.nowChara == 1)
         {

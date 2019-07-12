@@ -7,7 +7,17 @@ public class CharaData1 : MonoBehaviour
 {
     //キャラクター名
     public static string CharaName;
+    //キャラクタジョブ番号
+    public static int job;
+    //キャラクターアイコン
+    public static Sprite CharaIconImage;
+    //ジョブアイコン
+    public static Sprite JobIconImage;
+    //ミニキャラクターアイコン
+    public static Sprite MiniIcon;
+
     //HP
+    public static int MaxHP = 200;
     public static int HP = 200;
     //　HP表示用スライダー
     public static Slider hpSlider;
@@ -17,9 +27,9 @@ public class CharaData1 : MonoBehaviour
     public static float SpecialTime2;
 
     //攻撃までの時間テキスト
-    public static GameObject AT1Text1;
-    public static GameObject AT1Text2;
-    public static GameObject AT1Text3;
+    public static GameObject ATText1;
+    public static GameObject ATText2;
+    public static GameObject ATText3;
 
     //攻撃したかのフラグ
     public static bool AttackFlag;
@@ -27,10 +37,13 @@ public class CharaData1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CharaName = "UnityChan";
+        CharaName = "キャラクター1";
+        CharaIconImage = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
+        MiniIcon = Resources.Load<Sprite>("MiniCharaIcon/MiniIcon1");
+        JobIconImage = Resources.Load<Sprite>("JobIcon/knite");
         hpSlider = GameObject.Find("BackGround").transform.Find("Player1HP").GetComponent<Slider>();
-        hpSlider.maxValue = HP;
-        hpSlider.value = HP;
+        hpSlider.maxValue = MaxHP;
+        hpSlider.value = MaxHP;
         AttackTime = 3.0f;
         SpecialTime1 = 5.0f;
         SpecialTime2 = 10.0f;

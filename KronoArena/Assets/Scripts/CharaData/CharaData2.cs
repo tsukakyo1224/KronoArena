@@ -7,8 +7,16 @@ public class CharaData2 : MonoBehaviour
 {
     //キャラクター名
     public static string CharaName;
+    //キャラクタジョブ番号
+    public static int job;
+    //キャラクターアイコン
+    public static Sprite CharaIconImage;
+    //ジョブアイコン
+    public static Sprite JobIconImage;
+
     //HP
-    public static int HP = 200;
+    public static int MaxHP = 500;
+    public static int HP = 500;
     //　HP表示用スライダー
     public static Slider hpSlider;
     //攻撃までの時間
@@ -27,10 +35,11 @@ public class CharaData2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CharaName = "UnityChan";
+        CharaName = "キャラクター2";
+        JobIconImage = Resources.Load<Sprite>("JobIcon/guardian");
         hpSlider = GameObject.Find("BackGround").transform.Find("Player2HP").GetComponent<Slider>();
-        hpSlider.maxValue = HP;
-        hpSlider.value = HP;
+        hpSlider.maxValue = MaxHP;
+        hpSlider.value = MaxHP;
         AttackTime = 3.0f;
         SpecialTime1 = 5.0f;
         SpecialTime2 = 10.0f;

@@ -51,7 +51,7 @@ public class CharaCol_test : MonoBehaviour
                 Vector3 currentTapPoint = Input.mousePosition;
                 //指をずらしたときのベクトルを取得
                 Vector3 mag = currentTapPoint - tapPoint;
-                //指を動かしたときのみキャラを操作する　　　　　　 
+                //指を動かしたときのみキャラを操作する
                 if (tapPoint != currentTapPoint)
                 {
                     //動かした指の位置から角度を計算　　　　　　　　　
@@ -64,14 +64,12 @@ public class CharaCol_test : MonoBehaviour
                     if (mag.magnitude > 5f)
                     {
                         velocity = transform.forward * playerSpeed;
-                        //Debug.Log(mag.magnitude);
                         animator.SetBool("Run", mag.magnitude > 1.0f);
                         playerSpeed = 5.0f;
                     }
                     else
                     if (mag.magnitude <= 5f)
                     {
-                        //Debug.Log(mag.magnitude);
                         animator.SetBool("Run", mag.magnitude > 1.0f);
                         ControlOnOffChara.walkSpeed = 5.0f;
                     }

@@ -23,24 +23,29 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //時間
-        if (TurnCol.P1_Turn == true) 
+        //if(PhotonNetwork.playerList.Length == 2)
+        if (Network_01.gameplayflag == true)
         {
-            TotalTime -= Time.deltaTime;
-            TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
-        }
-        else
-        {
-            TotalTime += Time.deltaTime;
-            TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+            //時間
+            if (TurnCol.P1_Turn == true)
+            {
+                TotalTime -= Time.deltaTime;
+                TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+            }
+            else
+            {
+                TotalTime += Time.deltaTime;
+                TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+            }
+
+            //ターン切り替え
+            if (TotalTime < 0.0f)
+            {
+                //TotalTime = 5.0f;
+                TurnCol.ChangeTurn();
+            }
         }
 
-        //ターン切り替え
-        if(TotalTime < 0.0f)
-        {
-            //TotalTime = 5.0f;
-            TurnCol.ChangeTurn();
-        }
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

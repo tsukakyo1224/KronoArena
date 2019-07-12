@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Network_01 : MonoBehaviour
 {
-
+    //ゲームスタートフラグ
     public static bool gamestartflag;
+    //ゲーム継続フラグ
     public static bool gameplayflag = false;
 
 

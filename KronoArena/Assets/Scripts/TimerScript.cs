@@ -27,7 +27,8 @@ public class TimerScript : MonoBehaviour
         //if (Network_01.gameplayflag == true)
         {
             //時間
-            if (TurnCol.P1_Turn == true)
+            if ((PhotonNetwork.player.ID == 1 &&TurnCol.P1_Turn == true) ||
+                (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
             {
                 TotalTime -= Time.deltaTime;
                 TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));

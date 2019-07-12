@@ -34,19 +34,25 @@ public class TurnCol : MonoBehaviour
     public static void ChangeTurn()
     {
         //プレイヤー2に移る
-        if (PhotonNetwork.player.ID == 1 && P1_Turn==true)
+        if (P1_Turn==true)
         {
             P2_Turn = true;
             P1_Turn = false;
         }
         //プレイヤー1に移る
-        else if(PhotonNetwork.player.ID == 2 && P2_Turn == true)
+        else if(P2_Turn == true)
         {
             P1_Turn = true;
             P2_Turn = false;
         }
 
 
+    }
+
+    [PunRPC]
+    public void ColorRpc(Vector3 col)
+    {
+       
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

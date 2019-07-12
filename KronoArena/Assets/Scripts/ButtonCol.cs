@@ -39,6 +39,7 @@ public class ButtonCol : MonoBehaviour
     public void TurnChange()
     {
         TurnCol.ChangeTurn();
+        GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         //TimerScript.TotalTime = 5.0f;
     }
 

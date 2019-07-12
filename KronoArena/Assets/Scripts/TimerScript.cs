@@ -27,7 +27,7 @@ public class TimerScript : MonoBehaviour
         //if (Network_01.gameplayflag == true)
         {
             //時間
-            if ((PhotonNetwork.player.ID == 1 &&TurnCol.P1_Turn == true) ||
+            if ((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
                 (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
             {
                 TotalTime -= Time.deltaTime;
@@ -44,6 +44,7 @@ public class TimerScript : MonoBehaviour
             {
                 //TotalTime = 5.0f;
                 TurnCol.ChangeTurn();
+                GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
             }
         }
 

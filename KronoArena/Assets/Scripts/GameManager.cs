@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
 
         //ターン切り替えの時の処理
-        if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID==1) ||
+        if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
         {
             CharaChangeButton1.GetComponent<Button>().interactable = true;
@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
             TurnText.GetComponent<Text>().text = "My turn";
             //TurnChangeButton.SetActive(true);
         }
-        else if(TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1 ||
+        else if((TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)) 
         {
             AttackButton1.SetActive(false);

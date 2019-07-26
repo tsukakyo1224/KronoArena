@@ -27,12 +27,24 @@ public class ButtonCol : MonoBehaviour
     {
         if(FollowingCamera.cameraflag == true)
         {
-            Player1 = GameObject.Find("Player1(Clone)");
-            animator1 = Player1.GetComponent<Animator>();
-            Player2 = GameObject.Find("Player2(Clone)");
-            animator2 = Player2.GetComponent<Animator>();
-            Player3 = GameObject.Find("Player3(Clone)");
-            animator3 = Player3.GetComponent<Animator>();
+            if(PhotonNetwork.player.ID == 1)
+            {
+                Player1 = GameObject.Find("P1_Chara1");
+                animator1 = Player1.GetComponent<Animator>();
+                Player2 = GameObject.Find("P1_Chara2");
+                animator2 = Player2.GetComponent<Animator>();
+                Player3 = GameObject.Find("P1_Chara3");
+                animator3 = Player3.GetComponent<Animator>();
+            }
+            else
+            {
+                Player1 = GameObject.Find("P2_Chara1");
+                animator1 = Player1.GetComponent<Animator>();
+                Player2 = GameObject.Find("P2_Chara2");
+                animator2 = Player2.GetComponent<Animator>();
+                Player3 = GameObject.Find("P2_Chara3");
+                animator3 = Player3.GetComponent<Animator>();
+            }
         }
     }
 

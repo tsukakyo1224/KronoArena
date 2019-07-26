@@ -54,7 +54,7 @@ public class TurnCol : MonoBehaviour
     [PunRPC]
     public void ColorRpc(Vector3 col)
     {
-       
+
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

@@ -25,15 +25,15 @@ public class NetWork_02 : MonoBehaviour
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, 0f);
                 GameObject player1 = PhotonNetwork.Instantiate("Player1", pos, Quaternion.identity, 0);
-                player1.name = "P1_" + CharaData1.CharaName;
+                player1.name = "P1_Chara1";
                 //キャラクター二人目生成
                 pos = new Vector3(3.5f, 0f, 0f);
                 GameObject player2 = PhotonNetwork.Instantiate("Player2", pos, Quaternion.identity, 0);
-                player2.name = "P1_" + CharaData2.CharaName;
+                player2.name = "P1_Chara2";
                 //キャラクター三人目生成
                 pos = new Vector3(-3.5f, 0f, 0f);
                 GameObject player3 = PhotonNetwork.Instantiate("Player3", pos, Quaternion.identity, 0);
-                player3.name = "P1_" + CharaData3.CharaName;
+                player3.name = "P1_Chara3";
                 FollowingCamera.cameraflag = true;
             }
             else
@@ -42,15 +42,15 @@ public class NetWork_02 : MonoBehaviour
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, 5f);
                 GameObject player1 = PhotonNetwork.Instantiate("Player1", pos, Quaternion.identity, 0);
-                player1.name = "P1_" + CharaData1.CharaName;
+                player1.name = "P2_Chara1";
                 //キャラクター二人目生成
                 pos = new Vector3(3.5f, 0f, 5f);
                 GameObject player2 = PhotonNetwork.Instantiate("Player2", pos, Quaternion.identity, 0);
-                player2.name = "P2_" + CharaData2.CharaName;
+                player2.name = "P2_Chara2";
                 //キャラクター三人目生成
                 pos = new Vector3(-3.5f, 0f, 5f);
                 GameObject player3 = PhotonNetwork.Instantiate("Player3", pos, Quaternion.identity, 0);
-                player3.name = "P3_" + CharaData3.CharaName;
+                player3.name = "P2_Chara3";
                 FollowingCamera.cameraflag = true;
             }
         }

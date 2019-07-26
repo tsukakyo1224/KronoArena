@@ -35,7 +35,7 @@ public class CharaData2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CharaName = "キャラクター2";
+        CharaName = "Chara2";
         JobIconImage = Resources.Load<Sprite>("JobIcon/guardian");
         hpSlider = GameObject.Find("BackGround").transform.Find("Player2HP").GetComponent<Slider>();
         hpSlider.maxValue = MaxHP;

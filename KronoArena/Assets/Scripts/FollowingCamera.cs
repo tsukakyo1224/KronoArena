@@ -32,16 +32,16 @@ public class FollowingCamera : MonoBehaviour
                 //カメラのターゲット変更
                 if (ChangeChara.nowChara == 0)
                 {
-                    target = GameObject.Find("P1_" + CharaData1.CharaName);
+                    target = GameObject.Find("P1_Chara1");
                 }
 
                 else if (ChangeChara.nowChara == 1)
                 {
-                    target = GameObject.Find("P1_" + CharaData2.CharaName);
+                    target = GameObject.Find("P1_Chara2");
                 }
                 else if (ChangeChara.nowChara == 2)
                 {
-                    target = GameObject.Find("P1_" + CharaData3.CharaName); ;
+                    target = GameObject.Find("P1_Chara3");
                 }
             }
 
@@ -50,16 +50,16 @@ public class FollowingCamera : MonoBehaviour
                 //カメラのターゲット変更
                 if (ChangeChara.nowChara == 0)
                 {
-                    target = GameObject.Find("P2_" + CharaData1.CharaName);
+                    target = GameObject.Find("P2_Chara1");
                 }
 
                 else if (ChangeChara.nowChara == 1)
                 {
-                    target = GameObject.Find("P2_" + CharaData2.CharaName);
+                    target = GameObject.Find("P2_Chara2");
                 }
                 else if (ChangeChara.nowChara == 2)
                 {
-                    target = GameObject.Find("P2_" + CharaData3.CharaName); ;
+                    target = GameObject.Find("P2_Chara3");
                 }
             }
 

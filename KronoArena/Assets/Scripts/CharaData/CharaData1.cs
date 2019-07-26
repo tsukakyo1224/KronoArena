@@ -37,7 +37,7 @@ public class CharaData1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CharaName = "キャラクター1";
+        CharaName = "Chara1";
         CharaIconImage = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
         MiniIcon = Resources.Load<Sprite>("MiniCharaIcon/MiniIcon1");
         JobIconImage = Resources.Load<Sprite>("JobIcon/knite");
@@ -65,4 +65,31 @@ public class CharaData1 : MonoBehaviour
     {
         //hpSlider.value -= 1;
     }
+
+    /*void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.tag == "Enemy")
+        {
+            Debug.Log(hit.gameObject.name);
+        }
+    }*/
+
+    void OnTriggerExit(Collider other)
+    {
+        //if(other.tag == "Enemy")
+        //{
+        //Debug.Log("sasa");
+        //other.gameObject.GetComponent<Slider>().value -= 5.0f;
+        //other.GetComponent;
+
+        //}
+    }
+    /*
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            Debug.Log(other.name);
+        }
+    }*/
 }

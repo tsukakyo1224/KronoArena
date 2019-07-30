@@ -36,8 +36,8 @@ public class CharaData2 : MonoBehaviour
     void Start()
     {
         //if(this.name==)
-        CharaName = "Chara2";
-        JobIconImage = Resources.Load<Sprite>("JobIcon/guardian");
+        CharaName = "Medic";
+        JobIconImage = Resources.Load<Sprite>("JobIcon/Medic");
         hpSlider = GameObject.Find("BackGround").transform.Find("Player2HP").GetComponent<Slider>();
         hpSlider.maxValue = MaxHP;
         hpSlider.value = MaxHP;

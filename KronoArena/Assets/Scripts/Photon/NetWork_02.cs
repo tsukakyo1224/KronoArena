@@ -24,11 +24,11 @@ public class NetWork_02 : MonoBehaviour
                 // 第4引数にView ID(指定しない場合は0)
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, 0f);
-                GameObject player1 = PhotonNetwork.Instantiate("Player1", pos, Quaternion.identity, 0);
+                GameObject player1 = PhotonNetwork.Instantiate("Knight", pos, Quaternion.identity, 0);
                 player1.name = "P1_Chara1";
                 //キャラクター二人目生成
                 pos = new Vector3(3.5f, 0f, 0f);
-                GameObject player2 = PhotonNetwork.Instantiate("Player2", pos, Quaternion.identity, 0);
+                GameObject player2 = PhotonNetwork.Instantiate("Medic", pos, Quaternion.identity, 0);
                 player2.name = "P1_Chara2";
                 //キャラクター三人目生成
                 pos = new Vector3(-3.5f, 0f, 0f);

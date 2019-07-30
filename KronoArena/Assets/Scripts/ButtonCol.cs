@@ -19,7 +19,6 @@ public class ButtonCol : MonoBehaviour
     void Start()
     {
 
-        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,7 +60,11 @@ public class ButtonCol : MonoBehaviour
     {
         if (ChangeChara.nowChara == 0)
         {
-            animator1.SetBool("Jab", true);
+            animator1.SetBool("Attack", true);
+            //剣コライダーをオンに
+            Knight_Data.Sword.enabled = true;
+            //一定時間後にコライダーの機能をオフにする
+            Invoke("ColliderReset", 0.3f);
             GameManager.CharaAttackTime1.SetActive(true);
         }
         else if (ChangeChara.nowChara == 1)
@@ -82,7 +85,7 @@ public class ButtonCol : MonoBehaviour
     {
         if (ChangeChara.nowChara == 0)
         {
-           animator1.SetBool("Hikick", true);
+           animator1.SetBool("Skill1", true);
            //CharaData1.AttackFlag = true;
         }
         else if (ChangeChara.nowChara == 1)
@@ -100,7 +103,7 @@ public class ButtonCol : MonoBehaviour
     {
         if (ChangeChara.nowChara == 0)
         {
-            animator1.SetBool("Spinkick", true);
+            animator1.SetBool("Skill2", true);
             //CharaData1.AttackFlag = true;
         }
         else if (ChangeChara.nowChara == 1)
@@ -113,4 +116,6 @@ public class ButtonCol : MonoBehaviour
         }
         Debug.Log(ChangeChara.nowChara + " Special2");
     }
+
+
 }

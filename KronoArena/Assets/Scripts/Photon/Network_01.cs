@@ -14,7 +14,6 @@ public class Network_01 : MonoBehaviour
     {
         // Photonに接続する(引数でゲームのバージョンを指定できる)
         PhotonNetwork.ConnectUsingSettings("v1.0");
-        Debug.Log("a");
         gamestartflag = false;
     }
 

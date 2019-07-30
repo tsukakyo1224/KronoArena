@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         CharaChangeButton3 = GameObject.Find("ChangeChara3");
         CharaChangeButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("MiniCharaIcon/MiniIcon3");
 
+        //操作キャラクター用オブジェクト(右下)
         OpeCharaIcon = GameObject.Find("OpeCharaIcon");
         OpeCharaName = GameObject.Find("OpeCharaName");
         OpeCharaJobIcon = GameObject.Find("OpeCharaJobIcon").GetComponent<Image>();
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
 
 
         TurnChangeButton = GameObject.Find("ChangeTurn");
+
 
         TurnText = GameObject.Find("TurnText");
 
@@ -107,24 +109,24 @@ public class GameManager : MonoBehaviour
             if (ChangeChara.nowChara == 0)
             {
                 OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
-                OpeCharaName.GetComponent<Text>().text = CharaData1.CharaName;
-                OpeCharaJobIcon.sprite = CharaData1.JobIconImage;
-                OpeCharaHPSlider.maxValue = CharaData1.hpSlider.maxValue;
-                OpeCharaHPSlider.value = CharaData1.hpSlider.value;
-                OpeCharaHPText.GetComponent<Text>().text = CharaData1.hpSlider.value + "/" + CharaData1.MaxHP;
+                OpeCharaName.GetComponent<Text>().text = Knight_Data.CharaName;
+                OpeCharaJobIcon.sprite = Knight_Data.JobIconImage;
+                OpeCharaHPSlider.maxValue = Knight_Data.hpSlider.maxValue;
+                OpeCharaHPSlider.value = Knight_Data.hpSlider.value;
+                OpeCharaHPText.GetComponent<Text>().text = Knight_Data.hpSlider.value + "/" + Knight_Data.MaxHP;
             }
             else if (ChangeChara.nowChara == 1)
             {
-                //OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
+                //OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon2");
                 OpeCharaName.GetComponent<Text>().text = CharaData2.CharaName;
                 OpeCharaJobIcon.sprite = CharaData2.JobIconImage;
-                OpeCharaHPSlider.maxValue = CharaData2.hpSlider.maxValue;
-                OpeCharaHPSlider.value = CharaData2.hpSlider.value;
-                OpeCharaHPText.GetComponent<Text>().text = CharaData2.hpSlider.value + "/" + CharaData2.MaxHP;
+                //OpeCharaHPSlider.maxValue = CharaData2.hpSlider.maxValue;
+                //OpeCharaHPSlider.value = CharaData2.hpSlider.value;
+                //OpeCharaHPText.GetComponent<Text>().text = CharaData2.hpSlider.value + "/" + CharaData2.MaxHP;
             }
             else if (ChangeChara.nowChara == 2)
             {
-                //OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
+                //OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon3");
                 OpeCharaName.GetComponent<Text>().text = CharaData3.CharaName;
                 OpeCharaJobIcon.sprite = CharaData3.JobIconImage;
                 OpeCharaHPSlider.maxValue = CharaData3.hpSlider.maxValue;
@@ -161,29 +163,5 @@ public class GameManager : MonoBehaviour
             TurnText.GetComponent<Text>().text = "Your turn";
             //TurnChangeButton.SetActive(false);
         }
-        /*
-        if 
-        {
-            CharaChangeButton1.GetComponent<Button>().interactable = true;
-            CharaChangeButton2.GetComponent<Button>().interactable = true;
-            CharaChangeButton3.GetComponent<Button>().interactable = true;
-            AttackButton1.SetActive(true);
-            AttackButton2.SetActive(true);
-            AttackButton3.SetActive(true);
-            TurnText.GetComponent<Text>().text = "My turn";
-            //TurnChangeButton.SetActive(true);
-        }
-        else if (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)
-        {
-            CharaChangeButton1.GetComponent<Button>().interactable = false;
-            CharaChangeButton2.GetComponent<Button>().interactable = false;
-            CharaChangeButton3.GetComponent<Button>().interactable = false;
-            AttackButton1.SetActive(false);
-            AttackButton2.SetActive(false);
-            AttackButton3.SetActive(false);
-            TurnText.GetComponent<Text>().text = "Your turn";
-            //TurnChangeButton.SetActive(false);
-        }*/
-
     }
 }

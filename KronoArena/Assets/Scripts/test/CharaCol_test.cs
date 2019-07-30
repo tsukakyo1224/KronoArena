@@ -90,6 +90,7 @@ public class CharaCol_test : MonoBehaviour
 
     }
 
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)

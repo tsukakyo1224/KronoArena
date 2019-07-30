@@ -18,7 +18,7 @@ public class CharaData2 : MonoBehaviour
     public static int MaxHP = 500;
     public static int HP = 500;
     //　HP表示用スライダー
-    public static Slider hpSlider;
+    public Slider hpSlider;
     //攻撃までの時間
     public static float AttackTime;
     public static float SpecialTime1;
@@ -35,6 +35,7 @@ public class CharaData2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if(this.name==)
         CharaName = "Chara2";
         JobIconImage = Resources.Load<Sprite>("JobIcon/guardian");
         hpSlider = GameObject.Find("BackGround").transform.Find("Player2HP").GetComponent<Slider>();
@@ -45,14 +46,14 @@ public class CharaData2 : MonoBehaviour
         SpecialTime2 = 10.0f;
         AttackFlag = false;
 
-        /*
-        ATText1 = GameObject.Find("ATime1");
-        ATText2 = GameObject.Find("ATime2");
-        ATText3 = GameObject.Find("ATime3");
-
-        ATText1.SetActive(false);
-        ATText2.SetActive(false);
-        ATText3.SetActive(false);*/
+        if (PhotonNetwork.player.ID == 1)
+        {
+            this.tag = "Player1";
+        }
+        else
+        {
+            this.tag = "Player2";
+        }
     }
 
     // Update is called once per frame

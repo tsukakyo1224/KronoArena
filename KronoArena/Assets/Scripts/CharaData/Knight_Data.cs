@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharaData1 : MonoBehaviour
+public class Knight_Data : MonoBehaviour
 {
     //キャラクター名
     public static string CharaName;
@@ -15,6 +15,8 @@ public class CharaData1 : MonoBehaviour
     public static Sprite JobIconImage;
     //ミニキャラクターアイコン
     public static Sprite MiniIcon;
+
+    CharaData2 CharaData2_hp;
 
     //HP
     public static int MaxHP = 200;
@@ -34,10 +36,15 @@ public class CharaData1 : MonoBehaviour
     //攻撃したかのフラグ
     public static bool AttackFlag;
 
+    public static Collider Sword;
+
+    public static Slider YourHP;
+
     // Start is called before the first frame update
     void Start()
     {
-        CharaName = "Chara1";
+        //キャラクター情報入力
+        CharaName = "ナイト";
         CharaIconImage = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
         MiniIcon = Resources.Load<Sprite>("MiniCharaIcon/MiniIcon1");
         JobIconImage = Resources.Load<Sprite>("JobIcon/knite");
@@ -48,16 +55,19 @@ public class CharaData1 : MonoBehaviour
         SpecialTime1 = 5.0f;
         SpecialTime2 = 10.0f;
         AttackFlag = false;
+        Sword = GameObject.Find("Sword_Collider").GetComponent<BoxCollider>();
+        //剣コライダーをオンにする
+        Sword.enabled = false;
 
-        /*
-        AT1Text1 = GameObject.Find("ATime1");
-        AT1Text2 = GameObject.Find("ATime2");
-        AT1Text3 = GameObject.Find("ATime3");
+        if(PhotonNetwork.player.ID == 1)
+        {
+            this.tag = "Player1";
+        }
+        else
+        {
+            this.tag = "Player2";
+        }
 
-        AT1Text1.SetActive(false);
-        AT1Text2.SetActive(false);
-        AT1Text3.SetActive(false);
-        */
     }
 
     // Update is called once per frame
@@ -66,30 +76,28 @@ public class CharaData1 : MonoBehaviour
         //hpSlider.value -= 1;
     }
 
-    /*void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if(hit.gameObject.tag == "Enemy")
-        {
-            Debug.Log(hit.gameObject.name);
-        }
-    }*/
-
     void OnTriggerExit(Collider other)
     {
-        //if(other.tag == "Enemy")
-        //{
-        //Debug.Log("sasa");
-        //other.gameObject.GetComponent<Slider>().value -= 5.0f;
-        //other.GetComponent;
-
-        //}
-    }
-    /*
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Enemy")
+        if (PhotonNetwork.player.ID == 1)
         {
-            Debug.Log(other.name);
+            if (other.tag == "Player1")
+            {
+                if (other.name == "P1_Chara2")
+                {
+                    Debug.Log(other + "に5ダメージ");
+                    other.GetComponent<CharaData2>().hpSlider.value -= 5.0f;
+
+                }
+                else if (other.name == "P1_Chara3")
+                {
+                    CharaData3.hpSlider.value -= 5.0f;
+                    Debug.Log(other + "に5ダメージ");
+                }
+            }
         }
-    }*/
+    }
+    public static void ColliderReset()
+    {
+        Sword.enabled = false;
+    }
 }

@@ -24,19 +24,19 @@ public class NetWork_02 : MonoBehaviour
                 // 第4引数にView ID(指定しない場合は0)
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, 0f);
-                GameObject player1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
-                player1.name = "P1_Chara1";
-                player1.tag = "Player1";
+                GameObject P1_Chara1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
+                P1_Chara1.name = "P1_Chara1";
+                P1_Chara1.tag = "Player1";
                 //キャラクター二人目生成
                 pos = new Vector3(3.5f, 0f, 0f);
-                GameObject player2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
-                player2.name = "P1_Chara2";
-                player2.tag = "Player1";
+                GameObject P1_Chara2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
+                P1_Chara2.name = "P1_Chara2";
+                P1_Chara2.tag = "Player1";
                 //キャラクター三人目生成
                 pos = new Vector3(-3.5f, 0f, 0f);
-                GameObject player3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
-                player3.name = "P1_Chara3";
-                player3.tag = "Player1";
+                GameObject P1_Chara3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
+                P1_Chara3.name = "P1_Chara3";
+                P1_Chara3.tag = "Player1";
                 FollowingCamera.cameraflag = true;
             }
             else if(PhotonNetwork.player.ID == 2)
@@ -44,19 +44,19 @@ public class NetWork_02 : MonoBehaviour
                 Network_01.gamestartflag = false;
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, 5f);
-                GameObject player1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
-                player1.name = "P2_Chara1";
-                player1.tag = "Player2";
+                GameObject P2_Chara1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
+                P2_Chara1.name = "P2_Chara1";
+                P2_Chara1.tag = "Player2";
                 //キャラクター二人目生成
                 pos = new Vector3(3.5f, 0f, 5f);
-                GameObject player2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
-                player2.name = "P2_Chara2";
-                player2.tag = "Player2";
+                GameObject P2_Chara2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
+                P2_Chara2.name = "P2_Chara2";
+                P2_Chara2.tag = "Player2";
                 //キャラクター三人目生成
                 pos = new Vector3(-3.5f, 0f, 5f);
-                GameObject player3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
-                player3.name = "P2_Chara3";
-                player3.tag = "Player2";
+                GameObject P2_Chara3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
+                P2_Chara3.name = "P2_Chara3";
+                P2_Chara3.tag = "Player2";
                 FollowingCamera.cameraflag = true;
             }
         }

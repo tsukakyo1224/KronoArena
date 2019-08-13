@@ -69,50 +69,59 @@ public class ButtonCol : MonoBehaviour
         }
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Jab", true);
+            animator2.SetBool("Attack", true);
             GameManager.CharaAttackTime2.SetActive(true);
         }
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Jab", true);
+            animator3.SetBool("Attack", true);
             GameManager.CharaAttackTime3.SetActive(true);
         }
         Debug.Log(ChangeChara.nowChara + " Attack");
     }
 
-    //スペシャル攻撃1
+    //スキル1
     public void Special1()
     {
         if (ChangeChara.nowChara == 0)
         {
-           animator1.SetBool("Skill1", true);
+            if (Knight_Data.SkillFlag2 == false)
+            {
+                Knight_Data.SkillFlag1 = true;
+                animator1.SetBool("Skill1", true);
+            }
            //CharaData1.AttackFlag = true;
         }
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Hikick", true);
+            animator2.SetBool("Skill1", true);
         }
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Hikick", true);
+            animator3.SetBool("Skill1", true);
         }
         Debug.Log(ChangeChara.nowChara + " Special1");
     }
-    //スペシャル攻撃2
+    //スキル2
     public void Special2()
     {
         if (ChangeChara.nowChara == 0)
         {
-            animator1.SetBool("Skill2", true);
+            if (Knight_Data.SkillFlag1 == false)
+            {
+                Knight_Data.SkillFlag2 = true;
+                animator1.SetBool("Skill2", true);
+            }
+
             //CharaData1.AttackFlag = true;
         }
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Spinkick", true);
+            animator2.SetBool("Skill2", true);
         }
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Spinkick", true);
+            animator3.SetBool("Skill2", true);
         }
         Debug.Log(ChangeChara.nowChara + " Special2");
     }

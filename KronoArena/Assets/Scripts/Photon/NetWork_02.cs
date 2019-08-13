@@ -24,15 +24,15 @@ public class NetWork_02 : MonoBehaviour
                 // 第4引数にView ID(指定しない場合は0)
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, 0f);
-                GameObject player1 = PhotonNetwork.Instantiate("Knight", pos, Quaternion.identity, 0);
+                GameObject player1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
                 player1.name = "P1_Chara1";
                 //キャラクター二人目生成
                 pos = new Vector3(3.5f, 0f, 0f);
-                GameObject player2 = PhotonNetwork.Instantiate("Medic", pos, Quaternion.identity, 0);
+                GameObject player2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
                 player2.name = "P1_Chara2";
                 //キャラクター三人目生成
                 pos = new Vector3(-3.5f, 0f, 0f);
-                GameObject player3 = PhotonNetwork.Instantiate("Player3", pos, Quaternion.identity, 0);
+                GameObject player3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
                 player3.name = "P1_Chara3";
                 FollowingCamera.cameraflag = true;
             }
@@ -41,15 +41,15 @@ public class NetWork_02 : MonoBehaviour
                 Network_01.gamestartflag = false;
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, 5f);
-                GameObject player1 = PhotonNetwork.Instantiate("Player1", pos, Quaternion.identity, 0);
+                GameObject player1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
                 player1.name = "P2_Chara1";
                 //キャラクター二人目生成
                 pos = new Vector3(3.5f, 0f, 5f);
-                GameObject player2 = PhotonNetwork.Instantiate("Player2", pos, Quaternion.identity, 0);
+                GameObject player2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
                 player2.name = "P2_Chara2";
                 //キャラクター三人目生成
                 pos = new Vector3(-3.5f, 0f, 5f);
-                GameObject player3 = PhotonNetwork.Instantiate("Player3", pos, Quaternion.identity, 0);
+                GameObject player3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
                 player3.name = "P2_Chara3";
                 FollowingCamera.cameraflag = true;
             }

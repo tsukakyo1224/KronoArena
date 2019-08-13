@@ -19,6 +19,7 @@ public class ChangeChara : MonoBehaviour
     {
         if (FollowingCamera.cameraflag == true)
         {
+            //キャラリスト作成
             if (PhotonNetwork.player.ID == 1)
             {
                 charaLists.Add(GameObject.Find("P1_Chara1"));

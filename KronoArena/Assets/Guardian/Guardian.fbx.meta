@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: e04ff1d42f4ce4b7ea7f0da40a062d35
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arm_armor_1_left
+    100002: Arm_armor_1_right
+    100004: Arm_armor_2_left
+    100006: Arm_armor_2_right
+    100008: belt_armor
+    100010: body
+    100012: boots_left
+    100014: boots_right
+    100016: Chest_armor_1
+    100018: Chest_armor_2
+    100020: cloth_back
+    100022: cloth_front
+    100024: //RootNode
+    100026: Guardian
+    100028: Guardian_IK_Ctrl_ChestEndEffector
+    100030: Guardian_IK_Ctrl_ChestOriginEffector
+    100032: Guardian_IK_Ctrl_Head
+    100034: Guardian_IK_Ctrl_HeadEffector
+    100036: Guardian_IK_Ctrl_Hips
+    100038: Guardian_IK_Ctrl_HipsEffector
+    100040: Guardian_IK_Ctrl_LeftAnkleEffector
+    100042: Guardian_IK_Ctrl_LeftArm
+    100044: Guardian_IK_Ctrl_LeftElbowEffector
+    100046: Guardian_IK_Ctrl_LeftFoot
+    100048: Guardian_IK_Ctrl_LeftForeArm
+    100050: Guardian_IK_Ctrl_LeftHand
+    100052: Guardian_IK_Ctrl_LeftHipEffector
+    100054: Guardian_IK_Ctrl_LeftKneeEffector
+    100056: Guardian_IK_Ctrl_LeftLeg
+    100058: Guardian_IK_Ctrl_LeftShoulderEffector
+    100060: Guardian_IK_Ctrl_LeftUpLeg
+    100062: Guardian_IK_Ctrl_LeftWristEffector
+    100064: Guardian_IK_Ctrl_Reference
+    100066: Guardian_IK_Ctrl_RightAnkleEffector
+    100068: Guardian_IK_Ctrl_RightArm
+    100070: Guardian_IK_Ctrl_RightElbowEffector
+    100072: Guardian_IK_Ctrl_RightFoot
+    100074: Guardian_IK_Ctrl_RightForeArm
+    100076: Guardian_IK_Ctrl_RightHand
+    100078: Guardian_IK_Ctrl_RightHipEffector
+    100080: Guardian_IK_Ctrl_RightKneeEffector
+    100082: Guardian_IK_Ctrl_RightLeg
+    100084: Guardian_IK_Ctrl_RightShoulderEffector
+    100086: Guardian_IK_Ctrl_RightUpLeg
+    100088: Guardian_IK_Ctrl_RightWristEffector
+    100090: Guardian_IK_Ctrl_Spine
+    100092: hair
+    100094: handle
+    100096: head
+    100098: knee_armor_left
+    100100: knee_armor_right
+    100102: L_Foot
+    100104: L_FrontArm
+    100106: L_Hund
+    100108: L_Hund_a
+    100110: L_Leg
+    100112: L_Shoulder
+    100114: L_UpperArm
+    100116: L_UpperLeg
+    100118: neck
+    100120: polySurface10
+    100122: polySurface15
+    100124: polySurface20
+    100126: polySurface25
+    100128: polySurface5
+    100130: R_Foot
+    100132: R_FrontArm
+    100134: R_Hund
+    100136: R_Hund_a
+    100138: R_Leg
+    100140: R_Shoulder
+    100142: R_UpperArm
+    100144: R_UpperLeg
+    100146: shield
+    100148: shield 1
+    100150: ShortSword
+    100152: Shoulder_armor_1_left
+    100154: Shoulder_armor_1_right
+    100156: Shoulder_armor_2_left
+    100158: Shoulder_armor_2_right
+    100160: spine01
+    100162: spine02
+    100164: Waist_armor_1_left
+    100166: Waist_armor_1_right
+    100168: Waist_armor_2_left
+    100170: Waist_armor_2_right
+    100172: Waist_armor_3_left
+    100174: Waist_armor_3_right
+    400000: Arm_armor_1_left
+    400002: Arm_armor_1_right
+    400004: Arm_armor_2_left
+    400006: Arm_armor_2_right
+    400008: belt_armor
+    400010: body
+    400012: boots_left
+    400014: boots_right
+    400016: Chest_armor_1
+    400018: Chest_armor_2
+    400020: cloth_back
+    400022: cloth_front
+    400024: //RootNode
+    400026: Guardian
+    400028: Guardian_IK_Ctrl_ChestEndEffector
+    400030: Guardian_IK_Ctrl_ChestOriginEffector
+    400032: Guardian_IK_Ctrl_Head
+    400034: Guardian_IK_Ctrl_HeadEffector
+    400036: Guardian_IK_Ctrl_Hips
+    400038: Guardian_IK_Ctrl_HipsEffector
+    400040: Guardian_IK_Ctrl_LeftAnkleEffector
+    400042: Guardian_IK_Ctrl_LeftArm
+    400044: Guardian_IK_Ctrl_LeftElbowEffector
+    400046: Guardian_IK_Ctrl_LeftFoot
+    400048: Guardian_IK_Ctrl_LeftForeArm
+    400050: Guardian_IK_Ctrl_LeftHand
+    400052: Guardian_IK_Ctrl_LeftHipEffector
+    400054: Guardian_IK_Ctrl_LeftKneeEffector
+    400056: Guardian_IK_Ctrl_LeftLeg
+    400058: Guardian_IK_Ctrl_LeftShoulderEffector
+    400060: Guardian_IK_Ctrl_LeftUpLeg
+    400062: Guardian_IK_Ctrl_LeftWristEffector
+    400064: Guardian_IK_Ctrl_Reference
+    400066: Guardian_IK_Ctrl_RightAnkleEffector
+    400068: Guardian_IK_Ctrl_RightArm
+    400070: Guardian_IK_Ctrl_RightElbowEffector
+    400072: Guardian_IK_Ctrl_RightFoot
+    400074: Guardian_IK_Ctrl_RightForeArm
+    400076: Guardian_IK_Ctrl_RightHand
+    400078: Guardian_IK_Ctrl_RightHipEffector
+    400080: Guardian_IK_Ctrl_RightKneeEffector
+    400082: Guardian_IK_Ctrl_RightLeg
+    400084: Guardian_IK_Ctrl_RightShoulderEffector
+    400086: Guardian_IK_Ctrl_RightUpLeg
+    400088: Guardian_IK_Ctrl_RightWristEffector
+    400090: Guardian_IK_Ctrl_Spine
+    400092: hair
+    400094: handle
+    400096: head
+    400098: knee_armor_left
+    400100: knee_armor_right
+    400102: L_Foot
+    400104: L_FrontArm
+    400106: L_Hund
+    400108: L_Hund_a
+    400110: L_Leg
+    400112: L_Shoulder
+    400114: L_UpperArm
+    400116: L_UpperLeg
+    400118: neck
+    400120: polySurface10
+    400122: polySurface15
+    400124: polySurface20
+    400126: polySurface25
+    400128: polySurface5
+    400130: R_Foot
+    400132: R_FrontArm
+    400134: R_Hund
+    400136: R_Hund_a
+    400138: R_Leg
+    400140: R_Shoulder
+    400142: R_UpperArm
+    400144: R_UpperLeg
+    400146: shield
+    400148: shield 1
+    400150: ShortSword
+    400152: Shoulder_armor_1_left
+    400154: Shoulder_armor_1_right
+    400156: Shoulder_armor_2_left
+    400158: Shoulder_armor_2_right
+    400160: spine01
+    400162: spine02
+    400164: Waist_armor_1_left
+    400166: Waist_armor_1_right
+    400168: Waist_armor_2_left
+    400170: Waist_armor_2_right
+    400172: Waist_armor_3_left
+    400174: Waist_armor_3_right
+    2100000: lambert2
+    2100002: phong1
+    2300000: handle
+    2300002: polySurface10
+    2300004: polySurface15
+    2300006: polySurface20
+    2300008: polySurface25
+    2300010: polySurface5
+    2300012: shield 1
+    3300000: handle
+    3300002: polySurface10
+    3300004: polySurface15
+    3300006: polySurface20
+    3300008: polySurface25
+    3300010: polySurface5
+    3300012: shield 1
+    4300000: hair
+    4300002: body
+    4300004: Chest_armor_1
+    4300006: Chest_armor_2
+    4300008: Shoulder_armor_1_left
+    4300010: Shoulder_armor_2_left
+    4300012: Shoulder_armor_1_right
+    4300014: Shoulder_armor_2_right
+    4300016: Arm_armor_1_left
+    4300018: Arm_armor_2_left
+    4300020: Arm_armor_1_right
+    4300022: Arm_armor_2_right
+    4300024: belt_armor
+    4300026: Waist_armor_1_left
+    4300028: Waist_armor_2_left
+    4300030: Waist_armor_3_left
+    4300032: Waist_armor_1_right
+    4300034: Waist_armor_2_right
+    4300036: Waist_armor_3_right
+    4300038: boots_left
+    4300040: boots_right
+    4300042: cloth_front
+    4300044: cloth_back
+    4300046: knee_armor_left
+    4300048: knee_armor_right
+    4300050: shield
+    4300052: handle
+    4300054: polySurface5
+    4300056: polySurface10
+    4300058: polySurface15
+    4300060: polySurface20
+    4300062: polySurface25
+    7400000: Wait(Guardian)
+    7400002: attack01(Guardian)
+    7400004: attack02(Guardian)
+    7400006: attack03(Guardian)
+    7400008: run(Guardian)
+    7400010: skill01_1(Guardian)
+    7400012: skill01_2(Guardian)
+    7400014: skill02_1(Guardian)
+    7400016: skill02_2(Guardian)
+    9500000: //RootNode
+    13700000: Arm_armor_1_left
+    13700002: Arm_armor_1_right
+    13700004: Arm_armor_2_left
+    13700006: Arm_armor_2_right
+    13700008: belt_armor
+    13700010: body
+    13700012: boots_left
+    13700014: boots_right
+    13700016: Chest_armor_1
+    13700018: Chest_armor_2
+    13700020: cloth_back
+    13700022: cloth_front
+    13700024: hair
+    13700026: knee_armor_left
+    13700028: knee_armor_right
+    13700030: Shoulder_armor_1_left
+    13700032: Shoulder_armor_1_right
+    13700034: Shoulder_armor_2_left
+    13700036: Shoulder_armor_2_right
+    13700038: Waist_armor_1_left
+    13700040: Waist_armor_1_right
+    13700042: Waist_armor_2_left
+    13700044: Waist_armor_2_right
+    13700046: Waist_armor_3_left
+    13700048: Waist_armor_3_right
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: ee71c74fbdefc4cff9ef1ca7325b6bcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong1
+    second: {fileID: 2100000, guid: 01ae42e7aa3a649bab7f33c54c46f642, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: inputUV
+    second: {fileID: 2800000, guid: 6a8a0e86d4c83472b82982fdba607cf6, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'L_Leg' has translation animation that will
+      be discarded.\n\t'L_Foot' has translation animation that will be discarded.\n\t'R_Leg'
+      has translation animation that will be discarded.\n\t'spine02' has translation
+      animation that will be discarded.\n\t'L_FrontArm' has translation animation
+      that will be discarded.\n\t'R_FrontArm' has translation animation that will
+      be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Wait(Guardian)
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack01(Guardian)
+      takeName: Take 001
+      firstFrame: 25
+      lastFrame: 42
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack02(Guardian)
+      takeName: Take 001
+      firstFrame: 43
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack03(Guardian)
+      takeName: Take 001
+      firstFrame: 61
+      lastFrame: 78
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: run(Guardian)
+      takeName: Take 001
+      firstFrame: 79
+      lastFrame: 102
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: skill01_1(Guardian)
+      takeName: Take 001
+      firstFrame: 103
+      lastFrame: 114
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: skill01_2(Guardian)
+      takeName: Take 001
+      firstFrame: 115
+      lastFrame: 126
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: skill02_1(Guardian)
+      takeName: Take 001
+      firstFrame: 127
+      lastFrame: 138
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: skill02_2(Guardian)
+      takeName: Take 001
+      firstFrame: 139
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: spine01
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_UpperLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_UpperLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_Leg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_Leg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: spine02
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_Shoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_Shoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_UpperArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_UpperArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_FrontArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_FrontArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_Hund
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_Hund
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Guardian(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian
+      parentName: Guardian(Clone)
+      position: {x: -0, y: 0.5230619, z: -0.0061357496}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Arm_armor_1_left
+      parentName: Guardian
+      position: {x: -668.27716, y: -14.391026, z: 0.796011}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.018563803, y: 0.030964041, z: 0.01912734}
+    - name: Arm_armor_1_right
+      parentName: Guardian
+      position: {x: -710.9847, y: -14.391026, z: 0.796011}
+      rotation: {x: 0.7071068, y: 0.7071068, z: 4.3297806e-17, w: 4.3297806e-17}
+      scale: {x: -0.018563803, y: -0.030964041, z: -0.01912734}
+    - name: Arm_armor_2_left
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Arm_armor_2_right
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+    - name: belt_armor
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: body
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boots_left
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boots_right
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+    - name: Chest_armor_1
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chest_armor_2
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cloth_back
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cloth_front
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hair
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: knee_armor_left
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: knee_armor_right
+      parentName: Guardian
+      position: {x: -0, y: -51.789085, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+    - name: Shoulder_armor_1_left
+      parentName: Guardian
+      position: {x: -485.01654, y: -3.980896, z: 0.75509286}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.026556095, y: 0.02278432, z: 0.024916789}
+    - name: Shoulder_armor_1_right
+      parentName: Guardian
+      position: {x: -507.63336, y: -3.980896, z: 0.75509286}
+      rotation: {x: 0.7071068, y: 0.7071068, z: 4.3297806e-17, w: 4.3297806e-17}
+      scale: {x: -0.026556095, y: -0.02278432, z: -0.024916789}
+    - name: Shoulder_armor_2_left
+      parentName: Guardian
+      position: {x: -2183.7566, y: -3.4367256, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.024219008, y: 0.005289767, z: 0.03228652}
+    - name: Shoulder_armor_2_right
+      parentName: Guardian
+      position: {x: -2206.9824, y: -3.4367256, z: 0.613575}
+      rotation: {x: 0.7071068, y: 0.7071068, z: 4.3297806e-17, w: 4.3297806e-17}
+      scale: {x: -0.024219008, y: -0.005289767, z: -0.03228652}
+    - name: Waist_armor_1_left
+      parentName: Guardian
+      position: {x: -3.3964, y: -19.417652, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.1298745, y: 0.06594695, z: 0.12167942}
+    - name: Waist_armor_1_right
+      parentName: Guardian
+      position: {x: -4.261835, y: -19.417652, z: 0.613575}
+      rotation: {x: 1, y: -0, z: 0, w: 6.123234e-17}
+      scale: {x: -0.1298745, y: -0.06594695, z: -0.12167942}
+    - name: Waist_armor_2_left
+      parentName: Guardian
+      position: {x: -16.677124, y: -25.899582, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.1298745, y: 0.06594695, z: 0.12167942}
+    - name: Waist_armor_2_right
+      parentName: Guardian
+      position: {x: -20.926613, y: -25.899582, z: 0.613575}
+      rotation: {x: 1, y: -0, z: 0, w: 6.123234e-17}
+      scale: {x: -0.1298745, y: -0.06594695, z: -0.12167942}
+    - name: Waist_armor_3_left
+      parentName: Guardian
+      position: {x: -31.900524, y: -32.210823, z: 0.613575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.1298745, y: 0.06594695, z: 0.12167942}
+    - name: Waist_armor_3_right
+      parentName: Guardian
+      position: {x: -40.02908, y: -32.210823, z: 0.613575}
+      rotation: {x: 1, y: -0, z: 0, w: 6.123234e-17}
+      scale: {x: -0.1298745, y: -0.06594695, z: -0.12167942}
+    - name: Guardian_IK_Ctrl_Reference
+      parentName: Guardian(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Guardian_IK_Ctrl_ChestEndEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: 0.00000023841858, y: 59.85548, z: -5.293957e-23}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_ChestOriginEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -0, y: 52.397602, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_HeadEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -0.0000009536743, y: 62.222244, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_Hips
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -0, y: 36.04532, z: 1.0327504e-15}
+      rotation: {x: 3.6368307e-16, y: 5.5511145e-17, z: -5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftUpLeg
+      parentName: Guardian_IK_Ctrl_Hips
+      position: {x: -7.5427976, y: -3.10075, z: 0}
+      rotation: {x: -0.00023132766, y: 0.000010450698, z: -0.028667035, w: 0.999589}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftLeg
+      parentName: Guardian_IK_Ctrl_LeftUpLeg
+      position: {x: -0.471601, y: -19.678614, z: 0}
+      rotation: {x: 0.000587677, y: 0.0000026192374, z: 0.0000005163346, w: 0.9999998}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftFoot
+      parentName: Guardian_IK_Ctrl_LeftLeg
+      position: {x: -0.08574581, y: -13.376312, z: 0}
+      rotation: {x: -0.00035618286, y: 0.000003777978, z: 0.028666517, w: 0.99958897}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightUpLeg
+      parentName: Guardian_IK_Ctrl_Hips
+      position: {x: 7.5428, y: -3.1007004, z: 0}
+      rotation: {x: -0.0002493834, y: -0.000014923469, z: 0.03302971, w: 0.9994544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightLeg
+      parentName: Guardian_IK_Ctrl_RightUpLeg
+      position: {x: 0.47159958, y: -19.6787, z: 2.64317e-24}
+      rotation: {x: 0.000618212, y: -0.000002700258, z: -0.0000014552753, w: 0.9999998}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightFoot
+      parentName: Guardian_IK_Ctrl_RightLeg
+      position: {x: 0.08574009, y: -13.376276, z: -7.858216e-24}
+      rotation: {x: -0.00036858045, y: -0.0000027967442, z: -0.033028256, w: 0.9994544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_Spine
+      parentName: Guardian_IK_Ctrl_Hips
+      position: {x: -0, y: 15.397598, z: 0}
+      rotation: {x: 3.6368307e-16, y: 1.6653345e-16, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_Head
+      parentName: Guardian_IK_Ctrl_Spine
+      position: {x: -0, y: 9.824638, z: 0}
+      rotation: {x: 3.6368307e-16, y: 1.6653345e-16, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftArm
+      parentName: Guardian_IK_Ctrl_Spine
+      position: {x: -7.6802998, y: 7.457855, z: 0}
+      rotation: {x: -0.02046318, y: 0.2901069, z: 0.01569552, w: 0.95664674}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftForeArm
+      parentName: Guardian_IK_Ctrl_LeftArm
+      position: {x: -9.2978325, y: -0.050533295, z: 0}
+      rotation: {x: 0.02782085, y: 0.5443065, z: 0.042224396, w: 0.83736104}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftHand
+      parentName: Guardian_IK_Ctrl_LeftForeArm
+      position: {x: -8.7419815, y: 0.6409378, z: 0}
+      rotation: {x: -0.018440608, y: -0.32661495, z: 0.016127301, w: 0.94483995}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightArm
+      parentName: Guardian_IK_Ctrl_Spine
+      position: {x: 7.6803, y: 7.457901, z: 3.301836e-23}
+      rotation: {x: 0.05749797, y: 0.07878855, z: -0.49161926, w: 0.86533046}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightForeArm
+      parentName: Guardian_IK_Ctrl_RightArm
+      position: {x: 9.2978, y: -0.050598145, z: -5.5627896e-23}
+      rotation: {x: 0.0019532095, y: -0.07731437, z: -0.025185807, w: 0.9966867}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightHand
+      parentName: Guardian_IK_Ctrl_RightForeArm
+      position: {x: 8.742001, y: 0.64099884, z: 8.271806e-23}
+      rotation: {x: -0.0011305804, y: 0.20781097, z: -0.00024126968, w: 0.97816837}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_HipsEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: 0.0000011920929, y: 32.944595, z: 2.1175824e-22}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftAnkleEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -9.9935875, y: 0.93058205, z: -0.0000000018626451}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftElbowEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -15.40639, y: 59.63621, z: 5.168345}
+      rotation: {x: 0.013186072, y: 0.76493394, z: 0.0343274, w: 0.6430582}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftHipEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -7.5427976, y: 33.89925, z: -2.1175824e-22}
+      rotation: {x: -0.0002313277, y: 0.000010450699, z: -0.028667035, w: 0.999589}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftKneeEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -9.141394, y: 14.279997, z: 0.009526649}
+      rotation: {x: 0.00035618286, y: -0.0000037779785, z: -0.028666519, w: 0.99958897}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftShoulderEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -7.6802998, y: 59.855453, z: 6.7473874e-15}
+      rotation: {x: -0.02046318, y: 0.2901069, z: 0.01569552, w: 0.95664674}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_LeftWristEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: -13.912854, y: 59.71311, z: 13.805273}
+      rotation: {x: 0.024148496, y: 0.5118621, z: 0.052603763, w: 0.8571155}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightAnkleEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: 10, y: 0.9532299, z: -0.000000010244548}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightElbowEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: 12.324793, y: 52.003117, z: -1.7945763}
+      rotation: {x: 0.019004047, y: 0.012112916, z: -0.5163837, w: 0.85606074}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightHipEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: 7.5428, y: 33.8993, z: 2.1175824e-22}
+      rotation: {x: -0.00024938342, y: -0.00001492347, z: 0.03302971, w: 0.9994544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightKneeEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: 9.312623, y: 14.294661, z: 0.009861559}
+      rotation: {x: 0.0003685805, y: 0.0000027967458, z: 0.033028252, w: 0.9994544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightShoulderEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: 7.6803, y: 59.8555, z: -1.7794432e-15}
+      rotation: {x: 0.05749797, y: 0.07878855, z: -0.49161926, w: 0.86533046}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Guardian_IK_Ctrl_RightWristEffector
+      parentName: Guardian_IK_Ctrl_Reference
+      position: {x: 16.96909, y: 44.576927, z: -2.1346169}
+      rotation: {x: 0.12492859, y: 0.19033568, z: -0.5013538, w: 0.8347512}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine01
+      parentName: Guardian(Clone)
+      position: {x: 0, y: 0.40453565, z: 2.1175823e-24}
+      rotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.010000089, y: 0.010000089, z: 0.01}
+    - name: L_UpperLeg
+      parentName: spine01
+      position: {x: 3.10075, y: -7.5427976, z: 0}
+      rotation: {x: -0, y: -0, z: 0.9999283, w: 0.011979997}
+      scale: {x: 1.0000128, y: 1.0000128, z: 1.0000001}
+    - name: L_Leg
+      parentName: L_UpperLeg
+      position: {x: -19.684288, y: 0.000013424454, z: -0.0002355842}
+      rotation: {x: 6.074607e-25, y: -1.3231657e-23, z: 0.008775045, w: 0.9999615}
+      scale: {x: 1.0000007, y: 1.0000012, z: 1.0000002}
+    - name: L_Foot
+      parentName: L_Leg
+      position: {x: -13.376594, y: -0.000007084847, z: -0.000002952398}
+      rotation: {x: -3.1167009e-24, y: 2.6264733e-24, z: -0.70483685, w: 0.70936954}
+      scale: {x: 1.0000037, y: 1.0000036, z: 1.0000001}
+    - name: R_UpperLeg
+      parentName: spine01
+      position: {x: 3.1007004, y: 7.5428, z: 0}
+      rotation: {x: 0.9999283, y: 0.011979997, z: 8.925749e-11, w: 0.000000007450046}
+      scale: {x: 1.0000051, y: 1.0000128, z: 1.0000216}
+    - name: R_Leg
+      parentName: R_UpperLeg
+      position: {x: 19.684366, y: 0.000008232619, z: -0.000027910943}
+      rotation: {x: -4.4408916e-16, y: 8.6736163e-16, z: 0.008775045, w: 0.9999615}
+      scale: {x: 1.0000012, y: 1.0000005, z: 1.0000114}
+    - name: R_Foot
+      parentName: R_Leg
+      position: {x: 13.376563, y: 0.000007780447, z: 0.000004502641}
+      rotation: {x: 4.8229066e-16, y: -1.1903459e-18, z: -0.70483685, w: 0.70936954}
+      scale: {x: 1.0000036, y: 1.0000119, z: 1.0000114}
+    - name: spine02
+      parentName: spine01
+      position: {x: -15.397598, y: 3.4189536e-15, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.000006, y: 1.000006, z: 1}
+    - name: L_Shoulder
+      parentName: spine02
+      position: {x: -7.5083885, y: -4.7494617, z: 0}
+      rotation: {x: -0, y: -0, z: 0.7131756, w: 0.7009855}
+      scale: {x: 1.0000017, y: 1.0000017, z: 1}
+    - name: L_UpperArm
+      parentName: L_Shoulder
+      position: {x: -2.931274, y: -0.0000016539241, z: 6.7473874e-15}
+      rotation: {x: -0, y: -0, z: -0.0059024086, w: 0.9999826}
+      scale: {x: 0.9999978, y: 0.9999982, z: 1.0000001}
+    - name: L_FrontArm
+      parentName: L_UpperArm
+      position: {x: -9.297971, y: -0.000046202123, z: -0.0000038079845}
+      rotation: {x: -0, y: -0, z: -0.034459673, w: 0.9994061}
+      scale: {x: 1.000001, y: 1.0000008, z: 1.0000007}
+    - name: L_Hund
+      parentName: L_FrontArm
+      position: {x: -8.7650385, y: 0.084919706, z: 0.0000009937036}
+      rotation: {x: -0, y: -0, z: -0.0054952684, w: 0.9999849}
+      scale: {x: 1.0000011, y: 1.0000011, z: 1.0000005}
+    - name: shield
+      parentName: L_Hund
+      position: {x: -6.3480988, y: -20.604683, z: -2.324829}
+      rotation: {x: 0.053856052, y: -0.66992474, z: -0.054428916, w: 0.73846996}
+      scale: {x: 1, y: 1, z: 1}
+    - name: handle
+      parentName: shield
+      position: {x: -0, y: -147.66824, z: 2.9053667}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shield 1
+      parentName: shield
+      position: {x: -0, y: 0, z: 1.1825628}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Hund_a
+      parentName: L_Hund
+      position: {x: -3.3855398, y: -0.12727511, z: 0}
+      rotation: {x: -0, y: -0, z: 0.0372358, w: 0.99930656}
+      scale: {x: 1.0000004, y: 1.0000001, z: 0.99999994}
+    - name: R_Shoulder
+      parentName: spine02
+      position: {x: -7.5084033, y: 4.74946, z: 0}
+      rotation: {x: 0.7131756, y: 0.7009855, z: 0.000000005222749, w: 0.0000000053135722}
+      scale: {x: 1.0000017, y: 1.0000157, z: 1.0000157}
+    - name: R_UpperArm
+      parentName: R_Shoulder
+      position: {x: 2.9312754, y: -0.000029335666, z: -4.3535604e-13}
+      rotation: {x: 4.4408916e-16, y: -4.4408916e-16, z: -0.0059024086, w: 0.9999826}
+      scale: {x: 0.99999887, y: 1.000006, z: 1.0000123}
+    - name: R_FrontArm
+      parentName: R_UpperArm
+      position: {x: 9.2979355, y: 0.00006386154, z: -0.0000038451167}
+      rotation: {x: -1.23260234e-17, y: -4.597369e-16, z: -0.034459673, w: 0.9994061}
+      scale: {x: 1.0000014, y: 1.0000088, z: 1.0000101}
+    - name: R_Hund
+      parentName: R_FrontArm
+      position: {x: 8.765067, y: -0.08497836, z: -0.0000013112481}
+      rotation: {x: -1.3288491e-15, y: -5.122457e-17, z: -0.0054951482, w: 0.9999849}
+      scale: {x: 1.0000011, y: 1.0000039, z: 1.0000044}
+    - name: ShortSword
+      parentName: R_Hund
+      position: {x: 3.6110058, y: 1.3623577, z: -18.493256}
+      rotation: {x: -0.7066164, y: -0.026329674, z: 0.026329676, w: 0.7066164}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface5
+      parentName: ShortSword
+      position: {x: -0, y: -301.34143, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface10
+      parentName: ShortSword
+      position: {x: -0, y: -301.34143, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface15
+      parentName: ShortSword
+      position: {x: -0, y: -301.34143, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface20
+      parentName: ShortSword
+      position: {x: -0, y: -18.343475, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.6514618, y: 1, z: 1}
+    - name: polySurface25
+      parentName: ShortSword
+      position: {x: -0, y: -301.34143, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Hund_a
+      parentName: R_Hund
+      position: {x: 3.3855143, y: 0.12730272, z: -0.000000002732056}
+      rotation: {x: 1.3364963e-15, y: -4.4912154e-16, z: 0.037235767, w: 0.9993065}
+      scale: {x: 1.0000011, y: 1.0000033, z: 1.0000038}
+    - name: neck
+      parentName: spine02
+      position: {x: -9.824638, y: 1.090754e-15, z: 3.2722615e-15}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000043, y: 1.0000043, z: 1}
+    - name: head
+      parentName: neck
+      position: {x: -18.692385, y: 4.150543e-15, z: 0}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
     public static GameObject AttackButton3;
 
 
+    //キャラクター用オブジェクト
+    public static GameObject Chara1;
+    public static GameObject Chara2;
+    public static GameObject Chara3;
+
+
     //操作キャラクター用オブジェクト
     public static GameObject OpeCharaIcon;  //キャラアイコン
     public static GameObject OpeCharaName;  //キャラの名前
@@ -105,33 +111,67 @@ public class GameManager : MonoBehaviour
     {
         if (Network_01.gameplayflag == true)
         {
+            if(PhotonNetwork.player.ID == 1)
+            {
+                Chara1 = GameObject.Find("P1_Chara1");
+                Chara2 = GameObject.Find("P1_Chara2");
+                Chara3 = GameObject.Find("P1_Chara3");
+            }
+            else if(PhotonNetwork.player.ID == 2)
+            {
+                Chara1 = GameObject.Find("P2_Chara1");
+                Chara2 = GameObject.Find("P2_Chara2");
+                Chara3 = GameObject.Find("P2_Chara3");
+            }
+
             //操作キャラ変更時に操作キャラクター表示の変更
+            //現時点でナイト確定
             if (ChangeChara.nowChara == 0)
             {
-                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
+                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Knight");
                 OpeCharaName.GetComponent<Text>().text = Knight_Data.CharaName;
                 OpeCharaJobIcon.sprite = Knight_Data.JobIconImage;
-                OpeCharaHPSlider.maxValue = Knight_Data.hpSlider.maxValue;
-                OpeCharaHPSlider.value = Knight_Data.hpSlider.value;
-                OpeCharaHPText.GetComponent<Text>().text = Knight_Data.hpSlider.value + "/" + Knight_Data.MaxHP;
+                OpeCharaHPSlider.maxValue = Chara1.GetComponent<Status>().hpSlider.maxValue;
+                OpeCharaHPSlider.value = Chara1.GetComponent<Status>().hpSlider.value;
+                OpeCharaHPText.GetComponent<Text>().text = Chara1.GetComponent<Status>().hpSlider.value +
+                   "/" + Chara1.GetComponent<Status>().MaxHP;
+
+                //攻撃ボタン
+                AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
+                AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
+                AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
             }
+            //現時点でメディック確定
             else if (ChangeChara.nowChara == 1)
             {
-                //OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon2");
-                OpeCharaName.GetComponent<Text>().text = CharaData2.CharaName;
-                OpeCharaJobIcon.sprite = CharaData2.JobIconImage;
-                //OpeCharaHPSlider.maxValue = CharaData2.hpSlider.maxValue;
-                //OpeCharaHPSlider.value = CharaData2.hpSlider.value;
-                //OpeCharaHPText.GetComponent<Text>().text = CharaData2.hpSlider.value + "/" + CharaData2.MaxHP;
+                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
+                OpeCharaName.GetComponent<Text>().text = Medic_Data.CharaName;
+                OpeCharaJobIcon.sprite = Medic_Data.JobIconImage;
+                OpeCharaHPSlider.maxValue = Chara2.GetComponent<Status>().hpSlider.maxValue;
+                OpeCharaHPSlider.value = Chara2.GetComponent<Status>().hpSlider.value;
+                OpeCharaHPText.GetComponent<Text>().text = Chara2.GetComponent<Status>().hpSlider.value + 
+                   "/" + Chara2.GetComponent<Status>().MaxHP;
+
+                //攻撃ボタン
+                AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon2");
+                AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/MedicSkillIcon1");
+                AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/MedicSkillIcon2");
             }
+            //現時点でガーディアン確定
             else if (ChangeChara.nowChara == 2)
             {
-                //OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon3");
-                OpeCharaName.GetComponent<Text>().text = CharaData3.CharaName;
-                OpeCharaJobIcon.sprite = CharaData3.JobIconImage;
-                OpeCharaHPSlider.maxValue = CharaData3.hpSlider.maxValue;
-                OpeCharaHPSlider.value = CharaData3.hpSlider.value;
-                OpeCharaHPText.GetComponent<Text>().text = CharaData3.hpSlider.value + "/" + CharaData3.MaxHP;
+                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Guardian");
+                OpeCharaName.GetComponent<Text>().text = Guardian_Data.CharaName;
+                OpeCharaJobIcon.sprite = Guardian_Data.JobIconImage;
+                OpeCharaHPSlider.maxValue = Chara3.GetComponent<Status>().hpSlider.maxValue;
+                OpeCharaHPSlider.value = Chara3.GetComponent<Status>().hpSlider.value;
+                OpeCharaHPText.GetComponent<Text>().text = Chara3.GetComponent<Status>().hpSlider.value +
+                   "/" + Chara3.GetComponent<Status>().MaxHP;
+
+                //攻撃ボタン
+                AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
+                AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/GuardianSkillIcon1");
+                AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/GuardianSkillIcon2");
             }
 
 
@@ -149,7 +189,6 @@ public class GameManager : MonoBehaviour
             AttackButton2.SetActive(true);
             AttackButton3.SetActive(true);
             TurnText.GetComponent<Text>().text = "My turn";
-            //TurnChangeButton.SetActive(true);
         }
         else if((TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)) 
@@ -161,7 +200,6 @@ public class GameManager : MonoBehaviour
             CharaChangeButton2.GetComponent<Button>().interactable = false;
             CharaChangeButton3.GetComponent<Button>().interactable = false;
             TurnText.GetComponent<Text>().text = "Your turn";
-            //TurnChangeButton.SetActive(false);
         }
     }
 }

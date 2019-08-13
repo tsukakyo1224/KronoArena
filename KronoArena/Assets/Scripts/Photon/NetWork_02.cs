@@ -100,4 +100,16 @@ public class NetWork_02 : MonoBehaviour
             //objRB.AddForce(Vector3.forward * 20f, ForceMode.Impulse);
         }
     }
+
+    public void CharaNameChange()
+    {
+
+    }
+
+    public void CharaGenerate()
+    {
+
+    }
+
+
 }

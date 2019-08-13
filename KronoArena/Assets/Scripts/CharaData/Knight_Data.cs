@@ -161,12 +161,14 @@ public class Knight_Data : MonoBehaviour
             //データの送信
             stream.SendNext(this.name);
             stream.SendNext(this.tag);
+            Debug.Log("aa");
         }
         else
         {
             //データの受信
             this.name = (string)stream.ReceiveNext();
             this.tag = (string)stream.ReceiveNext();
+            Debug.Log("bb");
         }
     }
 

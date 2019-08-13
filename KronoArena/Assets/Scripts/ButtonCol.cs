@@ -24,7 +24,7 @@ public class ButtonCol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(FollowingCamera.cameraflag == true)
+        if(GameManager.cameraflag == true)
         {
             if(PhotonNetwork.player.ID == 1)
             {

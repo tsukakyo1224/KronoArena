@@ -17,7 +17,7 @@ public class ChangeChara : MonoBehaviour
 
     void Update()
     {
-        if (FollowingCamera.cameraflag == true)
+        if (GameManager.cameraflag == true)
         {
             //キャラリスト作成
             if (PhotonNetwork.player.ID == 1)
@@ -37,7 +37,7 @@ public class ChangeChara : MonoBehaviour
             nowChara = charaLists.Count;
             Debug.Log(nowChara);
             ChangeCharacter(nowChara);
-            FollowingCamera.cameraflag = false;
+            GameManager.cameraflag = false;
         }
         //　Qキーが押されたら操作キャラクターを次のキャラクターに変更する
         if (Input.GetKeyDown("q"))

@@ -49,6 +49,10 @@ public class Status : MonoBehaviour
             {
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player3HP").GetComponent<Slider>();
             }
+
+            hpSlider.maxValue = HP;
+            hpSlider.value = HP;
+
         }
         else if(PhotonNetwork.player.ID == 2)
         {
@@ -64,9 +68,12 @@ public class Status : MonoBehaviour
             {
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player3HP").GetComponent<Slider>();
             }
+
+            hpSlider.maxValue = HP;
+            hpSlider.value = HP;
+
         }
 
-        hpSlider.maxValue = HP;
-        hpSlider.value = HP;
+
     }
 }

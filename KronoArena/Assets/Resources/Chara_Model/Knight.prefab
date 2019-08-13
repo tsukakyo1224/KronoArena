@@ -1767,6 +1767,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 8476221593608646502}
   - {fileID: 8898181367188008520}
+  - {fileID: 4481824092477208548}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -1907,6 +1908,8 @@ MonoBehaviour:
   AttackIcon: {fileID: 21300000, guid: a3ec86105a1df4b21b64cc3a987efd73, type: 3}
   SkillIcon1: {fileID: 21300000, guid: b67234e135f99478fa8ae9996bcd754a, type: 3}
   SkillIcon2: {fileID: 21300000, guid: 53ced2bc429114370a31ef69441cbf34, type: 3}
+  hpSlider: {fileID: 0}
+  MaxHP: 0
 --- !u!1 &4809681828129973642
 GameObject:
   m_ObjectHideFlags: 0

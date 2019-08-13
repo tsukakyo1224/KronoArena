@@ -8,7 +8,6 @@
 public class FollowingCamera : MonoBehaviour
 {
     public GameObject target; // an object to follow
-    public static bool cameraflag = false; 
     public Vector3 offset; // offset form the target object
 
     [SerializeField] private float distance = 4.0f; // distance from following object

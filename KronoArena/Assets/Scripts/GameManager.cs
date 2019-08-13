@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     private PhotonView photonView;
     private PhotonTransformView photonTransformView;
 
+    public static bool cameraflag = false;
+
 
 
     // Start is called before the first frame update

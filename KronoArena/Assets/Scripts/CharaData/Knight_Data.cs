@@ -124,7 +124,7 @@ public class Knight_Data : MonoBehaviour
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
-        if (PhotonNetwork.player.ID == 1 && other.tag == "Player2")
+        if (PhotonNetwork.player.ID == 1 && other.tag == "Player1")
         {
             if (other.name == "P1_Chara2")
             {

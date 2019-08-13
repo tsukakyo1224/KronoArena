@@ -45,15 +45,6 @@ public class Medic_Data : MonoBehaviour
         SpecialTime1 = 5.0f;
         SpecialTime2 = 10.0f;
         AttackFlag = false;
-
-        if (PhotonNetwork.player.ID == 1)
-        {
-            this.tag = "Player1";
-        }
-        else if (PhotonNetwork.player.ID == 2)
-        {
-            this.tag = "Player2";
-        }
     }
 
     // Update is called once per frame

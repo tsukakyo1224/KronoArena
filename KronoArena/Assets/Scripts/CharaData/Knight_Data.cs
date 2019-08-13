@@ -81,15 +81,6 @@ public class Knight_Data : MonoBehaviour
         //ATText2.SetActive(false);
         //ATText3.SetActive(false);
 
-        if (PhotonNetwork.player.ID == 1)
-        {
-            this.tag = "Player1";
-        }
-        else if (PhotonNetwork.player.ID == 2)
-        {
-            this.tag = "Player2";
-        }
-
     }
 
     // Update is called once per frame

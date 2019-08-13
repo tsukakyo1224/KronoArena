@@ -51,10 +51,6 @@ public class Knight_Data : MonoBehaviour
     //アニメーター 
     private Animator animator;
 
-    //Photon
-    private PhotonView photonView;
-    private PhotonTransformView photonTransformView;
-
 
     // Start is called before the first frame update
     void Start()
@@ -86,9 +82,6 @@ public class Knight_Data : MonoBehaviour
         //ATText2.SetActive(false);
         //ATText3.SetActive(false);
 
-
-        photonTransformView = GetComponent<PhotonTransformView>();
-        photonView = PhotonView.Get(this);
 
     }
 
@@ -161,14 +154,12 @@ public class Knight_Data : MonoBehaviour
             //データの送信
             stream.SendNext(this.name);
             stream.SendNext(this.tag);
-            Debug.Log("aa");
         }
         else
         {
             //データの受信
             this.name = (string)stream.ReceiveNext();
             this.tag = (string)stream.ReceiveNext();
-            Debug.Log("bb");
         }
     }
 

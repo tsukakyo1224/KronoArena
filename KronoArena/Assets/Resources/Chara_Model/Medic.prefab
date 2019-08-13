@@ -1389,6 +1389,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3203883350727565680}
   - {fileID: 1890838777471539571}
+  - {fileID: 7237618799686186028}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -1523,6 +1524,8 @@ MonoBehaviour:
   AttackIcon: {fileID: 0}
   SkillIcon1: {fileID: 0}
   SkillIcon2: {fileID: 0}
+  hpSlider: {fileID: 0}
+  MaxHP: 0
 --- !u!1 &2300631706607908514
 GameObject:
   m_ObjectHideFlags: 0

@@ -72,23 +72,6 @@ public class NetWork_02 : MonoBehaviour
 
                 GameManager.cameraflag = true;
             }
-
-            /*
-            if(PhotonNetwork.player.ID == 1)
-            {
-                //相手のキャラクターの名前、tag設定
-                GameObject.Find("Knight(Clone)").name = "P2_Chara1";
-                P1_Chara1.tag = "Player2";
-                P1_Chara2.name = "P1_Chara2";
-                P1_Chara2.tag = "Player2";
-                P1_Chara3.name = "P1_Chara3";
-                P1_Chara3.tag = "Player2";
-            }*/
-            //キャラクターの名前、tag設定
-
-
-
-
         }
 
         // 左クリックをしたらマッチング環境にCubeのインスタンスを生成する

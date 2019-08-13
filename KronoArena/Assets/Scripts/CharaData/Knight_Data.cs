@@ -121,6 +121,7 @@ public class Knight_Data : MonoBehaviour
         }
     }
 
+    //ダメージ計算
     void OnTriggerExit(Collider other)
     {
         if (PhotonNetwork.player.ID == 1 && other.tag == "Player2")
@@ -147,6 +148,7 @@ public class Knight_Data : MonoBehaviour
     }
 
 
+    //名前とtagの送受信
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)

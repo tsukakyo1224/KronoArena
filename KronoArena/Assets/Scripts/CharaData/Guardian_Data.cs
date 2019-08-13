@@ -52,4 +52,22 @@ public class Guardian_Data : MonoBehaviour
     {
 
     }
+
+    //名前とtagの送受信
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            //データの送信
+            stream.SendNext(this.name);
+            stream.SendNext(this.tag);
+        }
+        else
+        {
+            //データの受信
+            this.name = (string)stream.ReceiveNext();
+            this.tag = (string)stream.ReceiveNext();
+        }
+    }
+
 }

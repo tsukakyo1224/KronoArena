@@ -22,11 +22,6 @@ public class Knight_Data : MonoBehaviour
     //スキル攻撃アイコン2
     public static Sprite SkillIcon2;
 
-    //HP
-    //public static int MaxHP = 200;
-    //public static int HP = 200;
-    //　HP表示用スライダー
-    //public static Slider hpSlider;
     //攻撃までの時間
     public static float AttackTime;
     public static float SkillTime1;
@@ -63,9 +58,6 @@ public class Knight_Data : MonoBehaviour
         AttackIcon = Resources.Load<Sprite>("AttackIcon/AttackIcon1");
         SkillIcon1 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
-        //hpSlider = GameObject.Find("BackGround").transform.Find("Player1HP").GetComponent<Slider>();
-        //hpSlider.maxValue = MaxHP;
-        //hpSlider.value = MaxHP;
         AttackTime = 3.0f;
         SkillTime1 = 5.0f;
         SkillTime2 = 10.0f;
@@ -79,8 +71,6 @@ public class Knight_Data : MonoBehaviour
 
         ATText2 = GameObject.Find("ATime2");
         ATText3 = GameObject.Find("ATime3");
-        //ATText2.SetActive(false);
-        //ATText3.SetActive(false);
 
 
     }
@@ -88,16 +78,18 @@ public class Knight_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ATText2.GetComponent<Text>().text = ("" + SkillTime1.ToString("f2"));
-        ATText3.GetComponent<Text>().text = ("" + SkillTime2.ToString("f2"));
-        //hpSlider.value -= 1;
+        if (ChangeChara.nowChara == 0)
+        {
+            ATText2.GetComponent<Text>().text = ("" + SkillTime1.ToString("f2"));
+            ATText3.GetComponent<Text>().text = ("" + SkillTime2.ToString("f2"));
+        }
 
         //スキル1発動
         if (SkillFlag1 == true && SkillFlag2 == false)
         {
-            //ATText2.SetActive(true);
-
+            //スキル1時間減少
             SkillTime1 -= Time.deltaTime;
+            //スキル1時間が0になったら発動
             if (SkillTime1 <= 0)
             {
                 animator.SetBool("Skill1_Trigger", true);
@@ -109,9 +101,9 @@ public class Knight_Data : MonoBehaviour
         //スキル2発動
         if (SkillFlag2 == true && SkillFlag1 == false)
         {
-            //ATText2.SetActive(true);
-
+            //スキル2時間減少
             SkillTime2 -= Time.deltaTime;
+            //スキル2時間が0になったら発動
             if (SkillTime2 <= 0)
             {
                 animator.SetBool("Skill2_Trigger", true);
@@ -124,23 +116,26 @@ public class Knight_Data : MonoBehaviour
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
-        if (PhotonNetwork.player.ID == 1 && other.tag == "Player1")
-        {
-            if (other.name == "P1_Chara2")
-            {
-                other.GetComponent<Status>().hpSlider.value -= 
+        //if (PhotonNetwork.player.ID == 1 && other.tag == "Player2")
+        //{
+
+            other.GetComponent<Status>().hpSlider.value -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-                Debug.Log(other + "に"+ (int)(this.GetComponent<Status>().Attack / 
-                    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-            }
-            else if (other.name == "P1_Chara3")
-            {
-                other.GetComponent<Status>().hpSlider.value -=
-                    (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-                Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack / 
-                    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-            }
-        }
+            Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
+                ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+
+            //if (other.name == "P1_Chara2")
+            //{
+
+            //}
+            //else if (other.name == "P1_Chara3")
+            //{
+            //    other.GetComponent<Status>().hpSlider.value -=
+            //        (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
+            //    Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack / 
+            //        ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+            //}
+        //}
     }
     public void ColliderReset()
     {

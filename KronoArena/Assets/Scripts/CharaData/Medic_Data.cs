@@ -14,11 +14,6 @@ public class Medic_Data : MonoBehaviour
     //ジョブアイコン
     public static Sprite JobIconImage;
 
-    //HP
-    //public static int MaxHP = 500;
-    //public static int HP = 500;
-    //　HP表示用スライダー
-    //public Slider hpSlider;
     //攻撃までの時間
     public static float AttackTime;
     public static float SpecialTime1;
@@ -38,9 +33,6 @@ public class Medic_Data : MonoBehaviour
         //if(this.name==)
         CharaName = "メディック";
         JobIconImage = Resources.Load<Sprite>("JobIcon/Medic");
-        //hpSlider = GameObject.Find("BackGround").transform.Find("Player2HP").GetComponent<Slider>();
-        //hpSlider.maxValue = MaxHP;
-        //hpSlider.value = MaxHP;
         AttackTime = 3.0f;
         SpecialTime1 = 5.0f;
         SpecialTime2 = 10.0f;

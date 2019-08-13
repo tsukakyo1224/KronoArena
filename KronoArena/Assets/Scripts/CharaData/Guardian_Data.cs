@@ -14,11 +14,6 @@ public class Guardian_Data : MonoBehaviour
     //ジョブアイコン
     public static Sprite JobIconImage;
 
-    //HP
-    //public static int MaxHP = 150;
-    //public static int HP = 150;
-    //　HP表示用スライダー
-    //public static Slider hpSlider;
     //攻撃までの時間
     public static float AttackTime;
     public static float SpecialTime1;
@@ -36,10 +31,7 @@ public class Guardian_Data : MonoBehaviour
     void Start()
     {
         CharaName = "ガーディアン";
-        //hpSlider = GameObject.Find("BackGround").transform.Find("Player3HP").GetComponent<Slider>();
         JobIconImage = Resources.Load<Sprite>("JobIcon/medic");
-        //hpSlider.maxValue = MaxHP;
-        //hpSlider.value = MaxHP;
         AttackTime = 3.0f;
         SpecialTime1 = 5.0f;
         SpecialTime2 = 10.0f;

@@ -23,14 +23,15 @@ public class Status : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StutusPut();
         MaxHP = HP;
+        StutusPut();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     void StutusPut()

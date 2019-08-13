@@ -1352,7 +1352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519abbccd44c44af8b502e04cb43eee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpSlider: {fileID: 0}
 --- !u!114 &2562393526481638430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,6 +1389,7 @@ MonoBehaviour:
   - {fileID: 3203883350727565680}
   - {fileID: 1890838777471539571}
   - {fileID: 7237618799686186028}
+  - {fileID: 6656719912102320713}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

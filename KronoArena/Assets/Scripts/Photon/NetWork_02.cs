@@ -15,7 +15,7 @@ public class NetWork_02 : MonoBehaviour
     {
         if (Network_01.gamestartflag == true)
         {
-            if (PhotonNetwork.playerList.Length == 1)
+            if (PhotonNetwork.player.ID == 1)
             {
                 Network_01.gamestartflag = false;
                 // 第1引数にResourcesフォルダの中にあるプレハブの名前(文字列)
@@ -36,7 +36,7 @@ public class NetWork_02 : MonoBehaviour
                 player3.name = "P1_Chara3";
                 FollowingCamera.cameraflag = true;
             }
-            else
+            else if(PhotonNetwork.player.ID == 2)
             {
                 Network_01.gamestartflag = false;
                 //キャラクター一人目生成

@@ -85,7 +85,7 @@ public class Knight_Data : MonoBehaviour
         {
             this.tag = "Player1";
         }
-        else
+        else if (PhotonNetwork.player.ID == 2)
         {
             this.tag = "Player2";
         }
@@ -130,7 +130,7 @@ public class Knight_Data : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (PhotonNetwork.player.ID == 1 && other.tag == "Player1")
+        if (PhotonNetwork.player.ID == 1 && other.tag == "Player2")
         {
             if (other.name == "P1_Chara2")
             {

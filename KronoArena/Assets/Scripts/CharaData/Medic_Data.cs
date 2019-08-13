@@ -50,7 +50,7 @@ public class Medic_Data : MonoBehaviour
         {
             this.tag = "Player1";
         }
-        else
+        else if (PhotonNetwork.player.ID == 2)
         {
             this.tag = "Player2";
         }

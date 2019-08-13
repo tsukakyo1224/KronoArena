@@ -15,7 +15,7 @@ public class NetWork_02 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -72,18 +72,6 @@ public class NetWork_02 : MonoBehaviour
 
                 GameManager.cameraflag = true;
             }
-            P1_Chara1.name = "P1_Chara1";
-            P1_Chara1.tag = "Player1";
-            P1_Chara2.name = "P1_Chara2";
-            P1_Chara2.tag = "Player1";
-            P1_Chara3.name = "P1_Chara3";
-            P1_Chara3.tag = "Player1";
-            P2_Chara1.name = "P2_Chara1";
-            P2_Chara1.tag = "Player2";
-            P2_Chara2.name = "P2_Chara2";
-            P2_Chara2.tag = "Player2";
-            P2_Chara3.name = "P2_Chara3";
-            P2_Chara3.tag = "Player2";
 
             /*
             if(PhotonNetwork.player.ID == 1)

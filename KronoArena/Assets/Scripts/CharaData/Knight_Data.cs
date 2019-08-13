@@ -51,6 +51,11 @@ public class Knight_Data : MonoBehaviour
     //アニメーター 
     private Animator animator;
 
+    //Photon
+    private PhotonView photonView;
+    private PhotonTransformView photonTransformView;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +85,10 @@ public class Knight_Data : MonoBehaviour
         ATText3 = GameObject.Find("ATime3");
         //ATText2.SetActive(false);
         //ATText3.SetActive(false);
+
+
+        photonTransformView = GetComponent<PhotonTransformView>();
+        photonView = PhotonView.Get(this);
 
     }
 
@@ -143,4 +152,23 @@ public class Knight_Data : MonoBehaviour
     {
         Sword.enabled = false;
     }
+
+
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            //データの送信
+            stream.SendNext(this.name);
+            stream.SendNext(this.tag);
+        }
+        else
+        {
+            //データの受信
+            this.name = (string)stream.ReceiveNext();
+            this.tag = (string)stream.ReceiveNext();
+        }
+    }
+
+
 }

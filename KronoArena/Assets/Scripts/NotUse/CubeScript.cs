@@ -23,8 +23,6 @@ public class CubeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         if (photonView.isMine)
         {
             //現在の移動速度

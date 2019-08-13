@@ -93,7 +93,7 @@ public class Status : MonoBehaviour
         else
         {
             //データの受信
-            this.hpSlider.value = (float)stream.ReceiveNext();
+            this.hpSlider.value = (int)stream.ReceiveNext();
         }
     }
 

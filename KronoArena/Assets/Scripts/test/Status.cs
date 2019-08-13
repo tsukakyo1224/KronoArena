@@ -40,18 +40,21 @@ public class Status : MonoBehaviour
             if (this.name == "P1_Chara1")
             {
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player1HP").GetComponent<Slider>();
+                hpSlider.maxValue = HP;
+                hpSlider.value = HP;
             }
             else if (this.name == "P1_Chara2")
             {
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player2HP").GetComponent<Slider>();
+                hpSlider.maxValue = HP;
+                hpSlider.value = HP;
             }
             else if(this.name == "P1_Chara3")
             {
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player3HP").GetComponent<Slider>();
+                hpSlider.maxValue = HP;
+                hpSlider.value = HP;
             }
-
-            hpSlider.maxValue = HP;
-            hpSlider.value = HP;
 
         }
         else if(PhotonNetwork.player.ID == 2)
@@ -59,19 +62,21 @@ public class Status : MonoBehaviour
             if (this.name == "P2_Chara1")
             {
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player1HP").GetComponent<Slider>();
+                hpSlider.maxValue = HP;
+                hpSlider.value = HP;
             }
             else if (this.name == "P2_Chara2")
             {
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player2HP").GetComponent<Slider>();
+                hpSlider.maxValue = HP;
+                hpSlider.value = HP;
             }
             else if (this.name == "P2_Chara3")
             {
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player3HP").GetComponent<Slider>();
+                hpSlider.maxValue = HP;
+                hpSlider.value = HP;
             }
-
-            hpSlider.maxValue = HP;
-            hpSlider.value = HP;
-
         }
 
 

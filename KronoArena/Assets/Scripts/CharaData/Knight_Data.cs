@@ -23,10 +23,10 @@ public class Knight_Data : MonoBehaviour
     public static Sprite SkillIcon2;
 
     //HP
-    public static int MaxHP = 200;
-    public static int HP = 200;
+    //public static int MaxHP = 200;
+    //public static int HP = 200;
     //　HP表示用スライダー
-    public static Slider hpSlider;
+    //public static Slider hpSlider;
     //攻撃までの時間
     public static float AttackTime;
     public static float SkillTime1;
@@ -63,9 +63,9 @@ public class Knight_Data : MonoBehaviour
         AttackIcon = Resources.Load<Sprite>("AttackIcon/AttackIcon1");
         SkillIcon1 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
-        hpSlider = GameObject.Find("BackGround").transform.Find("Player1HP").GetComponent<Slider>();
-        hpSlider.maxValue = MaxHP;
-        hpSlider.value = MaxHP;
+        //hpSlider = GameObject.Find("BackGround").transform.Find("Player1HP").GetComponent<Slider>();
+        //hpSlider.maxValue = MaxHP;
+        //hpSlider.value = MaxHP;
         AttackTime = 3.0f;
         SkillTime1 = 5.0f;
         SkillTime2 = 10.0f;

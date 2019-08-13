@@ -79,7 +79,25 @@ public class Status : MonoBehaviour
                 hpSlider.value = HP;
             }
         }
-
-
     }
+
+
+    //名前とtagの送受信
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            //データの送信
+            stream.SendNext(this.hpSlider.value);
+            //stream.SendNext(this.tag);
+        }
+        else
+        {
+            //データの受信
+            this.hpSlider = (Slider)stream.ReceiveNext();
+            //this.tag = (string)stream.ReceiveNext();
+        }
+    }
+
+
 }

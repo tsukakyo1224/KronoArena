@@ -64,7 +64,7 @@ public class ButtonCol : MonoBehaviour
             //剣コライダーをオンに
             Knight_Data.Sword.enabled = true;
             //一定時間後にコライダーの機能をオフにする
-            Invoke("ColliderReset", 0.3f);
+            //Invoke("ColliderReset", 0.3f);
         }
         else if (ChangeChara.nowChara == 1)
         {

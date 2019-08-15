@@ -32,7 +32,7 @@ public class Status : MonoBehaviour
     void Update()
     {
         if((PhotonNetwork.player.ID == 1 && this.tag=="Player1") ||
-            (PhotonNetwork.player.ID == 2 && this.tag == "pPlayer2")){
+            (PhotonNetwork.player.ID == 2 && this.tag == "Player2")){
             this.hpSlider.value = this.HP;
         }
     }

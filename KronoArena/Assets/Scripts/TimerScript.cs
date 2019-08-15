@@ -15,7 +15,7 @@ public class TimerScript : MonoBehaviour
     void Start()
     {
         //初期値
-        TotalTime = 5.0f;
+        TotalTime = 30.0f;
         //タイマーテキスト
         TimeText = GameObject.Find("Time");
     }

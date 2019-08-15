@@ -82,7 +82,7 @@ public class Status : MonoBehaviour
     }
 
 
-    //名前とtagの送受信
+    //HP送受信
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -93,7 +93,7 @@ public class Status : MonoBehaviour
         else
         {
             //データの受信
-            this.HP = (int)stream.ReceiveNext();
+            this.HP = (float)stream.ReceiveNext();
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonCol : MonoBehaviour
 {
@@ -52,7 +53,6 @@ public class ButtonCol : MonoBehaviour
         GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         TurnCol.ChangeTurn();
         Debug.Log("button");
-        //TimerScript.TotalTime = 5.0f;
     }
 
     //攻撃ボタン1
@@ -65,17 +65,14 @@ public class ButtonCol : MonoBehaviour
             Knight_Data.Sword.enabled = true;
             //一定時間後にコライダーの機能をオフにする
             Invoke("ColliderReset", 0.3f);
-            GameManager.CharaAttackTime1.SetActive(true);
         }
         else if (ChangeChara.nowChara == 1)
         {
             animator2.SetBool("Attack", true);
-            GameManager.CharaAttackTime2.SetActive(true);
         }
         else if (ChangeChara.nowChara == 2)
         {
             animator3.SetBool("Attack", true);
-            GameManager.CharaAttackTime3.SetActive(true);
         }
         Debug.Log(ChangeChara.nowChara + " Attack");
     }
@@ -83,6 +80,7 @@ public class ButtonCol : MonoBehaviour
     //スキル1
     public void Special1()
     {
+        //ナイトの場合
         if (ChangeChara.nowChara == 0)
         {
             if (Knight_Data.SkillFlag2 == false)
@@ -90,21 +88,32 @@ public class ButtonCol : MonoBehaviour
                 Knight_Data.SkillFlag1 = true;
                 animator1.SetBool("Skill1", true);
             }
-           //CharaData1.AttackFlag = true;
         }
+        //メディックの場合
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Skill1", true);
+            if (Medic_Data.SkillFlag2 == false)
+            {
+                Medic_Data.SkillFlag1 = true;
+                animator2.SetBool("Skill1", true);
+            }
         }
+        //ガーディアンの場合
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Skill1", true);
+            if (Guardian_Data.SkillFlag2 == false)
+            {
+                Guardian_Data.SkillFlag1 = true;
+                animator3.SetBool("Skill1", true);
+            }
         }
         Debug.Log(ChangeChara.nowChara + " Special1");
     }
+
     //スキル2
     public void Special2()
     {
+        //ナイトの場合
         if (ChangeChara.nowChara == 0)
         {
             if (Knight_Data.SkillFlag1 == false)
@@ -112,16 +121,24 @@ public class ButtonCol : MonoBehaviour
                 Knight_Data.SkillFlag2 = true;
                 animator1.SetBool("Skill2", true);
             }
-
-            //CharaData1.AttackFlag = true;
         }
+        //メディックの場合
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Skill2", true);
+            if (Medic_Data.SkillFlag1 == false)
+            {
+                Medic_Data.SkillFlag2 = true;
+                animator2.SetBool("Skill2", true);
+            }
         }
+        //ガーディアンの場合
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Skill2", true);
+            if (Guardian_Data.SkillFlag1 == false)
+            {
+                Guardian_Data.SkillFlag2 = true;
+                animator3.SetBool("Skill2", true);
+            }
         }
         Debug.Log(ChangeChara.nowChara + " Special2");
     }

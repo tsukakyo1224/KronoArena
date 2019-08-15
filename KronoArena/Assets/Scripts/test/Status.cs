@@ -31,7 +31,10 @@ public class Status : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       this.hpSlider.value = this.HP;
+        if((PhotonNetwork.player.ID == 1 && this.tag=="Player1") ||
+            (PhotonNetwork.player.ID == 2 && this.tag == "pPlayer2")){
+            this.hpSlider.value = this.HP;
+        }
     }
 
     void StutusPut()

@@ -33,6 +33,7 @@ public class Knight_Data : MonoBehaviour
     public static GameObject ATText3;
 
     //攻撃したかのフラグ
+    public static bool AttackFlag;
     public static bool SkillFlag1;
     public static bool SkillFlag2;
 
@@ -60,6 +61,7 @@ public class Knight_Data : MonoBehaviour
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
         SkillTime1 = 20.0f;
         SkillTime2 = 10.0f;
+        AttackFlag = false;
         SkillFlag1 = false;
         SkillFlag2 = false;
         Sword = GameObject.Find("Sword_Collider").GetComponent<BoxCollider>();
@@ -104,6 +106,13 @@ public class Knight_Data : MonoBehaviour
                 SkillFlag2 = false;
                 SkillTime2 = 10.0f;
             }
+        }
+
+        if(AttackFlag == true)
+        {
+            Sword.enabled = true;
+            //一定時間後にコライダーの機能をオフにする
+            Invoke("ColliderReset", 0.3f);
         }
     }
 

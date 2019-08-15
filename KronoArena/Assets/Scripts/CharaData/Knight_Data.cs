@@ -110,17 +110,17 @@ public class Knight_Data : MonoBehaviour
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
-        //if ((PhotonNetwork.player.ID == 1 && other.tag == "Player2") ||
-        //    (PhotonNetwork.player.ID == 2 && other.tag == "Player1"))
-        //{
+        if ((PhotonNetwork.player.ID == 1 && other.tag == "Player2") ||
+            (PhotonNetwork.player.ID == 2 && other.tag == "Player1"))
+        {
             //other.GetComponent<Status>().hpSlider.value -=
             other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-            other.GetComponent<Status>().hpSlider.value = other.GetComponent<Status>().HP;
-            Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
-                ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+            //other.GetComponent<Status>().hpSlider.value = other.GetComponent<Status>().HP;
+            //Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
+            //    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
 
-        //}
+        }
     }
 
     public void ColliderReset()

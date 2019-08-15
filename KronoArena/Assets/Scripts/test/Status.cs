@@ -31,7 +31,7 @@ public class Status : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       this.hpSlider.value = this.HP;
     }
 
     void StutusPut()

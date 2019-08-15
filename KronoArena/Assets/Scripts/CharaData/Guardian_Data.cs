@@ -16,8 +16,8 @@ public class Guardian_Data : MonoBehaviour
 
     //攻撃までの時間
     public static float AttackTime;
-    public static float SpecialTime1;
-    public static float SpecialTime2;
+    public static float SkillTime1;
+    public static float SkillTime2;
 
     //攻撃までの時間テキスト
     public static GameObject ATText1;
@@ -25,7 +25,11 @@ public class Guardian_Data : MonoBehaviour
     public static GameObject ATText3;
 
     //攻撃したかのフラグ
-    public static bool AttackFlag;
+    public static bool SkillFlag1;
+    public static bool SkillFlag2;
+
+    //アニメーター 
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -33,16 +37,44 @@ public class Guardian_Data : MonoBehaviour
         CharaName = "ガーディアン";
         JobIconImage = Resources.Load<Sprite>("JobIcon/medic");
         AttackTime = 3.0f;
-        SpecialTime1 = 5.0f;
-        SpecialTime2 = 10.0f;
-        AttackFlag = false;
+        SkillTime1 = 15.0f;
+        SkillTime2 = 20.0f;
+        SkillFlag1 = false;
+        SkillFlag2 = false;
+        animator = this.GetComponent<Animator>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        //スキル1発動
+        if (SkillFlag1 == true && SkillFlag2 == false)
+        {
+            //スキル1時間減少
+            SkillTime1 -= Time.deltaTime;
+            //スキル1時間が0になったら発動
+            if (SkillTime1 <= 0)
+            {
+                animator.SetBool("Skill1_Trigger", true);
+                SkillFlag1 = false;
+                SkillTime1 = 15.0f;
+            }
+        }
 
+        //スキル2発動
+        if (SkillFlag2 == true && SkillFlag1 == false)
+        {
+            //スキル2時間減少
+            SkillTime2 -= Time.deltaTime;
+            //スキル2時間が0になったら発動
+            if (SkillTime2 <= 0)
+            {
+                animator.SetBool("Skill2_Trigger", true);
+                SkillFlag2 = false;
+                SkillTime2 = 20.0f;
+            }
+        }
     }
 
     //名前とtagの送受信

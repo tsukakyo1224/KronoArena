@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     public static GameObject AttackButton2;
     public static GameObject AttackButton3;
 
+    //キャラ攻撃時間テキスト
+    public static GameObject ATime2;
+    public static GameObject ATime3;
+
 
     //キャラクター用オブジェクト
     public static GameObject Chara1;
@@ -69,13 +73,17 @@ public class GameManager : MonoBehaviour
         AttackButton2 = GameObject.Find("Attack2");
         AttackButton3 = GameObject.Find("Attack3");
 
+        //攻撃時間用テキスト
+        ATime2 = GameObject.Find("ATime2");
+        ATime3 = GameObject.Find("ATime3");
+
         //キャラ切り替えボタン用オブジェクト
         CharaChangeButton1 = GameObject.Find("ChangeChara1");
-        CharaChangeButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("MiniCharaIcon/MiniIcon1");
+        CharaChangeButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaMiniIcon_Knight");
         CharaChangeButton2 = GameObject.Find("ChangeChara2");
-        CharaChangeButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("MiniCharaIcon/MiniIcon2");
+        CharaChangeButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaMiniIcon_Medic");
         CharaChangeButton3 = GameObject.Find("ChangeChara3");
-        CharaChangeButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("MiniCharaIcon/MiniIcon3");
+        CharaChangeButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaMiniIcon_Guardion");
 
         //操作キャラクター用オブジェクト(右下)
         OpeCharaIcon = GameObject.Find("OpeCharaIcon");
@@ -96,7 +104,7 @@ public class GameManager : MonoBehaviour
         CharaAttackTime2.SetActive(false);
         CharaAttackTime3.SetActive(false);
 
-        //最初は非表示に
+        //最初は表示に
         AttackButton1.SetActive(true);
         AttackButton2.SetActive(true);
         AttackButton3.SetActive(true);
@@ -142,11 +150,15 @@ public class GameManager : MonoBehaviour
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
                 AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
+
+                //攻撃時間用テキスト
+                ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
+                ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
             }
             //現時点でメディック確定
             else if (ChangeChara.nowChara == 1)
             {
-                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon1");
+                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Medic");
                 OpeCharaName.GetComponent<Text>().text = Medic_Data.CharaName;
                 OpeCharaJobIcon.sprite = Medic_Data.JobIconImage;
                 OpeCharaHPSlider.maxValue = Chara2.GetComponent<Status>().hpSlider.maxValue;
@@ -158,6 +170,10 @@ public class GameManager : MonoBehaviour
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon2");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/MedicSkillIcon1");
                 AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/MedicSkillIcon2");
+
+                //攻撃時間用テキスト
+                ATime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
+                ATime3.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
             }
             //現時点でガーディアン確定
             else if (ChangeChara.nowChara == 2)
@@ -174,8 +190,15 @@ public class GameManager : MonoBehaviour
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/GuardianSkillIcon1");
                 AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/GuardianSkillIcon2");
+
+
+                //攻撃時間用テキスト
+                ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
+                ATime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
             }
 
+            //左上の攻撃時間表示判定
+            CharaAttackText();
 
         }
 
@@ -204,4 +227,57 @@ public class GameManager : MonoBehaviour
             TurnText.GetComponent<Text>().text = "Your turn";
         }
     }
+
+    //左上の攻撃時間テキスト表示判定
+    public void CharaAttackText()
+    {
+        //ナイト
+        if (Knight_Data.SkillFlag1 == true)
+        {
+            CharaAttackTime1.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
+            CharaAttackTime1.SetActive(true);
+        }
+        if (Knight_Data.SkillFlag2 == true)
+        {
+            CharaAttackTime1.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
+            CharaAttackTime1.SetActive(true);
+        }
+        if (Knight_Data.SkillFlag1 == false && Knight_Data.SkillFlag2 == false)
+        {
+            CharaAttackTime1.SetActive(false);
+        }
+
+        //メディック
+        if (Medic_Data.SkillFlag1 == true)
+        {
+            CharaAttackTime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
+            CharaAttackTime2.SetActive(true);
+        }
+        if (Medic_Data.SkillFlag2 == true)
+        {
+            CharaAttackTime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
+            CharaAttackTime2.SetActive(true);
+        }
+        if (Medic_Data.SkillFlag1 == false && Medic_Data.SkillFlag2 == false)
+        {
+            CharaAttackTime2.SetActive(false);
+        }
+
+        //ガーディアン
+        if (Guardian_Data.SkillFlag1 == true)
+        {
+            CharaAttackTime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
+            CharaAttackTime3.SetActive(true);
+        }
+        if (Guardian_Data.SkillFlag2 == true)
+        {
+            CharaAttackTime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
+            CharaAttackTime3.SetActive(true);
+        }
+        if (Guardian_Data.SkillFlag1 == false && Guardian_Data.SkillFlag2 == false)
+        {
+            CharaAttackTime3.SetActive(false);
+        }
+    }
+
 }

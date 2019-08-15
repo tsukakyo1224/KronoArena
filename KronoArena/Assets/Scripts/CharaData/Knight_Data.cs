@@ -58,8 +58,7 @@ public class Knight_Data : MonoBehaviour
         AttackIcon = Resources.Load<Sprite>("AttackIcon/AttackIcon1");
         SkillIcon1 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
-        AttackTime = 3.0f;
-        SkillTime1 = 5.0f;
+        SkillTime1 = 20.0f;
         SkillTime2 = 10.0f;
         SkillFlag1 = false;
         SkillFlag2 = false;
@@ -78,11 +77,6 @@ public class Knight_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ChangeChara.nowChara == 0)
-        {
-            ATText2.GetComponent<Text>().text = ("" + SkillTime1.ToString("f2"));
-            ATText3.GetComponent<Text>().text = ("" + SkillTime2.ToString("f2"));
-        }
 
         //スキル1発動
         if (SkillFlag1 == true && SkillFlag2 == false)
@@ -94,7 +88,7 @@ public class Knight_Data : MonoBehaviour
             {
                 animator.SetBool("Skill1_Trigger", true);
                 SkillFlag1 = false;
-                SkillTime1 = 5.0f;
+                SkillTime1 = 20.0f;
             }
         }
 
@@ -119,25 +113,14 @@ public class Knight_Data : MonoBehaviour
         if ((PhotonNetwork.player.ID == 1 && other.tag == "Player2") ||
             (PhotonNetwork.player.ID == 2 && other.tag == "Player1"))
         {
-
             other.GetComponent<Status>().hpSlider.value -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
             Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
                 ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
 
-            //if (other.name == "P1_Chara2")
-            //{
-
-            //}
-            //else if (other.name == "P1_Chara3")
-            //{
-            //    other.GetComponent<Status>().hpSlider.value -=
-            //        (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-            //    Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack / 
-            //        ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-            //}
         }
     }
+
     public void ColliderReset()
     {
         Sword.enabled = false;

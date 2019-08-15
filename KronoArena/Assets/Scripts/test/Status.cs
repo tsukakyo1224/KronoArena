@@ -88,12 +88,12 @@ public class Status : MonoBehaviour
         if (stream.isWriting)
         {
             //データの送信
-            stream.SendNext(this.hpSlider.value);
+            stream.SendNext(this.HP);
         }
         else
         {
             //データの受信
-            this.hpSlider.value = (int)stream.ReceiveNext();
+            this.HP = (int)stream.ReceiveNext();
         }
     }
 

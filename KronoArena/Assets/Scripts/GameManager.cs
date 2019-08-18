@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
     public static bool cameraflag = false;
 
     //ゲーム勝利用ポイント
-    public static int GamePoint = 0;
+    public static int P1_GP = 0;
+    public static int P2_GP = 0;
 
 
 
@@ -204,6 +205,33 @@ public class GameManager : MonoBehaviour
             //左上の攻撃時間表示判定
             CharaAttackText();
 
+
+            //終了判定
+            //Player1の倒されたキャラが3体を越えたなら
+            if(P1_GP == 3)
+            {
+                if (PhotonNetwork.player.ID == 1)
+                {
+                    GameLose();
+                }
+                else if (PhotonNetwork.player.ID == 2)
+                {
+                    Gamewin();
+                }
+            }
+            //Player2の倒されたキャラが3体を越えたなら
+            if (P2_GP == 3)
+            {
+                if (PhotonNetwork.player.ID == 2)
+                {
+                    GameLose();
+                }
+                else if (PhotonNetwork.player.ID == 1)
+                {
+                    Gamewin();
+                }
+            }
+
         }
 
 
@@ -284,4 +312,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Gamewin()
+    {
+        Debug.Log("GAME CLEAR");
+    }
+
+    void GameLose()
+    {
+        Debug.Log("GAME LOSE");
+    }
 }

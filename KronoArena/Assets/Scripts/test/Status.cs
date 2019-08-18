@@ -40,8 +40,15 @@ public class Status : MonoBehaviour
         }
         if (HP < 0 && DiedFlag == false)
         {
+            if(PhotonNetwork.player.ID == 1)
+            {
+                GameManager.P1_GP += 1;
+            }
+            else if(PhotonNetwork.player.ID == 2)
+            {
+                GameManager.P2_GP += 1;
+            }
             this.gameObject.SetActive(false);
-            GameManager.GamePoint += 1;
             DiedFlag = true;
         }
     }

@@ -67,7 +67,8 @@ public class Knight_Data : MonoBehaviour
         Sword = GameObject.Find("Sword_Collider").GetComponent<BoxCollider>();
         animator = this.GetComponent<Animator>();
         //剣コライダーをオンにする
-        Sword.enabled = false;
+        //Sword.enabled = false;
+        Sword.enabled = true;
 
 
         ATText2 = GameObject.Find("ATime2");
@@ -112,7 +113,7 @@ public class Knight_Data : MonoBehaviour
         {
             Sword.enabled = true;
             //一定時間後にコライダーの機能をオフにする
-            Invoke("ColliderReset", 1.0f);
+            //Invoke("ColliderReset", 1.0f);
         }
     }
 

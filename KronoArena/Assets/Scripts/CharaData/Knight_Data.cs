@@ -112,7 +112,7 @@ public class Knight_Data : MonoBehaviour
         {
             Sword.enabled = true;
             //一定時間後にコライダーの機能をオフにする
-            Invoke("ColliderReset", 0.3f);
+            Invoke("ColliderReset", 0.5f);
         }
     }
 
@@ -135,6 +135,7 @@ public class Knight_Data : MonoBehaviour
     public void ColliderReset()
     {
         Sword.enabled = false;
+        AttackFlag = false;
     }
 
 

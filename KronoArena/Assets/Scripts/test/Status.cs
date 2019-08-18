@@ -20,10 +20,13 @@ public class Status : MonoBehaviour
 
     public float MaxHP;
 
+    public bool DiedFlag;
+
     // Start is called before the first frame update
     void Start()
     {
         MaxHP = HP;
+        DiedFlag = false;
         StutusPut();
 
     }
@@ -34,6 +37,12 @@ public class Status : MonoBehaviour
         if((PhotonNetwork.player.ID == 1 && this.tag=="Player1") ||
             (PhotonNetwork.player.ID == 2 && this.tag == "Player2")){
             this.hpSlider.value = this.HP;
+        }
+        if (HP < 0 && DiedFlag == false)
+        {
+            this.gameObject.SetActive(false);
+            GameManager.GamePoint += 1;
+            DiedFlag = true;
         }
     }
 

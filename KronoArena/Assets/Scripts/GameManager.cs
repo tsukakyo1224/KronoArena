@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
 
     public static bool cameraflag = false;
 
+    //ゲーム勝利用ポイント
+    public static int GamePoint = 0;
+
 
 
     // Start is called before the first frame update

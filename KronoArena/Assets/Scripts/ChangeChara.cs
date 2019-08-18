@@ -35,7 +35,7 @@ public class ChangeChara : MonoBehaviour
             }
             //　最初の操作キャラクターを0番目のキャラクターにする為、キャラクターの総数をnowCharaに設定し最初のキャラクターが設定されるようにする
             nowChara = charaLists.Count;
-            Debug.Log(nowChara);
+            Debug.Log("現在のキャラ番号" + nowChara);
             ChangeCharacter(nowChara);
             GameManager.cameraflag = false;
         }
@@ -74,7 +74,7 @@ public class ChangeChara : MonoBehaviour
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        Debug.Log(nowChara);
+        Debug.Log("現在のキャラ番号" + nowChara);
     }
 
     public void Change2(int tempNowChara)
@@ -102,7 +102,7 @@ public class ChangeChara : MonoBehaviour
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        Debug.Log(nowChara);
+        Debug.Log("現在のキャラ番号" + nowChara);
     }
 
     public void Change3(int tempNowChara)
@@ -130,7 +130,7 @@ public class ChangeChara : MonoBehaviour
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        Debug.Log(nowChara);
+        Debug.Log("現在のキャラ番号" + nowChara);
     }
 
 

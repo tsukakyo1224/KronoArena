@@ -1901,7 +1901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 2326
-  Attack: 6850
+  Attack: 685
   Magic_Attack: 45
   Defense: 179
   Magic_Defense: 23

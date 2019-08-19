@@ -81,8 +81,7 @@ public class Guardian_Data : MonoBehaviour
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
-        //if ((PhotonNetwork.player.ID == 1 && other.tag == "Player2") ||
-            //(PhotonNetwork.player.ID == 2 && other.tag == "Player1"))
+        if (other.tag != this.tag)
         {
             other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));

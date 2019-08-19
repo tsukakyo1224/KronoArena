@@ -28,6 +28,7 @@ public class Knight_Data : MonoBehaviour
     public static float SkillTime2;
 
     //持続時間
+    public static float Skill1_Limit;
     public static float Skill2_Limit;
 
     //攻撃までの時間テキスト
@@ -40,7 +41,8 @@ public class Knight_Data : MonoBehaviour
     public static bool SkillFlag1;
     public static bool SkillFlag2;
 
-    //
+    //持続時間フラグ
+    public static bool LimitFlag;
 
 
     public static Collider Sword;
@@ -64,10 +66,12 @@ public class Knight_Data : MonoBehaviour
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
         SkillTime1 = 20.0f;
         SkillTime2 = 10.0f;
+        Skill1_Limit = 3.0f;
         Skill2_Limit = 10.0f;
         AttackFlag = false;
         SkillFlag1 = false;
         SkillFlag2 = false;
+        LimitFlag = false;
         Sword = GameObject.Find("Sword_Collider").GetComponent<BoxCollider>();
         animator = this.GetComponent<Animator>();
         //剣コライダーをオンにする
@@ -93,6 +97,7 @@ public class Knight_Data : MonoBehaviour
             //スキル1時間が0になったら発動
             if (SkillTime1 <= 0)
             {
+                this.GetComponent<Status>().Attack += 100.0f;
                 animator.SetBool("Skill1_Trigger", true);
                 SkillFlag1 = false;
                 SkillTime1 = 20.0f;
@@ -111,6 +116,17 @@ public class Knight_Data : MonoBehaviour
                 SkillFlag2 = false;
                 SkillTime2 = 10.0f;
                 this.GetComponent<Status>().Attack += 300.0f;
+                LimitFlag = true;   //持続時間フラグをオン
+            }
+        }
+
+        if (LimitFlag == true)
+        {
+            Skill2_Limit -= Time.deltaTime;
+            if (Skill2_Limit <= 0)
+            {
+                this.GetComponent<Status>().Attack -= 300.0f;
+                LimitFlag = false;
             }
         }
 
@@ -125,8 +141,7 @@ public class Knight_Data : MonoBehaviour
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
-        if ((PhotonNetwork.player.ID == 1 && other.tag == "Player2") ||
-            (PhotonNetwork.player.ID == 2 && other.tag == "Player1"))
+        if (other.tag != this.tag)
         {
             other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));

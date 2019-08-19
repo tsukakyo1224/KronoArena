@@ -80,8 +80,7 @@ public class Medic_Data : MonoBehaviour
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
-        //if ((PhotonNetwork.player.ID == 1 && other.tag == "Player2") ||
-            //(PhotonNetwork.player.ID == 2 && other.tag == "Player1"))
+        if (other.tag != this.tag)
         {
             other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Magic_Attack / ((1 + other.GetComponent<Status>().Magic_Defense) / 10));

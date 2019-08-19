@@ -35,7 +35,7 @@ public class Guardian_Data : MonoBehaviour
     void Start()
     {
         CharaName = "ガーディアン";
-        JobIconImage = Resources.Load<Sprite>("JobIcon/medic");
+        JobIconImage = Resources.Load<Sprite>("JobIcon/Guardian");
         AttackTime = 3.0f;
         SkillTime1 = 15.0f;
         SkillTime2 = 20.0f;
@@ -74,6 +74,22 @@ public class Guardian_Data : MonoBehaviour
                 SkillFlag2 = false;
                 SkillTime2 = 20.0f;
             }
+        }
+    }
+
+
+    //ダメージ計算
+    void OnTriggerExit(Collider other)
+    {
+        //if ((PhotonNetwork.player.ID == 1 && other.tag == "Player2") ||
+            //(PhotonNetwork.player.ID == 2 && other.tag == "Player1"))
+        {
+            other.GetComponent<Status>().HP -=
+                    (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
+            Debug.Log(other.tag);
+            Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack / 
+                ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+
         }
     }
 

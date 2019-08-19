@@ -48,6 +48,12 @@ public class GameManager : MonoBehaviour
     //ターン用テキスト
     public static GameObject TurnText;
 
+    //タイマーテキスト
+    public static GameObject TimeText;
+
+    //カメラ
+    public static GameObject Camera;
+
     //Photon同期用
     private PhotonView photonView;
     private PhotonTransformView photonTransformView;
@@ -100,8 +106,12 @@ public class GameManager : MonoBehaviour
 
         TurnChangeButton = GameObject.Find("ChangeTurn");
 
-
         TurnText = GameObject.Find("TurnText");
+
+        TimeText = GameObject.Find("Time");
+
+        //カメラオブジェクト
+        Camera = GameObject.Find("Main Camera");
 
 
         //最初は非表示に
@@ -143,7 +153,14 @@ public class GameManager : MonoBehaviour
             //現時点でナイト確定
             if (ChangeChara.nowChara == 0)
             {
-                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Knight");
+                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                {
+                    OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Knight");
+                }
+                else
+                {
+                    OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Knight_Reverse");
+                }
                 OpeCharaName.GetComponent<Text>().text = Knight_Data.CharaName;
                 OpeCharaJobIcon.sprite = Knight_Data.JobIconImage;
                 OpeCharaHPSlider.maxValue = Chara1.GetComponent<Status>().hpSlider.maxValue;
@@ -163,7 +180,14 @@ public class GameManager : MonoBehaviour
             //現時点でメディック確定
             else if (ChangeChara.nowChara == 1)
             {
-                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Medic");
+                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                {
+                    OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Medic");
+                }
+                else
+                {
+                    OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Medic_Reverse");
+                }
                 OpeCharaName.GetComponent<Text>().text = Medic_Data.CharaName;
                 OpeCharaJobIcon.sprite = Medic_Data.JobIconImage;
                 OpeCharaHPSlider.maxValue = Chara2.GetComponent<Status>().hpSlider.maxValue;
@@ -183,7 +207,14 @@ public class GameManager : MonoBehaviour
             //現時点でガーディアン確定
             else if (ChangeChara.nowChara == 2)
             {
-                OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Guardian");
+                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                {
+                    OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Guardian");
+                }
+                else
+                {
+                    OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Guardian_Reverse");
+                }
                 OpeCharaName.GetComponent<Text>().text = Guardian_Data.CharaName;
                 OpeCharaJobIcon.sprite = Guardian_Data.JobIconImage;
                 OpeCharaHPSlider.maxValue = Chara3.GetComponent<Status>().hpSlider.maxValue;
@@ -206,10 +237,14 @@ public class GameManager : MonoBehaviour
             CharaAttackText();
 
 
+
+
             //終了判定
             //Player1の倒されたキャラが3体を越えたなら
-            if(P1_GP == 3)
+            if(P1_GP >= 2)
             {
+                Network_01.gameplayflag = false;
+                Network_01.gamestartflag = false;
                 if (PhotonNetwork.player.ID == 1)
                 {
                     GameLose();
@@ -220,7 +255,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             //Player2の倒されたキャラが3体を越えたなら
-            if (P2_GP == 3)
+            if (P2_GP >= 3)
             {
                 if (PhotonNetwork.player.ID == 2)
                 {
@@ -239,9 +274,9 @@ public class GameManager : MonoBehaviour
         if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
         {
-            CharaChangeButton1.GetComponent<Button>().interactable = true;
-            CharaChangeButton2.GetComponent<Button>().interactable = true;
-            CharaChangeButton3.GetComponent<Button>().interactable = true;
+            //CharaChangeButton1.GetComponent<Button>().interactable = true;
+            //CharaChangeButton2.GetComponent<Button>().interactable = true;
+            //CharaChangeButton3.GetComponent<Button>().interactable = true;
             AttackButton1.SetActive(true);
             AttackButton2.SetActive(true);
             AttackButton3.SetActive(true);
@@ -250,12 +285,12 @@ public class GameManager : MonoBehaviour
         else if((TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)) 
         {
+            //CharaChangeButton1.GetComponent<Button>().interactable = false;
+            //CharaChangeButton2.GetComponent<Button>().interactable = false;
+            //CharaChangeButton3.GetComponent<Button>().interactable = false;
             AttackButton1.SetActive(false);
             AttackButton2.SetActive(false);
             AttackButton3.SetActive(false);
-            CharaChangeButton1.GetComponent<Button>().interactable = false;
-            CharaChangeButton2.GetComponent<Button>().interactable = false;
-            CharaChangeButton3.GetComponent<Button>().interactable = false;
             TurnText.GetComponent<Text>().text = "Your turn";
         }
     }
@@ -312,13 +347,50 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static void TurnChangeImage()
+    {
+        if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
+           (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
+        {
+            OpeCharaName.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            OpeCharaJobIcon.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            OpeCharaHPText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+            CharaChangeButton1.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            CharaChangeButton2.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+            TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+            Camera.transform.rotation = Quaternion.Euler(20.0f, -180.0f, 0.0f);
+        }
+        else
+        {
+            OpeCharaName.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            OpeCharaJobIcon.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            OpeCharaHPText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+
+            CharaChangeButton1.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            CharaChangeButton2.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+
+            TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+
+            Camera.transform.rotation = Quaternion.Euler(20.0f, -180.0f, 180.0f);
+
+        }
+    }
+
+
     void Gamewin()
     {
         Debug.Log("GAME CLEAR");
+        TurnText.GetComponent<Text>().text = "Game Win";
     }
 
     void GameLose()
     {
         Debug.Log("GAME LOSE");
+        TurnText.GetComponent<Text>().text = "Game Lose";
     }
 }

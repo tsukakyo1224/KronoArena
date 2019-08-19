@@ -43,10 +43,12 @@ public class Status : MonoBehaviour
             if(PhotonNetwork.player.ID == 1)
             {
                 GameManager.P1_GP += 1;
+                Debug.Log("倒した数" + GameManager.P1_GP + "体");
             }
             else if(PhotonNetwork.player.ID == 2)
             {
                 GameManager.P2_GP += 1;
+                Debug.Log(GameManager.P2_GP);
             }
             this.gameObject.SetActive(false);
             DiedFlag = true;

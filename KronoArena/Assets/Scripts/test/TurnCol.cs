@@ -38,16 +38,14 @@ public class TurnCol : MonoBehaviour
         {
             P2_Turn = true;
             P1_Turn = false;
-            //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         }
         //プレイヤー1に移る
         else if(P2_Turn == true)
         {
             P1_Turn = true;
             P2_Turn = false;
-            //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         }
-
+        GameManager.TurnChangeImage();
     }
 
 

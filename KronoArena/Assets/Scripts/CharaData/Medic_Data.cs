@@ -76,6 +76,23 @@ public class Medic_Data : MonoBehaviour
         }
     }
 
+
+    //ダメージ計算
+    void OnTriggerExit(Collider other)
+    {
+        //if ((PhotonNetwork.player.ID == 1 && other.tag == "Player2") ||
+            //(PhotonNetwork.player.ID == 2 && other.tag == "Player1"))
+        {
+            other.GetComponent<Status>().HP -=
+                    (int)(this.GetComponent<Status>().Magic_Attack / ((1 + other.GetComponent<Status>().Magic_Defense) / 10));
+            Debug.Log(other.tag);
+            Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Magic_Attack / 
+                ((1 + other.GetComponent<Status>().Magic_Defense) / 10)) + "ダメージ");
+
+        }
+    }
+
+
     //名前とtagの送受信
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

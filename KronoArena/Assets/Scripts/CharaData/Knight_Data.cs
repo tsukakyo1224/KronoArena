@@ -27,6 +27,9 @@ public class Knight_Data : MonoBehaviour
     public static float SkillTime1;
     public static float SkillTime2;
 
+    //持続時間
+    public static float Skill2_Limit;
+
     //攻撃までの時間テキスト
     public static GameObject ATText1;
     public static GameObject ATText2;
@@ -61,6 +64,7 @@ public class Knight_Data : MonoBehaviour
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
         SkillTime1 = 20.0f;
         SkillTime2 = 10.0f;
+        Skill2_Limit = 10.0f;
         AttackFlag = false;
         SkillFlag1 = false;
         SkillFlag2 = false;
@@ -106,6 +110,7 @@ public class Knight_Data : MonoBehaviour
                 animator.SetBool("Skill2_Trigger", true);
                 SkillFlag2 = false;
                 SkillTime2 = 10.0f;
+                this.GetComponent<Status>().Attack += 300.0f;
             }
         }
 
@@ -126,9 +131,8 @@ public class Knight_Data : MonoBehaviour
             other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
             Debug.Log(other.tag);
-            //other.GetComponent<Status>().hpSlider.value = other.GetComponent<Status>().HP;
-            //Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
-            //    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+            Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack / 
+                ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
 
         }
     }

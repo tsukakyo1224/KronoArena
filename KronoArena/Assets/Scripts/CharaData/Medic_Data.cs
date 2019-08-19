@@ -58,6 +58,30 @@ public class Medic_Data : MonoBehaviour
                 animator.SetBool("Skill1_Trigger", true);
                 SkillFlag1 = false;
                 SkillTime1 = 20.0f;
+
+                //回復処理
+                GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
+                if (PhotonNetwork.player.ID == 2)
+                {
+                    targets = GameObject.FindGameObjectsWithTag("Player2");
+                }
+                foreach(GameObject obj in targets)
+                {
+                    // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+                    float dist = Vector3.Distance(obj.transform.position, transform.position);
+                    Debug.Log(dist);
+                    if (dist < 3)
+                    {
+                        obj.GetComponent<Status>().HP += 200;
+                        if(obj.GetComponent<Status>().HP > obj.GetComponent<Status>().MaxHP)
+                        {
+                            obj.GetComponent<Status>().HP = obj.GetComponent<Status>().MaxHP;
+                        }
+                        Debug.Log(obj.name + "を200回復");
+                    }
+                }
+
+
             }
         }
 

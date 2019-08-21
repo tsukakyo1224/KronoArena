@@ -35,7 +35,7 @@ public class ChangeChara : MonoBehaviour
             }
             //　最初の操作キャラクターを0番目のキャラクターにする為、キャラクターの総数をnowCharaに設定し最初のキャラクターが設定されるようにする
             nowChara = charaLists.Count;
-            Debug.Log("現在のキャラ番号" + nowChara);
+            //Debug.Log("現在のキャラ番号" + nowChara);
             ChangeCharacter(nowChara);
             GameManager.cameraflag = false;
         }

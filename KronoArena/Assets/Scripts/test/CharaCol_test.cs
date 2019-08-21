@@ -24,8 +24,7 @@ public class CharaCol_test : MonoBehaviour
         animator = GetComponent<Animator>();
 
         photonView = PhotonView.Get(this);
-
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -54,7 +53,7 @@ public class CharaCol_test : MonoBehaviour
                 //指を動かしたときのみキャラを操作する
                 if (tapPoint != currentTapPoint)
                 {
-                    //動かした指の位置から角度を計算　　　　　　　　　
+                    //動かした指の位置から角度を計算
                     float rad = Mathf.Atan2(currentTapPoint.y - tapPoint.y, currentTapPoint.x - tapPoint.x);
                     float rot = (rad * 180 / Mathf.PI) + 90;
                     //キャラクターの向きを決定

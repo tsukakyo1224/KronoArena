@@ -34,7 +34,7 @@ public class TurnCol : MonoBehaviour
     public static void ChangeTurn()
     {
         //プレイヤー2に移る
-        if (P1_Turn==true)
+        if (P1_Turn　==　true)
         {
             P2_Turn = true;
             P1_Turn = false;

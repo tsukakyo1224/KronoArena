@@ -12,6 +12,7 @@ public class Status : MonoBehaviour
     [SerializeField] public float Defense;
     [SerializeField] public float Magic_Defense;
     [SerializeField] public float Speed;
+    [SerializeField] public float Heel;
     [SerializeField] public Sprite AttackIcon;
     [SerializeField] public Sprite SkillIcon1;
     [SerializeField] public Sprite SkillIcon2;

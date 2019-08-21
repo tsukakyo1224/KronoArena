@@ -28,6 +28,12 @@ public class Medic_Data : MonoBehaviour
     public static bool SkillFlag1;
     public static bool SkillFlag2;
 
+    //持続時間
+    public static float Skill2_Limit;
+
+    //持続時間フラグ
+    public static bool LimitFlag2;
+
     //アニメーター 
     private Animator animator;
 
@@ -39,8 +45,11 @@ public class Medic_Data : MonoBehaviour
         JobIconImage = Resources.Load<Sprite>("JobIcon/Medic");
         SkillTime1 = 20.0f;
         SkillTime2 = 10.0f;
+        Skill2_Limit = 60.0f;
         SkillFlag1 = false;
         SkillFlag2 = false;
+        LimitFlag2 = false;
+
         animator = this.GetComponent<Animator>();
     }
 
@@ -69,15 +78,17 @@ public class Medic_Data : MonoBehaviour
                 {
                     // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
                     float dist = Vector3.Distance(obj.transform.position, transform.position);
-                    Debug.Log(dist);
+                    //対象キャラとの距離表示
+                    Debug.Log(obj.name + "との距離は" + dist + "m");
+                    //3m以下なら体力回復判定
                     if (dist < 3)
                     {
-                        obj.GetComponent<Status>().HP += 200;
+                        obj.GetComponent<Status>().HP += this.GetComponent<Status>().Heel;
                         if(obj.GetComponent<Status>().HP > obj.GetComponent<Status>().MaxHP)
                         {
                             obj.GetComponent<Status>().HP = obj.GetComponent<Status>().MaxHP;
                         }
-                        Debug.Log(obj.name + "を200回復");
+                        Debug.Log(obj.name + "を" + this.GetComponent<Status>().Heel + "回復");
                     }
                 }
 
@@ -93,11 +104,16 @@ public class Medic_Data : MonoBehaviour
             //スキル2時間が0になったら発動
             if (SkillTime2 <= 0)
             {
+                this.GetComponent<Status>().Defense += 100.0f;
+                this.GetComponent<Status>().Magic_Defense += 100.0f;
+                this.GetComponent<Status>().Heel += 100.0f;
                 animator.SetBool("Skill2_Trigger", true);
                 SkillFlag2 = false;
                 SkillTime2 = 10.0f;
+                LimitFlag2 = true;
             }
         }
+
     }
 
 

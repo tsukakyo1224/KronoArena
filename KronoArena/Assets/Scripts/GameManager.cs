@@ -236,7 +236,8 @@ public class GameManager : MonoBehaviour
             //左上の攻撃時間表示判定
             CharaAttackText();
 
-
+            //
+            TurnChangeImage();
 
 
             //終了判定

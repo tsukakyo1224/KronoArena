@@ -61,13 +61,6 @@ public class ButtonCol : MonoBehaviour
         if (ChangeChara.nowChara == 0)
         {
             animator1.SetBool("Attack", true);
-            Knight_Data.AttackFlag = true;
-            //剣コライダーをオンに
-            if (PhotonNetwork.player.ID == 1)
-            {
-                //Player1.GetComponent<Knight_Data>(). = true;
-            }
-            //Knight_Data.Sword.enabled = true;
 
         }
         else if (ChangeChara.nowChara == 1)

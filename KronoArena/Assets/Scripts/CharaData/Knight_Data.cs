@@ -42,7 +42,8 @@ public class Knight_Data : MonoBehaviour
     public static bool SkillFlag2;
 
     //持続時間フラグ
-    public static bool LimitFlag;
+    public static bool LimitFlag1;
+    public static bool LimitFlag2;
 
 
     public static Collider Sword;
@@ -71,7 +72,8 @@ public class Knight_Data : MonoBehaviour
         AttackFlag = false;
         SkillFlag1 = false;
         SkillFlag2 = false;
-        LimitFlag = false;
+        LimitFlag1 = false;
+        LimitFlag2 = false;
         Sword = GameObject.Find("Sword_Collider").GetComponent<BoxCollider>();
         animator = this.GetComponent<Animator>();
         //剣コライダーをオンにする
@@ -88,47 +90,70 @@ public class Knight_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //スキル1発動
-        if (SkillFlag1 == true && SkillFlag2 == false)
+        if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
+            (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
         {
-            //スキル1時間減少
-            SkillTime1 -= Time.deltaTime;
-            //スキル1時間が0になったら発動
-            if (SkillTime1 <= 0)
+            //スキル1発動
+            if (SkillFlag1 == true && SkillFlag2 == false)
             {
-                this.GetComponent<Status>().Attack += 100.0f;
-                animator.SetBool("Skill1_Trigger", true);
-                SkillFlag1 = false;
-                SkillTime1 = 20.0f;
+                //スキル1時間減少
+                SkillTime1 -= Time.deltaTime;
+                //スキル1時間が0になったら発動
+                if (SkillTime1 <= 0)
+                {
+                    this.GetComponent<Status>().Attack += 100.0f;
+                    animator.SetBool("Skill1_Trigger", true);
+                    SkillFlag1 = false;
+                    SkillTime1 = 20.0f;
+                    //持続時間フラグをオン
+                    LimitFlag1 = true;
+                    Debug.Log("ナイトの回転攻撃!");
+                }
+            }
+
+            //スキル2発動
+            if (SkillFlag2 == true && SkillFlag1 == false)
+            {
+                //スキル2時間減少
+                SkillTime2 -= Time.deltaTime;
+                //スキル2時間が0になったら発動
+                if (SkillTime2 <= 0)
+                {
+                    animator.SetBool("Skill2_Trigger", true);
+                    SkillFlag2 = false;
+                    SkillTime2 = 10.0f;
+                    this.GetComponent<Status>().Attack += 300.0f;
+                    LimitFlag2 = true;   //持続時間フラグをオン
+                    Debug.Log("ナイトの攻撃力が300UP!");
+                }
+            }
+            //スキル1の持続時間が終わるまで
+            if (LimitFlag1 == true)
+            {
+                Skill1_Limit -= Time.deltaTime;
+                if (Skill1_Limit <= 0)
+                {
+                    this.GetComponent<Status>().Attack -= 100.0f;
+                    LimitFlag1 = false;
+                    Skill1_Limit = 3.0f;
+                }
+
+            }
+            //スキル2の持続時間が終わるまで
+            if (LimitFlag2 == true)
+            {
+                Skill2_Limit -= Time.deltaTime;
+                if (Skill2_Limit <= 0)
+                {
+                    this.GetComponent<Status>().Attack -= 300.0f;
+                    LimitFlag2 = false;
+                    Skill2_Limit = 10.0f;
+                    Debug.Log("ナイトの攻撃力が元に戻った");
+                }
+
             }
         }
 
-        //スキル2発動
-        if (SkillFlag2 == true && SkillFlag1 == false)
-        {
-            //スキル2時間減少
-            SkillTime2 -= Time.deltaTime;
-            //スキル2時間が0になったら発動
-            if (SkillTime2 <= 0)
-            {
-                animator.SetBool("Skill2_Trigger", true);
-                SkillFlag2 = false;
-                SkillTime2 = 10.0f;
-                this.GetComponent<Status>().Attack += 300.0f;
-                LimitFlag = true;   //持続時間フラグをオン
-            }
-        }
-
-        if (LimitFlag == true)
-        {
-            Skill2_Limit -= Time.deltaTime;
-            if (Skill2_Limit <= 0)
-            {
-                this.GetComponent<Status>().Attack -= 300.0f;
-                LimitFlag = false;
-            }
-        }
 
         if(AttackFlag == true)
         {
@@ -150,12 +175,6 @@ public class Knight_Data : MonoBehaviour
                 ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
 
         }
-    }
-
-    public void ColliderReset()
-    {
-        Sword.enabled = false;
-        AttackFlag = false;
     }
 
 

@@ -394,4 +394,22 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME LOSE");
         TurnText.GetComponent<Text>().text = "Game Lose";
     }
+
+    //名前とtagの送受信
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            //データの送信
+            stream.SendNext(P1_GP);
+            stream.SendNext(P2_GP);
+        }
+        else
+        {
+            //データの受信
+            P1_GP = (int)stream.ReceiveNext();
+            P2_GP = (int)stream.ReceiveNext();
+        }
+    }
+
 }

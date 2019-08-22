@@ -25,12 +25,17 @@ public class Status : MonoBehaviour
 
     public bool ActionFlag;
 
+    PhotonView photonView;
+
     // Start is called before the first frame update
     void Start()
     {
         MaxHP = HP;
         DiedFlag = false;
         StutusPut();
+
+
+        photonView = GetComponent<PhotonView>();
 
     }
 
@@ -48,12 +53,12 @@ public class Status : MonoBehaviour
             //GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
             if (this.tag == "Player1")
             {
-                GameManager.P1_GP += 1;
+                photonView.RPC("CharaDied", PhotonTargets.All, GameManager.P1_GP);
                 Debug.Log(this.name + "がやられた。(" +  "倒した数" + GameManager.P1_GP + "体)");
             }
             if(this.tag == "Player2")
             {
-                GameManager.P2_GP += 1;
+                photonView.RPC("CharaDied", PhotonTargets.All, GameManager.P2_GP);
                 Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
             }
             this.gameObject.SetActive(false);
@@ -136,5 +141,12 @@ public class Status : MonoBehaviour
         }
     }
 
+
+    [PunRPC]
+    void CharaDied(int num)
+    {
+        num += 1;
+        Debug.Log(num);
+    }
 
 }

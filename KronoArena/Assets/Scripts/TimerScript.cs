@@ -23,7 +23,7 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PhotonNetwork.playerList.Length == 2)
+        if(PhotonNetwork.playerList.Length == 2 && Network_01.gameplayflag == true)
         //if (Network_01.gameplayflag == true)
         {
             //時間

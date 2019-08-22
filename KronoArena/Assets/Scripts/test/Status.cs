@@ -139,12 +139,12 @@ public class Status : MonoBehaviour
 
         if (this.tag == "Player1")
         {
-            photonView.RPC("CharaDied", PhotonTargets.All, GameManager.P1_GP);
+            GameManager.P1_GP += 1;
             Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P1_GP + "体)");
         }
         if (this.tag == "Player2")
         {
-            photonView.RPC("CharaDied", PhotonTargets.All, GameManager.P2_GP);
+            GameManager.P2_GP += 1;
             Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
         }
 

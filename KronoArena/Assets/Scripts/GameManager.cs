@@ -258,6 +258,8 @@ public class GameManager : MonoBehaviour
             //Player2の倒されたキャラが3体を越えたなら
             if (P2_GP >= 3)
             {
+                Network_01.gameplayflag = false;
+                Network_01.gamestartflag = false;
                 if (PhotonNetwork.player.ID == 2)
                 {
                     GameLose();

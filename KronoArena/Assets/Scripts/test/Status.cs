@@ -51,7 +51,7 @@ public class Status : MonoBehaviour
             else if(this.tag == "Player2")
             {
                 GameManager.P2_GP += 1;
-                Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P1_GP + "体)");
+                Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
             }
             this.gameObject.SetActive(false);
             DiedFlag = true;

@@ -43,7 +43,8 @@ public class Status : MonoBehaviour
         }
         if (HP < 0 && DiedFlag == false)
         {
-            if(this.tag == "Player1")
+            GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+            if (this.tag == "Player1")
             {
                 GameManager.P1_GP += 1;
                 Debug.Log(this.name + "がやられた。(" +  "倒した数" + GameManager.P1_GP + "体)");

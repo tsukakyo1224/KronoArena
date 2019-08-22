@@ -43,7 +43,7 @@ public class Status : MonoBehaviour
         }
         if (HP < 0 && DiedFlag == false)
         {
-            GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+            //GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
             if (this.tag == "Player1")
             {
                 GameManager.P1_GP += 1;

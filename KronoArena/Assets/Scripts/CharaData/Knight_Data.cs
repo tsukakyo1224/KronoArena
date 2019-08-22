@@ -52,6 +52,8 @@ public class Knight_Data : MonoBehaviour
     //アニメーター 
     private Animator animator;
 
+    private PhotonView photonView;
+
 
     // Start is called before the first frame update
     void Start()
@@ -84,13 +86,14 @@ public class Knight_Data : MonoBehaviour
         ATText3 = GameObject.Find("ATime3");
 
 
+        photonView = PhotonView.Get(this);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
-            (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
+        if(photonView.isMine)
         {
             //スキル1発動
             if (SkillFlag1 == true && SkillFlag2 == false)

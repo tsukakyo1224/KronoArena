@@ -36,16 +36,12 @@ public class Knight_Data : MonoBehaviour
     public static GameObject ATText3;
 
     //攻撃したかのフラグ
-    public static bool AttackFlag;
     public static bool SkillFlag1;
     public static bool SkillFlag2;
 
     //持続時間フラグ
     public static bool LimitFlag1;
     public static bool LimitFlag2;
-
-
-    public static Collider Sword;
 
     public static Slider YourHP;
 
@@ -70,21 +66,12 @@ public class Knight_Data : MonoBehaviour
         SkillTime2 = 10.0f;
         Skill1_Limit = 3.0f;
         Skill2_Limit = 10.0f;
-        AttackFlag = false;
         SkillFlag1 = false;
         SkillFlag2 = false;
         LimitFlag1 = false;
         LimitFlag2 = false;
-        Sword = GameObject.Find("Sword_Collider").GetComponent<BoxCollider>();
+
         animator = this.GetComponent<Animator>();
-        //剣コライダーをオンにする
-        //Sword.enabled = false;
-        Sword.enabled = true;
-
-
-        ATText2 = GameObject.Find("ATime2");
-        ATText3 = GameObject.Find("ATime3");
-
 
         photonView = PhotonView.Get(this);
 
@@ -113,6 +100,19 @@ public class Knight_Data : MonoBehaviour
                 }
             }
 
+            //スキル1の持続時間が終わるまで
+            if (LimitFlag1 == true)
+            {
+                Skill1_Limit -= Time.deltaTime;
+                if (Skill1_Limit <= 0)
+                {
+                    this.GetComponent<Status>().Attack -= 100.0f;
+                    LimitFlag1 = false;
+                    Skill1_Limit = 3.0f;
+                }
+
+            }
+
             //スキル2発動
             if (SkillFlag2 == true && SkillFlag1 == false)
             {
@@ -129,18 +129,6 @@ public class Knight_Data : MonoBehaviour
                     Debug.Log("ナイトの攻撃力が300UP!");
                 }
             }
-            //スキル1の持続時間が終わるまで
-            if (LimitFlag1 == true)
-            {
-                Skill1_Limit -= Time.deltaTime;
-                if (Skill1_Limit <= 0)
-                {
-                    this.GetComponent<Status>().Attack -= 100.0f;
-                    LimitFlag1 = false;
-                    Skill1_Limit = 3.0f;
-                }
-
-            }
             //スキル2の持続時間が終わるまで
             if (LimitFlag2 == true)
             {
@@ -154,14 +142,6 @@ public class Knight_Data : MonoBehaviour
                 }
 
             }
-        }
-
-
-        if(AttackFlag == true)
-        {
-            Sword.enabled = true;
-            //一定時間後にコライダーの機能をオフにする
-            //Invoke("ColliderReset", 1.0f);
         }
     }
 

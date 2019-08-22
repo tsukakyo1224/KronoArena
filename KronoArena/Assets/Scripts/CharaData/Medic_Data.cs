@@ -36,6 +36,9 @@ public class Medic_Data : MonoBehaviour
     //アニメーター 
     private Animator animator;
 
+    //Photonの
+    private PhotonView photonView;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,84 +53,88 @@ public class Medic_Data : MonoBehaviour
         LimitFlag2 = false;
 
         animator = this.GetComponent<Animator>();
+
+        photonView = PhotonView.Get(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //スキル1発動
-        if (SkillFlag1 == true && SkillFlag2 == false)
+        if (photonView.isMine)
         {
-            //スキル1時間減少
-            SkillTime1 -= Time.deltaTime;
-            //スキル1時間が0になったら発動
-            if (SkillTime1 <= 0)
+            //スキル1発動
+            if (SkillFlag1 == true && SkillFlag2 == false)
             {
-                animator.SetBool("Skill1_Trigger", true);
-                SkillFlag1 = false;
-                SkillTime1 = 20.0f;
+                //スキル1時間減少
+                SkillTime1 -= Time.deltaTime;
+                //スキル1時間が0になったら発動
+                if (SkillTime1 <= 0)
+                {
+                    animator.SetBool("Skill1_Trigger", true);
+                    SkillFlag1 = false;
+                    SkillTime1 = 20.0f;
 
-                //回復処理
-                GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
-                if (PhotonNetwork.player.ID == 2)
-                {
-                    targets = GameObject.FindGameObjectsWithTag("Player2");
-                }
-                foreach(GameObject obj in targets)
-                {
-                    // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
-                    float dist = Vector3.Distance(obj.transform.position, transform.position);
-                    //対象キャラとの距離表示
-                    Debug.Log(obj.name + "との距離は" + dist + "m");
-                    //3m以下なら体力回復判定
-                    if (dist < 3)
+                    //回復処理
+                    GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
+                    if (PhotonNetwork.player.ID == 2)
                     {
-                        obj.GetComponent<Status>().HP += this.GetComponent<Status>().Heel;
-                        if(obj.GetComponent<Status>().HP > obj.GetComponent<Status>().MaxHP)
-                        {
-                            obj.GetComponent<Status>().HP = obj.GetComponent<Status>().MaxHP;
-                        }
-                        Debug.Log(obj.name + "を" + this.GetComponent<Status>().Heel + "回復");
+                        targets = GameObject.FindGameObjectsWithTag("Player2");
                     }
+                    foreach (GameObject obj in targets)
+                    {
+                        // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+                        float dist = Vector3.Distance(obj.transform.position, transform.position);
+                        //対象キャラとの距離表示
+                        Debug.Log(obj.name + "との距離は" + dist + "m");
+                        //3m以下なら体力回復判定
+                        if (dist < 3)
+                        {
+                            obj.GetComponent<Status>().HP += this.GetComponent<Status>().Heel;
+                            if (obj.GetComponent<Status>().HP > obj.GetComponent<Status>().MaxHP)
+                            {
+                                obj.GetComponent<Status>().HP = obj.GetComponent<Status>().MaxHP;
+                            }
+                            Debug.Log(obj.name + "を" + this.GetComponent<Status>().Heel + "回復");
+                        }
+                    }
+
+
+                }
+            }
+
+            //スキル2発動
+            if (SkillFlag2 == true && SkillFlag1 == false)
+            {
+                //スキル2時間減少
+                SkillTime2 -= Time.deltaTime;
+                //スキル2時間が0になったら発動
+                if (SkillTime2 <= 0)
+                {
+                    this.GetComponent<Status>().Defense += 100.0f;
+                    this.GetComponent<Status>().Magic_Defense += 100.0f;
+                    this.GetComponent<Status>().Heel += 100.0f;
+                    animator.SetBool("Skill2_Trigger", true);
+                    SkillFlag2 = false;
+                    SkillTime2 = 10.0f;
+                    LimitFlag2 = true;
+                }
+            }
+            //スキル2の持続時間が終わるまで
+            if (LimitFlag2 == true)
+            {
+                Skill2_Limit -= Time.deltaTime;
+                if (Skill2_Limit <= 0)
+                {
+                    this.GetComponent<Status>().Defense -= 100.0f;
+                    this.GetComponent<Status>().Magic_Defense -= 100.0f;
+                    this.GetComponent<Status>().Heel -= 100.0f;
+                    LimitFlag2 = false;
+                    Skill2_Limit = 60.0f;
+                    Debug.Log("メディックのステータスが元に戻った");
                 }
 
-
             }
         }
-
-        //スキル2発動
-        if (SkillFlag2 == true && SkillFlag1 == false)
-        {
-            //スキル2時間減少
-            SkillTime2 -= Time.deltaTime;
-            //スキル2時間が0になったら発動
-            if (SkillTime2 <= 0)
-            {
-                this.GetComponent<Status>().Defense += 100.0f;
-                this.GetComponent<Status>().Magic_Defense += 100.0f;
-                this.GetComponent<Status>().Heel += 100.0f;
-                animator.SetBool("Skill2_Trigger", true);
-                SkillFlag2 = false;
-                SkillTime2 = 10.0f;
-                LimitFlag2 = true;
-            }
-        }
-        //スキル2の持続時間が終わるまで
-        if (LimitFlag2 == true)
-        {
-            Skill2_Limit -= Time.deltaTime;
-            if (Skill2_Limit <= 0)
-            {
-                this.GetComponent<Status>().Defense -= 100.0f;
-                this.GetComponent<Status>().Magic_Defense -= 100.0f;
-                this.GetComponent<Status>().Heel -= 100.0f;
-                LimitFlag2 = false;
-                Skill2_Limit = 60.0f;
-                Debug.Log("メディックのステータスが元に戻った");
-            }
-
-        }
-
     }
 
 

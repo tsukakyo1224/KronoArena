@@ -270,6 +270,10 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            //プレイヤー1とプレイヤー2の残りのキャラの数表示
+            Debug.Log("プレイヤー1の残りのキャラ" + (3.0 - P1_GP) + "体");
+            Debug.Log("プレイヤー2の残りのキャラ" + (3.0 - P2_GP) + "体");
+
         }
 
 

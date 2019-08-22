@@ -80,8 +80,13 @@ public class Guardian_Data : MonoBehaviour
 
                     //アニメーション発動
                     animator.SetBool("Skill1_Trigger", true);
+                    //スキル1発動系を初期値に
                     SkillFlag1 = false;
                     SkillTime1 = 15.0f;
+
+                    //持続時間フラグをオン
+                    LimitFlag1 = true;
+                    Debug.Log("ガーディアンの物理防御力と魔法防御力が200UP!");
                 }
             }
 
@@ -93,9 +98,10 @@ public class Guardian_Data : MonoBehaviour
                 {
                     this.GetComponent<Status>().Defense -= 200.0f;
                     this.GetComponent<Status>().Magic_Defense -= 200.0f;
-
+                    //持続時間フラグを初期値に
                     LimitFlag1 = false;
                     Skill1_Limit = 30.0f;
+                    Debug.Log("ガーディアンの物理防御力と魔法防御力が元に戻った");
                 }
 
             }
@@ -109,10 +115,58 @@ public class Guardian_Data : MonoBehaviour
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
+
+                    this.GetComponent<Status>().Defense += 100.0f;
+                    this.GetComponent<Status>().Magic_Defense += 100.0f;
+
                     animator.SetBool("Skill2_Trigger", true);
+                    //スキル1発動系を初期値に
                     SkillFlag2 = false;
                     SkillTime2 = 20.0f;
+                    //持続時間フラグをオン
+                    LimitFlag2 = true;
+                    Debug.Log("ガーディアン肩代わりの効果が発動");
+
                 }
+            }
+
+            //スキル2の持続時間が終わるまで
+            if (LimitFlag1 == true)
+            {
+                Skill1_Limit -= Time.deltaTime;
+
+
+                //肩代わり処理
+                GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
+                if (PhotonNetwork.player.ID == 2)
+                {
+                    targets = GameObject.FindGameObjectsWithTag("Player2");
+                }
+                foreach (GameObject obj in targets)
+                {
+                    // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+                    float dist = Vector3.Distance(obj.transform.position, transform.position);
+                    //対象キャラとの距離表示
+                    Debug.Log(obj.name + "との距離は" + dist + "m");
+                    //3m以下なら体力回復判定
+                    if (dist < 2)
+                    {
+
+
+                    }
+                }
+
+
+                if (Skill1_Limit <= 0)
+                {
+                    this.GetComponent<Status>().Defense -= 100.0f;
+                    this.GetComponent<Status>().Magic_Defense -= 100.0f;
+                    //持続時間フラグを初期値に
+                    LimitFlag1 = false;
+                    Skill1_Limit = 30.0f;
+                    Debug.Log("ガーディアン肩代わりの効果が終わった");
+                }
+
             }
         }
 
@@ -126,7 +180,6 @@ public class Guardian_Data : MonoBehaviour
         {
             other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-            Debug.Log(other.tag);
             Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack / 
                 ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
 

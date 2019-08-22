@@ -150,6 +150,7 @@ public class Knight_Data : MonoBehaviour
     {
         if (other.tag != this.tag)
         {
+
             other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
             Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack / 

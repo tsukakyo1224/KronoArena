@@ -145,7 +145,6 @@ public class Medic_Data : MonoBehaviour
         {
             other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Magic_Attack / ((1 + other.GetComponent<Status>().Magic_Defense) / 10));
-            Debug.Log(other.tag);
             Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Magic_Attack / 
                 ((1 + other.GetComponent<Status>().Magic_Defense) / 10)) + "ダメージ");
 

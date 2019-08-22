@@ -163,11 +163,15 @@ public class GameManager : MonoBehaviour
                 }
                 OpeCharaName.GetComponent<Text>().text = Knight_Data.CharaName;
                 OpeCharaJobIcon.sprite = Knight_Data.JobIconImage;
-                OpeCharaHPSlider.maxValue = Chara1.GetComponent<Status>().hpSlider.maxValue;
-                OpeCharaHPSlider.value = Chara1.GetComponent<Status>().hpSlider.value;
-                OpeCharaHPText.GetComponent<Text>().text = Chara1.GetComponent<Status>().hpSlider.value +
-                   "/" + Chara1.GetComponent<Status>().MaxHP;
-
+                //存在しているのなら表示
+                //Debug.Log(Chara1);
+                if (Chara1 != null)
+                {
+                    OpeCharaHPSlider.maxValue = Chara1.GetComponent<Status>().hpSlider.maxValue;
+                    OpeCharaHPSlider.value = Chara1.GetComponent<Status>().hpSlider.value;
+                    OpeCharaHPText.GetComponent<Text>().text = Chara1.GetComponent<Status>().hpSlider.value +
+                       "/" + Chara1.GetComponent<Status>().MaxHP;
+                }
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
@@ -190,10 +194,13 @@ public class GameManager : MonoBehaviour
                 }
                 OpeCharaName.GetComponent<Text>().text = Medic_Data.CharaName;
                 OpeCharaJobIcon.sprite = Medic_Data.JobIconImage;
-                OpeCharaHPSlider.maxValue = Chara2.GetComponent<Status>().hpSlider.maxValue;
-                OpeCharaHPSlider.value = Chara2.GetComponent<Status>().hpSlider.value;
-                OpeCharaHPText.GetComponent<Text>().text = Chara2.GetComponent<Status>().hpSlider.value + 
-                   "/" + Chara2.GetComponent<Status>().MaxHP;
+                if (Chara2 != null)
+                {
+                    OpeCharaHPSlider.maxValue = Chara2.GetComponent<Status>().hpSlider.maxValue;
+                    OpeCharaHPSlider.value = Chara2.GetComponent<Status>().hpSlider.value;
+                    OpeCharaHPText.GetComponent<Text>().text = Chara2.GetComponent<Status>().hpSlider.value +
+                       "/" + Chara2.GetComponent<Status>().MaxHP;
+                }
 
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon2");
@@ -217,10 +224,13 @@ public class GameManager : MonoBehaviour
                 }
                 OpeCharaName.GetComponent<Text>().text = Guardian_Data.CharaName;
                 OpeCharaJobIcon.sprite = Guardian_Data.JobIconImage;
-                OpeCharaHPSlider.maxValue = Chara3.GetComponent<Status>().hpSlider.maxValue;
-                OpeCharaHPSlider.value = Chara3.GetComponent<Status>().hpSlider.value;
-                OpeCharaHPText.GetComponent<Text>().text = Chara3.GetComponent<Status>().hpSlider.value +
-                   "/" + Chara3.GetComponent<Status>().MaxHP;
+                if (Chara3 != null)
+                {
+                    OpeCharaHPSlider.maxValue = Chara3.GetComponent<Status>().hpSlider.maxValue;
+                    OpeCharaHPSlider.value = Chara3.GetComponent<Status>().hpSlider.value;
+                    OpeCharaHPText.GetComponent<Text>().text = Chara3.GetComponent<Status>().hpSlider.value +
+                       "/" + Chara3.GetComponent<Status>().MaxHP;
+                }
 
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");

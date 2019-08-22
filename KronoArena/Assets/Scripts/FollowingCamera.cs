@@ -61,10 +61,12 @@ public class FollowingCamera : MonoBehaviour
                     target = GameObject.Find("P2_Chara3");
                 }
             }
-
-            var lookAtPos = target.transform.position + offset;
-            updatePosition(lookAtPos);
-            //transform.LookAt(lookAtPos);
+            if(target != null)
+            {
+                var lookAtPos = target.transform.position + offset;
+                updatePosition(lookAtPos);
+                transform.LookAt(lookAtPos);
+            }
             //cameraflag = false;
         }
         if (Input.GetMouseButton(0))

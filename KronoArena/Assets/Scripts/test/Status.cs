@@ -50,17 +50,8 @@ public class Status : MonoBehaviour
 
         if (HP < 0 && DiedFlag == false)
         {
+            photonView.RPC("CharaDied", PhotonTargets.All);
             //GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-            if (this.tag == "Player1")
-            {
-                photonView.RPC("CharaDied", PhotonTargets.All, GameManager.P1_GP);
-                Debug.Log(this.name + "がやられた。(" +  "倒した数" + GameManager.P1_GP + "体)");
-            }
-            if(this.tag == "Player2")
-            {
-                photonView.RPC("CharaDied", PhotonTargets.All, GameManager.P2_GP);
-                Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
-            }
             this.gameObject.SetActive(false);
             DiedFlag = true;
         }
@@ -143,10 +134,20 @@ public class Status : MonoBehaviour
 
 
     [PunRPC]
-    void CharaDied(int num)
+    void CharaDied()
     {
-        num += 1;
-        Debug.Log(num);
+
+        if (this.tag == "Player1")
+        {
+            photonView.RPC("CharaDied", PhotonTargets.All, GameManager.P1_GP);
+            Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P1_GP + "体)");
+        }
+        if (this.tag == "Player2")
+        {
+            photonView.RPC("CharaDied", PhotonTargets.All, GameManager.P2_GP);
+            Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
+        }
+
     }
 
 }

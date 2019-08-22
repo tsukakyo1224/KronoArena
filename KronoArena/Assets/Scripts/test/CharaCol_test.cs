@@ -66,8 +66,7 @@ public class CharaCol_test : MonoBehaviour
                         animator.SetBool("Run", mag.magnitude > 1.0f);
                         playerSpeed = 5.0f;
                     }
-                    else
-                    if (mag.magnitude <= 5f)
+                    else if (mag.magnitude <= 5f)
                     {
                         animator.SetBool("Run", mag.magnitude > 1.0f);
                         ControlOnOffChara.walkSpeed = 5.0f;

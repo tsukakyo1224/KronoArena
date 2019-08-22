@@ -23,6 +23,8 @@ public class Status : MonoBehaviour
 
     public bool DiedFlag;
 
+    public bool ActionFlag;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,15 +43,15 @@ public class Status : MonoBehaviour
         }
         if (HP < 0 && DiedFlag == false)
         {
-            if(PhotonNetwork.player.ID == 1)
+            if(this.tag == "Player1")
             {
                 GameManager.P1_GP += 1;
-                Debug.Log("倒した数" + GameManager.P1_GP + "体");
+                Debug.Log(this.name + "がやられた。(" +  "倒した数" + GameManager.P1_GP + "体)");
             }
-            else if(PhotonNetwork.player.ID == 2)
+            else if(this.tag == "Player2")
             {
                 GameManager.P2_GP += 1;
-                Debug.Log(GameManager.P2_GP);
+                Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P1_GP + "体)");
             }
             this.gameObject.SetActive(false);
             DiedFlag = true;

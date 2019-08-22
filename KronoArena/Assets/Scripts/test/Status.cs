@@ -41,6 +41,8 @@ public class Status : MonoBehaviour
             (PhotonNetwork.player.ID == 2 && this.tag == "Player2")){
             this.hpSlider.value = this.HP;
         }
+
+
         if (HP < 0 && DiedFlag == false)
         {
             //GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);

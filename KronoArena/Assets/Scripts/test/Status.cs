@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Status : MonoBehaviour
 {
-
+    [SerializeField] public string Name;
     [SerializeField] public float HP;
     [SerializeField] public float Attack;
     [SerializeField] public float Magic_Attack;
@@ -115,6 +115,7 @@ public class Status : MonoBehaviour
         if (stream.isWriting)
         {
             //データの送信
+            stream.SendNext(this.Name);
             stream.SendNext(this.HP);
             stream.SendNext(this.Attack);
             stream.SendNext(this.Magic_Attack);
@@ -126,11 +127,12 @@ public class Status : MonoBehaviour
         else
         {
             //データの受信
+            this.Name = (string)stream.ReceiveNext();
             this.HP = (float)stream.ReceiveNext();
             this.Attack = (float)stream.ReceiveNext();
             this.Magic_Attack = (float)stream.ReceiveNext();
             this.Defense = (float)stream.ReceiveNext();
-            this.Magic_Attack = (float)stream.ReceiveNext();
+            this.Magic_Defense = (float)stream.ReceiveNext();
             this.Speed = (float)stream.ReceiveNext();
             this.Heel = (float)stream.ReceiveNext();
         }

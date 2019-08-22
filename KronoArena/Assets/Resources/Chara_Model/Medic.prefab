@@ -1521,6 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb372a039f5045e89bb13c20f821e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Medic
   HP: 1519
   Attack: 52
   Magic_Attack: 331

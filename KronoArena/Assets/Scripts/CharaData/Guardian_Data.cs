@@ -29,10 +29,14 @@ public class Guardian_Data : MonoBehaviour
     //攻撃したかのフラグ
     public static bool SkillFlag1;
     public static bool SkillFlag2;
+    public static bool AttackFlag;
 
     //持続時間フラグ
     public static bool LimitFlag1;
     public static bool LimitFlag2;
+
+    //身代わりフラグ
+    public bool GuardFlag;
 
     //アニメーター 
     private Animator animator;
@@ -53,6 +57,10 @@ public class Guardian_Data : MonoBehaviour
         SkillFlag2 = false;     //スキル2発動判定フラグ
         LimitFlag1 = false;     //スキル1持続判定フラグ
         LimitFlag2 = false;     //スキル2持続判定フラグ
+
+        AttackFlag = false;
+
+        GuardFlag = false;
 
         animator = this.GetComponent<Animator>();
 
@@ -115,6 +123,8 @@ public class Guardian_Data : MonoBehaviour
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
+                    //身代わりフラグをオン
+                    GuardFlag = true;
 
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
@@ -131,42 +141,20 @@ public class Guardian_Data : MonoBehaviour
             }
 
             //スキル2の持続時間が終わるまで
-            if (LimitFlag1 == true)
+            if (LimitFlag2 == true)
             {
-                Skill1_Limit -= Time.deltaTime;
+                Skill2_Limit -= Time.deltaTime;
 
-
-                //肩代わり処理
-                GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
-                if (PhotonNetwork.player.ID == 2)
-                {
-                    targets = GameObject.FindGameObjectsWithTag("Player2");
-                }
-                foreach (GameObject obj in targets)
-                {
-                    // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
-                    float dist = Vector3.Distance(obj.transform.position, transform.position);
-                    //対象キャラとの距離表示
-                    Debug.Log(obj.name + "との距離は" + dist + "m");
-                    //3m以下なら体力回復判定
-                    if (dist < 2)
-                    {
-
-
-                    }
-                }
-
-
-                if (Skill1_Limit <= 0)
+                if (Skill2_Limit <= 0)
                 {
                     this.GetComponent<Status>().Defense -= 100.0f;
                     this.GetComponent<Status>().Magic_Defense -= 100.0f;
                     //持続時間フラグを初期値に
-                    LimitFlag1 = false;
-                    Skill1_Limit = 30.0f;
+                    LimitFlag2 = false;
+                    Skill2_Limit = 10.0f;
+                    GuardFlag = false;
                     Debug.Log("ガーディアン肩代わりの効果が終わった");
                 }
-
             }
         }
 
@@ -178,13 +166,43 @@ public class Guardian_Data : MonoBehaviour
     {
         if (other.tag != this.tag)
         {
-            other.GetComponent<Status>().HP -=
+            Guardian();
+            if(AttackFlag == false)
+            {
+                other.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-            Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack / 
-                ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-
+                Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
+                    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+            }
+            AttackFlag = false;
         }
     }
+
+    //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
+    void Guardian()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
+        if (PhotonNetwork.player.ID == 2)
+        {
+            targets = GameObject.FindGameObjectsWithTag("Player1");
+        }
+        foreach (GameObject obj in targets)
+        {
+            // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+            float dist = Vector3.Distance(obj.transform.position, transform.position);
+            //対象キャラとの距離表示
+            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0)
+            {
+                if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
+                {
+                    obj.GetComponent<Status>().HP -=
+                    (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    AttackFlag = true;
+                }
+            }
+        }
+    }
+
 
     //名前とtagの送受信
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

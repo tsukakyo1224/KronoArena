@@ -355,7 +355,7 @@ public class GameManager : MonoBehaviour
         }
         if (Guardian_Data.SkillFlag2 == true)
         {
-            CharaAttackTime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
+            CharaAttackTime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
             CharaAttackTime3.SetActive(true);
         }
         if (Guardian_Data.SkillFlag1 == false && Guardian_Data.SkillFlag2 == false)

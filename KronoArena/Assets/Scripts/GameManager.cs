@@ -250,7 +250,7 @@ public class GameManager : MonoBehaviour
                 {
                     GameLose();
                 }
-                else if (PhotonNetwork.player.ID == 2)
+                if (PhotonNetwork.player.ID == 2)
                 {
                     Gamewin();
                 }
@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour
                 {
                     GameLose();
                 }
-                else if (PhotonNetwork.player.ID == 1)
+                if (PhotonNetwork.player.ID == 1)
                 {
                     Gamewin();
                 }

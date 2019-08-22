@@ -15,7 +15,6 @@ public class Medic_Data : MonoBehaviour
     public static Sprite JobIconImage;
 
     //攻撃までの時間
-    public static float AttackTime;
     public static float SkillTime1;
     public static float SkillTime2;
 
@@ -112,6 +111,21 @@ public class Medic_Data : MonoBehaviour
                 SkillTime2 = 10.0f;
                 LimitFlag2 = true;
             }
+        }
+        //スキル2の持続時間が終わるまで
+        if (LimitFlag2 == true)
+        {
+            Skill2_Limit -= Time.deltaTime;
+            if (Skill2_Limit <= 0)
+            {
+                this.GetComponent<Status>().Defense -= 100.0f;
+                this.GetComponent<Status>().Magic_Defense -= 100.0f;
+                this.GetComponent<Status>().Heel -= 100.0f;
+                LimitFlag2 = false;
+                Skill2_Limit = 60.0f;
+                Debug.Log("メディックのステータスが元に戻った");
+            }
+
         }
 
     }

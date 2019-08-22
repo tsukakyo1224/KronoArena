@@ -14,10 +14,12 @@ public class Guardian_Data : MonoBehaviour
     //ジョブアイコン
     public static Sprite JobIconImage;
 
-    //攻撃までの時間
-    public static float AttackTime;
     public static float SkillTime1;
     public static float SkillTime2;
+
+    //持続時間
+    public static float Skill1_Limit;
+    public static float Skill2_Limit;
 
     //攻撃までの時間テキスト
     public static GameObject ATText1;
@@ -36,11 +38,12 @@ public class Guardian_Data : MonoBehaviour
     {
         CharaName = "ガーディアン";
         JobIconImage = Resources.Load<Sprite>("JobIcon/Guardian");
-        AttackTime = 3.0f;
-        SkillTime1 = 15.0f;
-        SkillTime2 = 20.0f;
-        SkillFlag1 = false;
-        SkillFlag2 = false;
+        SkillTime1 = 15.0f;     //スキル1発動時間
+        SkillTime2 = 20.0f;     //スキル2発動時間
+        Skill1_Limit = 30.0f;    //スキル1持続時間
+        Skill2_Limit = 10.0f;   //スキル2持続時間
+        SkillFlag1 = false; //スキル1発動判定フラグ
+        SkillFlag2 = false; //スキル2発動判定フラグ
         animator = this.GetComponent<Animator>();
 
     }

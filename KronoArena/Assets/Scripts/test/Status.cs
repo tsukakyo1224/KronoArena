@@ -111,11 +111,23 @@ public class Status : MonoBehaviour
         {
             //データの送信
             stream.SendNext(this.HP);
+            stream.SendNext(this.Attack);
+            stream.SendNext(this.Magic_Attack);
+            stream.SendNext(this.Defense);
+            stream.SendNext(this.Magic_Defense);
+            stream.SendNext(this.Speed);
+            stream.SendNext(this.Heel);
         }
         else
         {
             //データの受信
             this.HP = (float)stream.ReceiveNext();
+            this.Attack = (float)stream.ReceiveNext();
+            this.Magic_Attack = (float)stream.ReceiveNext();
+            this.Defense = (float)stream.ReceiveNext();
+            this.Magic_Attack = (float)stream.ReceiveNext();
+            this.Speed = (float)stream.ReceiveNext();
+            this.Heel = (float)stream.ReceiveNext();
         }
     }
 

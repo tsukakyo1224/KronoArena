@@ -1521,7 +1521,7 @@ MonoBehaviour:
   Defense: 166
   Magic_Defense: 284
   Speed: 3
-  Heel: 0
+  Heel: 200
   AttackIcon: {fileID: 0}
   SkillIcon1: {fileID: 0}
   SkillIcon2: {fileID: 0}

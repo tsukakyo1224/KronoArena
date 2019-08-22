@@ -23,7 +23,6 @@ public class Knight_Data : MonoBehaviour
     public static Sprite SkillIcon2;
 
     //攻撃までの時間
-    public static float AttackTime;
     public static float SkillTime1;
     public static float SkillTime2;
 

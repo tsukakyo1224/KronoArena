@@ -56,7 +56,6 @@ public class Status : MonoBehaviour
             {
                 photonView.RPC("CharaDied", PhotonTargets.All);
             }
-            //GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
             this.gameObject.SetActive(false);
             DiedFlag = true;
         }

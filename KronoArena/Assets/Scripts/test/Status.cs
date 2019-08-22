@@ -26,6 +26,7 @@ public class Status : MonoBehaviour
     public bool ActionFlag;
 
     PhotonView photonView;
+    PhotonView this_photonView;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class Status : MonoBehaviour
 
 
         photonView = GetComponent<PhotonView>();
+        this_photonView = PhotonView.Get(this);
 
     }
 
@@ -50,7 +52,10 @@ public class Status : MonoBehaviour
 
         if (HP < 0 && DiedFlag == false)
         {
-            photonView.RPC("CharaDied", PhotonTargets.Others);
+            if (this_photonView.isMine)
+            {
+                photonView.RPC("CharaDied", PhotonTargets.All);
+            }
             //GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
             this.gameObject.SetActive(false);
             DiedFlag = true;

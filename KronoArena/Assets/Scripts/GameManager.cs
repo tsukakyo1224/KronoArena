@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
 
             //終了判定
             //Player1の倒されたキャラが3体を越えたなら
-            if(P1_GP >= 2)
+            if(P1_GP >= 3)
             {
                 Network_01.gameplayflag = false;
                 Network_01.gamestartflag = false;

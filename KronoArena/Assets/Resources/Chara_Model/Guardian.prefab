@@ -1448,8 +1448,14 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 2
     Name: Skill2
+  - Type: 9
+    SynchronizeType: 2
+    Name: Skill1_Trigger
+  - Type: 9
+    SynchronizeType: 2
+    Name: Skill2_Trigger
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &9004192876292992282
 MonoBehaviour:
@@ -1554,6 +1560,7 @@ MonoBehaviour:
   hpSlider: {fileID: 0}
   MaxHP: 0
   DiedFlag: 0
+  ActionFlag: 0
 --- !u!1 &7972497964876689600
 GameObject:
   m_ObjectHideFlags: 0

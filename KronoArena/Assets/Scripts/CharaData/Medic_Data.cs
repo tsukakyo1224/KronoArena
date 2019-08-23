@@ -42,6 +42,7 @@ public class Medic_Data : MonoBehaviour
 
     //メディックのエフェクト
     [SerializeField] private static GameObject explosion;
+    [SerializeField] private static GameObject HeelArea;
 
     //位置情報
     public static Vector3 position;
@@ -65,6 +66,7 @@ public class Medic_Data : MonoBehaviour
 
         //エフェクト呼び出し
         explosion = Resources.Load<GameObject>("HolyBall");
+        HeelArea = Resources.Load<GameObject>("Heel");
 
         animator = this.GetComponent<Animator>();
 
@@ -169,6 +171,20 @@ public class Medic_Data : MonoBehaviour
         }
         instantiateEffect.GetComponent<Status>().Magic_Attack = this.GetComponent<Status>().Magic_Attack;
 
+    }
+
+    public void HeelAreaEffect()
+    {
+        var instantiateEffect = GameObject.Instantiate(HeelArea, position + new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
     }
 
 

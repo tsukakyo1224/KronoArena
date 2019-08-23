@@ -17,12 +17,14 @@ public class a : StateMachineBehaviour {
 
             if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
             {
+                Debug.Log("プレイヤー1から");
                 Me = GameObject.Find("P1_Chara2");
                 Me.GetComponent<Medic_Data>().effect();
             }
 
             else if (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
             {
+                Debug.Log("プレイヤー2から");
                 Me = GameObject.Find("P2_Chara2");
                 Me.GetComponent<Medic_Data>().effect();
             }

@@ -13,7 +13,7 @@ public class a : StateMachineBehaviour {
 		//メディック
 		if (stateInfo.IsName ("attack01") || stateInfo.IsName ("attack02") || stateInfo.IsName ("attack03")) {
 
-            photonView = PhotonView.Get(GameObject.Find("P1_Chara2");
+            photonView = PhotonView.Get(GameObject.Find("P1_Chara2"));
 
             GameObject Me = GameObject.Find("P1_Chara2");
 

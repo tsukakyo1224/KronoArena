@@ -40,6 +40,14 @@ public class Medic_Data : MonoBehaviour
     //Photonの
     private PhotonView photonView;
 
+    //メディックのエフェクト
+    [SerializeField] private static GameObject explosion;
+
+    //位置情報
+    public static Vector3 position;
+    public static Vector3 forword;
+    public static Quaternion quat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +63,9 @@ public class Medic_Data : MonoBehaviour
 
         AttackFlag = false;
 
+        //エフェクト呼び出し
+        explosion = Resources.Load<GameObject>("HolyBall");
+
         animator = this.GetComponent<Animator>();
 
         photonView = PhotonView.Get(this);
@@ -63,6 +74,10 @@ public class Medic_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        position = this.transform.position;
+        forword = this.transform.forward;
+        quat = this.transform.rotation;
+
         if (photonView.isMine)
         {
             //スキル1発動
@@ -138,6 +153,22 @@ public class Medic_Data : MonoBehaviour
 
             }
         }
+    }
+
+    public void effect()
+    {
+        var instantiateEffect = GameObject.Instantiate(explosion, this.transform.position + 
+            this.transform.forward + new Vector3(0.0f, 0.5f, 0.0f), this.transform.rotation) as GameObject;
+        if(this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if(this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+        instantiateEffect.GetComponent<Status>().Magic_Attack = this.GetComponent<Status>().Magic_Attack;
+
     }
 
 

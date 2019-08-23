@@ -46,7 +46,10 @@ public class Status : MonoBehaviour
     {
         if((PhotonNetwork.player.ID == 1 && this.tag=="Player1") ||
             (PhotonNetwork.player.ID == 2 && this.tag == "Player2")){
-            this.hpSlider.value = this.HP;
+            if(this.GetComponent<Status>().Name != "")
+            {
+                this.hpSlider.value = this.HP;
+            }
         }
 
 
@@ -104,6 +107,30 @@ public class Status : MonoBehaviour
                 hpSlider = GameObject.Find("BackGround").transform.Find("Player3HP").GetComponent<Slider>();
                 hpSlider.maxValue = HP;
                 hpSlider.value = HP;
+            }
+        }
+    }
+
+
+    public void AttackJudge()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
+        if (PhotonNetwork.player.ID == 2)
+        {
+            targets = GameObject.FindGameObjectsWithTag("Player1");
+        }
+        foreach (GameObject obj in targets)
+        {
+            // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+            float dist = Vector3.Distance(obj.transform.position, transform.position);
+            //対象キャラとの距離表示
+            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0)
+            {
+                if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
+                {
+                    obj.GetComponent<Status>().HP -=
+                    (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                }
             }
         }
     }

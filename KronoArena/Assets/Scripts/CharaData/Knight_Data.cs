@@ -145,6 +145,8 @@ public class Knight_Data : MonoBehaviour
                 }
 
             }
+
+            Debug.Log(this.transform.forward);
         }
     }
 
@@ -168,7 +170,7 @@ public class Knight_Data : MonoBehaviour
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()
     {
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
         if (PhotonNetwork.player.ID == 2)
         {
             targets = GameObject.FindGameObjectsWithTag("Player1");

@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class a : StateMachineBehaviour {
 
-	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+
+    private PhotonView photonView;
+
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
 		//メディック
 		if (stateInfo.IsName ("attack01") || stateInfo.IsName ("attack02") || stateInfo.IsName ("attack03")) {
 
+            photonView = PhotonView.Get(GameObject.Find("P1_Chara2");
+
             GameObject Me = GameObject.Find("P1_Chara2");
 
-			if(PhotonNetwork.player.ID == 2)
+            if (!photonView.isMine)
             {
-                Debug.Log("Medic");
                 Me = GameObject.Find("P2_Chara2");
             }
             Me.GetComponent<Medic_Data>().effect();

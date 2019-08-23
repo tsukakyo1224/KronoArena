@@ -26,6 +26,7 @@ public class Medic_Data : MonoBehaviour
     //攻撃したかのフラグ
     public static bool SkillFlag1;
     public static bool SkillFlag2;
+    public static bool AttackFlag;
 
     //持続時間
     public static float Skill2_Limit;
@@ -38,6 +39,14 @@ public class Medic_Data : MonoBehaviour
 
     //Photonの
     private PhotonView photonView;
+
+    //メディックのエフェクト
+    [SerializeField] private static GameObject explosion;
+
+    //位置情報
+    public static Vector3 position;
+    public static Vector3 forword;
+    public static Quaternion quat;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +61,11 @@ public class Medic_Data : MonoBehaviour
         SkillFlag2 = false;
         LimitFlag2 = false;
 
+        AttackFlag = false;
+
+        //エフェクト呼び出し
+        explosion = Resources.Load<GameObject>("HolyBall");
+
         animator = this.GetComponent<Animator>();
 
         photonView = PhotonView.Get(this);
@@ -60,6 +74,10 @@ public class Medic_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        position = this.transform.position;
+        forword = this.transform.forward;
+        quat = this.transform.rotation;
+
         if (photonView.isMine)
         {
             //スキル1発動
@@ -137,18 +155,62 @@ public class Medic_Data : MonoBehaviour
         }
     }
 
+    public void effect()
+    {
+        var instantiateEffect = GameObject.Instantiate(explosion, this.transform.position + 
+            this.transform.forward + new Vector3(0.0f, 0.5f, 0.0f), this.transform.rotation) as GameObject;
+        if(this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if(this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+        instantiateEffect.GetComponent<Status>().Magic_Attack = this.GetComponent<Status>().Magic_Attack;
+
+    }
+
 
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
         if (other.tag != this.tag)
         {
-            other.GetComponent<Status>().HP -=
-                    (int)(this.GetComponent<Status>().Magic_Attack / ((1 + other.GetComponent<Status>().Magic_Defense) / 10));
-            Debug.Log(other.tag);
-            Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Magic_Attack / 
-                ((1 + other.GetComponent<Status>().Magic_Defense) / 10)) + "ダメージ");
+            Guardian();
+            if (AttackFlag == false)
+            {
+                other.GetComponent<Status>().HP -=
+                    (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
+                Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
+                    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+            }
+            AttackFlag = false;
+        }
+    }
 
+    //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
+    void Guardian()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
+        if (PhotonNetwork.player.ID == 2)
+        {
+            targets = GameObject.FindGameObjectsWithTag("Player1");
+        }
+        foreach (GameObject obj in targets)
+        {
+            // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+            float dist = Vector3.Distance(obj.transform.position, transform.position);
+            //対象キャラとの距離表示
+            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0)
+            {
+                if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
+                {
+                    obj.GetComponent<Status>().HP -=
+                    (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    AttackFlag = true;
+                }
+            }
         }
     }
 

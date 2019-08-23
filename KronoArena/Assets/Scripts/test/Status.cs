@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Status : MonoBehaviour
 {
-
+    [SerializeField] public string Name;
     [SerializeField] public float HP;
     [SerializeField] public float Attack;
     [SerializeField] public float Magic_Attack;
@@ -46,7 +46,10 @@ public class Status : MonoBehaviour
     {
         if((PhotonNetwork.player.ID == 1 && this.tag=="Player1") ||
             (PhotonNetwork.player.ID == 2 && this.tag == "Player2")){
-            this.hpSlider.value = this.HP;
+            if(this.GetComponent<Status>().Name != "")
+            {
+                this.hpSlider.value = this.HP;
+            }
         }
 
 
@@ -56,7 +59,6 @@ public class Status : MonoBehaviour
             {
                 photonView.RPC("CharaDied", PhotonTargets.All);
             }
-            //GameObject.Find("GameManager").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
             this.gameObject.SetActive(false);
             DiedFlag = true;
         }
@@ -110,12 +112,37 @@ public class Status : MonoBehaviour
     }
 
 
+    public void AttackJudge()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
+        if (PhotonNetwork.player.ID == 2)
+        {
+            targets = GameObject.FindGameObjectsWithTag("Player1");
+        }
+        foreach (GameObject obj in targets)
+        {
+            // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+            float dist = Vector3.Distance(obj.transform.position, transform.position);
+            //対象キャラとの距離表示
+            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0)
+            {
+                if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
+                {
+                    obj.GetComponent<Status>().HP -=
+                    (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                }
+            }
+        }
+    }
+
+
     //HP送受信
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
             //データの送信
+            stream.SendNext(this.Name);
             stream.SendNext(this.HP);
             stream.SendNext(this.Attack);
             stream.SendNext(this.Magic_Attack);
@@ -127,11 +154,12 @@ public class Status : MonoBehaviour
         else
         {
             //データの受信
+            this.Name = (string)stream.ReceiveNext();
             this.HP = (float)stream.ReceiveNext();
             this.Attack = (float)stream.ReceiveNext();
             this.Magic_Attack = (float)stream.ReceiveNext();
             this.Defense = (float)stream.ReceiveNext();
-            this.Magic_Attack = (float)stream.ReceiveNext();
+            this.Magic_Defense = (float)stream.ReceiveNext();
             this.Speed = (float)stream.ReceiveNext();
             this.Heel = (float)stream.ReceiveNext();
         }

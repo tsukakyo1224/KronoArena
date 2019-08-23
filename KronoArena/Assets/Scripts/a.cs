@@ -13,21 +13,25 @@ public class a : StateMachineBehaviour {
 		//メディック
 		if (stateInfo.IsName ("attack01") || stateInfo.IsName ("attack02") || stateInfo.IsName ("attack03")) {
 
-            GameObject Me = GameObject.Find("P1_Chara2");
+            GameObject Me;
 
-            if (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
+            if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+            {
+                Me = GameObject.Find("P1_Chara2");
+                Me.GetComponent<Medic_Data>().effect();
+            }
+
+            else if (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
             {
                 Me = GameObject.Find("P2_Chara2");
+                Me.GetComponent<Medic_Data>().effect();
             }
             //photonView = PhotonView.Get(GameObject.Find("P1_Chara2"));
 
             //GameObject Me = GameObject.Find("P1_Chara2");
 
             //if (!photonView.isMine)
-            {
 
-            }
-            Me.GetComponent<Medic_Data>().effect();
 			//Medic_Data.effect();
 
 		}

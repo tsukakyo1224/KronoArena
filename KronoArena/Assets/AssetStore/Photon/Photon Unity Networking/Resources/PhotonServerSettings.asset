@@ -45,4 +45,5 @@ MonoBehaviour:
   - TaggedPlayer
   - SendFunc
   - RPC_AutomaticSend
+  - CharaDied
   DisableAutoOpenWizard: 1

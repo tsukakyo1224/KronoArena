@@ -5,7 +5,7 @@ using UnityEngine;
 public class a : StateMachineBehaviour {
 
 
-    private PhotonView photonView;
+    //private PhotonView photonView;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -13,13 +13,19 @@ public class a : StateMachineBehaviour {
 		//メディック
 		if (stateInfo.IsName ("attack01") || stateInfo.IsName ("attack02") || stateInfo.IsName ("attack03")) {
 
-            photonView = PhotonView.Get(GameObject.Find("P1_Chara2"));
-
             GameObject Me = GameObject.Find("P1_Chara2");
 
-            if (!photonView.isMine)
+            if (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
             {
                 Me = GameObject.Find("P2_Chara2");
+            }
+            //photonView = PhotonView.Get(GameObject.Find("P1_Chara2"));
+
+            //GameObject Me = GameObject.Find("P1_Chara2");
+
+            //if (!photonView.isMine)
+            {
+
             }
             Me.GetComponent<Medic_Data>().effect();
 			//Medic_Data.effect();

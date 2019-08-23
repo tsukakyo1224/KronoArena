@@ -71,7 +71,7 @@ public class ButtonCol : MonoBehaviour
         {
             animator3.SetBool("Attack", true);
         }
-        Debug.Log(ChangeChara.nowChara + " Attack");
+        //Debug.Log(ChangeChara.nowChara + " Attack");
         //Knight_Data.AttackFlag = false;
     }
 

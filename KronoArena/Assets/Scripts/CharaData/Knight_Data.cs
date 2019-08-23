@@ -145,8 +145,6 @@ public class Knight_Data : MonoBehaviour
                 }
 
             }
-
-            Debug.Log(this.transform.forward);
         }
     }
 

@@ -175,7 +175,7 @@ public class Medic_Data : MonoBehaviour
 
     public void HeelAreaEffect()
     {
-        var instantiateEffect = GameObject.Instantiate(HeelArea, position + new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+        var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
 
         if (this.tag == "Player1")
         {

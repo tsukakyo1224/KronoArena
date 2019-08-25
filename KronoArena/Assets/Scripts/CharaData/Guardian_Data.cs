@@ -44,6 +44,13 @@ public class Guardian_Data : MonoBehaviour
     //Photonの
     private PhotonView photonView;
 
+
+    //ガーディアンのエフェクト
+    [SerializeField] private static GameObject Skill1_Set;
+    [SerializeField] private static GameObject Skill1;
+    [SerializeField] private static GameObject Skill2_Set;
+    [SerializeField] private static GameObject Skill2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +72,12 @@ public class Guardian_Data : MonoBehaviour
         animator = this.GetComponent<Animator>();
 
         photonView = PhotonView.Get(this);
+
+        //エフェクト呼び出し
+        Skill1_Set = Resources.Load<GameObject>("Guardian_BuffSet1");
+        Skill1 = Resources.Load<GameObject>("Guardian_Buff1");
+        Skill2_Set = Resources.Load<GameObject>("Guardian_BigShieldSet");
+        Skill2 = Resources.Load<GameObject>("Guardian_BigShield");
 
     }
 
@@ -158,6 +171,62 @@ public class Guardian_Data : MonoBehaviour
             }
         }
 
+    }
+
+    public void BuffSet1()
+    {
+        var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void Buff1()
+    {
+        var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void BigShieldSet()
+    {
+        var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void BigShield()
+    {
+        var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
     }
 
 

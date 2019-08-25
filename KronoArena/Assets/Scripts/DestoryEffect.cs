@@ -33,9 +33,18 @@ public class DestoryEffect : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
+
+    //エフェクトを消す
 	public void Delete(){
 		Destroy (this.gameObject);
 	}
+
+    //エフェクトを消す
+    public void Delete2()
+    {
+        Destroy(this.gameObject, 3.0f);
+    }
+
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()

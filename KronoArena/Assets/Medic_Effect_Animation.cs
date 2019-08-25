@@ -18,7 +18,6 @@ public class Medic_Effect_Animation : StateMachineBehaviour
                 Me = GameObject.Find("P1_Chara2");
                 Me.GetComponent<Medic_Data>().effect();
             }
-
             else if (TurnCol.P2_Turn == true)
             {
                 Me = GameObject.Find("P2_Chara2");
@@ -26,6 +25,7 @@ public class Medic_Effect_Animation : StateMachineBehaviour
             }
 
         }
+
         if (stateInfo.IsName("heel01"))
         {
             GameObject Me;
@@ -42,24 +42,51 @@ public class Medic_Effect_Animation : StateMachineBehaviour
             }
 
         }
-        //if (stateInfo.IsName("heel02"))
-        //{
-        //    //GameObject Me = GameObject.Find("Medic");
-        //    //Debug.Log (Me);
-        //    MedicController.HeelShowerEffect();
-        //}
-        //if (stateInfo.IsName("skill2_1"))
-        //{
-        //    //GameObject Me = GameObject.Find("Medic");
-        //    //Debug.Log (Me);
-        //    MedicController.Medic_BuffSetEffect();
-        //}
-        //if (stateInfo.IsName("skill2_2"))
-        //{
-        //    //GameObject Me = GameObject.Find("Medic");
-        //    //Debug.Log (Me);
-        //    MedicController.Medic_BuffEffect();
-        //}
+        if (stateInfo.IsName("heel02"))
+        {
+            GameObject Me;
+            if (TurnCol.P1_Turn == true)
+            {
+                Me = GameObject.Find("P1_Chara2");
+                Me.GetComponent<Medic_Data>().HeelShowerEffect();
+            }
+
+            else if (TurnCol.P2_Turn == true)
+            {
+                Me = GameObject.Find("P2_Chara2");
+                Me.GetComponent<Medic_Data>().HeelShowerEffect();
+            }
+        }
+        if (stateInfo.IsName("skill01"))
+        {
+            GameObject Me;
+            if (TurnCol.P1_Turn == true)
+            {
+                Me = GameObject.Find("P1_Chara2");
+                Me.GetComponent<Medic_Data>().Medic_BuffSetEffect();
+            }
+
+            else if (TurnCol.P2_Turn == true)
+            {
+                Me = GameObject.Find("P2_Chara2");
+                Me.GetComponent<Medic_Data>().Medic_BuffSetEffect();
+            }
+        }
+        if (stateInfo.IsName("skill02"))
+        {
+            GameObject Me;
+            if (TurnCol.P1_Turn == true)
+            {
+                Me = GameObject.Find("P1_Chara2");
+                Me.GetComponent<Medic_Data>().Medic_BuffEffect();
+            }
+
+            else if (TurnCol.P2_Turn == true)
+            {
+                Me = GameObject.Find("P2_Chara2");
+                Me.GetComponent<Medic_Data>().Medic_BuffEffect();
+            }
+        }
 
     }
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -72,27 +99,27 @@ public class Medic_Effect_Animation : StateMachineBehaviour
         if (stateInfo.IsName("heel01"))
         {
             GameObject MeHeel = GameObject.Find("Heel(Clone)");
-            Debug.Log (MeHeel);
+            //Debug.Log (MeHeel);
             MeHeel.GetComponent<DestoryEffect>().Delete();
         }
-        //if (stateInfo.IsName("heel02"))
-        //{
-        //    GameObject MeHeel = GameObject.Find("HeelShower(Clone)");
-        //    //Debug.Log (MeHeel);
-        //    MeHeel.GetComponent<DestoryEffect>().Delete();
-        //}
-        //if (stateInfo.IsName("skill2_1"))
-        //{
-        //    GameObject MeHeel = GameObject.Find("Medic_BuffSet(Clone)");
-        //    //Debug.Log (MeHeel);
-        //    MeHeel.GetComponent<DestoryEffect>().Delete();
-        //}
-        //if (stateInfo.IsName("skill2_2"))
-        //{
-        //    GameObject MeHeel = GameObject.Find("Medic_Buff(Clone)");
-        //    //Debug.Log (MeHeel);
-        //    MeHeel.GetComponent<DestoryEffect>().Delete();
-        //}
+        if (stateInfo.IsName("heel02"))
+        {
+            GameObject MeHeel = GameObject.Find("HeelShower(Clone)");
+            //Debug.Log (MeHeel);
+            MeHeel.GetComponent<DestoryEffect>().Delete();
+        }
+        if (stateInfo.IsName("skill01"))
+        {
+            GameObject MeHeel = GameObject.Find("Medic_BuffSet(Clone)");
+            //Debug.Log (MeHeel);
+            MeHeel.GetComponent<DestoryEffect>().Delete();
+        }
+        if (stateInfo.IsName("skill02"))
+        {
+            GameObject MeHeel = GameObject.Find("Medic_Buff(Clone)");
+            //Debug.Log (MeHeel);
+            MeHeel.GetComponent<DestoryEffect>().Delete();
+        }
     }
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

@@ -43,6 +43,9 @@ public class Medic_Data : MonoBehaviour
     //メディックのエフェクト
     [SerializeField] private static GameObject explosion;
     [SerializeField] private static GameObject HeelArea;
+    [SerializeField] private static GameObject HeelShower;
+    [SerializeField] private static GameObject Medic_Buff;
+    [SerializeField] private static GameObject Medic_BuffSet;
 
     //位置情報
     public static Vector3 position;
@@ -67,6 +70,9 @@ public class Medic_Data : MonoBehaviour
         //エフェクト呼び出し
         explosion = Resources.Load<GameObject>("HolyBall");
         HeelArea = Resources.Load<GameObject>("Heel");
+        HeelShower = Resources.Load<GameObject>("HeelShower");
+        Medic_Buff = Resources.Load<GameObject>("Medic_Buff");
+        Medic_BuffSet = Resources.Load<GameObject>("Medic_BuffSet");
 
         animator = this.GetComponent<Animator>();
 
@@ -176,6 +182,48 @@ public class Medic_Data : MonoBehaviour
     public void HeelAreaEffect()
     {
         var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void HeelShowerEffect()
+    {
+        var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void Medic_BuffEffect()
+    {
+        var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void Medic_BuffSetEffect()
+    {
+        var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
 
         if (this.tag == "Player1")
         {

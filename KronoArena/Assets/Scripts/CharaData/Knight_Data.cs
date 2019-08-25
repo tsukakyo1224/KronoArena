@@ -51,6 +51,12 @@ public class Knight_Data : MonoBehaviour
 
     private PhotonView photonView;
 
+    //ナイトのエフェクト
+    [SerializeField] private static GameObject Skill1_Set;
+    [SerializeField] private static GameObject Skill1;
+    [SerializeField] private static GameObject Skill2_Set;
+    [SerializeField] private static GameObject Skill2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +83,12 @@ public class Knight_Data : MonoBehaviour
         animator = this.GetComponent<Animator>();
 
         photonView = PhotonView.Get(this);
+
+        //エフェクト呼び出し
+        Skill1_Set = Resources.Load<GameObject>("Knight_RollSet");
+        Skill1 = Resources.Load<GameObject>("Knight_Roll");
+        Skill2_Set = Resources.Load<GameObject>("Knight_BuffSet");
+        Skill2 = Resources.Load<GameObject>("Knight_Buff");
 
     }
 
@@ -147,6 +159,65 @@ public class Knight_Data : MonoBehaviour
             }
         }
     }
+
+
+    public void RollSet()
+    {
+        var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void Roll()
+    {
+        var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void BuffSet()
+    {
+        var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+    public void Buff()
+    {
+        var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+    }
+
+
 
     //ダメージ計算
     void OnTriggerExit(Collider other)

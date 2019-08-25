@@ -4779,6 +4779,7 @@ GameObject:
   - component: {fileID: 114837149744869962}
   - component: {fileID: 8086770686828532228}
   - component: {fileID: 8431776026825529450}
+  - component: {fileID: 8547809879341033476}
   m_Layer: 0
   m_Name: HolyBall
   m_TagString: Untagged
@@ -9643,3 +9644,30 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &8547809879341033476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245404818782664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb372a039f5045e89bb13c20f821e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  HP: 0
+  Attack: 0
+  Magic_Attack: 0
+  Defense: 0
+  Magic_Defense: 0
+  Speed: 0
+  Heel: 0
+  AttackIcon: {fileID: 0}
+  SkillIcon1: {fileID: 0}
+  SkillIcon2: {fileID: 0}
+  hpSlider: {fileID: 0}
+  MaxHP: 0
+  DiedFlag: 0
+  ActionFlag: 0

@@ -52,7 +52,7 @@ public class TimerScript : MonoBehaviour
             {
                 //PhotonView photonView = GetComponent<PhotonView>();
                 //photonView.RPC("ChangeTurn", PhotonTargets.All);
-                GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
                 //TurnCol.ChangeTurn();
                 GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
                 Debug.Log("time");

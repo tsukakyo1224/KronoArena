@@ -44,6 +44,7 @@ public class TurnCol : MonoBehaviour
     [PunRPC]
     public void Turn_Change()
     {
+        this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         //プレイヤー2に移る
         if (P1_Turn == true)
         {

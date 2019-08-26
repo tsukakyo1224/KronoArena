@@ -40,7 +40,11 @@ public class TurnCol : MonoBehaviour
         //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         //this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-        photonView.RPC("Turn_Change", PhotonTargets.All);
+        if (photonView.isMine)
+        {
+            photonView.RPC("Turn_Change", PhotonTargets.All);
+        }
+
     }
 
 

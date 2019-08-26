@@ -14,6 +14,8 @@ public class TurnCol : MonoBehaviour
     [SerializeField]
     public bool p2turn;
 
+    public PhotonView photonView;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,8 @@ public class TurnCol : MonoBehaviour
         //今の所prayer1が先行
         P1_Turn = true;
         P2_Turn = false;
+
+        photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -35,8 +39,6 @@ public class TurnCol : MonoBehaviour
     {
         //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         //this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-
-        PhotonView photonView = GetComponent<PhotonView>();
         photonView.RPC("Turn_Change", PhotonTargets.All);
     }
 

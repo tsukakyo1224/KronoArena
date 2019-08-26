@@ -31,13 +31,13 @@ public class NetWork_02 : MonoBehaviour
                 // 第3引数にrotation
                 // 第4引数にView ID(指定しない場合は0)
                 //キャラクター一人目生成
-                Vector3 pos = new Vector3(0f, 0f, 0f);
+                Vector3 pos = new Vector3(0f, 0f, 3.0f);
                 P1_Chara1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
                 //キャラクター二人目生成
-                pos = new Vector3(3.5f, 0f, 0f);
+                pos = new Vector3(3.5f, 0f, 3.0f);
                 P1_Chara2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
                 //キャラクター三人目生成
-                pos = new Vector3(-3.5f, 0f, 0f);
+                pos = new Vector3(-3.5f, 0f, 3.0f);
                 P1_Chara3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
                 //キャラクターの名前、tag設定
                 P1_Chara1.name = "P1_Chara1";
@@ -53,13 +53,13 @@ public class NetWork_02 : MonoBehaviour
             {
                 Network_01.gamestartflag = false;
                 //キャラクター一人目生成
-                Vector3 pos = new Vector3(0f, 0f, 5f);
+                Vector3 pos = new Vector3(0f, 0f, -3.0f);
                 P2_Chara1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
                 //キャラクター二人目生成
-                pos = new Vector3(3.5f, 0f, 5f);
+                pos = new Vector3(3.5f, 0f, -3.0f);
                 P2_Chara2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
                 //キャラクター三人目生成
-                pos = new Vector3(-3.5f, 0f, 5f);
+                pos = new Vector3(-3.5f, 0f, -3.0f);
                 P2_Chara3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
 
                 //キャラクターの名前、tag設定

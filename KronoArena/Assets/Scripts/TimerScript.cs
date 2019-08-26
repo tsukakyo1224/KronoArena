@@ -14,7 +14,7 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //初期値
+        /*//初期値
         if(PhotonNetwork.player.ID == 1)
         {
             TotalTime = 15.0f;
@@ -22,7 +22,8 @@ public class TimerScript : MonoBehaviour
         else if(PhotonNetwork.player.ID == 2)
         {
             TotalTime = 15.0f;
-        }
+        }*/
+        TotalTime = 15.0f;
         //タイマーテキスト
         TimeText = GameObject.Find("Time");
     }

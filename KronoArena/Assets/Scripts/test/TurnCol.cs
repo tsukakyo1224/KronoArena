@@ -31,8 +31,10 @@ public class TurnCol : MonoBehaviour
         p2turn = P2_Turn;
     }
 
-    public static void ChangeTurn()
+    public void ChangeTurn()
     {
+        //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+        this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         //プレイヤー2に移る
         if (P1_Turn　==　true)
         {

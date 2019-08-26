@@ -78,7 +78,7 @@ public class FollowingCamera : MonoBehaviour
 
         
     }
-
+     
     void updateAngle(float x, float y)
     {
         x = azimuthalAngle - x * mouseXSensitivity;

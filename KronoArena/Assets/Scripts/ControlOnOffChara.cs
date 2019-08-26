@@ -68,20 +68,16 @@ public class ControlOnOffChara : MonoBehaviour
             {
                 velocity = Vector3.zero;
 
-                //if (isControl)
-                //{
-
                 var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
                 if (input.magnitude > 0f)
                 {
-                    //animator.SetFloat("Speed", input.magnitude);
                     transform.LookAt(transform.position + input);
                     velocity = transform.forward * walkSpeed;
                 }
                 else
                 {
-                    //animator.SetFloat("Speed", 0f);
+
                 }
 
                 if (Input.GetButtonDown("Jump"))
@@ -89,8 +85,7 @@ public class ControlOnOffChara : MonoBehaviour
                     velocity.y += 5f;
                 }
                 animator.SetBool("Run", velocity.magnitude > 1.0f);
-                //Debug.Log(velocity.magnitude);
-                //}
+
             }
         }
 

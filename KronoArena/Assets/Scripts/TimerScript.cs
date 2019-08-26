@@ -15,7 +15,7 @@ public class TimerScript : MonoBehaviour
     void Start()
     {
         //初期値
-        TotalTime = 5.0f;
+        TotalTime = 30.0f;
         //タイマーテキスト
         TimeText = GameObject.Find("Time");
     }
@@ -23,24 +23,32 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //時間
-        if (TurnCol.P1_Turn == true) 
+        if(PhotonNetwork.playerList.Length == 2 && Network_01.gameplayflag == true)
+        //if (Network_01.gameplayflag == true)
         {
-            TotalTime -= Time.deltaTime;
-            TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
-        }
-        else
-        {
-            TotalTime += Time.deltaTime;
-            TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+            //時間
+            if ((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
+                (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
+            {
+                TotalTime -= Time.deltaTime;
+                TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+            }
+            else
+            {
+                TotalTime += Time.deltaTime;
+                TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+            }
+
+            //ターン切り替え
+            if (TotalTime < 0.0f)
+            {
+                //TotalTime = 5.0f;
+                GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                TurnCol.ChangeTurn();
+                Debug.Log("time");
+            }
         }
 
-        //ターン切り替え
-        if(TotalTime < 0.0f)
-        {
-            //TotalTime = 5.0f;
-            TurnCol.ChangeTurn();
-        }
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

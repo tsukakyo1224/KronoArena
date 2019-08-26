@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Network_01 : MonoBehaviour
 {
-
+    //ゲームスタートフラグ
     public static bool gamestartflag;
+    //ゲーム継続フラグ
     public static bool gameplayflag = false;
 
 
@@ -13,7 +14,6 @@ public class Network_01 : MonoBehaviour
     {
         // Photonに接続する(引数でゲームのバージョンを指定できる)
         PhotonNetwork.ConnectUsingSettings("v1.0");
-
         gamestartflag = false;
     }
 

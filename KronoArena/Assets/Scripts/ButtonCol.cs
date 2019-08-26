@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonCol : MonoBehaviour
 {
@@ -19,86 +20,126 @@ public class ButtonCol : MonoBehaviour
     void Start()
     {
 
-        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(FollowingCamera.cameraflag == true)
+        if(GameManager.cameraflag == true)
         {
-            Player1 = GameObject.Find("Player1(Clone)");
-            animator1 = Player1.GetComponent<Animator>();
-            Player2 = GameObject.Find("Player2(Clone)");
-            animator2 = Player2.GetComponent<Animator>();
-            Player3 = GameObject.Find("Player3(Clone)");
-            animator3 = Player3.GetComponent<Animator>();
+            if(PhotonNetwork.player.ID == 1)
+            {
+                Player1 = GameObject.Find("P1_Chara1");
+                animator1 = Player1.GetComponent<Animator>();
+                Player2 = GameObject.Find("P1_Chara2");
+                animator2 = Player2.GetComponent<Animator>();
+                Player3 = GameObject.Find("P1_Chara3");
+                animator3 = Player3.GetComponent<Animator>();
+            }
+            else
+            {
+                Player1 = GameObject.Find("P2_Chara1");
+                animator1 = Player1.GetComponent<Animator>();
+                Player2 = GameObject.Find("P2_Chara2");
+                animator2 = Player2.GetComponent<Animator>();
+                Player3 = GameObject.Find("P2_Chara3");
+                animator3 = Player3.GetComponent<Animator>();
+            }
         }
     }
 
     public void TurnChange()
     {
+        GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         TurnCol.ChangeTurn();
-        //TimerScript.TotalTime = 5.0f;
+        Debug.Log("button");
     }
 
     //攻撃ボタン1
     public void Attack1()
     {
-        if (ChangeChara.nowChara == 0 && CharaData1.AttackFlag == false)
+        if (ChangeChara.nowChara == 0)
         {
-            animator1.SetBool("Jab", true);
-            CharaData1.AttackFlag = true;
-            GameManager.CharaAttackTime1.SetActive(true);
+            animator1.SetBool("Attack", true);
+
         }
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Jab", true);
-            GameManager.CharaAttackTime2.SetActive(true);
+            animator2.SetBool("Attack", true);
         }
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Jab", true);
-            GameManager.CharaAttackTime3.SetActive(true);
+            animator3.SetBool("Attack", true);
         }
-        Debug.Log(ChangeChara.nowChara + " Attack");
+        //Debug.Log(ChangeChara.nowChara + " Attack");
+        //Knight_Data.AttackFlag = false;
     }
 
-    //スペシャル攻撃1
+    //スキル1
     public void Special1()
     {
-        if (ChangeChara.nowChara == 0 && CharaData1.AttackFlag == false)
+        //ナイトの場合
+        if (ChangeChara.nowChara == 0)
         {
-           animator1.SetBool("Hikick", true);
-           CharaData1.AttackFlag = true;
-            CharaData1.AT1Text3.SetActive(true);
+            if (Knight_Data.SkillFlag2 == false)
+            {
+                Knight_Data.SkillFlag1 = true;
+                animator1.SetBool("Skill1", true);
+            }
         }
+        //メディックの場合
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Hikick", true);
+            if (Medic_Data.SkillFlag2 == false)
+            {
+                Medic_Data.SkillFlag1 = true;
+                animator2.SetBool("Skill1", true);
+            }
         }
+        //ガーディアンの場合
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Hikick", true);
+            if (Guardian_Data.SkillFlag2 == false)
+            {
+                Guardian_Data.SkillFlag1 = true;
+                animator3.SetBool("Skill1", true);
+            }
         }
         Debug.Log(ChangeChara.nowChara + " Special1");
     }
-    //スペシャル攻撃2
+
+    //スキル2
     public void Special2()
     {
-        if (ChangeChara.nowChara == 0 && CharaData1.AttackFlag == false)
+        //ナイトの場合
+        if (ChangeChara.nowChara == 0)
         {
-            animator1.SetBool("Spinkick", true);
-            CharaData1.AttackFlag = true;
+            if (Knight_Data.SkillFlag1 == false)
+            {
+                Knight_Data.SkillFlag2 = true;
+                animator1.SetBool("Skill2", true);
+            }
         }
+        //メディックの場合
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Spinkick", true);
+            if (Medic_Data.SkillFlag1 == false)
+            {
+                Medic_Data.SkillFlag2 = true;
+                animator2.SetBool("Skill2", true);
+            }
         }
+        //ガーディアンの場合
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Spinkick", true);
+            if (Guardian_Data.SkillFlag1 == false)
+            {
+                Guardian_Data.SkillFlag2 = true;
+                animator3.SetBool("Skill2", true);
+            }
         }
         Debug.Log(ChangeChara.nowChara + " Special2");
     }
+
+
 }

@@ -8,7 +8,6 @@
 public class FollowingCamera : MonoBehaviour
 {
     public GameObject target; // an object to follow
-    public static bool cameraflag = false; 
     public Vector3 offset; // offset form the target object
 
     [SerializeField] private float distance = 4.0f; // distance from following object
@@ -27,24 +26,47 @@ public class FollowingCamera : MonoBehaviour
     {
         if (Network_01.gameplayflag == true)
         {
-            //カメラのターゲット変更
-            if (ChangeChara.nowChara == 0)
+            if (PhotonNetwork.player.ID == 1)
             {
-                target = GameObject.Find("Player1(Clone)");
+                //カメラのターゲット変更
+                if (ChangeChara.nowChara == 0)
+                {
+                    target = GameObject.Find("P1_Chara1");
+                }
+
+                else if (ChangeChara.nowChara == 1)
+                {
+                    target = GameObject.Find("P1_Chara2");
+                }
+                else if (ChangeChara.nowChara == 2)
+                {
+                    target = GameObject.Find("P1_Chara3");
+                }
             }
 
-            else if (ChangeChara.nowChara == 1)
+            else if(PhotonNetwork.player.ID == 2)
             {
-                target = GameObject.Find("Player2(Clone)");
-            }
-            else if (ChangeChara.nowChara == 2)
-            {
-                target = GameObject.Find("Player3(Clone)");
-            }
+                //カメラのターゲット変更
+                if (ChangeChara.nowChara == 0)
+                {
+                    target = GameObject.Find("P2_Chara1");
+                }
 
-            var lookAtPos = target.transform.position + offset;
-            updatePosition(lookAtPos);
-            transform.LookAt(lookAtPos);
+                else if (ChangeChara.nowChara == 1)
+                {
+                    target = GameObject.Find("P2_Chara2");
+                }
+                else if (ChangeChara.nowChara == 2)
+                {
+                    target = GameObject.Find("P2_Chara3");
+                }
+            }
+            if(target != null)
+            {
+                var lookAtPos = target.transform.position + offset;
+                updatePosition(lookAtPos);
+                transform.LookAt(lookAtPos);
+            }
             //cameraflag = false;
         }
         if (Input.GetMouseButton(0))

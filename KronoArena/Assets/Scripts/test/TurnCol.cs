@@ -18,37 +18,41 @@ public class TurnCol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //プレイヤー1なら
-        if (PhotonNetwork.player.ID == 1)
-        {
-            P1_Turn = true;
-        }
-        //プレイヤー2なら
-        else
-        {
-            P2_Turn = true;
-        }
+        //今の所prayer1が先行
+        P1_Turn = true;
+        P2_Turn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //見えるように
         p1turn = P1_Turn;
         p2turn = P2_Turn;
     }
 
     public static void ChangeTurn()
     {
-        if (P1_Turn == true)
+        //プレイヤー2に移る
+        if (P1_Turn　==　true)
         {
             P2_Turn = true;
             P1_Turn = false;
         }
-        else
+        //プレイヤー1に移る
+        else if(P2_Turn == true)
         {
             P1_Turn = true;
             P2_Turn = false;
         }
+        GameManager.TurnChangeImage();
+    }
+
+
+    [PunRPC]
+    public void ColorRpc(Vector3 col)
+    {
+
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

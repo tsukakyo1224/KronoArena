@@ -17,16 +17,27 @@ public class ChangeChara : MonoBehaviour
 
     void Update()
     {
-        if (FollowingCamera.cameraflag == true)
+        if (GameManager.cameraflag == true)
         {
-            charaLists.Add(GameObject.Find("Player1(Clone)"));
-            charaLists.Add(GameObject.Find("Player2(Clone)"));
-            charaLists.Add(GameObject.Find("Player3(Clone)"));
+            //キャラリスト作成
+            if (PhotonNetwork.player.ID == 1)
+            {
+                charaLists.Add(GameObject.Find("P1_Chara1"));
+                charaLists.Add(GameObject.Find("P1_Chara2"));
+                charaLists.Add(GameObject.Find("P1_Chara3"));
+            }
+            else if(PhotonNetwork.player.ID == 2)
+            {
+                charaLists.Add(GameObject.Find("P2_Chara1"));
+                charaLists.Add(GameObject.Find("P2_Chara2"));
+                charaLists.Add(GameObject.Find("P2_Chara3"));
+
+            }
             //　最初の操作キャラクターを0番目のキャラクターにする為、キャラクターの総数をnowCharaに設定し最初のキャラクターが設定されるようにする
             nowChara = charaLists.Count;
-            Debug.Log(nowChara);
+            //Debug.Log("現在のキャラ番号" + nowChara);
             ChangeCharacter(nowChara);
-            FollowingCamera.cameraflag = false;
+            GameManager.cameraflag = false;
         }
         //　Qキーが押されたら操作キャラクターを次のキャラクターに変更する
         if (Input.GetKeyDown("q"))
@@ -63,7 +74,7 @@ public class ChangeChara : MonoBehaviour
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        Debug.Log(nowChara);
+        Debug.Log("現在のキャラ番号" + nowChara);
     }
 
     public void Change2(int tempNowChara)
@@ -91,7 +102,7 @@ public class ChangeChara : MonoBehaviour
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        Debug.Log(nowChara);
+        Debug.Log("現在のキャラ番号" + nowChara);
     }
 
     public void Change3(int tempNowChara)
@@ -119,7 +130,7 @@ public class ChangeChara : MonoBehaviour
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        Debug.Log(nowChara);
+        Debug.Log("現在のキャラ番号" + nowChara);
     }
 
 

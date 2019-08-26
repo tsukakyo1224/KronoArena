@@ -33,7 +33,7 @@ public class INSCore : PunBehaviour, IPunTurnManagerCallbacks// このコール�
         this.turnManager.TurnManagerListener = this;//リスナーを？
         this.turnManager.TurnDuration = 5f;//ターンは5秒にする
 
-        PhotonView = GameObject.Find("Scripts").GetComponent<PhotonView>();//scriptsにphotonviewを付けておくのを忘れずに。
+        //PhotonView = GameObject.Find("Scripts").GetComponent<PhotonView>();//scriptsにphotonviewを付けておくのを忘れずに。
 
     }
 

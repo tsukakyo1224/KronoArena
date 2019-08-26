@@ -153,7 +153,8 @@ public class GameManager : MonoBehaviour
             //現時点でナイト確定
             if (ChangeChara.nowChara == 0)
             {
-                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
+                    (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
                 {
                     OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Knight");
                 }
@@ -184,7 +185,8 @@ public class GameManager : MonoBehaviour
             //現時点でメディック確定
             else if (ChangeChara.nowChara == 1)
             {
-                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
+                    (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
                 {
                     OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Medic");
                 }
@@ -214,7 +216,8 @@ public class GameManager : MonoBehaviour
             //現時点でガーディアン確定
             else if (ChangeChara.nowChara == 2)
             {
-                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
+                    (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
                 {
                     OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Guardian");
                 }

@@ -381,7 +381,7 @@ public class GameManager : MonoBehaviour
 
             Camera.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
-            Camera.transform.rotation = Quaternion.Euler(Camera.transform.position.x, Camera.transform.rotation.y, 0.0f);
+            Camera.transform.rotation = Quaternion.Euler(20.0f, -180.0f, 0.0f);
         }
         else
         {
@@ -395,7 +395,7 @@ public class GameManager : MonoBehaviour
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
 
-            Camera.transform.rotation = Quaternion.Euler(Camera.transform.position.x, Camera.transform.rotation.y, 180.0f);
+            Camera.transform.rotation = Quaternion.Euler(20.0f, 0.0f, 180.0f);
 
         }
     }

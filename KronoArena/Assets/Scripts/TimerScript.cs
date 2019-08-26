@@ -15,7 +15,14 @@ public class TimerScript : MonoBehaviour
     void Start()
     {
         //初期値
-        TotalTime = 30.0f;
+        if(PhotonNetwork.player.ID == 1)
+        {
+            TotalTime = 15.0f;
+        }
+        else if(PhotonNetwork.player.ID == 2)
+        {
+            TotalTime = 15.0f;
+        }
         //タイマーテキスト
         TimeText = GameObject.Find("Time");
     }

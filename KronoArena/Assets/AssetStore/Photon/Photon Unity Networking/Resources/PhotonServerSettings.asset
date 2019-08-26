@@ -46,4 +46,6 @@ MonoBehaviour:
   - SendFunc
   - RPC_AutomaticSend
   - CharaDied
+  - ChangeTurn
+  - Turn_Change
   DisableAutoOpenWizard: 1

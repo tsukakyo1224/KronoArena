@@ -22,7 +22,7 @@ public class CameraCol : MonoBehaviour
             else if (PhotonNetwork.player.ID == 2)
             {
                 this.transform.position = new Vector3(0.0f, 3.0f, -7.0f);
-                this.transform.rotation = Quaternion.Euler(this.transform.position.x, this.transform.position.y-180.0f, 180.0f);
+                //this.transform.rotation = Quaternion.Euler(this.transform.position.x, this.transform.position.y-180.0f, 180.0f);
             }
         }
     }

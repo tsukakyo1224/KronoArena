@@ -97,7 +97,7 @@ public class CharaCol_test : MonoBehaviour
                         {
                             velocity = transform.forward * playerSpeed;
                             animator.SetBool("Run", mag.magnitude > 1.0f);
-                            playerSpeed = 5.0f;
+                            playerSpeed = this.gameObject.GetComponent<Status>().Speed;
                         }
                         else if (mag.magnitude <= 5f)
                         {

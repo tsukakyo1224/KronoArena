@@ -265,7 +265,7 @@ public class Knight_Data : MonoBehaviour
     void Guardian()
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
-        if (PhotonNetwork.player.ID == 2)
+        if (this.tag == "Player2")
         {
             targets = GameObject.FindGameObjectsWithTag("Player1");
         }

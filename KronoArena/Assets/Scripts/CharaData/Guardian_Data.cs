@@ -71,7 +71,7 @@ public class Guardian_Data : MonoBehaviour
 
         animator = this.GetComponent<Animator>();
 
-        photonView = PhotonView.Get(this);
+        photonView = GetComponent<PhotonView>();
 
         //エフェクト呼び出し
         Skill1_Set = Resources.Load<GameObject>("Guardian_BuffSet1");
@@ -137,7 +137,8 @@ public class Guardian_Data : MonoBehaviour
                 if (SkillTime2 <= 0)
                 {
                     //身代わりフラグをオン
-                    GuardFlag = true;
+                    //GuardFlag = true;
+                    photonView.RPC("GuardOn", PhotonTargets.All);
 
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
@@ -165,13 +166,31 @@ public class Guardian_Data : MonoBehaviour
                     //持続時間フラグを初期値に
                     LimitFlag2 = false;
                     Skill2_Limit = 10.0f;
-                    GuardFlag = false;
+                    //GuardFlag = false;
+                    photonView.RPC("GuardOff", PhotonTargets.All);
                     Debug.Log("ガーディアン肩代わりの効果が終わった");
                 }
             }
         }
 
     }
+
+
+    [PunRPC]
+    public void GuardOn()
+    {
+        //身代わりフラグをオン
+        GuardFlag = true;
+    }
+
+    [PunRPC]
+    public void GuardOff()
+    {
+        //身代わりフラグをオン
+        GuardFlag = false;
+    }
+
+
 
     public void BuffSet1()
     {

@@ -75,7 +75,7 @@ public class Medic_Data : MonoBehaviour
 
         animator = this.GetComponent<Animator>();
 
-        photonView = PhotonView.Get(this);
+        photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -97,7 +97,8 @@ public class Medic_Data : MonoBehaviour
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
-                    HeelShowerEffect(); //エフェクト発動
+                    //HeelShowerEffect(); //エフェクト発動
+                    photonView.RPC("HeelShowerEffect", PhotonTargets.All);
                     animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
                     SkillTime1 = 20.0f;
@@ -197,6 +198,7 @@ public class Medic_Data : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void HeelShowerEffect()
     {
         var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;

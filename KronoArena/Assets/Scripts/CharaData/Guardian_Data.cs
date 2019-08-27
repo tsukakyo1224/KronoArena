@@ -224,28 +224,28 @@ public class Guardian_Data : MonoBehaviour
     {
         var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void BigShield()
     {
         var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void Damage()

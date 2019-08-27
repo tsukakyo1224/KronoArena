@@ -235,15 +235,19 @@ public class Knight_Data : MonoBehaviour
                 Vector3 playerPos = this.transform.position; // プレイヤーの位置
                 Vector3 enemyPos = obj.transform.position; // 敵の位置
 
-                float angle = 30.0f;    //攻撃範囲内の角度
+                float angle = 60.0f;    //攻撃範囲内の角度
 
                 // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
                 if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)
                 {
+                    //Debug.Log(obj.name);
                     //ダメージを与える
                     obj.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
-                    AttackFlag = true;
+
+                    Debug.Log(obj + "に" + (int)(this.GetComponent<Status>().Attack /
+                    ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+                    //AttackFlag = true;
                 }
 
 

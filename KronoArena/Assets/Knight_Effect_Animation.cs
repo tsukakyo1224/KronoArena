@@ -12,6 +12,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
         {
             if(PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
             {
+                Debug.Log("aa");
                 GameObject Kn = GameObject.Find("P1_Chara1");
                 Kn.GetComponent<Knight_Data>().Damage();
             }

@@ -149,6 +149,25 @@ public class GameManager : MonoBehaviour
                 Chara3 = GameObject.Find("P2_Chara3");
             }
 
+
+            if(PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+            {
+                GameObject.Find("P1_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P1_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P1_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P2_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P2_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P2_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+            }
+            else if(PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
+            {
+                GameObject.Find("P1_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P1_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P1_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P2_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P2_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                GameObject.Find("P2_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+            }
             //操作キャラ変更時に操作キャラクター表示の変更
             //現時点でナイト確定
             if (ChangeChara.nowChara == 0)

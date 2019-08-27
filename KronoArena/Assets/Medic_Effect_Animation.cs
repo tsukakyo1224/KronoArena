@@ -98,25 +98,25 @@ public class Medic_Effect_Animation : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.IsName("heel01"))
+        /*if (stateInfo.IsName("heel01"))
         {
             GameObject MeHeel = GameObject.Find("Heel(Clone)");
             //Debug.Log (MeHeel);
             MeHeel.GetComponent<DestoryEffect>().Delete();
         }
-        /*
+
         if (stateInfo.IsName("heel02"))
         {
             GameObject MeHeel = GameObject.Find("HeelShower(Clone)");
             //Debug.Log (MeHeel);
             MeHeel.GetComponent<DestoryEffect>().Delete();
-        }*/
+        }
         if (stateInfo.IsName("skill01"))
         {
             GameObject MeHeel = GameObject.Find("Medic_BuffSet(Clone)");
             //Debug.Log (MeHeel);
             MeHeel.GetComponent<DestoryEffect>().Delete();
-        }/*
+        }
         if (stateInfo.IsName("skill02"))
         {
             GameObject MeHeel = GameObject.Find("Medic_Buff(Clone)");

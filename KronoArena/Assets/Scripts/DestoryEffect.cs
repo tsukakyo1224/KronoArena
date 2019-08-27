@@ -15,8 +15,11 @@ public class DestoryEffect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (this.gameObject.name == "Heel(Clone)")
+        {
+            Destroy(this.gameObject, 20f);
+        }
+    }
 
     //オブジェクトがぶつかった時
 	void OnParticleCollision(GameObject obj) {

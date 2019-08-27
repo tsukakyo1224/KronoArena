@@ -85,7 +85,7 @@ public class Medic_Data : MonoBehaviour
         forword = this.transform.forward;
         quat = this.transform.rotation;
 
-        //if (photonView.isMine)
+        if (photonView.isMine)
         if(PhotonNetwork.player.ID == 1 && this.tag == "Player1" ||
             PhotonNetwork.player.ID == 2 && this.tag == "Player2")
         {
@@ -104,7 +104,7 @@ public class Medic_Data : MonoBehaviour
 
                     //回復処理
                     GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
-                    if (PhotonNetwork.player.ID == 2)
+                    if (this.tag == "Player2")
                     {
                         targets = GameObject.FindGameObjectsWithTag("Player2");
                     }

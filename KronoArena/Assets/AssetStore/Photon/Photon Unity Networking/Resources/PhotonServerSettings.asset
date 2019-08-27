@@ -51,4 +51,10 @@ MonoBehaviour:
   - HeelShowerEffect
   - GuardOff
   - GuardOn
+  - Medic_BuffEffect
+  - Damage
+  - Roll
+  - Buff
+  - BigShield
+  - Buff1
   DisableAutoOpenWizard: 1

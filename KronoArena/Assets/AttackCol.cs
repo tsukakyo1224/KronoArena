@@ -9,7 +9,7 @@ public class AttackCol : StateMachineBehaviour
     {
         if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
         {
-            //GameObject.Find
+
         }
     }
 

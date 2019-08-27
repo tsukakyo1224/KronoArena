@@ -6,6 +6,8 @@ public class DestoryEffect : MonoBehaviour {
 
     public bool AttackFlag;
 
+    public bool AttackObject;
+
 	// Use this for initialization
 	void Start () {
         AttackFlag = false;
@@ -13,12 +15,15 @@ public class DestoryEffect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (this.gameObject.name == "Heel(Clone)")
+        {
+            Destroy(this.gameObject, 20f);
+        }
+    }
 
     //オブジェクトがぶつかった時
 	void OnParticleCollision(GameObject obj) {
-		if (obj.tag != this.tag)
+		if (obj.tag != this.tag && AttackObject == true)
         {
             Guardian();
             if (AttackFlag == false)

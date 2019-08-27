@@ -8,23 +8,22 @@ public class Knight_Effect_Animation : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //ナイト
-        /*if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
+        if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
         {
-
-            GameObject Me;
-
+            GameObject Kn;
             if (TurnCol.P1_Turn == true)
             {
-                Me = GameObject.Find("P1_Chara2");
-                Me.GetComponent<Medic_Data>().effect();
-            }
-            else if (TurnCol.P2_Turn == true)
-            {
-                Me = GameObject.Find("P2_Chara2");
-                Me.GetComponent<Medic_Data>().effect();
+                Kn = GameObject.Find("P1_Chara1");
+                Kn.GetComponent<Knight_Data>().Damage();
             }
 
-        }*/
+            else if (TurnCol.P2_Turn == true)
+            {
+                Kn = GameObject.Find("P2_Chara1");
+                Kn.GetComponent<Knight_Data>().Damage();
+            }
+
+        }
 
         if (stateInfo.IsName("rollwait"))
         {
@@ -98,7 +97,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.IsName("rollwait"))
+        /*if (stateInfo.IsName("rollwait"))
         {
             GameObject MeHeel = GameObject.Find("Knight_RollSet(Clone)");
             //Debug.Log (MeHeel);
@@ -121,7 +120,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
             GameObject MeHeel = GameObject.Find("Knight_Buff(Clone)");
             //Debug.Log (MeHeel);
             MeHeel.GetComponent<DestoryEffect>().Delete();
-        }
+        }*/
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

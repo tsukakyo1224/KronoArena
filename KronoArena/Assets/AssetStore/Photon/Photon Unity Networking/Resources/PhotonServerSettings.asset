@@ -46,4 +46,9 @@ MonoBehaviour:
   - SendFunc
   - RPC_AutomaticSend
   - CharaDied
+  - ChangeTurn
+  - Turn_Change
+  - HeelShowerEffect
+  - GuardOff
+  - GuardOn
   DisableAutoOpenWizard: 1

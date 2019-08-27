@@ -50,8 +50,9 @@ public class ButtonCol : MonoBehaviour
 
     public void TurnChange()
     {
-        GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-        TurnCol.ChangeTurn();
+        //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+        //TurnCol.ChangeTurn();
+        GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
         Debug.Log("button");
     }
 

@@ -8,23 +8,25 @@ public class Guardian_Effect_Animation : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //ガーディアン
-        /*if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
+        if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
         {
 
-            GameObject Me;
-
+            GameObject Gu;
             if (TurnCol.P1_Turn == true)
             {
-                Me = GameObject.Find("P1_Chara2");
-                Me.GetComponent<Medic_Data>().effect();
-            }
-            else if (TurnCol.P2_Turn == true)
-            {
-                Me = GameObject.Find("P2_Chara2");
-                Me.GetComponent<Medic_Data>().effect();
+                Gu = GameObject.Find("P1_Chara3");
+                Gu.GetComponent<Guardian_Data>().Damage();
+                //Debug.Log(Kn);
             }
 
-        }*/
+            else if (TurnCol.P2_Turn == true)
+            {
+                Gu = GameObject.Find("P2_Chara3");
+                Gu.GetComponent<Guardian_Data>().Damage();
+                //Debug.Log(Kn);
+            }
+
+        }
 
         if (stateInfo.IsName("skill01_1"))
         {

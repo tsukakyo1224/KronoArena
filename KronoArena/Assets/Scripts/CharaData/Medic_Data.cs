@@ -55,7 +55,6 @@ public class Medic_Data : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if(this.name==)
         CharaName = "メディック";
         JobIconImage = Resources.Load<Sprite>("JobIcon/Medic");
         SkillTime1 = 20.0f;
@@ -76,7 +75,7 @@ public class Medic_Data : MonoBehaviour
 
         animator = this.GetComponent<Animator>();
 
-        photonView = PhotonView.Get(this);
+        photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -86,7 +85,9 @@ public class Medic_Data : MonoBehaviour
         forword = this.transform.forward;
         quat = this.transform.rotation;
 
-        if (photonView.isMine)
+        //if (photonView.isMine)
+        if(PhotonNetwork.player.ID == 1 && this.tag == "Player1" ||
+            PhotonNetwork.player.ID == 2 && this.tag == "Player2")
         {
             //スキル1発動
             if (SkillFlag1 == true && SkillFlag2 == false)
@@ -96,13 +97,15 @@ public class Medic_Data : MonoBehaviour
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
+                    //HeelShowerEffect(); //エフェクト発動
+                    photonView.RPC("HeelShowerEffect", PhotonTargets.All);
                     animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
                     SkillTime1 = 20.0f;
 
                     //回復処理
                     GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
-                    if (PhotonNetwork.player.ID == 2)
+                    if (this.tag == "Player2")
                     {
                         targets = GameObject.FindGameObjectsWithTag("Player2");
                     }
@@ -136,9 +139,11 @@ public class Medic_Data : MonoBehaviour
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
+                    Medic_BuffEffect();
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
                     this.GetComponent<Status>().Heel += 100.0f;
+
                     animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
                     SkillTime2 = 10.0f;
@@ -183,80 +188,63 @@ public class Medic_Data : MonoBehaviour
     {
         var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
+    [PunRPC]
     public void HeelShowerEffect()
     {
         var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void Medic_BuffEffect()
     {
         var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void Medic_BuffSetEffect()
     {
         var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
-    }
-
-
-    //ダメージ計算
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag != this.tag)
-        {
-            Guardian();
-            if (AttackFlag == false)
-            {
-                other.GetComponent<Status>().HP -=
-                    (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-                Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
-                    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-            }
-            AttackFlag = false;
-        }
+        }*/
     }
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()
     {
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
         if (PhotonNetwork.player.ID == 2)
         {
             targets = GameObject.FindGameObjectsWithTag("Player1");

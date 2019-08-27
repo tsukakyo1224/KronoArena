@@ -9539,6 +9539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackFlag: 0
+  AttackObject: 1
 --- !u!114 &8086770686828532228
 MonoBehaviour:
   m_ObjectHideFlags: 0

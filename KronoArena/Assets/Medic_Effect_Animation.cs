@@ -42,6 +42,7 @@ public class Medic_Effect_Animation : StateMachineBehaviour
             }
 
         }
+        /*
         if (stateInfo.IsName("heel02"))
         {
             GameObject Me;
@@ -56,7 +57,7 @@ public class Medic_Effect_Animation : StateMachineBehaviour
                 Me = GameObject.Find("P2_Chara2");
                 Me.GetComponent<Medic_Data>().HeelShowerEffect();
             }
-        }
+        }*/
         if (stateInfo.IsName("skill01"))
         {
             GameObject Me;
@@ -72,6 +73,7 @@ public class Medic_Effect_Animation : StateMachineBehaviour
                 Me.GetComponent<Medic_Data>().Medic_BuffSetEffect();
             }
         }
+        /*
         if (stateInfo.IsName("skill02"))
         {
             GameObject Me;
@@ -86,7 +88,7 @@ public class Medic_Effect_Animation : StateMachineBehaviour
                 Me = GameObject.Find("P2_Chara2");
                 Me.GetComponent<Medic_Data>().Medic_BuffEffect();
             }
-        }
+        }*/
 
     }
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -96,12 +98,13 @@ public class Medic_Effect_Animation : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.IsName("heel01"))
+        /*if (stateInfo.IsName("heel01"))
         {
             GameObject MeHeel = GameObject.Find("Heel(Clone)");
             //Debug.Log (MeHeel);
             MeHeel.GetComponent<DestoryEffect>().Delete();
         }
+
         if (stateInfo.IsName("heel02"))
         {
             GameObject MeHeel = GameObject.Find("HeelShower(Clone)");
@@ -119,7 +122,7 @@ public class Medic_Effect_Animation : StateMachineBehaviour
             GameObject MeHeel = GameObject.Find("Medic_Buff(Clone)");
             //Debug.Log (MeHeel);
             MeHeel.GetComponent<DestoryEffect>().Delete();
-        }
+        }*/
     }
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

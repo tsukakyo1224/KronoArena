@@ -71,7 +71,7 @@ public class Guardian_Data : MonoBehaviour
 
         animator = this.GetComponent<Animator>();
 
-        photonView = PhotonView.Get(this);
+        photonView = GetComponent<PhotonView>();
 
         //エフェクト呼び出し
         Skill1_Set = Resources.Load<GameObject>("Guardian_BuffSet1");
@@ -137,7 +137,8 @@ public class Guardian_Data : MonoBehaviour
                 if (SkillTime2 <= 0)
                 {
                     //身代わりフラグをオン
-                    GuardFlag = true;
+                    //GuardFlag = true;
+                    photonView.RPC("GuardOn", PhotonTargets.All);
 
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
@@ -165,13 +166,31 @@ public class Guardian_Data : MonoBehaviour
                     //持続時間フラグを初期値に
                     LimitFlag2 = false;
                     Skill2_Limit = 10.0f;
-                    GuardFlag = false;
+                    //GuardFlag = false;
+                    photonView.RPC("GuardOff", PhotonTargets.All);
                     Debug.Log("ガーディアン肩代わりの効果が終わった");
                 }
             }
         }
 
     }
+
+
+    [PunRPC]
+    public void GuardOn()
+    {
+        //身代わりフラグをオン
+        GuardFlag = true;
+    }
+
+    [PunRPC]
+    public void GuardOff()
+    {
+        //身代わりフラグをオン
+        GuardFlag = false;
+    }
+
+
 
     public void BuffSet1()
     {
@@ -205,31 +224,73 @@ public class Guardian_Data : MonoBehaviour
     {
         var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void BigShield()
     {
         var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
+    public void Damage()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
+        if (this.tag == "Player2")
+        {
+            targets = GameObject.FindGameObjectsWithTag("Player1");
+        }
+        foreach (GameObject obj in targets)
+        {
+            // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+            float dist = Vector3.Distance(obj.transform.position, transform.position);
+            //対象キャラとの距離表示
+            if (dist < 2.0 && obj.tag != this.tag)
+            {
+                Guardian();
+                if(AttackFlag == false)
+                {
+                    Vector3 eyeDir = this.transform.forward; // プレイヤーの視線ベクトル。
+                    Vector3 playerPos = this.transform.position; // プレイヤーの位置
+                    Vector3 enemyPos = obj.transform.position; // 敵の位置
 
+                    float angle = 30.0f;    //攻撃範囲内の角度
+
+                    // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
+                    if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)
+                    {
+                        //Debug.Log(obj.name);
+                        //ダメージを与える
+                        obj.GetComponent<Status>().HP -=
+                        (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+
+                        Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
+                        ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+                    }
+                }
+                AttackFlag = false;
+            }
+        }
+
+
+    }
+
+    /*
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
@@ -245,13 +306,13 @@ public class Guardian_Data : MonoBehaviour
             }
             AttackFlag = false;
         }
-    }
+    }*/
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
-        if (PhotonNetwork.player.ID == 2)
+        if (this.tag == "Player2")
         {
             targets = GameObject.FindGameObjectsWithTag("Player1");
         }

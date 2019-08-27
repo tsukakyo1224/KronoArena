@@ -149,11 +149,35 @@ public class GameManager : MonoBehaviour
                 Chara3 = GameObject.Find("P2_Chara3");
             }
 
+            if (PhotonNetwork.playerList.Length == 2)
+            {
+                /*
+                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                {
+                    GameObject.Find("P1_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P1_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P1_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P2_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P2_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P2_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                }
+                else if (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
+                {
+                    GameObject.Find("P1_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P1_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P1_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P2_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P2_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                    GameObject.Find("P2_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                }*/
+            }
+
             //操作キャラ変更時に操作キャラクター表示の変更
             //現時点でナイト確定
             if (ChangeChara.nowChara == 0)
             {
-                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
+                    (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
                 {
                     OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Knight");
                 }
@@ -172,6 +196,12 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPText.GetComponent<Text>().text = Chara1.GetComponent<Status>().hpSlider.value +
                        "/" + Chara1.GetComponent<Status>().MaxHP;
                 }
+                else
+                {
+                    OpeCharaHPSlider.value = 0;
+                    OpeCharaHPText.GetComponent<Text>().text = 0 +
+                       "/" + OpeCharaHPSlider.maxValue;
+                }
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
@@ -184,7 +214,8 @@ public class GameManager : MonoBehaviour
             //現時点でメディック確定
             else if (ChangeChara.nowChara == 1)
             {
-                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
+                    (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
                 {
                     OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Medic");
                 }
@@ -201,6 +232,12 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPText.GetComponent<Text>().text = Chara2.GetComponent<Status>().hpSlider.value +
                        "/" + Chara2.GetComponent<Status>().MaxHP;
                 }
+                else
+                {
+                    OpeCharaHPSlider.value = 0;
+                    OpeCharaHPText.GetComponent<Text>().text = 0 +
+                       "/" + OpeCharaHPSlider.maxValue;
+                }
 
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon2");
@@ -214,7 +251,8 @@ public class GameManager : MonoBehaviour
             //現時点でガーディアン確定
             else if (ChangeChara.nowChara == 2)
             {
-                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+                if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
+                    (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
                 {
                     OpeCharaIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaIcon_Guardian");
                 }
@@ -231,7 +269,12 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPText.GetComponent<Text>().text = Chara3.GetComponent<Status>().hpSlider.value +
                        "/" + Chara3.GetComponent<Status>().MaxHP;
                 }
-
+                else
+                {
+                    OpeCharaHPSlider.value = 0;
+                    OpeCharaHPText.GetComponent<Text>().text = 0 +
+                       "/" + OpeCharaHPSlider.maxValue;
+                }
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/GuardianSkillIcon1");
@@ -379,7 +422,17 @@ public class GameManager : MonoBehaviour
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
-            Camera.transform.rotation = Quaternion.Euler(20.0f, -180.0f, 0.0f);
+            Camera.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+            //カメラ
+            if (PhotonNetwork.player.ID == 1)
+            {
+                Camera.transform.rotation = Quaternion.Euler(20.0f, 180.0f, 0.0f);
+            }
+            else if (PhotonNetwork.player.ID == 2)
+            {
+                Camera.transform.rotation = Quaternion.Euler(20.0f, 0.0f, 0.0f);
+            }
         }
         else
         {
@@ -393,7 +446,16 @@ public class GameManager : MonoBehaviour
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
 
-            Camera.transform.rotation = Quaternion.Euler(20.0f, -180.0f, 180.0f);
+            //カメラ
+            if (PhotonNetwork.player.ID == 1)
+            {
+                Camera.transform.rotation = Quaternion.Euler(20.0f, 180.0f, 180.0f);
+            }
+            else if (PhotonNetwork.player.ID == 2)
+            {
+                Camera.transform.rotation = Quaternion.Euler(20.0f, 0.0f, 180.0f);
+            }
+
 
         }
     }

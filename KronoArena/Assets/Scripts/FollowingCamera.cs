@@ -63,9 +63,9 @@ public class FollowingCamera : MonoBehaviour
             }
             if(target != null)
             {
-                var lookAtPos = target.transform.position + offset;
-                updatePosition(lookAtPos);
-                transform.LookAt(lookAtPos);
+                //var lookAtPos = target.transform.position + offset;
+                //updatePosition(lookAtPos);
+                //transform.LookAt(lookAtPos);
             }
             //cameraflag = false;
         }
@@ -78,7 +78,7 @@ public class FollowingCamera : MonoBehaviour
 
         
     }
-
+     
     void updateAngle(float x, float y)
     {
         x = azimuthalAngle - x * mouseXSensitivity;

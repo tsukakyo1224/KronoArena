@@ -45,34 +45,69 @@ public class CharaCol_test : MonoBehaviour
                 //押下した位置を取得
                 tapPoint = Input.mousePosition;
             }
+
             if (Input.GetMouseButton(0))
             {
-                Vector3 currentTapPoint = Input.mousePosition;
-                //指をずらしたときのベクトルを取得
-                Vector3 mag = currentTapPoint - tapPoint;
-                //指を動かしたときのみキャラを操作する
-                if (tapPoint != currentTapPoint)
+                if (PhotonNetwork.player.ID == 1)
                 {
-                    //動かした指の位置から角度を計算
-                    float rad = Mathf.Atan2(currentTapPoint.y - tapPoint.y, currentTapPoint.x - tapPoint.x);
-                    float rot = (rad * 180 / Mathf.PI) + 90;
-                    //キャラクターの向きを決定
-                    player.transform.rotation = Quaternion.Euler(0f, rot * -1, 0f);
-                    player.transform.Translate(0f, 0f, playerSpeed);
-                    //一定以上画面をドラッグしたときは移動速度を上げる
-                    if (mag.magnitude > 5f)
+                    Vector3 currentTapPoint = Input.mousePosition;
+                    //指をずらしたときのベクトルを取得
+                    Vector3 mag = currentTapPoint - tapPoint;
+                    //指を動かしたときのみキャラを操作する
+                    if (tapPoint != currentTapPoint)
                     {
-                        velocity = transform.forward * playerSpeed;
-                        animator.SetBool("Run", mag.magnitude > 1.0f);
-                        playerSpeed = 5.0f;
+                        //動かした指の位置から角度を計算
+                        float rad = Mathf.Atan2(currentTapPoint.y - tapPoint.y, currentTapPoint.x - tapPoint.x);
+                        float rot = (rad * 180 / Mathf.PI) + 90;
+                        //キャラクターの向きを決定
+                        player.transform.rotation = Quaternion.Euler(0f, rot * -1, 0f);
+                        player.transform.Translate(0f, 0f, playerSpeed);
+                        //一定以上画面をドラッグしたときは移動速度を上げる
+                        if (mag.magnitude > 5f)
+                        {
+                            velocity = transform.forward * playerSpeed;
+                            animator.SetBool("Run", mag.magnitude > 1.0f);
+                            playerSpeed = this.gameObject.GetComponent<Status>().Speed;
+                        }
+                        else if (mag.magnitude <= 5f)
+                        {
+                            animator.SetBool("Run", mag.magnitude > 1.0f);
+                            ControlOnOffChara.walkSpeed = 5.0f;
+                        }
+                        characterController.Move(velocity * Time.deltaTime);
                     }
-                    else if (mag.magnitude <= 5f)
-                    {
-                        animator.SetBool("Run", mag.magnitude > 1.0f);
-                        ControlOnOffChara.walkSpeed = 5.0f;
-                    }
-                    characterController.Move(velocity * Time.deltaTime);
                 }
+                //プレイヤー2は操作を逆に
+                else if(PhotonNetwork.player.ID == 2)
+                {
+                    Vector3 currentTapPoint = Input.mousePosition;
+                    //指をずらしたときのベクトルを取得
+                    Vector3 mag = currentTapPoint - tapPoint;
+                    //指を動かしたときのみキャラを操作する
+                    if (tapPoint != currentTapPoint)
+                    {
+                        //動かした指の位置から角度を計算
+                        float rad = Mathf.Atan2(currentTapPoint.y - tapPoint.y, currentTapPoint.x - tapPoint.x);
+                        float rot = (rad * 180 / Mathf.PI) + 270;
+                        //キャラクターの向きを決定
+                        player.transform.rotation = Quaternion.Euler(0f, rot * -1, 0f);
+                        player.transform.Translate(0f, 0f, playerSpeed);
+                        //一定以上画面をドラッグしたときは移動速度を上げる
+                        if (mag.magnitude > 5f)
+                        {
+                            velocity = transform.forward * playerSpeed;
+                            animator.SetBool("Run", mag.magnitude > 1.0f);
+                            playerSpeed = this.gameObject.GetComponent<Status>().Speed;
+                        }
+                        else if (mag.magnitude <= 5f)
+                        {
+                            animator.SetBool("Run", mag.magnitude > 1.0f);
+                            ControlOnOffChara.walkSpeed = 5.0f;
+                        }
+                        characterController.Move(velocity * Time.deltaTime);
+                    }
+                }
+
             }
             if (Input.GetMouseButtonUp(0))
             {

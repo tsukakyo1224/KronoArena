@@ -14,8 +14,16 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //初期値
-        TotalTime = 30.0f;
+        /*//初期値
+        if(PhotonNetwork.player.ID == 1)
+        {
+            TotalTime = 15.0f;
+        }
+        else if(PhotonNetwork.player.ID == 2)
+        {
+            TotalTime = 15.0f;
+        }*/
+        TotalTime = 15.0f;
         //タイマーテキスト
         TimeText = GameObject.Find("Time");
     }
@@ -42,9 +50,11 @@ public class TimerScript : MonoBehaviour
             //ターン切り替え
             if (TotalTime < 0.0f)
             {
-                //TotalTime = 5.0f;
-                GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                TurnCol.ChangeTurn();
+                //PhotonView photonView = GetComponent<PhotonView>();
+                //photonView.RPC("ChangeTurn", PhotonTargets.All);
+                //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+                //TurnCol.ChangeTurn();
+                GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
                 Debug.Log("time");
             }
         }

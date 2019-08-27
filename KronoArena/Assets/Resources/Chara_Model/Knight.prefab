@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1036465844188150539
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6016849384691075327}
-  - component: {fileID: 2113744255292950321}
-  m_Layer: 0
-  m_Name: Sword_Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6016849384691075327
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036465844188150539}
-  m_LocalRotation: {x: 0.010589302, y: -0.70124173, z: -0.015500963, w: -0.7126764}
-  m_LocalPosition: {x: 0.0607118, y: 10.314002, z: 0.2443428}
-  m_LocalScale: {x: 100.00003, y: 100.00006, z: 100.0001}
-  m_Children: []
-  m_Father: {fileID: 4809681828129618024}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 30.127, y: 4.854, z: -19.148}
---- !u!65 &2113744255292950321
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036465844188150539}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.7, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4809681828129973256
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +34,6 @@ Transform:
   - {fileID: 4809681828129617988}
   - {fileID: 4809681828129617986}
   - {fileID: 4809681828129617984}
-  - {fileID: 6016849384691075327}
   m_Father: {fileID: 4809681828129618008}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1901,7 +1856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Knight
-  HP: 2326
+  HP: 500
   Attack: 685
   Magic_Attack: 45
   Defense: 179

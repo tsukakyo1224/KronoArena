@@ -232,23 +232,26 @@ public class Knight_Data : MonoBehaviour
             if (dist < 2.0 && obj.tag != this.tag)
             {
                 Guardian();
-                Vector3 eyeDir = this.transform.forward; // プレイヤーの視線ベクトル。
-                Vector3 playerPos = this.transform.position; // プレイヤーの位置
-                Vector3 enemyPos = obj.transform.position; // 敵の位置
-
-                float angle = 30.0f;    //攻撃範囲内の角度
-
-                // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
-                if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)
+                if (AttackFlag == false)
                 {
-                    //Debug.Log(obj.name);
-                    //ダメージを与える
-                    obj.GetComponent<Status>().HP -=
-                    (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    Vector3 eyeDir = this.transform.forward; // プレイヤーの視線ベクトル。
+                    Vector3 playerPos = this.transform.position; // プレイヤーの位置
+                    Vector3 enemyPos = obj.transform.position; // 敵の位置
 
-                    Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
-                    ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-                    AttackFlag = true;
+                    float angle = 30.0f;    //攻撃範囲内の角度
+
+                    // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
+                    if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)
+                    {
+                        //Debug.Log(obj.name);
+                        //ダメージを与える
+                        obj.GetComponent<Status>().HP -=
+                        (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+
+                        Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
+                        ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+                        AttackFlag = true;
+                    }
                 }
 
 

@@ -82,7 +82,7 @@ public class Knight_Data : MonoBehaviour
 
         animator = this.GetComponent<Animator>();
 
-        photonView = PhotonView.Get(this);
+        photonView = GetComponent<PhotonView>();
 
         //エフェクト呼び出し
         Skill1_Set = Resources.Load<GameObject>("Knight_RollSet");
@@ -105,6 +105,7 @@ public class Knight_Data : MonoBehaviour
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
+                    photonView.RPC("Roll", PhotonTargets.All);
                     this.GetComponent<Status>().Attack += 100.0f;
                     animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
@@ -136,6 +137,7 @@ public class Knight_Data : MonoBehaviour
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
+                    photonView.RPC("Buff", PhotonTargets.All);
                     animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
                     SkillTime2 = 10.0f;
@@ -164,7 +166,7 @@ public class Knight_Data : MonoBehaviour
     public void RollSet()
     {
         var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
-
+        /*
         if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
@@ -172,13 +174,13 @@ public class Knight_Data : MonoBehaviour
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
-
+    [PunRPC]
     public void Roll()
     {
         var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
-
+        /*
         if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
@@ -186,13 +188,13 @@ public class Knight_Data : MonoBehaviour
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void BuffSet()
     {
         var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
-
+        /*
         if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
@@ -200,13 +202,14 @@ public class Knight_Data : MonoBehaviour
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
+    [PunRPC]
     public void Buff()
     {
         var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
-
+        /*
         if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
@@ -214,7 +217,7 @@ public class Knight_Data : MonoBehaviour
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void Damage()

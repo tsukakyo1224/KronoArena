@@ -22,7 +22,6 @@ public class Knight_Effect_Animation : StateMachineBehaviour
                 Kn = GameObject.Find("P2_Chara1");
                 Kn.GetComponent<Knight_Data>().Damage();
             }
-
         }
 
         if (stateInfo.IsName("rollwait"))

@@ -97,7 +97,7 @@ public class Medic_Data : MonoBehaviour
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
-                    //HeelShowerEffect(); //エフェクト発動
+                    //エフェクト発動
                     photonView.RPC("HeelShowerEffect", PhotonTargets.All);
                     animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
@@ -139,7 +139,9 @@ public class Medic_Data : MonoBehaviour
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
-                    Medic_BuffEffect();
+                    //Medic_BuffEffect();
+                    //エフェクト発動
+                    photonView.RPC("Medic_BuffEffect", PhotonTargets.All);
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
                     this.GetComponent<Status>().Heel += 100.0f;
@@ -156,6 +158,8 @@ public class Medic_Data : MonoBehaviour
                 Skill2_Limit -= Time.deltaTime;
                 if (Skill2_Limit <= 0)
                 {
+                    //エフェクト発動
+
                     this.GetComponent<Status>().Defense -= 100.0f;
                     this.GetComponent<Status>().Magic_Defense -= 100.0f;
                     this.GetComponent<Status>().Heel -= 100.0f;
@@ -212,7 +216,7 @@ public class Medic_Data : MonoBehaviour
             instantiateEffect.tag = "Player2";
         }*/
     }
-
+    [PunRPC]
     public void Medic_BuffEffect()
     {
         var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;

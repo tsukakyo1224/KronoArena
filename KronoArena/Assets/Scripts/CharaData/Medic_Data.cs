@@ -55,7 +55,6 @@ public class Medic_Data : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if(this.name==)
         CharaName = "メディック";
         JobIconImage = Resources.Load<Sprite>("JobIcon/Medic");
         SkillTime1 = 20.0f;

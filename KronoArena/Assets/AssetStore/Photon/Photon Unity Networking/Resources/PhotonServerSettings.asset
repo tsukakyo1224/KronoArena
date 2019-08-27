@@ -48,4 +48,7 @@ MonoBehaviour:
   - CharaDied
   - ChangeTurn
   - Turn_Change
+  - HeelShowerEffect
+  - GuardOff
+  - GuardOn
   DisableAutoOpenWizard: 1

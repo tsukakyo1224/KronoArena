@@ -86,6 +86,8 @@ public class Medic_Data : MonoBehaviour
         quat = this.transform.rotation;
 
         //if (photonView.isMine)
+        if(PhotonNetwork.player.ID == 1 && this.tag == "Player1" ||
+            PhotonNetwork.player.ID == 2 && this.tag == "Player2")
         {
             //スキル1発動
             if (SkillFlag1 == true && SkillFlag2 == false)

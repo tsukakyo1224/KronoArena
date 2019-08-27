@@ -11,19 +11,17 @@ public class Knight_Effect_Animation : StateMachineBehaviour
         if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
         {
             GameObject Kn;
-            //プレイヤー1ならP1
-            Kn = GameObject.Find("P1_Chara1");
-            /*if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+            if (TurnCol.P1_Turn == true)
             {
                 Kn = GameObject.Find("P1_Chara1");
+                Kn.GetComponent<Knight_Data>().Damage();
             }
-            //プレイヤー2ならP2
-               if (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
+
+            else if (TurnCol.P2_Turn == true)
             {
                 Kn = GameObject.Find("P2_Chara1");
-            }*/
-
-            Kn.GetComponent<Knight_Data>().Damage();
+                Kn.GetComponent<Knight_Data>().Damage();
+            }
 
         }
 

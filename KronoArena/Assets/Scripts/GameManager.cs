@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
                 Chara2 = GameObject.Find("P2_Chara2");
                 Chara3 = GameObject.Find("P2_Chara3");
             }
-            /*
+
             if (PhotonNetwork.playerList.Length == 2)
             {
                 if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
                     GameObject.Find("P2_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
                     GameObject.Find("P2_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
                 }
-            }*/
+            }
 
             //操作キャラ変更時に操作キャラクター表示の変更
             //現時点でナイト確定

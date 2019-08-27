@@ -133,4 +133,4 @@ public class Knight_Effect_Animation : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
-
+}

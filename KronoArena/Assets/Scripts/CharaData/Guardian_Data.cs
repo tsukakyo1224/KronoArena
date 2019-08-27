@@ -96,6 +96,7 @@ public class Guardian_Data : MonoBehaviour
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
+                    photonView.RPC("Buff1", PhotonTargets.All);
                     this.GetComponent<Status>().Defense += 200.0f;
                     this.GetComponent<Status>().Magic_Defense += 200.0f;
 
@@ -136,6 +137,8 @@ public class Guardian_Data : MonoBehaviour
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
+                    photonView.RPC("BigShield", PhotonTargets.All);
+
                     //身代わりフラグをオン
                     //GuardFlag = true;
                     photonView.RPC("GuardOn", PhotonTargets.All);
@@ -196,28 +199,28 @@ public class Guardian_Data : MonoBehaviour
     {
         var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
-
+    [PunRPC]
     public void Buff1()
     {
         var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void BigShieldSet()
@@ -233,7 +236,7 @@ public class Guardian_Data : MonoBehaviour
             instantiateEffect.tag = "Player2";
         }*/
     }
-
+    [PunRPC]
     public void BigShield()
     {
         var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;

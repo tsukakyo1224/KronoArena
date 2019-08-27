@@ -15,14 +15,63 @@ public class DestoryEffect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //エフェクトを
+        //メディック
         if (this.gameObject.name == "Heel(Clone)")
         {
             Destroy(this.gameObject, 20f);
         }
+        if (this.gameObject.name == "HeelShower(Clone)")
+        {
+            Destroy(this.gameObject, 3f);
+        }
+        if (this.gameObject.name == "Medic_Buff(Clone)")
+        {
+            Destroy(this.gameObject, 3f);
+        }
+        if (this.gameObject.name == "Medic_BuffSet(Clone)")
+        {
+            Destroy(this.gameObject, 10f);
+        }
+        //ナイト
+        if (this.gameObject.name == "Knight_RollSet(Clone)")
+        {
+            Destroy(this.gameObject, 20f);
+        }
+        if (this.gameObject.name == "Knight_Roll(Clone)")
+        {
+            Destroy(this.gameObject, 3f);
+        }
+        if (this.gameObject.name == "Knight_BuffSet(Clone)")
+        {
+            Destroy(this.gameObject, 10f);
+        }
+        if (this.gameObject.name == "Knight_Buff(Clone)")
+        {
+            Destroy(this.gameObject, 3f);
+        }
+        //ガーディアン
+        if (this.gameObject.name == "Guardian_BuffSet1(Clone)")
+        {
+            Destroy(this.gameObject, 15f);
+        }
+        if (this.gameObject.name == "Guardian_Buff1(Clone)")
+        {
+            Destroy(this.gameObject, 3f);
+        }
+        if (this.gameObject.name == "Guardian_BigShieldSet(Clone)")
+        {
+            Destroy(this.gameObject, 20f);
+        }
+        if (this.gameObject.name == "Guardian_BigShield(Clone)")
+        {
+            Destroy(this.gameObject, 3f);
+        }
+
     }
 
     //オブジェクトがぶつかった時
-	void OnParticleCollision(GameObject obj) {
+    void OnParticleCollision(GameObject obj) {
 		if (obj.tag != this.tag && AttackObject == true)
         {
             Guardian();

@@ -262,10 +262,9 @@ public class Guardian_Data : MonoBehaviour
 
                         Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
                         ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-                        AttackFlag = true;
                     }
                 }
-
+                AttackFlag = false;
             }
         }
 

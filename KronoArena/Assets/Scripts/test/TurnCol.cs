@@ -65,7 +65,6 @@ public class TurnCol : MonoBehaviour
             P2_Turn = false;
         }
         GameManager.TurnChangeImage();
-        Debug.Log(PhotonNetwork.player.ID);
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

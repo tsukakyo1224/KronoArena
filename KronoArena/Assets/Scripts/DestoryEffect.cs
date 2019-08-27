@@ -28,7 +28,7 @@ public class DestoryEffect : MonoBehaviour {
                 obj.GetComponent<Status>().HP -=
                     (int)(this.GetComponent<Status>().Magic_Attack / ((1 + obj.GetComponent<Status>().Magic_Defense) / 10));
                 Debug.Log(obj + "に" + (int)(this.GetComponent<Status>().Magic_Attack /
-                    ((1 + obj.GetComponent<Status>().Defense) / 1)) + "ダメージ");
+                    ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
             }
             AttackFlag = false;
         }

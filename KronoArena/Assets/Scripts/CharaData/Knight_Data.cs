@@ -246,7 +246,7 @@ public class Knight_Data : MonoBehaviour
                     (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
 
                     Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
-                    ((1 + obj.GetComponent<Status>().Defense) / 1)) + "ダメージ");
+                    ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
                     //AttackFlag = true;
                 }
 

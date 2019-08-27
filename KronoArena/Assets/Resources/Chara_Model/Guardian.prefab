@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Guardian
-  HP: 3384
+  HP: 100
   Attack: 409
   Magic_Attack: 0
   Defense: 419

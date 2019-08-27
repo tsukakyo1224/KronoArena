@@ -229,7 +229,7 @@ public class Knight_Data : MonoBehaviour
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
-            if (dist < 2.0)
+            if (dist < 2.0 && obj.tag != this.tag)
             {
                 Vector3 eyeDir = this.transform.forward; // プレイヤーの視線ベクトル。
                 Vector3 playerPos = this.transform.position; // プレイヤーの位置

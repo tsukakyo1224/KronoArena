@@ -67,7 +67,7 @@ public class CharaCol_test : MonoBehaviour
                         {
                             velocity = transform.forward * playerSpeed;
                             animator.SetBool("Run", mag.magnitude > 1.0f);
-                            playerSpeed = 5.0f;
+                            playerSpeed = this.gameObject.GetComponent<Status>().Speed;
                         }
                         else if (mag.magnitude <= 5f)
                         {
@@ -77,6 +77,7 @@ public class CharaCol_test : MonoBehaviour
                         characterController.Move(velocity * Time.deltaTime);
                     }
                 }
+                //プレイヤー2は操作を逆に
                 else if(PhotonNetwork.player.ID == 2)
                 {
                     Vector3 currentTapPoint = Input.mousePosition;

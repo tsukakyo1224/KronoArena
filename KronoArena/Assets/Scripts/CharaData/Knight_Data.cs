@@ -217,8 +217,44 @@ public class Knight_Data : MonoBehaviour
         }
     }
 
+    public void Damage()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
+        if (PhotonNetwork.player.ID == 2)
+        {
+            targets = GameObject.FindGameObjectsWithTag("Player1");
+        }
+        foreach (GameObject obj in targets)
+        {
+            // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+            float dist = Vector3.Distance(obj.transform.position, transform.position);
+            //対象キャラとの距離表示
+            if (dist < 2.0)
+            {
+                Vector3 eyeDir = this.transform.forward; // プレイヤーの視線ベクトル。
+                Vector3 playerPos = this.transform.position; // プレイヤーの位置
+                Vector3 enemyPos = obj.transform.position; // 敵の位置
+
+                float angle = 30.0f;    //攻撃範囲内の角度
+
+                // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
+                if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)
+                {
+                    //ダメージを与える
+                    obj.GetComponent<Status>().HP -=
+                    (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    AttackFlag = true;
+                }
 
 
+            }
+        }
+
+
+    }
+
+
+    /*
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
@@ -235,7 +271,7 @@ public class Knight_Data : MonoBehaviour
             AttackFlag = false;
         }
     }
-
+    */
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()
     {

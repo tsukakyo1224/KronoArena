@@ -229,7 +229,7 @@ public class Guardian_Data : MonoBehaviour
         }
     }
 
-
+    /*
     //ダメージ計算
     void OnTriggerExit(Collider other)
     {
@@ -245,7 +245,7 @@ public class Guardian_Data : MonoBehaviour
             }
             AttackFlag = false;
         }
-    }
+    }*/
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()

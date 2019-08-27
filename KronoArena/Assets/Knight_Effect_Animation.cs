@@ -13,7 +13,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
             GameObject Kn;
             //プレイヤー1ならP1
             Kn = GameObject.Find("P1_Chara1");
-            if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
+            /*if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
             {
                 Kn = GameObject.Find("P1_Chara1");
             }
@@ -21,7 +21,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
                if (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
             {
                 Kn = GameObject.Find("P2_Chara1");
-            }
+            }*/
 
             Kn.GetComponent<Knight_Data>().Damage();
 

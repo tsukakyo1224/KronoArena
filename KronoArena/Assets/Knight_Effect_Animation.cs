@@ -8,23 +8,22 @@ public class Knight_Effect_Animation : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //ナイト
-        /*if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
+        if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
         {
-
-            GameObject Me;
-
-            if (TurnCol.P1_Turn == true)
+            if(PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
             {
-                Me = GameObject.Find("P1_Chara2");
-                Me.GetComponent<Medic_Data>().effect();
+                GameObject Kn = GameObject.Find("P1_Chara1");
+                Kn.GetComponent<Knight_Data>().Damage();
             }
-            else if (TurnCol.P2_Turn == true)
+            else if(PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
             {
-                Me = GameObject.Find("P2_Chara2");
-                Me.GetComponent<Medic_Data>().effect();
+                GameObject Kn = GameObject.Find("P2_Chara1");
+                Kn.GetComponent<Knight_Data>().Damage();
             }
 
-        }*/
+
+
+        }
 
         if (stateInfo.IsName("rollwait"))
         {

@@ -6,6 +6,8 @@ public class DestoryEffect : MonoBehaviour {
 
     public bool AttackFlag;
 
+    public bool AttackObject;
+
 	// Use this for initialization
 	void Start () {
         AttackFlag = false;
@@ -18,7 +20,7 @@ public class DestoryEffect : MonoBehaviour {
 
     //オブジェクトがぶつかった時
 	void OnParticleCollision(GameObject obj) {
-		if (obj.tag != this.tag)
+		if (obj.tag != this.tag && AttackObject == true)
         {
             Guardian();
             if (AttackFlag == false)

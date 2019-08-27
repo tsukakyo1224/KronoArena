@@ -15,14 +15,14 @@ public class Guardian_Effect_Animation : StateMachineBehaviour
             if (TurnCol.P1_Turn == true)
             {
                 Gu = GameObject.Find("P1_Chara3");
-                Gu.GetComponent<Knight_Data>().Damage();
+                Gu.GetComponent<Guardian_Data>().Damage();
                 //Debug.Log(Kn);
             }
 
             else if (TurnCol.P2_Turn == true)
             {
                 Gu = GameObject.Find("P2_Chara3");
-                Gu.GetComponent<Knight_Data>().Damage();
+                Gu.GetComponent<Guardian_Data>().Damage();
                 //Debug.Log(Kn);
             }
 

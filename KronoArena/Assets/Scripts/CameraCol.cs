@@ -17,11 +17,11 @@ public class CameraCol : MonoBehaviour
         {
             if (PhotonNetwork.player.ID == 1)
             {
-                this.transform.position = new Vector3(0.0f, 5.0f, 10.0f);
+                this.transform.position = new Vector3(0.0f, 3.0f, 7.0f);
             }
             else if (PhotonNetwork.player.ID == 2)
             {
-                this.transform.position = new Vector3(0.0f, 3.0f, -10.0f);
+                this.transform.position = new Vector3(0.0f, 3.0f, -7.0f);
                 //this.transform.rotation = Quaternion.Euler(this.transform.position.x, this.transform.position.y-180.0f, 180.0f);
             }
         }

@@ -258,24 +258,6 @@ public class Knight_Data : MonoBehaviour
     }
 
 
-    /*
-    //ダメージ計算
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag != this.tag)
-        {
-            Guardian();
-            if (AttackFlag == false)
-            {
-                other.GetComponent<Status>().HP -=
-                    (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-                Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
-                    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-            }
-            AttackFlag = false;
-        }
-    }
-    */
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()
     {

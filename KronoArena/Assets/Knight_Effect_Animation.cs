@@ -97,7 +97,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.IsName("rollwait"))
+        /*if (stateInfo.IsName("rollwait"))
         {
             GameObject MeHeel = GameObject.Find("Knight_RollSet(Clone)");
             //Debug.Log (MeHeel);
@@ -120,7 +120,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
             GameObject MeHeel = GameObject.Find("Knight_Buff(Clone)");
             //Debug.Log (MeHeel);
             MeHeel.GetComponent<DestoryEffect>().Delete();
-        }
+        }*/
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

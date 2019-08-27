@@ -96,6 +96,7 @@ public class Medic_Data : MonoBehaviour
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
+                    HeelShowerEffect(); //エフェクト発動
                     animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
                     SkillTime1 = 20.0f;
@@ -136,9 +137,11 @@ public class Medic_Data : MonoBehaviour
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
+                    Medic_BuffEffect();
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
                     this.GetComponent<Status>().Heel += 100.0f;
+
                     animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
                     SkillTime2 = 10.0f;
@@ -234,25 +237,6 @@ public class Medic_Data : MonoBehaviour
             instantiateEffect.tag = "Player2";
         }
     }
-
-
-    //ダメージ計算
-    /*
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag != this.tag)
-        {
-            Guardian();
-            if (AttackFlag == false)
-            {
-                other.GetComponent<Status>().HP -=
-                    (int)(this.GetComponent<Status>().Attack / ((1 + other.GetComponent<Status>().Defense) / 10));
-                Debug.Log(other + "に" + (int)(this.GetComponent<Status>().Attack /
-                    ((1 + other.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-            }
-            AttackFlag = false;
-        }
-    }*/
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()

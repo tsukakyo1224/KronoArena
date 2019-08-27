@@ -173,6 +173,12 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPText.GetComponent<Text>().text = Chara1.GetComponent<Status>().hpSlider.value +
                        "/" + Chara1.GetComponent<Status>().MaxHP;
                 }
+                else
+                {
+                    OpeCharaHPSlider.value = 0;
+                    OpeCharaHPText.GetComponent<Text>().text = 0 +
+                       "/" + Chara1.GetComponent<Status>().MaxHP;
+                }
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
@@ -202,6 +208,12 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPSlider.value = Chara2.GetComponent<Status>().hpSlider.value;
                     OpeCharaHPText.GetComponent<Text>().text = Chara2.GetComponent<Status>().hpSlider.value +
                        "/" + Chara2.GetComponent<Status>().MaxHP;
+                }
+                else
+                {
+                    OpeCharaHPSlider.value = 0;
+                    OpeCharaHPText.GetComponent<Text>().text = 0 +
+                       "/" + Chara1.GetComponent<Status>().MaxHP;
                 }
 
                 //攻撃ボタン
@@ -234,7 +246,12 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPText.GetComponent<Text>().text = Chara3.GetComponent<Status>().hpSlider.value +
                        "/" + Chara3.GetComponent<Status>().MaxHP;
                 }
-
+                else
+                {
+                    OpeCharaHPSlider.value = 0;
+                    OpeCharaHPText.GetComponent<Text>().text = 0 +
+                       "/" + Chara1.GetComponent<Status>().MaxHP;
+                }
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/GuardianSkillIcon1");

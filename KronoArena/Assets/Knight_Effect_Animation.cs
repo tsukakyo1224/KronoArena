@@ -15,14 +15,12 @@ public class Knight_Effect_Animation : StateMachineBehaviour
             {
                 Kn = GameObject.Find("P1_Chara1");
                 Kn.GetComponent<Knight_Data>().Damage();
-                //Debug.Log(Kn);
             }
 
             else if (TurnCol.P2_Turn == true)
             {
                 Kn = GameObject.Find("P2_Chara1");
                 Kn.GetComponent<Knight_Data>().Damage();
-                //Debug.Log(Kn);
             }
 
         }

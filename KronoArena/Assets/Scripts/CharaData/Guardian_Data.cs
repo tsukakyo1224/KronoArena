@@ -231,6 +231,7 @@ public class Guardian_Data : MonoBehaviour
 
     public void Damage()
     {
+        Guardian();
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
         if (this.tag == "Player2")
         {

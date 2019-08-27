@@ -219,7 +219,6 @@ public class Knight_Data : MonoBehaviour
 
     public void Damage()
     {
-        Guardian();
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
         if(this.tag == "Player2")
         {
@@ -232,6 +231,7 @@ public class Knight_Data : MonoBehaviour
             //対象キャラとの距離表示
             if (dist < 2.0 && obj.tag != this.tag)
             {
+                Guardian();
                 Vector3 eyeDir = this.transform.forward; // プレイヤーの視線ベクトル。
                 Vector3 playerPos = this.transform.position; // プレイヤーの位置
                 Vector3 enemyPos = obj.transform.position; // 敵の位置
@@ -248,7 +248,7 @@ public class Knight_Data : MonoBehaviour
 
                     Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
                     ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
-                    //AttackFlag = true;
+                    AttackFlag = true;
                 }
 
 

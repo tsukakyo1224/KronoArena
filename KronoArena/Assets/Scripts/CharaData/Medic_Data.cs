@@ -188,14 +188,14 @@ public class Medic_Data : MonoBehaviour
     {
         var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     [PunRPC]
@@ -203,42 +203,42 @@ public class Medic_Data : MonoBehaviour
     {
         var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void Medic_BuffEffect()
     {
         var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     public void Medic_BuffSetEffect()
     {
         var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
 
-        if (this.tag == "Player1")
+        /*if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";
         }
         else if (this.tag == "Player2")
         {
             instantiateEffect.tag = "Player2";
-        }
+        }*/
     }
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃

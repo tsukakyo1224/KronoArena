@@ -220,10 +220,14 @@ public class Knight_Data : MonoBehaviour
     public void Damage()
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
-        if (PhotonNetwork.player.ID == 2)
+        if(this.tag == "Player2")
         {
             targets = GameObject.FindGameObjectsWithTag("Player1");
         }
+        /*if (PhotonNetwork.player.ID == 2)
+        {
+            targets = GameObject.FindGameObjectsWithTag("Player1");
+        }*/
         foreach (GameObject obj in targets)
         {
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする

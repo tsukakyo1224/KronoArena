@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
                 {
                     OpeCharaHPSlider.value = 0;
                     OpeCharaHPText.GetComponent<Text>().text = 0 +
-                       "/" + Chara1.GetComponent<Status>().MaxHP;
+                       "/" + OpeCharaHPSlider.maxValue;
                 }
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
@@ -213,7 +213,7 @@ public class GameManager : MonoBehaviour
                 {
                     OpeCharaHPSlider.value = 0;
                     OpeCharaHPText.GetComponent<Text>().text = 0 +
-                       "/" + Chara1.GetComponent<Status>().MaxHP;
+                       "/" + OpeCharaHPSlider.maxValue;
                 }
 
                 //攻撃ボタン
@@ -250,7 +250,7 @@ public class GameManager : MonoBehaviour
                 {
                     OpeCharaHPSlider.value = 0;
                     OpeCharaHPText.GetComponent<Text>().text = 0 +
-                       "/" + Chara1.GetComponent<Status>().MaxHP;
+                       "/" + OpeCharaHPSlider.maxValue;
                 }
                 //攻撃ボタン
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");

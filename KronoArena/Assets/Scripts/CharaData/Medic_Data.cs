@@ -208,6 +208,8 @@ public class Medic_Data : MonoBehaviour
         {
             animator.SetBool("Skill1", true);
             var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
+            if((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             EffectFlag = true;
         }
     }

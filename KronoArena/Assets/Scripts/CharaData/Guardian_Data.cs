@@ -101,7 +101,7 @@ public class Guardian_Data : MonoBehaviour
                     this.GetComponent<Status>().Magic_Defense += 200.0f;
 
                     //アニメーション発動
-                    animator.SetBool("Skill1_Trigger", true);
+                    //animator.SetBool("Skill1_Trigger", true);
                     //スキル1発動系を初期値に
                     SkillFlag1 = false;
                     SkillTime1 = 15.0f;
@@ -212,6 +212,9 @@ public class Guardian_Data : MonoBehaviour
     public void Buff1()
     {
         var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
+
+        //アニメーション発動
+        animator.SetBool("Skill1_Trigger", true);
 
         /*if (this.tag == "Player1")
         {

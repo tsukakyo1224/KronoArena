@@ -110,7 +110,7 @@ public class Medic_Data : MonoBehaviour
                 if (SkillTime1 <= 0)
                 {
                     //エフェクト発動
-                    photonView.RPC("EffcttCol", PhotonTargets.All, 2);
+                    photonView.RPC("EffectCol", PhotonTargets.All, 2);
                     //animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
                     SkillTime1 = 20.0f;

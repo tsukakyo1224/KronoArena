@@ -34,6 +34,9 @@ public class Medic_Data : MonoBehaviour
     //持続時間フラグ
     public static bool LimitFlag2;
 
+    //エフェクト用フラグ
+    public static bool EffectFlag;
+
     //アニメーター 
     private Animator animator;
 
@@ -63,6 +66,8 @@ public class Medic_Data : MonoBehaviour
         SkillFlag1 = false;
         SkillFlag2 = false;
         LimitFlag2 = false;
+
+        EffectFlag = false;
 
         AttackFlag = false;
 
@@ -94,6 +99,13 @@ public class Medic_Data : MonoBehaviour
             {
                 //スキル1時間減少
                 SkillTime1 -= Time.deltaTime;
+
+                //待機エフェクト発動
+                if (EffectFlag == false)
+                {
+                    photonView.RPC("EffectCol", PhotonTargets.All, 1);
+                }
+
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
@@ -172,6 +184,7 @@ public class Medic_Data : MonoBehaviour
         }
     }
 
+    //攻撃用エフェクト
     public void effect()
     {
         var instantiateEffect = GameObject.Instantiate(explosion, this.transform.position + 
@@ -188,61 +201,38 @@ public class Medic_Data : MonoBehaviour
 
     }
 
+    [PunRPC]
+    public void EffectCol(int num)
+    {
+        if (num == 1)
+        {
+            animator.SetBool("Skill1", true);
+            var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
+            EffectFlag = true;
+        }
+    }
+
+
     public void HeelAreaEffect()
     {
         var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
-
-        /*if (this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if (this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }*/
     }
 
     [PunRPC]
     public void HeelShowerEffect()
     {
         var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
-
-        /*if (this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if (this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }*/
+        EffectFlag = false;
     }
     [PunRPC]
     public void Medic_BuffEffect()
     {
         var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
-
-        /*if (this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if (this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }*/
     }
 
     public void Medic_BuffSetEffect()
     {
         var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
-
-        /*if (this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if (this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }*/
     }
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃

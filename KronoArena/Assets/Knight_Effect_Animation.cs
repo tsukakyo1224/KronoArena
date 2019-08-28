@@ -40,6 +40,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
             }
 
         }
+        /*
         if (stateInfo.IsName("rollattack"))
         {
             GameObject Kn;
@@ -54,7 +55,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
                 Kn = GameObject.Find("P2_Chara1");
                 Kn.GetComponent<Knight_Data>().Roll();
             }
-        }
+        }*/
         if (stateInfo.IsName("skillwait"))
         {
             GameObject Kn;
@@ -70,6 +71,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
                 Kn.GetComponent<Knight_Data>().BuffSet();
             }
         }
+        /*
         if (stateInfo.IsName("skill"))
         {
             GameObject Kn;
@@ -84,7 +86,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
                 Kn = GameObject.Find("P2_Chara1");
                 Kn.GetComponent<Knight_Data>().Buff();
             }
-        }
+        }*/
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

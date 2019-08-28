@@ -163,62 +163,30 @@ public class Knight_Data : MonoBehaviour
         }
     }
 
-
+    //エフェクト用関数
     public void RollSet()
     {
         var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
-        /*
-        if (this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if (this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }*/
+
     }
     [PunRPC]
     public void Roll()
     {
         var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
-        /*
-        if (this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if (this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }*/
+
     }
 
     public void BuffSet()
     {
         var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
-        /*
-        if (this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if (this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }*/
+
     }
 
     [PunRPC]
     public void Buff()
     {
         var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
-        /*
-        if (this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if (this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }*/
+
     }
 
     public void Damage()

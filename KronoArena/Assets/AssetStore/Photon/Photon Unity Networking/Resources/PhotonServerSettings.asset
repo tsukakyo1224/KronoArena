@@ -60,4 +60,6 @@ MonoBehaviour:
   - EffectCol
   - Guardian_Effect
   - Medic_Effect
+  - Knight_Effect
+  - RollDamage
   DisableAutoOpenWizard: 1

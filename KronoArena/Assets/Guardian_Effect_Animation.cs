@@ -28,7 +28,7 @@ public class Guardian_Effect_Animation : StateMachineBehaviour
             }
 
         }
-
+        /*
         if (stateInfo.IsName("skill01_1"))
         {
             GameObject Gu;
@@ -45,7 +45,7 @@ public class Guardian_Effect_Animation : StateMachineBehaviour
             }
 
         }
-        /*
+
         if (stateInfo.IsName("skill01_2"))
         {
             GameObject Me;
@@ -60,7 +60,7 @@ public class Guardian_Effect_Animation : StateMachineBehaviour
                 Me = GameObject.Find("P2_Chara3");
                 Me.GetComponent<Guardian_Data>().Buff1();
             }
-        }*/
+        }
         if (stateInfo.IsName("skill02_1"))
         {
             GameObject Me;
@@ -76,7 +76,7 @@ public class Guardian_Effect_Animation : StateMachineBehaviour
                 Me.GetComponent<Guardian_Data>().BigShieldSet();
             }
         }
-        /*
+
         if (stateInfo.IsName("skill02_2"))
         {
             GameObject Me;

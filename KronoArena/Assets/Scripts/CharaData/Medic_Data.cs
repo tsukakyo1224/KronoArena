@@ -103,14 +103,14 @@ public class Medic_Data : MonoBehaviour
                 //待機エフェクト発動
                 if (EffectFlag == false)
                 {
-                    photonView.RPC("EffectCol", PhotonTargets.All, 1);
+                    photonView.RPC("Medic_Effect", PhotonTargets.All, 1);
                 }
 
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
                     //エフェクト発動
-                    photonView.RPC("EffectCol", PhotonTargets.All, 2);
+                    photonView.RPC("Medic_Effect", PhotonTargets.All, 2);
                     //animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
                     SkillTime1 = 20.0f;
@@ -152,7 +152,7 @@ public class Medic_Data : MonoBehaviour
                 //待機エフェクト発動
                 if (EffectFlag == false)
                 {
-                    photonView.RPC("EffectCol", PhotonTargets.All, 3);
+                    photonView.RPC("Medic_Effect", PhotonTargets.All, 3);
                 }
 
                     //スキル2時間が0になったら発動
@@ -160,7 +160,7 @@ public class Medic_Data : MonoBehaviour
                 {
                     //Medic_BuffEffect();
                     //エフェクト発動
-                    photonView.RPC("EffectCol", PhotonTargets.All, 4);
+                    photonView.RPC("Medic_Effect", PhotonTargets.All, 4);
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
                     this.GetComponent<Status>().Heel += 100.0f;
@@ -209,7 +209,7 @@ public class Medic_Data : MonoBehaviour
     }
 
     [PunRPC]
-    public void EffectCol(int num)
+    public void Medic_Effect(int num)
     {
         if (num == 1)
         {
@@ -257,7 +257,7 @@ public class Medic_Data : MonoBehaviour
     }
 
 
-    public void HeelAreaEffect()
+    /*public void HeelAreaEffect()
     {
         var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
     }
@@ -283,7 +283,7 @@ public class Medic_Data : MonoBehaviour
     public void Medic_BuffSetEffect()
     {
         var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
-    }
+    }*/
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()

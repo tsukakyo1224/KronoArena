@@ -35,6 +35,9 @@ public class Guardian_Data : MonoBehaviour
     public static bool LimitFlag1;
     public static bool LimitFlag2;
 
+    //エフェクト用フラグ
+    public static bool EffectFlag;
+
     //身代わりフラグ
     public bool GuardFlag;
 
@@ -69,6 +72,8 @@ public class Guardian_Data : MonoBehaviour
 
         GuardFlag = false;
 
+        EffectFlag = false;
+
         animator = this.GetComponent<Animator>();
 
         photonView = GetComponent<PhotonView>();
@@ -93,10 +98,18 @@ public class Guardian_Data : MonoBehaviour
             {
                 //スキル1時間減少
                 SkillTime1 -= Time.deltaTime;
+
+                //待機エフェクト発動
+                if (EffectFlag == false)
+                {
+                    photonView.RPC("Guardian_Effect", PhotonTargets.All, 1);
+                }
+
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
-                    photonView.RPC("Buff1", PhotonTargets.All);
+                    //エフェクト発動
+                    photonView.RPC("Guardian_Effect", PhotonTargets.All, 2);
                     this.GetComponent<Status>().Defense += 200.0f;
                     this.GetComponent<Status>().Magic_Defense += 200.0f;
 
@@ -134,10 +147,18 @@ public class Guardian_Data : MonoBehaviour
             {
                 //スキル2時間減少
                 SkillTime2 -= Time.deltaTime;
+
+                //待機エフェクト発動
+                if (EffectFlag == false)
+                {
+                    photonView.RPC("Guardian_Effect", PhotonTargets.All, 3);
+                }
+
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
-                    photonView.RPC("BigShield", PhotonTargets.All);
+                    photonView.RPC("Guardian_Effect", PhotonTargets.All, 4);
+                    //photonView.RPC("BigShield", PhotonTargets.All);
 
                     //身代わりフラグをオン
                     //GuardFlag = true;
@@ -193,6 +214,53 @@ public class Guardian_Data : MonoBehaviour
         GuardFlag = false;
     }
 
+    [PunRPC]
+    public void Guardian_Effect()
+    {
+        if (num == 1)
+        {
+            animator.SetBool("Skill1", true);
+            var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = true;
+            }
+        }
+
+        else if (num == 2)
+        {
+            animator.SetBool("Skill1", false);
+            animator.SetBool("Skill1_Trigger", true);
+            var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = false;
+            }
+        }
+        else if (num == 3)
+        {
+            animator.SetBool("Skill2", true);
+            var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = true;
+            }
+        }
+        else if (num == 4)
+        {
+            animator.SetBool("Skill2", false);
+            animator.SetBool("Skill2_Trigger", true);
+            var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = false;
+            }
+        }
+    }
 
 
     public void BuffSet1()

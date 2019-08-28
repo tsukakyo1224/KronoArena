@@ -94,7 +94,7 @@ public class ButtonCol : MonoBehaviour
             if (Medic_Data.SkillFlag2 == false)
             {
                 Medic_Data.SkillFlag1 = true;
-                animator2.SetBool("Skill1", true);
+                //animator2.SetBool("Skill1", true);
             }
         }
         //ガーディアンの場合

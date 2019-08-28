@@ -24,7 +24,7 @@ public class Status : MonoBehaviour
     public bool DiedFlag;
 
     //アクションを起こしているか
-    //public bool ActionFlag;
+    public bool ActionFlag;
 
     PhotonView photonView;
     PhotonView this_photonView;

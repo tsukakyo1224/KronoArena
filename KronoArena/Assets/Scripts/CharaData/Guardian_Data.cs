@@ -215,7 +215,7 @@ public class Guardian_Data : MonoBehaviour
     }
 
     [PunRPC]
-    public void Guardian_Effect()
+    public void Guardian_Effect(int num)
     {
         if (num == 1)
         {

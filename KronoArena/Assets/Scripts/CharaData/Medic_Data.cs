@@ -111,7 +111,7 @@ public class Medic_Data : MonoBehaviour
                 {
                     //エフェクト発動
                     photonView.RPC("HeelShowerEffect", PhotonTargets.All);
-                    animator.SetBool("Skill1_Trigger", true);
+                    //animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
                     SkillTime1 = 20.0f;
 
@@ -225,6 +225,7 @@ public class Medic_Data : MonoBehaviour
     [PunRPC]
     public void HeelShowerEffect()
     {
+        animator.SetBool("Skill1_Trigger", true);
         var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
         if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")

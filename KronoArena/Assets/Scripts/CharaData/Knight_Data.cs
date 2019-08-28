@@ -45,6 +45,9 @@ public class Knight_Data : MonoBehaviour
     public static bool LimitFlag1;
     public static bool LimitFlag2;
 
+    //エフェクト用フラグ
+    public static bool EffectFlag;
+
     public static Slider YourHP;
 
     //アニメーター 
@@ -81,6 +84,8 @@ public class Knight_Data : MonoBehaviour
 
         AttackFlag = false;
 
+        EffectFlag = false;
+
         animator = this.GetComponent<Animator>();
 
         photonView = GetComponent<PhotonView>();
@@ -103,10 +108,20 @@ public class Knight_Data : MonoBehaviour
             {
                 //スキル1時間減少
                 SkillTime1 -= Time.deltaTime;
+
+                //待機エフェクト発動
+                if (EffectFlag == false)
+                {
+                    photonView.RPC("Knight_Effect", PhotonTargets.All, 1);
+                }
+
                 //スキル1時間が0になったら発動
                 if (SkillTime1 <= 0)
                 {
-                    photonView.RPC("Roll", PhotonTargets.All);
+
+                    //エフェクト発動
+                    photonView.RPC("Knight_Effect", PhotonTargets.All, 2);
+
                     this.GetComponent<Status>().Attack += 100.0f;
                     animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
@@ -135,10 +150,17 @@ public class Knight_Data : MonoBehaviour
             {
                 //スキル2時間減少
                 SkillTime2 -= Time.deltaTime;
+
+                //待機エフェクト発動
+                if (EffectFlag == false)
+                {
+                    photonView.RPC("Knight_Effect", PhotonTargets.All, 3);
+                }
+
                 //スキル2時間が0になったら発動
                 if (SkillTime2 <= 0)
                 {
-                    photonView.RPC("Buff", PhotonTargets.All);
+                    photonView.RPC("Knight", PhotonTargets.All, 4);
                     animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
                     SkillTime2 = 10.0f;
@@ -159,6 +181,57 @@ public class Knight_Data : MonoBehaviour
                     Debug.Log("ナイトの攻撃力が元に戻った");
                 }
 
+            }
+        }
+    }
+
+
+    [PunRPC]
+    public void Knight_Effect(int num)
+    {
+        if (num == 1)
+        {
+            animator.SetBool("Skill1_Trigger", false);
+            animator.SetBool("Skill1", true);
+            var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = true;
+            }
+        }
+
+        else if (num == 2)
+        {
+            animator.SetBool("Skill1", false);
+            animator.SetBool("Skill1_Trigger", true);
+            var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = false;
+            }
+        }
+        else if (num == 3)
+        {
+            animator.SetBool("Skill2_Trigger", false);
+            animator.SetBool("Skill2", true);
+            var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = true;
+            }
+        }
+        else if (num == 4)
+        {
+            animator.SetBool("Skill2", false);
+            animator.SetBool("Skill2_Trigger", true);
+            var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = false;
             }
         }
     }

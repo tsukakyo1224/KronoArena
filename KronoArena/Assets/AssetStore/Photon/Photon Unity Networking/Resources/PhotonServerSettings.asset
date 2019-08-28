@@ -57,4 +57,5 @@ MonoBehaviour:
   - Buff
   - BigShield
   - Buff1
+  - EffectCol
   DisableAutoOpenWizard: 1

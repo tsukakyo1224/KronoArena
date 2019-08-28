@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     //キャラ攻撃時間テキスト
     public static GameObject ATime2;
     public static GameObject ATime3;
+    public Image AtimeIcon2;
+    public Image AtimeIcon3;
+    public GameObject AIconobj2;
+    public GameObject AIconobj3;
 
 
     //キャラクター用オブジェクト
@@ -87,6 +91,8 @@ public class GameManager : MonoBehaviour
         //攻撃時間用テキスト
         ATime2 = GameObject.Find("ATime2");
         ATime3 = GameObject.Find("ATime3");
+        //AtimeIcon2 = GameObject.Find("SkillIcon1");
+        //AtimeIcon3 = GameObject.Find("SkillIcon2");
 
         //キャラ切り替えボタン用オブジェクト
         CharaChangeButton1 = GameObject.Find("ChangeChara1");
@@ -206,6 +212,16 @@ public class GameManager : MonoBehaviour
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon1");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
                 AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
+
+
+                if(Knight_Data.SkillFlag1 == true)
+                {
+                    AtimeIcon2.fillAmount += 1.0f / 20.0f * Time.deltaTime;
+                }
+                else
+                {
+                    AtimeIcon2.fillAmount = 0.0f;
+                }
 
                 //攻撃時間用テキスト
                 ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));

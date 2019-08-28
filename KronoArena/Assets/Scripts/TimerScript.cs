@@ -55,6 +55,7 @@ public class TimerScript : MonoBehaviour
                 //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
                 //TurnCol.ChangeTurn();
                 GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
+                TotalTime += 10.0f;
                 Debug.Log("time");
             }
         }

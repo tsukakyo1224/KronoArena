@@ -207,7 +207,6 @@ public class Medic_Data : MonoBehaviour
         if (num == 1)
         {
             animator.SetBool("Skill1", true);
-            animator.SetBool("Skill1", false);
             Debug.Log(this);
             var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
             if((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
@@ -227,6 +226,7 @@ public class Medic_Data : MonoBehaviour
     [PunRPC]
     public void HeelShowerEffect()
     {
+        animator.SetBool("Skill1", false);
         animator.SetBool("Skill1_Trigger", true);
         Debug.Log(this);
         var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;

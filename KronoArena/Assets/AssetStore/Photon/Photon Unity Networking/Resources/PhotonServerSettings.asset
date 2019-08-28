@@ -48,16 +48,12 @@ MonoBehaviour:
   - CharaDied
   - ChangeTurn
   - Turn_Change
-  - HeelShowerEffect
-  - GuardOff
-  - GuardOn
-  - Medic_BuffEffect
   - Damage
-  - Roll
-  - Buff
-  - BigShield
-  - Buff1
-  - EffectCol
-  - Guardian_Effect
+  - Knight_Effect
+  - RollDamage
   - Medic_Effect
+  - 
+  - Guardian_Effect
+  - GuardOn
+  - GuardOff
   DisableAutoOpenWizard: 1

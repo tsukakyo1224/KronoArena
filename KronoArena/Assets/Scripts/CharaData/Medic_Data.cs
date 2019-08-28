@@ -138,8 +138,6 @@ public class Medic_Data : MonoBehaviour
                             Debug.Log(obj.name + "を" + this.GetComponent<Status>().Heel + "回復");
                         }
                     }
-
-
                 }
             }
 
@@ -205,14 +203,6 @@ public class Medic_Data : MonoBehaviour
             instantiateEffect.tag = "Player2";
         }
         instantiateEffect.GetComponent<Status>().Magic_Attack = this.GetComponent<Status>().Magic_Attack;
-    }
-
-    //攻撃用エフェクト
-    [PunRPC]
-    public void Medic_Attack()
-    {
-
-
     }
 
     [PunRPC]

@@ -23,7 +23,8 @@ public class Status : MonoBehaviour
 
     public bool DiedFlag;
 
-    public bool ActionFlag;
+    //アクションを起こしているか
+    //public bool ActionFlag;
 
     PhotonView photonView;
     PhotonView this_photonView;
@@ -35,6 +36,7 @@ public class Status : MonoBehaviour
         DiedFlag = false;
         StutusPut();
 
+        ActionFlag = false;
 
         photonView = GetComponent<PhotonView>();
         this_photonView = PhotonView.Get(this);

@@ -110,7 +110,7 @@ public class Medic_Data : MonoBehaviour
                 if (SkillTime1 <= 0)
                 {
                     //エフェクト発動
-                    photonView.RPC("HeelShowerEffect", PhotonTargets.All);
+                    photonView.RPC("EffcttCol", PhotonTargets.All, 2);
                     //animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
                     SkillTime1 = 20.0f;
@@ -148,12 +148,19 @@ public class Medic_Data : MonoBehaviour
             {
                 //スキル2時間減少
                 SkillTime2 -= Time.deltaTime;
-                //スキル2時間が0になったら発動
-                if (SkillTime2 <= 0)
+
+                //待機エフェクト発動
+                if (EffectFlag == false)
+                {
+                    photonView.RPC("EffectCol", PhotonTargets.All, 3);
+                }
+
+                    //スキル2時間が0になったら発動
+                    if (SkillTime2 <= 0)
                 {
                     //Medic_BuffEffect();
                     //エフェクト発動
-                    photonView.RPC("Medic_BuffEffect", PhotonTargets.All);
+                    photonView.RPC("EffectCol", PhotonTargets.All, 4);
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
                     this.GetComponent<Status>().Heel += 100.0f;
@@ -207,12 +214,44 @@ public class Medic_Data : MonoBehaviour
         if (num == 1)
         {
             animator.SetBool("Skill1", true);
-            Debug.Log(this);
             var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
             if((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = true;
+            }
+        }
+
+        else if(num == 2)
+        {
+            animator.SetBool("Skill1", false);
+            animator.SetBool("Skill1_Trigger", true);
+            var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = false;
+            }
+        }
+        else if(num == 3)
+        {
+            animator.SetBool("Skill2", true);
+            var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = true;
+            }
+        }
+        else if(num == 4)
+        {
+            animator.SetBool("Skill2", false);
+            animator.SetBool("Skill2_Trigger", true);
+            var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+            {
+                EffectFlag = false;
             }
         }
     }
@@ -228,7 +267,6 @@ public class Medic_Data : MonoBehaviour
     {
         animator.SetBool("Skill1", false);
         animator.SetBool("Skill1_Trigger", true);
-        Debug.Log(this);
         var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
         if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")

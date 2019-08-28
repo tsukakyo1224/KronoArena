@@ -23,6 +23,9 @@ public class Medic_Data : MonoBehaviour
     public static GameObject ATText2;
     public static GameObject ATText3;
 
+    //攻撃判定用時間
+    public static float Skill_Start;
+
     //攻撃したかのフラグ
     public static bool SkillFlag1;
     public static bool SkillFlag2;
@@ -63,6 +66,7 @@ public class Medic_Data : MonoBehaviour
         SkillTime1 = 20.0f;
         SkillTime2 = 10.0f;
         Skill2_Limit = 60.0f;
+        Skill_Start = 0.0f;
         SkillFlag1 = false;
         SkillFlag2 = false;
         LimitFlag2 = false;
@@ -98,7 +102,8 @@ public class Medic_Data : MonoBehaviour
             if (SkillFlag1 == true && SkillFlag2 == false)
             {
                 //スキル1時間減少
-                SkillTime1 -= Time.deltaTime;
+                //SkillTime1 += Time.deltaTime;
+                Skill_Start += 1.0f / SkillTime1 * Time.deltaTime;
 
                 //待機エフェクト発動
                 if (EffectFlag == false)
@@ -107,13 +112,13 @@ public class Medic_Data : MonoBehaviour
                 }
 
                 //スキル1時間が0になったら発動
-                if (SkillTime1 <= 0)
+                if (Skill_Start >= 1.0f)
                 {
                     //エフェクト発動
                     photonView.RPC("Medic_Effect", PhotonTargets.All, 2);
                     //animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
-                    SkillTime1 = 20.0f;
+                    Skill_Start = 0.0f;
 
                     //回復処理
                     GameObject[] targets = GameObject.FindGameObjectsWithTag("Player1");
@@ -145,7 +150,8 @@ public class Medic_Data : MonoBehaviour
             if (SkillFlag2 == true && SkillFlag1 == false)
             {
                 //スキル2時間減少
-                SkillTime2 -= Time.deltaTime;
+                //SkillTime2 += Time.deltaTime;
+                Skill_Start += 1.0f / SkillTime2 * Time.deltaTime;
 
                 //待機エフェクト発動
                 if (EffectFlag == false)
@@ -154,7 +160,7 @@ public class Medic_Data : MonoBehaviour
                 }
 
                     //スキル2時間が0になったら発動
-                    if (SkillTime2 <= 0)
+                    if (Skill_Start >= 1.0f)
                 {
                     //Medic_BuffEffect();
                     //エフェクト発動
@@ -165,7 +171,7 @@ public class Medic_Data : MonoBehaviour
 
                     animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
-                    SkillTime2 = 10.0f;
+                    Skill_Start = 0.0f;
                     LimitFlag2 = true;
                 }
             }
@@ -217,6 +223,7 @@ public class Medic_Data : MonoBehaviour
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = true;
+                this.GetComponent<Status>().ActionFlag = true;
             }
         }
 
@@ -229,6 +236,7 @@ public class Medic_Data : MonoBehaviour
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = false;
+                this.GetComponent<Status>().ActionFlag = false;
             }
         }
         else if(num == 3)
@@ -240,6 +248,7 @@ public class Medic_Data : MonoBehaviour
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = true;
+                this.GetComponent<Status>().ActionFlag = true;
             }
         }
         else if(num == 4)
@@ -251,6 +260,7 @@ public class Medic_Data : MonoBehaviour
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = false;
+                this.GetComponent<Status>().ActionFlag = false;
             }
         }
     }

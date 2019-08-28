@@ -31,6 +31,9 @@ public class Guardian_Data : MonoBehaviour
     public static bool SkillFlag2;
     public static bool AttackFlag;
 
+    //攻撃判定用時間
+    public static float Skill_Start;
+
     //持続時間フラグ
     public static bool LimitFlag1;
     public static bool LimitFlag2;
@@ -63,6 +66,7 @@ public class Guardian_Data : MonoBehaviour
         SkillTime2 = 20.0f;     //スキル2発動時間
         Skill1_Limit = 30.0f;   //スキル1持続時間
         Skill2_Limit = 10.0f;   //スキル2持続時間
+        Skill_Start = 0.0f;
         SkillFlag1 = false;     //スキル1発動判定フラグ
         SkillFlag2 = false;     //スキル2発動判定フラグ
         LimitFlag1 = false;     //スキル1持続判定フラグ
@@ -97,7 +101,8 @@ public class Guardian_Data : MonoBehaviour
             if (SkillFlag1 == true && SkillFlag2 == false)
             {
                 //スキル1時間減少
-                SkillTime1 -= Time.deltaTime;
+                //SkillTime1 += Time.deltaTime;
+                Skill_Start += 1.0f / SkillTime1 * Time.deltaTime;
 
                 //待機エフェクト発動
                 if (EffectFlag == false)
@@ -106,7 +111,7 @@ public class Guardian_Data : MonoBehaviour
                 }
 
                 //スキル1時間が0になったら発動
-                if (SkillTime1 <= 0)
+                if (Skill_Start >= 1.0f)
                 {
                     //エフェクト発動
                     photonView.RPC("Guardian_Effect", PhotonTargets.All, 2);
@@ -117,7 +122,7 @@ public class Guardian_Data : MonoBehaviour
                     //animator.SetBool("Skill1_Trigger", true);
                     //スキル1発動系を初期値に
                     SkillFlag1 = false;
-                    SkillTime1 = 15.0f;
+                    Skill_Start = 0.0f;
 
                     //持続時間フラグをオン
                     LimitFlag1 = true;
@@ -146,7 +151,8 @@ public class Guardian_Data : MonoBehaviour
             if (SkillFlag2 == true && SkillFlag1 == false)
             {
                 //スキル2時間減少
-                SkillTime2 -= Time.deltaTime;
+                //SkillTime2 += Time.deltaTime;
+                Skill_Start += 1.0f / SkillTime2 * Time.deltaTime;
 
                 //待機エフェクト発動
                 if (EffectFlag == false)
@@ -155,7 +161,7 @@ public class Guardian_Data : MonoBehaviour
                 }
 
                 //スキル2時間が0になったら発動
-                if (SkillTime2 <= 0)
+                if (Skill_Start >= 1.0f)
                 {
                     photonView.RPC("Guardian_Effect", PhotonTargets.All, 4);
                     //photonView.RPC("BigShield", PhotonTargets.All);
@@ -170,7 +176,7 @@ public class Guardian_Data : MonoBehaviour
                     animator.SetBool("Skill2_Trigger", true);
                     //スキル1発動系を初期値に
                     SkillFlag2 = false;
-                    SkillTime2 = 20.0f;
+                    Skill_Start = 0.0f;
                     //持続時間フラグをオン
                     LimitFlag2 = true;
                     Debug.Log("ガーディアン肩代わりの効果が発動");
@@ -226,6 +232,7 @@ public class Guardian_Data : MonoBehaviour
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = true;
+                this.GetComponent<Status>().ActionFlag = true;
             }
         }
 
@@ -238,6 +245,7 @@ public class Guardian_Data : MonoBehaviour
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = false;
+                this.GetComponent<Status>().ActionFlag = false;
             }
         }
         else if (num == 3)
@@ -249,6 +257,7 @@ public class Guardian_Data : MonoBehaviour
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = true;
+                this.GetComponent<Status>().ActionFlag = true;
             }
         }
         else if (num == 4)
@@ -260,6 +269,7 @@ public class Guardian_Data : MonoBehaviour
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = false;
+                this.GetComponent<Status>().ActionFlag = false;
             }
         }
     }

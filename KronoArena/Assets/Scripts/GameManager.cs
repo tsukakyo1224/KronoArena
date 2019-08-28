@@ -24,10 +24,8 @@ public class GameManager : MonoBehaviour
     //キャラ攻撃時間テキスト
     public static GameObject ATime2;
     public static GameObject ATime3;
-    public Image AtimeIcon2;
-    public Image AtimeIcon3;
-    public GameObject AIconobj2;
-    public GameObject AIconobj3;
+    public static GameObject SkillGaugeIcon2;
+    public static GameObject SkillGaugeIcon3;
 
 
     //キャラクター用オブジェクト
@@ -116,6 +114,10 @@ public class GameManager : MonoBehaviour
 
         TimeText = GameObject.Find("Time");
 
+        //スキルゲージ
+        SkillGaugeIcon2 = GameObject.Find("SkillGaugeIcon2");
+        SkillGaugeIcon3 = GameObject.Find("SkillGaugeIcon3");
+
         //カメラオブジェクト
         Camera = GameObject.Find("Main Camera");
 
@@ -130,7 +132,7 @@ public class GameManager : MonoBehaviour
         AttackButton2.SetActive(true);
         AttackButton3.SetActive(true);
 
-        //最初は押せないように
+        //最初は表示
         CharaChangeButton1.GetComponent<Button>().interactable = true;
         CharaChangeButton2.GetComponent<Button>().interactable = true;
         CharaChangeButton3.GetComponent<Button>().interactable = true;
@@ -155,29 +157,6 @@ public class GameManager : MonoBehaviour
                 Chara3 = GameObject.Find("P2_Chara3");
             }
 
-            if (PhotonNetwork.playerList.Length == 2)
-            {
-                /*
-                if (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true)
-                {
-                    GameObject.Find("P1_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P1_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P1_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P2_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P2_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P2_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                }
-                else if (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true)
-                {
-                    GameObject.Find("P1_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P1_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P1_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P2_Chara1").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P2_Chara2").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                    GameObject.Find("P2_Chara3").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                }*/
-            }
-
             //操作キャラ変更時に操作キャラクター表示の変更
             //現時点でナイト確定
             if (ChangeChara.nowChara == 0)
@@ -194,7 +173,7 @@ public class GameManager : MonoBehaviour
                 OpeCharaName.GetComponent<Text>().text = Knight_Data.CharaName;
                 OpeCharaJobIcon.sprite = Knight_Data.JobIconImage;
                 //存在しているのなら表示
-                //Debug.Log(Chara1);
+
                 if (Chara1 != null)
                 {
                     OpeCharaHPSlider.maxValue = Chara1.GetComponent<Status>().hpSlider.maxValue;
@@ -214,18 +193,32 @@ public class GameManager : MonoBehaviour
                 AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
 
 
+
+                //スキルゲージ
                 if(Knight_Data.SkillFlag1 == true)
                 {
-                    AtimeIcon2.fillAmount += 1.0f / 20.0f * Time.deltaTime;
+                    SkillGaugeIcon2.GetComponent<Image>().fillAmount = Knight_Data.Skill_Start;
                 }
                 else
                 {
-                    AtimeIcon2.fillAmount = 0.0f;
+                    SkillGaugeIcon2.GetComponent<Image>().fillAmount = 0.0f;
+                }
+                if(Knight_Data.SkillFlag2 == true)
+                {
+                    SkillGaugeIcon3.GetComponent<Image>().fillAmount = Knight_Data.Skill_Start;
+                }
+                else
+                {
+                    SkillGaugeIcon3.GetComponent<Image>().fillAmount = 0.0f;
                 }
 
                 //攻撃時間用テキスト
                 ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
                 ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
+
+
+
+
             }
             //現時点でメディック確定
             else if (ChangeChara.nowChara == 1)
@@ -259,6 +252,24 @@ public class GameManager : MonoBehaviour
                 AttackButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/attackIcon2");
                 AttackButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/MedicSkillIcon1");
                 AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/MedicSkillIcon2");
+
+                //スキルゲージ
+                if (Medic_Data.SkillFlag1 == true)
+                {
+                    SkillGaugeIcon2.GetComponent<Image>().fillAmount = Medic_Data.Skill_Start;
+                }
+                else
+                {
+                    SkillGaugeIcon2.GetComponent<Image>().fillAmount = 0.0f;
+                }
+                if (Medic_Data.SkillFlag2 == true)
+                {
+                    SkillGaugeIcon3.GetComponent<Image>().fillAmount = Medic_Data.Skill_Start;
+                }
+                else
+                {
+                    SkillGaugeIcon3.GetComponent<Image>().fillAmount = 0.0f;
+                }
 
                 //攻撃時間用テキスト
                 ATime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
@@ -297,6 +308,24 @@ public class GameManager : MonoBehaviour
                 AttackButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("AttackIcon/GuardianSkillIcon2");
 
 
+                //スキルゲージ
+                if (Guardian_Data.SkillFlag1 == true)
+                {
+                    SkillGaugeIcon2.GetComponent<Image>().fillAmount = Guardian_Data.Skill_Start;
+                }
+                else
+                {
+                    SkillGaugeIcon2.GetComponent<Image>().fillAmount = 0.0f;
+                }
+                if (Guardian_Data.SkillFlag2 == true)
+                {
+                    SkillGaugeIcon3.GetComponent<Image>().fillAmount = Guardian_Data.Skill_Start;
+                }
+                else
+                {
+                    SkillGaugeIcon3.GetComponent<Image>().fillAmount = 0.0f;
+                }
+
                 //攻撃時間用テキスト
                 ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
                 ATime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
@@ -309,9 +338,9 @@ public class GameManager : MonoBehaviour
             TurnChangeImage();
 
 
-            //終了判定
+            //----------------------------------終了判定----------------------------------
             //Player1の倒されたキャラが3体を越えたなら
-            if(P1_GP == 3)
+            if (P1_GP == 3)
             {
                 Network_01.gameplayflag = false;
                 Network_01.gamestartflag = false;
@@ -338,10 +367,6 @@ public class GameManager : MonoBehaviour
                     Gamewin();
                 }
             }
-
-            //プレイヤー1とプレイヤー2の残りのキャラの数表示
-            //Debug.Log("プレイヤー1の残りのキャラ" + (3.0 - P1_GP) + "体");
-            //Debug.Log("プレイヤー2の残りのキャラ" + (3.0 - P2_GP) + "体");
 
         }
 

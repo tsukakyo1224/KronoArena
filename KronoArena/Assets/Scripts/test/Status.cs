@@ -61,7 +61,7 @@ public class Status : MonoBehaviour
             {
                 photonView.RPC("CharaDied", PhotonTargets.All);
             }
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
             DiedFlag = true;
         }
     }
@@ -182,7 +182,7 @@ public class Status : MonoBehaviour
             GameManager.P2_GP += 1;
             Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
         }
-
+        this.gameObject.SetActive(false);
     }
 
 }

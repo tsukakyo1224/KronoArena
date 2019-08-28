@@ -2051,8 +2051,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AtimeIcon2: {fileID: 1323078712}
   AtimeIcon3: {fileID: 1534251210}
-  AIconobj2: {fileID: 0}
-  AIconobj3: {fileID: 0}
 --- !u!114 &669602742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3183,7 +3181,7 @@ GameObject:
   - component: {fileID: 1323078713}
   - component: {fileID: 1323078712}
   m_Layer: 5
-  m_Name: SkillIcon1
+  m_Name: SkillGaugeIcon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4360,7 +4358,7 @@ GameObject:
   - component: {fileID: 1534251211}
   - component: {fileID: 1534251210}
   m_Layer: 5
-  m_Name: SkillIcon2
+  m_Name: SkillGaugeIcon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4380,10 +4378,10 @@ RectTransform:
   m_Father: {fileID: 1747083617}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500.95715, y: -89.346985}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -54, y: 273}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1534251210
 MonoBehaviour:
@@ -4405,14 +4403,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 9a8c52e8e2fda4ccdb645e2aabcbc7cc, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
 --- !u!222 &1534251211
 CanvasRenderer:

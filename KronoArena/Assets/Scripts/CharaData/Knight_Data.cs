@@ -36,6 +36,9 @@ public class Knight_Data : MonoBehaviour
     public static GameObject ATText2;
     public static GameObject ATText3;
 
+    //攻撃判定用時間
+    public static float Skill_Start;
+
     //攻撃したかのフラグ
     public static bool SkillFlag1;
     public static bool SkillFlag2;
@@ -77,6 +80,7 @@ public class Knight_Data : MonoBehaviour
         SkillTime2 = 10.0f;
         Skill1_Limit = 3.0f;
         Skill2_Limit = 10.0f;
+        Skill_Start = 0.0f;
         SkillFlag1 = false;
         SkillFlag2 = false;
         LimitFlag1 = false;
@@ -107,7 +111,8 @@ public class Knight_Data : MonoBehaviour
             if (SkillFlag1 == true && SkillFlag2 == false)
             {
                 //スキル1時間減少
-                SkillTime1 -= Time.deltaTime;
+                Skill_Start += 1.0f / SkillTime1 * Time.deltaTime;
+                //SkillTime1 -= Time.deltaTime;
 
                 //待機エフェクト発動
                 if (EffectFlag == false)
@@ -116,7 +121,7 @@ public class Knight_Data : MonoBehaviour
                 }
 
                 //スキル1時間が0になったら発動
-                if (SkillTime1 <= 0)
+                if (Skill_Start >= 1.0f)
                 {
 
                     //エフェクト発動
@@ -126,7 +131,7 @@ public class Knight_Data : MonoBehaviour
                     //回転攻撃
                     photonView.RPC("RollDamage", PhotonTargets.All);
                     SkillFlag1 = false;
-                    SkillTime1 = 20.0f;
+                    Skill_Start = 0.0f;
                     //持続時間フラグをオン
                     LimitFlag1 = true;
                     Debug.Log("ナイトの回転攻撃!");
@@ -150,7 +155,8 @@ public class Knight_Data : MonoBehaviour
             if (SkillFlag2 == true && SkillFlag1 == false)
             {
                 //スキル2時間減少
-                SkillTime2 -= Time.deltaTime;
+                //SkillTime2 -= Time.deltaTime;
+                Skill_Start += 1.0f / SkillTime2 * Time.deltaTime;
 
                 //待機エフェクト発動
                 if (EffectFlag == false)
@@ -159,12 +165,12 @@ public class Knight_Data : MonoBehaviour
                 }
 
                 //スキル2時間が0になったら発動
-                if (SkillTime2 <= 0)
+                if (Skill_Start >= 1.0f)
                 {
-                    photonView.RPC("Knight", PhotonTargets.All, 4);
+                    photonView.RPC("Knight_Effect", PhotonTargets.All, 4);
                     animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
-                    SkillTime2 = 10.0f;
+                    Skill_Start = 0.0f;
                     this.GetComponent<Status>().Attack += 300.0f;
                     LimitFlag2 = true;   //持続時間フラグをオン
                     Debug.Log("ナイトの攻撃力が300UP!");
@@ -217,7 +223,6 @@ public class Knight_Data : MonoBehaviour
         }
         else if (num == 3)
         {
-            this.GetComponent<Status>().ActionFlag = true;
             animator.SetBool("Skill2_Trigger", false);
             animator.SetBool("Skill2", true);
             var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;

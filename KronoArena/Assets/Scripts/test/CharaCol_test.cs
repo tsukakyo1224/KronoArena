@@ -29,7 +29,7 @@ public class CharaCol_test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (photonView.isMine)
+        if (photonView.isMine && this.GetComponent<Status>().ActionFlag ==false)
         {
             if(PhotonNetwork.player.ID==1 && TurnCol.P1_Turn == false)
             {
@@ -109,9 +109,7 @@ public class CharaCol_test : MonoBehaviour
                 }
 
             }
-            if ((Input.GetMouseButtonUp(0)) ||
-                (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn==true) ||
-                (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
+            if (Input.GetMouseButtonUp(0))
             {
                 animator.SetBool("Run", false);
             }

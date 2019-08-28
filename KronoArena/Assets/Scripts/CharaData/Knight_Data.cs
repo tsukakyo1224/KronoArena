@@ -199,6 +199,7 @@ public class Knight_Data : MonoBehaviour
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = true;
+                this.GetComponent<Status>().ActionFlag = true;
             }
         }
 
@@ -211,10 +212,12 @@ public class Knight_Data : MonoBehaviour
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = false;
+                this.GetComponent<Status>().ActionFlag = false;
             }
         }
         else if (num == 3)
         {
+            this.GetComponent<Status>().ActionFlag = true;
             animator.SetBool("Skill2_Trigger", false);
             animator.SetBool("Skill2", true);
             var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
@@ -222,10 +225,12 @@ public class Knight_Data : MonoBehaviour
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = true;
+                this.GetComponent<Status>().ActionFlag = true;
             }
         }
         else if (num == 4)
         {
+            this.GetComponent<Status>().ActionFlag = true;
             animator.SetBool("Skill2", false);
             animator.SetBool("Skill2_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
@@ -233,6 +238,7 @@ public class Knight_Data : MonoBehaviour
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = false;
+                this.GetComponent<Status>().ActionFlag = false;
             }
         }
     }

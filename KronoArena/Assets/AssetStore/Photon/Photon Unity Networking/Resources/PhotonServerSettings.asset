@@ -58,4 +58,6 @@ MonoBehaviour:
   - BigShield
   - Buff1
   - EffectCol
+  - Guardian_Effect
+  - Medic_Effect
   DisableAutoOpenWizard: 1

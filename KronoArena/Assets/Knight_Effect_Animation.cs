@@ -23,24 +23,24 @@ public class Knight_Effect_Animation : StateMachineBehaviour
                 Kn.GetComponent<Knight_Data>().Damage();
             }
         }
-
+        /*
         if (stateInfo.IsName("rollwait"))
         {
             GameObject Kn;
             if (TurnCol.P1_Turn == true)
             {
                 Kn = GameObject.Find("P1_Chara1");
-                Kn.GetComponent<Knight_Data>().RollSet();
+                //Kn.GetComponent<Knight_Data>().RollSet();
             }
 
             else if (TurnCol.P2_Turn == true)
             {
                 Kn = GameObject.Find("P2_Chara1");
-                Kn.GetComponent<Knight_Data>().RollSet();
+                //Kn.GetComponent<Knight_Data>().RollSet();
             }
 
         }
-        /*
+
         if (stateInfo.IsName("rollattack"))
         {
             GameObject Kn;

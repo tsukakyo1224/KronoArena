@@ -124,6 +124,31 @@ public class Knight_Data : MonoBehaviour
 
                     this.GetComponent<Status>().Attack += 100.0f;
                     animator.SetBool("Skill1_Trigger", true);
+
+                    //回転攻撃判定
+                    GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
+                    if (this.tag == "Player2")
+                    {
+                        targets = GameObject.FindGameObjectsWithTag("Player1");
+                    }
+                    foreach (GameObject obj in targets)
+                    {
+                        // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+                        float dist = Vector3.Distance(obj.transform.position, transform.position);
+                        //対象キャラとの距離表示
+                        Debug.Log(obj.name + "との距離は" + dist + "m");
+                        //3m以下なら体力回復判定
+                        if (dist < 3)
+                        {
+                            //ダメージを与える
+                            obj.GetComponent<Status>().HP -=
+                            (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+
+                            Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
+                            ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+                        }
+                    }
+
                     SkillFlag1 = false;
                     SkillTime1 = 20.0f;
                     //持続時間フラグをオン
@@ -234,32 +259,6 @@ public class Knight_Data : MonoBehaviour
                 EffectFlag = false;
             }
         }
-    }
-
-    //エフェクト用関数
-    public void RollSet()
-    {
-        var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
-
-    }
-    [PunRPC]
-    public void Roll()
-    {
-        var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
-
-    }
-
-    public void BuffSet()
-    {
-        var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
-
-    }
-
-    [PunRPC]
-    public void Buff()
-    {
-        var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
-
     }
 
     public void Damage()

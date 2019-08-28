@@ -1745,25 +1745,25 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Run
   - Type: 9
     SynchronizeType: 2
     Name: Attack
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Skill1
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Skill2
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Skill1_Trigger
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Skill2_Trigger
   m_SynchronizeLayers:
-  - SynchronizeType: 1
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &8476221593608646502
 MonoBehaviour:

@@ -210,7 +210,9 @@ public class Medic_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
             if((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            EffectFlag = true;
+            {
+                EffectFlag = true;
+            }
         }
     }
 
@@ -224,7 +226,11 @@ public class Medic_Data : MonoBehaviour
     public void HeelShowerEffect()
     {
         var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
-        EffectFlag = false;
+        if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+        {
+            EffectFlag = false;
+        }
     }
     [PunRPC]
     public void Medic_BuffEffect()

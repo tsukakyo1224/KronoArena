@@ -193,24 +193,25 @@ public class Medic_Data : MonoBehaviour
 
     public void Attack()
     {
-        photonView.RPC("Medic_Attack", PhotonTargets.All);
+        //photonView.RPC("Medic_Attack", PhotonTargets.All);
+        var instantiateEffect = GameObject.Instantiate(HolyBall, this.transform.position +
+            this.transform.forward + new Vector3(0.0f, 0.5f, 0.0f), this.transform.rotation) as GameObject;
+        if (this.tag == "Player1")
+        {
+            instantiateEffect.tag = "Player1";
+        }
+        else if (this.tag == "Player2")
+        {
+            instantiateEffect.tag = "Player2";
+        }
+        instantiateEffect.GetComponent<Status>().Magic_Attack = this.GetComponent<Status>().Magic_Attack;
     }
 
     //攻撃用エフェクト
     [PunRPC]
     public void Medic_Attack()
     {
-        var instantiateEffect = GameObject.Instantiate(HolyBall, this.transform.position + 
-            this.transform.forward + new Vector3(0.0f, 0.5f, 0.0f), this.transform.rotation) as GameObject;
-        if(this.tag == "Player1")
-        {
-            instantiateEffect.tag = "Player1";
-        }
-        else if(this.tag == "Player2")
-        {
-            instantiateEffect.tag = "Player2";
-        }
-        instantiateEffect.GetComponent<Status>().Magic_Attack = this.GetComponent<Status>().Magic_Attack;
+
 
     }
 

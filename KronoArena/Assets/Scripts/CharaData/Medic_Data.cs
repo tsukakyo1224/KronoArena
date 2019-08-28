@@ -213,6 +213,7 @@ public class Medic_Data : MonoBehaviour
     {
         if (num == 1)
         {
+            animator.SetBool("Skill1_Trigger", false);
             animator.SetBool("Skill1", true);
             var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
             if((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
@@ -235,6 +236,7 @@ public class Medic_Data : MonoBehaviour
         }
         else if(num == 3)
         {
+            animator.SetBool("Skill2_Trigger", false);
             animator.SetBool("Skill2", true);
             var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||

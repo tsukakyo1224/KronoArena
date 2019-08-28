@@ -52,7 +52,7 @@ MonoBehaviour:
   - Knight_Effect
   - RollDamage
   - Medic_Effect
-  - 
+  - Medic_Attack
   - Guardian_Effect
   - GuardOn
   - GuardOff

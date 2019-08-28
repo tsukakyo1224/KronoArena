@@ -44,7 +44,7 @@ public class Medic_Data : MonoBehaviour
     private PhotonView photonView;
 
     //メディックのエフェクト
-    [SerializeField] private static GameObject explosion;
+    [SerializeField] private static GameObject HolyBall;
     [SerializeField] private static GameObject HeelArea;
     [SerializeField] private static GameObject HeelShower;
     [SerializeField] private static GameObject Medic_Buff;
@@ -72,7 +72,7 @@ public class Medic_Data : MonoBehaviour
         AttackFlag = false;
 
         //エフェクト呼び出し
-        explosion = Resources.Load<GameObject>("HolyBall");
+        HolyBall = Resources.Load<GameObject>("HolyBall");
         HeelArea = Resources.Load<GameObject>("Heel");
         HeelShower = Resources.Load<GameObject>("HeelShower");
         Medic_Buff = Resources.Load<GameObject>("Medic_Buff");
@@ -191,10 +191,16 @@ public class Medic_Data : MonoBehaviour
         }
     }
 
-    //攻撃用エフェクト
-    public void effect()
+    public void Attack()
     {
-        var instantiateEffect = GameObject.Instantiate(explosion, this.transform.position + 
+        photonView.RPC("Medic_Attack", PhotonTargets.All);
+    }
+
+    //攻撃用エフェクト
+    [PunRPC]
+    public void Medic_Attack()
+    {
+        var instantiateEffect = GameObject.Instantiate(HolyBall, this.transform.position + 
             this.transform.forward + new Vector3(0.0f, 0.5f, 0.0f), this.transform.rotation) as GameObject;
         if(this.tag == "Player1")
         {
@@ -257,35 +263,6 @@ public class Medic_Data : MonoBehaviour
             }
         }
     }
-
-
-    /*public void HeelAreaEffect()
-    {
-        var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
-    }
-
-    [PunRPC]
-    public void HeelShowerEffect()
-    {
-        animator.SetBool("Skill1", false);
-        animator.SetBool("Skill1_Trigger", true);
-        var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
-        if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-        {
-            EffectFlag = false;
-        }
-    }
-    [PunRPC]
-    public void Medic_BuffEffect()
-    {
-        var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
-    }
-
-    public void Medic_BuffSetEffect()
-    {
-        var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
-    }*/
 
     //周りにガーディアンがいて、ガーディアンが身代わりをしていたらガーディアンに攻撃
     void Guardian()

@@ -264,66 +264,6 @@ public class Guardian_Data : MonoBehaviour
         }
     }
 
-
-    //public void BuffSet1()
-    //{
-    //    var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
-
-    //    /*if (this.tag == "Player1")
-    //    {
-    //        instantiateEffect.tag = "Player1";
-    //    }
-    //    else if (this.tag == "Player2")
-    //    {
-    //        instantiateEffect.tag = "Player2";
-    //    }*/
-    //}
-    //[PunRPC]
-    //public void Buff1()
-    //{
-    //    var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
-
-    //    //アニメーション発動
-    //    animator.SetBool("Skill1_Trigger", true);
-
-    //    /*if (this.tag == "Player1")
-    //    {
-    //        instantiateEffect.tag = "Player1";
-    //    }
-    //    else if (this.tag == "Player2")
-    //    {
-    //        instantiateEffect.tag = "Player2";
-    //    }*/
-    //}
-
-    //public void BigShieldSet()
-    //{
-    //    var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
-
-    //    /*if (this.tag == "Player1")
-    //    {
-    //        instantiateEffect.tag = "Player1";
-    //    }
-    //    else if (this.tag == "Player2")
-    //    {
-    //        instantiateEffect.tag = "Player2";
-    //    }*/
-    //}
-    //[PunRPC]
-    //public void BigShield()
-    //{
-    //    var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
-
-    //    /*if (this.tag == "Player1")
-    //    {
-    //        instantiateEffect.tag = "Player1";
-    //    }
-    //    else if (this.tag == "Player2")
-    //    {
-    //        instantiateEffect.tag = "Player2";
-    //    }*/
-    //}
-
     public void Damage()
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");

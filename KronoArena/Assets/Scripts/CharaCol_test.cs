@@ -112,6 +112,7 @@ public class CharaCol_test : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 animator.SetBool("Run", false);
+                animator.SetBool("Turn", true);
             }
 
             //現在の移動速度
@@ -124,7 +125,6 @@ public class CharaCol_test : MonoBehaviour
         if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == false) ||
             (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false))
         {
-            Debug.Log("aaa");
             animator.SetBool("Run", false);
         }
 

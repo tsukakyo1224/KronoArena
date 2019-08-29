@@ -55,7 +55,8 @@ public class Status : MonoBehaviour
 
         if (HP < 0)
         {
-            photonView.RPC("CharaDied", PhotonTargets.All);
+            CharaDied();
+            //photonView.RPC("CharaDied", PhotonTargets.All);
         }
     }
 
@@ -161,7 +162,7 @@ public class Status : MonoBehaviour
     }
 
 
-    [PunRPC]
+    //[PunRPC]
     void CharaDied()
     {
 

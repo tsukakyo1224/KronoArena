@@ -15,12 +15,21 @@ public class GameManager : MonoBehaviour
     public static GameObject CharaChangeButton2;
     public static GameObject CharaChangeButton3;
 
+    //キャラクターバー(左上)
+    public static GameObject CharaBar1;
+    public static GameObject CharaBar2;
+    public static GameObject CharaBar3;
+
+    //キャラクターミニHP
+    public static GameObject CharaHP1;
+    public static GameObject CharaHP2;
+    public static GameObject CharaHP3;
+
     //キャラ攻撃ボタン用オブジェクト
     public static GameObject AttackButton1;
     public static GameObject AttackButton2;
     public static GameObject AttackButton3;
 
-    //キャラクター用オブジェクト
     //キャラ攻撃時間テキスト
     public static GameObject ATime2;
     public static GameObject ATime3;
@@ -81,6 +90,16 @@ public class GameManager : MonoBehaviour
         CharaAttackTime2 = GameObject.Find("AttackTime2");
         CharaAttackTime3 = GameObject.Find("AttackTime3");
 
+        //キャラクターバー用オブジェクト代入
+        CharaBar1 = GameObject.Find("CharacterBar1");
+        CharaBar2 = GameObject.Find("CharacterBar2");
+        CharaBar3 = GameObject.Find("CharacterBar3");
+
+        CharaHP1 = GameObject.Find("Player1HP");
+        CharaHP2 = GameObject.Find("Player2HP");
+        CharaHP3 = GameObject.Find("Player3HP");
+
+
         //キャラ攻撃ボタン用オブジェクト
         AttackButton1 = GameObject.Find("Attack1");
         AttackButton2 = GameObject.Find("Attack2");
@@ -89,8 +108,6 @@ public class GameManager : MonoBehaviour
         //攻撃時間用テキスト
         ATime2 = GameObject.Find("ATime2");
         ATime3 = GameObject.Find("ATime3");
-        //AtimeIcon2 = GameObject.Find("SkillIcon1");
-        //AtimeIcon3 = GameObject.Find("SkillIcon2");
 
         //キャラ切り替えボタン用オブジェクト
         CharaChangeButton1 = GameObject.Find("ChangeChara1");
@@ -156,6 +173,27 @@ public class GameManager : MonoBehaviour
                 Chara2 = GameObject.Find("P2_Chara2");
                 Chara3 = GameObject.Find("P2_Chara3");
             }
+            //左上のバーを初期位置に
+            CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 221.9f, 0.0f);
+            CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 216.5f, 0.0f);
+            CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 195.0f, 0.0f);
+
+            CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 137.2f, 0.0f);
+            CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 133.0f, 0.0f);
+            CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 110.0f, 0.0f);
+
+            CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 50.0f, 0.0f);
+            CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 46.0f, 0.0f);
+            CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
+            /*Debug.Log(CharaChangeButton1.GetComponent<RectTransform>().localPosition);
+            Debug.Log(CharaBar1.GetComponent<RectTransform>().localPosition);
+            Debug.Log(CharaHP1.GetComponent<RectTransform>().localPosition);
+            Debug.Log(CharaChangeButton2.GetComponent<RectTransform>().localPosition);
+            Debug.Log(CharaBar2.GetComponent<RectTransform>().localPosition);
+            Debug.Log(CharaHP2.GetComponent<RectTransform>().localPosition);
+            Debug.Log(CharaChangeButton3.GetComponent<RectTransform>().localPosition);
+            Debug.Log(CharaBar3.GetComponent<RectTransform>().localPosition);
+            Debug.Log(CharaHP3.GetComponent<RectTransform>().localPosition);*/
 
             //操作キャラ変更時に操作キャラクター表示の変更
             //現時点でナイト確定
@@ -216,7 +254,10 @@ public class GameManager : MonoBehaviour
                 ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
                 ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
 
-
+                //操作キャラは右に出す
+                CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 221.9f, 0.0f);
+                CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 216.5f, 0.0f);
+                CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 195.0f, 0.0f);
 
 
             }
@@ -274,6 +315,11 @@ public class GameManager : MonoBehaviour
                 //攻撃時間用テキスト
                 ATime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
                 ATime3.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
+
+
+                CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 137.2f, 0.0f);
+                CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 133.0f, 0.0f);
+                CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 110.0f, 0.0f);
             }
             //現時点でガーディアン確定
             else if (ChangeChara.nowChara == 2)
@@ -329,6 +375,11 @@ public class GameManager : MonoBehaviour
                 //攻撃時間用テキスト
                 ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
                 ATime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
+
+                CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 50.0f, 0.0f);
+                CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 46.0f, 0.0f);
+                CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 25.0f, 0.0f);
+
             }
 
             //左上の攻撃時間表示判定

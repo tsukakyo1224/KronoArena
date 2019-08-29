@@ -1392,8 +1392,8 @@ MonoBehaviour:
   - {fileID: 7237618799686186028}
   - {fileID: 6656719912102320713}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 5
-  instantiationId: 5
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &3203883350727565680
@@ -1523,7 +1523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Medic
-  HP: 500
+  HP: 100
   Attack: 52
   Magic_Attack: 331
   Defense: 166
@@ -1535,7 +1535,6 @@ MonoBehaviour:
   SkillIcon2: {fileID: 0}
   hpSlider: {fileID: 0}
   MaxHP: 0
-  DiedFlag: 0
   ActionFlag: 0
 --- !u!1 &2300631706607908514
 GameObject:
@@ -6241,6 +6240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f430705fc55404f86ed42cdbe8c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpSlider: {fileID: 0}
 --- !u!1 &8313114765545986058
 GameObject:
   m_ObjectHideFlags: 0

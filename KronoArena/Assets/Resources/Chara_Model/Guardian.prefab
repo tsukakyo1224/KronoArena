@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f430705fc55404f86ed42cdbe8c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpSlider: {fileID: 0}
 --- !u!1 &5647605955821386835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,8 +1715,8 @@ MonoBehaviour:
   - {fileID: 2581428436644241243}
   - {fileID: 7803020676621144698}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 4
-  instantiationId: 4
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &410827338514580544
@@ -1845,7 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Guardian
-  HP: 500
+  HP: 100
   Attack: 409
   Magic_Attack: 0
   Defense: 419
@@ -1857,7 +1858,6 @@ MonoBehaviour:
   SkillIcon2: {fileID: 21300000, guid: f91b7f14f0f8c4587873d6f5be310679, type: 3}
   hpSlider: {fileID: 0}
   MaxHP: 0
-  DiedFlag: 0
   ActionFlag: 0
 --- !u!1 &7972497964876689600
 GameObject:

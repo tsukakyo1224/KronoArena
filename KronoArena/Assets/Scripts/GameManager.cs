@@ -72,9 +72,11 @@ public class GameManager : MonoBehaviour
     public static int P1_GP = 0;
     public static int P2_GP = 0;
 
+    public Image WinLose;
+
     //キャラクターの残り数
-    public static GameObject[] Player1Tag;
-    public static GameObject[] Player2Tag;
+    //public static GameObject[] Player1Tag;
+    //public static GameObject[] Player2Tag;
 
 
 
@@ -138,6 +140,9 @@ public class GameManager : MonoBehaviour
 
         //カメラオブジェクト
         Camera = GameObject.Find("Main Camera");
+
+        WinLose = GameObject.Find("WinLose").GetComponent<Image>();
+        WinLose.gameObject.SetActive(false);
 
 
         //最初は非表示に
@@ -371,7 +376,6 @@ public class GameManager : MonoBehaviour
                 CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 50.0f, 0.0f);
                 CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 46.0f, 0.0f);
                 CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 25.0f, 0.0f);
-
             }
 
             //左上の攻撃時間表示判定
@@ -382,8 +386,6 @@ public class GameManager : MonoBehaviour
 
             //キャラの数を数える
             //CharaCheck();
-            Player1Tag = GameObject.FindGameObjectsWithTag("Player1");
-            Player2Tag = GameObject.FindGameObjectsWithTag("Player2");
 
 
             //----------------------------------終了判定----------------------------------
@@ -549,7 +551,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    /*
     void CharaCheck()
     {
         Player1Tag = GameObject.FindGameObjectsWithTag("Player1");
@@ -576,19 +578,23 @@ public class GameManager : MonoBehaviour
                 GameLose();
             }
         }
-    }
+    }*/
 
 
     void GameWin()
     {
         Debug.Log("GAME CLEAR");
         TurnText.GetComponent<Text>().text = "Game Win";
+        WinLose.sprite = Resources.Load<Sprite>("Win");
+        WinLose.gameObject.SetActive(false);
     }
 
     void GameLose()
     {
         Debug.Log("GAME LOSE");
         TurnText.GetComponent<Text>().text = "Game Lose";
+        WinLose.sprite = Resources.Load<Sprite>("Lose");
+        WinLose.gameObject.SetActive(false);
     }
 
     //名前とtagの送受信

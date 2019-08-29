@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
     public static int P1_GP = 0;
     public static int P2_GP = 0;
 
+    //キャラクターの残り数
+    public static GameObject[] Player1Tag;
+    public static GameObject[] Player2Tag;
+
 
 
     // Start is called before the first frame update
@@ -373,13 +377,16 @@ public class GameManager : MonoBehaviour
             //左上の攻撃時間表示判定
             CharaAttackText();
 
-            //
+            //ターン入れ替え時に画面反転
             TurnChangeImage();
+
+            //キャラの数を数える
+            CharaCheck();
 
 
             //----------------------------------終了判定----------------------------------
             //Player1の倒されたキャラが3体を越えたなら
-            if (P1_GP == 3)
+            /*if (P1_GP == 3)
             {
                 Network_01.gameplayflag = false;
                 Network_01.gamestartflag = false;
@@ -389,7 +396,7 @@ public class GameManager : MonoBehaviour
                 }
                 if (PhotonNetwork.player.ID == 2)
                 {
-                    Gamewin();
+                    GameWin();
                 }
             }
             //Player2の倒されたキャラが3体を越えたなら
@@ -403,9 +410,9 @@ public class GameManager : MonoBehaviour
                 }
                 if (PhotonNetwork.player.ID == 1)
                 {
-                    Gamewin();
+                    GameWin();
                 }
-            }
+            }*/
 
         }
 
@@ -541,7 +548,36 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void Gamewin()
+    void CharaCheck()
+    {
+        Player1Tag = GameObject.FindGameObjectsWithTag("Player1");
+        Player2Tag = GameObject.FindGameObjectsWithTag("Player2");
+        if(Player1Tag.Length <= 0)
+        {
+            if (PhotonNetwork.player.ID == 1)
+            {
+                GameLose();
+            }
+            else if (PhotonNetwork.player.ID == 2)
+            {
+                GameWin();
+            }
+        }
+        else if(Player2Tag.Length <= 0)
+        {
+            if (PhotonNetwork.player.ID == 1)
+            {
+                GameWin();
+            }
+            else if (PhotonNetwork.player.ID == 2)
+            {
+                GameLose();
+            }
+        }
+    }
+
+
+    void GameWin()
     {
         Debug.Log("GAME CLEAR");
         TurnText.GetComponent<Text>().text = "Game Win";

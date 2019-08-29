@@ -185,15 +185,6 @@ public class GameManager : MonoBehaviour
             CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 50.0f, 0.0f);
             CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 46.0f, 0.0f);
             CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
-            /*Debug.Log(CharaChangeButton1.GetComponent<RectTransform>().localPosition);
-            Debug.Log(CharaBar1.GetComponent<RectTransform>().localPosition);
-            Debug.Log(CharaHP1.GetComponent<RectTransform>().localPosition);
-            Debug.Log(CharaChangeButton2.GetComponent<RectTransform>().localPosition);
-            Debug.Log(CharaBar2.GetComponent<RectTransform>().localPosition);
-            Debug.Log(CharaHP2.GetComponent<RectTransform>().localPosition);
-            Debug.Log(CharaChangeButton3.GetComponent<RectTransform>().localPosition);
-            Debug.Log(CharaBar3.GetComponent<RectTransform>().localPosition);
-            Debug.Log(CharaHP3.GetComponent<RectTransform>().localPosition);*/
 
             //操作キャラ変更時に操作キャラクター表示の変更
             //現時点でナイト確定
@@ -214,9 +205,9 @@ public class GameManager : MonoBehaviour
 
                 if (Chara1 != null)
                 {
-                    OpeCharaHPSlider.maxValue = Chara1.GetComponent<Status>().hpSlider.maxValue;
-                    OpeCharaHPSlider.value = Chara1.GetComponent<Status>().hpSlider.value;
-                    OpeCharaHPText.GetComponent<Text>().text = Chara1.GetComponent<Status>().hpSlider.value +
+                    OpeCharaHPSlider.maxValue = Chara1.GetComponent<Status>().MaxHP;
+                    OpeCharaHPSlider.value = Chara1.GetComponent<Status>().HP;
+                    OpeCharaHPText.GetComponent<Text>().text = Chara1.GetComponent<Status>().HP +
                        "/" + Chara1.GetComponent<Status>().MaxHP;
                 }
                 else
@@ -277,9 +268,9 @@ public class GameManager : MonoBehaviour
                 OpeCharaJobIcon.sprite = Medic_Data.JobIconImage;
                 if (Chara2 != null)
                 {
-                    OpeCharaHPSlider.maxValue = Chara2.GetComponent<Status>().hpSlider.maxValue;
-                    OpeCharaHPSlider.value = Chara2.GetComponent<Status>().hpSlider.value;
-                    OpeCharaHPText.GetComponent<Text>().text = Chara2.GetComponent<Status>().hpSlider.value +
+                    OpeCharaHPSlider.maxValue = Chara2.GetComponent<Status>().MaxHP;
+                    OpeCharaHPSlider.value = Chara2.GetComponent<Status>().HP;
+                    OpeCharaHPText.GetComponent<Text>().text = Chara2.GetComponent<Status>().HP +
                        "/" + Chara2.GetComponent<Status>().MaxHP;
                 }
                 else
@@ -337,9 +328,9 @@ public class GameManager : MonoBehaviour
                 OpeCharaJobIcon.sprite = Guardian_Data.JobIconImage;
                 if (Chara3 != null)
                 {
-                    OpeCharaHPSlider.maxValue = Chara3.GetComponent<Status>().hpSlider.maxValue;
-                    OpeCharaHPSlider.value = Chara3.GetComponent<Status>().hpSlider.value;
-                    OpeCharaHPText.GetComponent<Text>().text = Chara3.GetComponent<Status>().hpSlider.value +
+                    OpeCharaHPSlider.maxValue = Chara3.GetComponent<Status>().MaxHP;
+                    OpeCharaHPSlider.value = Chara3.GetComponent<Status>().HP;
+                    OpeCharaHPText.GetComponent<Text>().text = Chara3.GetComponent<Status>().HP +
                        "/" + Chara3.GetComponent<Status>().MaxHP;
                 }
                 else

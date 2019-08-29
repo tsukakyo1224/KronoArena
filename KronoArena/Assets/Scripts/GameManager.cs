@@ -127,8 +127,8 @@ public class GameManager : MonoBehaviour
         OpeCharaHPSlider = GameObject.Find("BackGround").transform.Find("OpeCharaHPSlider").GetComponent<Slider>();
         OpeCharaHPText = GameObject.Find("OpeCharaHPText");
 
-
-        TurnChangeButton = GameObject.Find("ChangeTurn");
+        //砂時計ボタン(ターンチェンジ)
+        TurnChangeButton = GameObject.Find("HourGlass");
 
         TurnText = GameObject.Find("TurnText");
 

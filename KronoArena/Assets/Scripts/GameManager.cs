@@ -597,14 +597,14 @@ public class GameManager : MonoBehaviour
         if (stream.isWriting)
         {
             //データの送信
-            stream.SendNext(P1_GP);
-            stream.SendNext(P2_GP);
+            //stream.SendNext(P1_GP);
+            //stream.SendNext(P2_GP);
         }
         else
         {
             //データの受信
-            P1_GP = (int)stream.ReceiveNext();
-            P2_GP = (int)stream.ReceiveNext();
+            //P1_GP = (int)stream.ReceiveNext();
+            //P2_GP = (int)stream.ReceiveNext();
         }
     }
 

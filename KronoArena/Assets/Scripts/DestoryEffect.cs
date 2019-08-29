@@ -15,8 +15,12 @@ public class DestoryEffect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //エフェクトを
+        //エフェクトを消す
         //メディック
+        if (this.gameObject.name == "HolyBall(Clone)")
+        {
+            Destroy(this.gameObject, 5f);
+        }
         if (this.gameObject.name == "Heel(Clone)")
         {
             Destroy(this.gameObject, 20f);

@@ -382,6 +382,8 @@ public class GameManager : MonoBehaviour
 
             //キャラの数を数える
             //CharaCheck();
+            Player1Tag = GameObject.FindGameObjectsWithTag("Player1");
+            Player2Tag = GameObject.FindGameObjectsWithTag("Player2");
 
 
             //----------------------------------終了判定----------------------------------

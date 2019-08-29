@@ -109,9 +109,7 @@ public class CharaCol_test : MonoBehaviour
                 }
 
             }
-            if ((Input.GetMouseButtonUp(0)) ||
-                (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == false) ||
-                (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false))
+            if (Input.GetMouseButtonUp(0))
             {
                 animator.SetBool("Run", false);
             }
@@ -121,6 +119,12 @@ public class CharaCol_test : MonoBehaviour
             //移動速度を指定
             photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
 
+        }
+        //走り続ける防止
+        if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == false) ||
+            (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false))
+        {
+            animator.SetBool("Run", false);
         }
 
     }

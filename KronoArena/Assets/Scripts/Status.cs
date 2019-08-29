@@ -175,7 +175,7 @@ public class Status : MonoBehaviour
             GameManager.P2_GP += 1;
             Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
         }
-        this.hpSlider.value = 0;
+        hpSlider.value = 0;
         this.gameObject.SetActive(false);
     }
 

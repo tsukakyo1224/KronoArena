@@ -586,7 +586,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME CLEAR");
         TurnText.GetComponent<Text>().text = "Game Win";
         WinLose.sprite = Resources.Load<Sprite>("Win");
-        WinLose.gameObject.SetActive(false);
+        WinLose.gameObject.SetActive(true);
     }
 
     void GameLose()
@@ -594,7 +594,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME LOSE");
         TurnText.GetComponent<Text>().text = "Game Lose";
         WinLose.sprite = Resources.Load<Sprite>("Lose");
-        WinLose.gameObject.SetActive(false);
+        WinLose.gameObject.SetActive(true);
     }
 
     //名前とtagの送受信

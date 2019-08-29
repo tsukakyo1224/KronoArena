@@ -13,13 +13,13 @@ public class Guardian_Effect_Animation : StateMachineBehaviour
         {
 
             GameObject Gu;
-            if (TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1)
+            if (TurnCol.P1_Turn == true)
             {
                 Gu = GameObject.Find("P1_Chara3");
                 Gu.GetComponent<Guardian_Data>().Damage();
             }
 
-            else if (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2)
+            else if (TurnCol.P2_Turn == true)
             {
                 Gu = GameObject.Find("P2_Chara3");
                 Gu.GetComponent<Guardian_Data>().Damage();

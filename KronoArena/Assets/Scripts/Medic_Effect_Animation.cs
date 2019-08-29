@@ -13,12 +13,12 @@ public class Medic_Effect_Animation : StateMachineBehaviour
 
             GameObject Me;
 
-            if (TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1)
+            if (TurnCol.P1_Turn == true)
             {
                 Me = GameObject.Find("P1_Chara2");
                 Me.GetComponent<Medic_Data>().Attack();
             }
-            else if (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2)
+            else if (TurnCol.P2_Turn == true)
             {
                 Me = GameObject.Find("P2_Chara2");
                 Me.GetComponent<Medic_Data>().Attack();

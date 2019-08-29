@@ -381,12 +381,12 @@ public class GameManager : MonoBehaviour
             TurnChangeImage();
 
             //キャラの数を数える
-            CharaCheck();
+            //CharaCheck();
 
 
             //----------------------------------終了判定----------------------------------
             //Player1の倒されたキャラが3体を越えたなら
-            /*if (P1_GP == 3)
+            if (P1_GP == 3)
             {
                 Network_01.gameplayflag = false;
                 Network_01.gamestartflag = false;
@@ -412,7 +412,7 @@ public class GameManager : MonoBehaviour
                 {
                     GameWin();
                 }
-            }*/
+            }
 
         }
 

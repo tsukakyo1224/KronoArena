@@ -199,7 +199,7 @@ public class Medic_Data : MonoBehaviour
     {
         //photonView.RPC("Medic_Attack", PhotonTargets.All);
         var instantiateEffect = GameObject.Instantiate(HolyBall, this.transform.position +
-            this.transform.forward/2 + new Vector3(0.0f, 0.5f, 0.0f), this.transform.rotation) as GameObject;
+            this.transform.forward + new Vector3(0.0f, 0.5f, 0.0f), this.transform.rotation) as GameObject;
         if (this.tag == "Player1")
         {
             instantiateEffect.tag = "Player1";

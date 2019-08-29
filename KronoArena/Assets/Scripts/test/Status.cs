@@ -21,8 +21,6 @@ public class Status : MonoBehaviour
 
     public float MaxHP;
 
-    public bool DiedFlag;
-
     //アクションを起こしているか
     public bool ActionFlag;
 
@@ -33,7 +31,7 @@ public class Status : MonoBehaviour
     void Start()
     {
         MaxHP = HP;
-        DiedFlag = false;
+
         StutusPut();
 
         ActionFlag = false;
@@ -55,14 +53,9 @@ public class Status : MonoBehaviour
         }
 
 
-        if (HP < 0 && DiedFlag == false)
+        if (HP < 0)
         {
-            if (this_photonView.isMine)
-            {
-                photonView.RPC("CharaDied", PhotonTargets.All);
-            }
-            //this.gameObject.SetActive(false);
-            DiedFlag = true;
+            photonView.RPC("CharaDied", PhotonTargets.All);
         }
     }
 

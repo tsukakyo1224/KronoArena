@@ -11,82 +11,18 @@ public class Knight_Effect_Animation : StateMachineBehaviour
         if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
         {
             GameObject Kn;
-            if (TurnCol.P1_Turn == true)
+            if (TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1)
             {
                 Kn = GameObject.Find("P1_Chara1");
                 Kn.GetComponent<Knight_Data>().Damage();
             }
 
-            else if (TurnCol.P2_Turn == true)
+            else if (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2)
             {
                 Kn = GameObject.Find("P2_Chara1");
                 Kn.GetComponent<Knight_Data>().Damage();
             }
         }
-        /*
-        if (stateInfo.IsName("rollwait"))
-        {
-            GameObject Kn;
-            if (TurnCol.P1_Turn == true)
-            {
-                Kn = GameObject.Find("P1_Chara1");
-                //Kn.GetComponent<Knight_Data>().RollSet();
-            }
-
-            else if (TurnCol.P2_Turn == true)
-            {
-                Kn = GameObject.Find("P2_Chara1");
-                //Kn.GetComponent<Knight_Data>().RollSet();
-            }
-
-        }
-
-        if (stateInfo.IsName("rollattack"))
-        {
-            GameObject Kn;
-            if (TurnCol.P1_Turn == true)
-            {
-                Kn = GameObject.Find("P1_Chara1");
-                Kn.GetComponent<Knight_Data>().Roll();
-            }
-
-            else if (TurnCol.P2_Turn == true)
-            {
-                Kn = GameObject.Find("P2_Chara1");
-                Kn.GetComponent<Knight_Data>().Roll();
-            }
-        }
-        if (stateInfo.IsName("skillwait"))
-        {
-            GameObject Kn;
-            if (TurnCol.P1_Turn == true)
-            {
-                Kn = GameObject.Find("P1_Chara1");
-                Kn.GetComponent<Knight_Data>().BuffSet();
-            }
-
-            else if (TurnCol.P2_Turn == true)
-            {
-                Kn = GameObject.Find("P2_Chara1");
-                Kn.GetComponent<Knight_Data>().BuffSet();
-            }
-        }
-
-        if (stateInfo.IsName("skill"))
-        {
-            GameObject Kn;
-            if (TurnCol.P1_Turn == true)
-            {
-                Kn = GameObject.Find("P1_Chara1");
-                Kn.GetComponent<Knight_Data>().Buff();
-            }
-
-            else if (TurnCol.P2_Turn == true)
-            {
-                Kn = GameObject.Find("P2_Chara1");
-                Kn.GetComponent<Knight_Data>().Buff();
-            }
-        }*/
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

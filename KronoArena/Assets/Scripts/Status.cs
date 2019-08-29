@@ -168,16 +168,16 @@ public class Status : MonoBehaviour
         if (this.tag == "Player1")
         {
             //GameManager.P1_GP += 1;
-            //Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P1_GP + "体)");
-            Debug.Log("プレイヤー1:" + GameManager.Player1Tag.Length + "体");
-            Debug.Log("プレイヤー2:" + GameManager.Player2Tag.Length + "体");
+            Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P1_GP + "体)");
+            //Debug.Log("プレイヤー1:" + GameManager.Player1Tag.Length + "体");
+            //Debug.Log("プレイヤー2:" + GameManager.Player2Tag.Length + "体");
         }
         if (this.tag == "Player2")
         {
             //GameManager.P2_GP += 1;
-            //Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
-            Debug.Log("プレイヤー1:" + GameManager.Player1Tag.Length + "体");
-            Debug.Log("プレイヤー2:" + GameManager.Player2Tag.Length + "体");
+            Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
+            //Debug.Log("プレイヤー1:" + GameManager.Player1Tag.Length + "体");
+            //Debug.Log("プレイヤー2:" + GameManager.Player2Tag.Length + "体");
         }
         //左上のHPバーを0にする
         if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||

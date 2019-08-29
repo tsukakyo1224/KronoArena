@@ -1266,7 +1266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2300631706607908512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.37, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2300631706607741708}
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   Name: Medic
   HP: 1519
   Attack: 52
-  Magic_Attack: 331
+  Magic_Attack: 631
   Defense: 166
   Magic_Defense: 187
   Speed: 3

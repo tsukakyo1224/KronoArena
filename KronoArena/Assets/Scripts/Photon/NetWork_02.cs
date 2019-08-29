@@ -33,12 +33,15 @@ public class NetWork_02 : MonoBehaviour
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, 4.0f);
                 P1_Chara1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
+                P1_Chara1.transform.rotation = Quaternion.Euler(0.0f, -135.0f, 0.0f);
                 //キャラクター二人目生成
                 pos = new Vector3(2.0f, 0f, 2.0f);
                 P1_Chara2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
+                P1_Chara2.transform.rotation = Quaternion.Euler(0.0f, -135.0f, 0.0f);
                 //キャラクター三人目生成
                 pos = new Vector3(4.0f, 0f, 0.0f);
                 P1_Chara3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
+                P1_Chara3.transform.rotation = Quaternion.Euler(0.0f, -135.0f, 0.0f);
                 //キャラクターの名前、tag設定
                 P1_Chara1.name = "P1_Chara1";
                 P1_Chara1.tag = "Player1";
@@ -55,12 +58,15 @@ public class NetWork_02 : MonoBehaviour
                 //キャラクター一人目生成
                 Vector3 pos = new Vector3(0f, 0f, -4.0f);
                 P2_Chara1 = PhotonNetwork.Instantiate("Chara_Model/Knight", pos, Quaternion.identity, 0);
+                P2_Chara1.transform.rotation = Quaternion.Euler(0.0f, 45.0f, 0.0f);
                 //キャラクター二人目生成
                 pos = new Vector3(-2.0f, 0f, -2.0f);
                 P2_Chara2 = PhotonNetwork.Instantiate("Chara_Model/Medic", pos, Quaternion.identity, 0);
+                P2_Chara2.transform.rotation = Quaternion.Euler(0.0f, 45.0f, 0.0f);
                 //キャラクター三人目生成
                 pos = new Vector3(-4.0f, 0f, 0.0f);
                 P2_Chara3 = PhotonNetwork.Instantiate("Chara_Model/Guardian", pos, Quaternion.identity, 0);
+                P2_Chara3.transform.rotation = Quaternion.Euler(0.0f, 45.0f, 0.0f);
 
                 //キャラクターの名前、tag設定
                 P2_Chara1.name = "P2_Chara1";

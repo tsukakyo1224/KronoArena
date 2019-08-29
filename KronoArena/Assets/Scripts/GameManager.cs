@@ -614,7 +614,7 @@ public class GameManager : MonoBehaviour
     void GameWin()
     {
         Debug.Log("GAME CLEAR");
-        TurnText.GetComponent<Text>().text = "Game Win";
+        //TurnText.GetComponent<Text>().text = "Game Win";
         WinLose.sprite = Resources.Load<Sprite>("Win");
         WinLose.gameObject.SetActive(true);
     }
@@ -622,7 +622,7 @@ public class GameManager : MonoBehaviour
     void GameLose()
     {
         Debug.Log("GAME LOSE");
-        TurnText.GetComponent<Text>().text = "Game Lose";
+        //TurnText.GetComponent<Text>().text = "Game Lose";
         WinLose.sprite = Resources.Load<Sprite>("Lose");
         WinLose.gameObject.SetActive(true);
     }

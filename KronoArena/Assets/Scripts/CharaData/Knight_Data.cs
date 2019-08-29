@@ -127,7 +127,7 @@ public class Knight_Data : MonoBehaviour
                     //エフェクト発動
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 2);
 
-                    this.GetComponent<Status>().Attack += 100.0f;
+                    this.GetComponent<Status>().Attack += 1000.0f;
                     //回転攻撃
                     photonView.RPC("RollDamage", PhotonTargets.All);
                     SkillFlag1 = false;
@@ -144,7 +144,7 @@ public class Knight_Data : MonoBehaviour
                 Skill1_Limit -= Time.deltaTime;
                 if (Skill1_Limit <= 0)
                 {
-                    this.GetComponent<Status>().Attack -= 100.0f;
+                    this.GetComponent<Status>().Attack -= 1000.0f;
                     LimitFlag1 = false;
                     Skill1_Limit = 3.0f;
                 }

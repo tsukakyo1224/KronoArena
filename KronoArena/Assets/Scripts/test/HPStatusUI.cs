@@ -17,10 +17,11 @@ public class HPStatusUI : MonoBehaviour
         //　HP用Sliderを子要素から取得
         hpSlider = transform.Find("HPBar").GetComponent<Slider>();
         //マックスHPを取得
-        hpSlider.maxValue = ParentChara.GetComponent<Status>().hpSlider.maxValue;
+        //
         //親オブジェクト取得
         ParentChara = transform.root.gameObject;
-        if((PhotonNetwork.player.ID == 1 && ParentChara.tag == "Player1") ||
+        hpSlider.maxValue = ParentChara.GetComponent<Status>().hpSlider.maxValue;
+        if ((PhotonNetwork.player.ID == 1 && ParentChara.tag == "Player1") ||
             (PhotonNetwork.player.ID == 2 && ParentChara.tag == "Player2"))
         {
             this.gameObject.SetActive(false);
@@ -36,7 +37,7 @@ public class HPStatusUI : MonoBehaviour
     {
         //　カメラと同じ向きに設定
         transform.rotation = Camera.main.transform.rotation;
-        hpSlider.maxValue = ParentChara.GetComponent<Status>().hpSlider.maxValue;
+        hpSlider.maxValue = ParentChara.GetComponent<Status>().MaxHP;
         hpSlider.value = ParentChara.GetComponent<Status>().hpSlider.value;
     }
 }

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public static GameObject CharaBar2;
     public static GameObject CharaBar3;
 
-    //キャラクターミニHP
+    //キャラクターミニHP(左上)
     public static GameObject CharaHP1;
     public static GameObject CharaHP2;
     public static GameObject CharaHP3;

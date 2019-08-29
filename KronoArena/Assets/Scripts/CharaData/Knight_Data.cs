@@ -187,7 +187,6 @@ public class Knight_Data : MonoBehaviour
                     Skill2_Limit = 10.0f;
                     Debug.Log("ナイトの攻撃力が元に戻った");
                 }
-
             }
         }
     }

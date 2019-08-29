@@ -1523,11 +1523,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Medic
-  HP: 100
+  HP: 1519
   Attack: 52
   Magic_Attack: 331
   Defense: 166
-  Magic_Defense: 284
+  Magic_Defense: 187
   Speed: 3
   Heel: 200
   AttackIcon: {fileID: 0}

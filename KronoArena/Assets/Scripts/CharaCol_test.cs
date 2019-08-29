@@ -124,6 +124,7 @@ public class CharaCol_test : MonoBehaviour
         if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == false) ||
             (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false))
         {
+            Debug.Log("aaa");
             animator.SetBool("Run", false);
         }
 

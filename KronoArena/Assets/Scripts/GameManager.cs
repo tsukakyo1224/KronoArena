@@ -53,9 +53,6 @@ public class GameManager : MonoBehaviour
     //ターン切り替えボタン
     public static GameObject TurnChangeButton;
 
-    //ターン(turn==0:自分、turn==1:相手)
-    //public static int turn;
-
     //ターン用テキスト
     public static GameObject TurnText;
 

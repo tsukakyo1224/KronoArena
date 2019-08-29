@@ -48,7 +48,7 @@ public class Status : MonoBehaviour
             (PhotonNetwork.player.ID == 2 && this.tag == "Player2")){
             if(this.GetComponent<Status>().Name != "")
             {
-                this.hpSlider.value = this.HP;
+                hpSlider.value = this.HP;
             }
         }
 
@@ -175,7 +175,7 @@ public class Status : MonoBehaviour
             GameManager.P2_GP += 1;
             Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
         }
-        //hpSlider.value = 0;
+        hpSlider.value = 0;
         this.gameObject.SetActive(false);
     }
 

@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f430705fc55404f86ed42cdbe8c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpSlider: {fileID: 0}
 --- !u!1 &4206333915104601258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,8 +2023,8 @@ MonoBehaviour:
   - {fileID: 4481824092477208548}
   - {fileID: 4627590190418915378}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 3
-  instantiationId: 3
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &8898181367188008520

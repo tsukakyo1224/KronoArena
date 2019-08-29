@@ -428,6 +428,7 @@ public class GameManager : MonoBehaviour
             //CharaChangeButton1.GetComponent<Button>().interactable = true;
             //CharaChangeButton2.GetComponent<Button>().interactable = true;
             //CharaChangeButton3.GetComponent<Button>().interactable = true;
+            TurnChangeButton.GetComponent<Button>().interactable = true;
             AttackButton1.SetActive(true);
             AttackButton2.SetActive(true);
             AttackButton3.SetActive(true);
@@ -439,6 +440,7 @@ public class GameManager : MonoBehaviour
             //CharaChangeButton1.GetComponent<Button>().interactable = false;
             //CharaChangeButton2.GetComponent<Button>().interactable = false;
             //CharaChangeButton3.GetComponent<Button>().interactable = false;
+            TurnChangeButton.GetComponent<Button>().interactable = false;
             AttackButton1.SetActive(false);
             AttackButton2.SetActive(false);
             AttackButton3.SetActive(false);

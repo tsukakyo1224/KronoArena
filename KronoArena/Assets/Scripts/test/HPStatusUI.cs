@@ -5,19 +5,24 @@ using UnityEngine.UI;
 public class HPStatusUI : MonoBehaviour
 {
 
-    //　敵のステータス
-    private EnemyStatus enemyStatus;
+    //　親オブジェクトステータス
+    private GameObject ParentChara;
+    //　親ステータス
+    //private GameObject ParentStatus;
     //　HP表示用スライダー
-    public static Slider hpSlider;
+    public Slider hpSlider;
 
     void Start()
     {
-        //　自身のルートに取り付けている敵のステータス取得
-        enemyStatus = transform.root.GetComponent<EnemyStatus>();
         //　HP用Sliderを子要素から取得
         hpSlider = transform.Find("HPBar").GetComponent<Slider>();
-        //　スライダーの値0～1の間になるように比率を計算
-        //hpSlider.value = (float)enemyStatus.GetMaxHp() / (float)enemyStatus.GetMaxHp();
+        //親オブジェクト取得
+        ParentChara = transform.root.gameObject;
+        if(!(PhotonNetwork.player.ID == 1 && ParentChara.tag == "Player1") ||
+            !(PhotonNetwork.player.ID == 2 && ParentChara.tag == "Player2"))
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -25,19 +30,7 @@ public class HPStatusUI : MonoBehaviour
     {
         //　カメラと同じ向きに設定
         transform.rotation = Camera.main.transform.rotation;
-        if (hpSlider.value <= 0)
-        {
-            SetDisable();
-        }
-    }
-    //　死んだらHPUIを非表示にする
-    public void SetDisable()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public void UpdateHPValue()
-    {
-        hpSlider.value = (float)enemyStatus.GetHp() / (float)enemyStatus.GetMaxHp();
+        hpSlider.maxValue = ParentChara.GetComponent<Status>().hpSlider.maxValue;
+        hpSlider.value = ParentChara.GetComponent<Status>().hpSlider.value;
     }
 }

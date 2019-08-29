@@ -99,29 +99,4 @@ public class ControlOnOffChara : MonoBehaviour
         isControl = controlFlag;
     }
 
-
-    //攻撃判定
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-
-        if (hit.gameObject.CompareTag("Enemy")){
-            //HP減少
-            //HPBar.value -= 1;
-            if (hit.gameObject.name == "YourChara1")
-            {
-                HPStatusUI.hpSlider.value -= 1;
-            }
-            if (hit.gameObject.name == "YourChara2")
-            {
-                HPStatusUI.hpSlider.value -= 1;
-            }
-
-            if (hit.gameObject.name == "YourChara3")
-            {
-                HPStatusUI.hpSlider.value -= 1;
-            }
-            //HPStatusUI.hpSlider.value -= 1;
-        }
-    }
-
 }

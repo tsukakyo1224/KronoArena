@@ -25,11 +25,11 @@ public class EnemyStatus : MonoBehaviour {
         this.hp = hp;
  
         //　HP表示用UIのアップデート
-        hpStatusUI.UpdateHPValue ();
+        //hpStatusUI.UpdateHPValue ();
  
         if (hp <= 0) {
             //　HP表示用UIを非表示にする
-            hpStatusUI.SetDisable ();
+            //hpStatusUI.SetDisable ();
             //enemy.Dead ();
         }
     }

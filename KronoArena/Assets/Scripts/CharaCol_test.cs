@@ -109,7 +109,9 @@ public class CharaCol_test : MonoBehaviour
                 }
 
             }
-            if (Input.GetMouseButtonUp(0))
+            if ((Input.GetMouseButtonUp(0)) ||
+                (PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == false) ||
+                (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false))
             {
                 animator.SetBool("Run", false);
             }

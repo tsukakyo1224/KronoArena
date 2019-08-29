@@ -431,7 +431,7 @@ public class GameManager : MonoBehaviour
             AttackButton1.SetActive(true);
             AttackButton2.SetActive(true);
             AttackButton3.SetActive(true);
-            TurnText.GetComponent<Text>().text = "My turn";
+            //TurnText.GetComponent<Text>().text = "My turn";
         }
         else if((TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)) 
@@ -442,7 +442,7 @@ public class GameManager : MonoBehaviour
             AttackButton1.SetActive(false);
             AttackButton2.SetActive(false);
             AttackButton3.SetActive(false);
-            TurnText.GetComponent<Text>().text = "Your turn";
+            //TurnText.GetComponent<Text>().text = "Your turn";
         }
     }
 

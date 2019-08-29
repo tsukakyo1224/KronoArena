@@ -378,6 +378,34 @@ public class GameManager : MonoBehaviour
                 CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 25.0f, 0.0f);
             }
 
+            //
+            if(Chara1 == null)
+            {
+                CharaChangeButton1.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                CharaChangeButton1.GetComponent<Button>().interactable = true;
+            }
+
+            if(Chara2 == null)
+            {
+                CharaChangeButton2.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                CharaChangeButton2.GetComponent<Button>().interactable = true;
+            }
+
+            if (Chara3 == null)
+            {
+                CharaChangeButton3.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                CharaChangeButton3.GetComponent<Button>().interactable = true;
+            }
+
             //左上の攻撃時間表示判定
             CharaAttackText();
 

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackFlag: 0
+  AttackObject: 0
 --- !u!114 &5918065633050599660
 MonoBehaviour:
   m_ObjectHideFlags: 0

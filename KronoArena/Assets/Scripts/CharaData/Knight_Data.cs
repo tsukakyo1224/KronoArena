@@ -64,6 +64,9 @@ public class Knight_Data : MonoBehaviour
     [SerializeField] private static GameObject Skill2_Set;
     [SerializeField] private static GameObject Skill2;
 
+    //オーディオ
+    private AudioSource AttackAudio;
+
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +102,9 @@ public class Knight_Data : MonoBehaviour
         Skill1 = Resources.Load<GameObject>("Knight_Roll");
         Skill2_Set = Resources.Load<GameObject>("Knight_BuffSet");
         Skill2 = Resources.Load<GameObject>("Knight_Buff");
+
+        //オーディオ代入
+        AttackAudio = GetComponent<AudioSource>();
 
     }
 
@@ -313,7 +319,7 @@ public class Knight_Data : MonoBehaviour
                         ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
                     }
                 }
-
+                AttackAudio.PlayOneShot(AttackAudio.clip);
                 AttackFlag = false;
             }
         }

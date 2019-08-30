@@ -74,10 +74,11 @@ public class GameManager : MonoBehaviour
 
     public Image WinLose;
 
+    private AudioSource AttackAudio;
+
     //キャラクターの残り数
     //public static GameObject[] Player1Tag;
     //public static GameObject[] Player2Tag;
-
 
 
     // Start is called before the first frame update
@@ -159,6 +160,10 @@ public class GameManager : MonoBehaviour
         CharaChangeButton1.GetComponent<Button>().interactable = true;
         CharaChangeButton2.GetComponent<Button>().interactable = true;
         CharaChangeButton3.GetComponent<Button>().interactable = true;
+
+        //
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        AttackAudio = audioSources[1];
 
     }
 
@@ -579,6 +584,11 @@ public class GameManager : MonoBehaviour
 
 
         }
+    }
+
+    public void AudioPlay()
+    {
+        AttackAudio.PlayOneShot(AttackAudio.clip);
     }
 
     /*

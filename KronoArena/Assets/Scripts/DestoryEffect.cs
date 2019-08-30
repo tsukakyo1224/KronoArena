@@ -8,6 +8,7 @@ public class DestoryEffect : MonoBehaviour {
 
     public bool AttackObject;
 
+
 	// Use this for initialization
 	void Start () {
         AttackFlag = false;
@@ -71,6 +72,10 @@ public class DestoryEffect : MonoBehaviour {
         {
             Destroy(this.gameObject, 3f);
         }
+        if (this.gameObject.name == "Guardian_Absorption(Clone)")
+        {
+            Destroy(this.gameObject, 10.0f);
+        }
 
     }
 
@@ -86,10 +91,12 @@ public class DestoryEffect : MonoBehaviour {
                 Debug.Log(obj + "に" + (int)(this.GetComponent<Status>().Magic_Attack /
                     ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
             }
+            GameObject.Find("GameManager").GetComponent<GameManager>().AudioPlay();
+
             AttackFlag = false;
         }
-		Destroy (this.gameObject);
-	}
+        Destroy(this.gameObject);
+    }
 
 
     //エフェクトを消す

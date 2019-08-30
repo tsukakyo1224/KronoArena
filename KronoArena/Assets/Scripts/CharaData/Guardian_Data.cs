@@ -56,6 +56,10 @@ public class Guardian_Data : MonoBehaviour
     [SerializeField] private static GameObject Skill1;
     [SerializeField] private static GameObject Skill2_Set;
     [SerializeField] private static GameObject Skill2;
+    [SerializeField] private static GameObject Guard;
+
+    //オーディオ
+    private AudioSource AttackAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +91,10 @@ public class Guardian_Data : MonoBehaviour
         Skill1 = Resources.Load<GameObject>("Guardian_Buff1");
         Skill2_Set = Resources.Load<GameObject>("Guardian_BigShieldSet");
         Skill2 = Resources.Load<GameObject>("Guardian_BigShield");
+        Guard = Resources.Load<GameObject>("Guardian_Absorption");
+
+        //オーディオ代入
+        AttackAudio = GetComponent<AudioSource>();
 
     }
 
@@ -265,6 +273,11 @@ public class Guardian_Data : MonoBehaviour
             animator.SetBool("Skill2", false);
             animator.SetBool("Skill2_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
+            var GuardEffect = GameObject.Instantiate(Guard, this.transform.position +
+                new Vector3(0.0f, 0.5f, 0.0f), Quaternion.identity) as GameObject;
+            // 作成したオブジェクトを子として登録
+            GuardEffect.transform.parent = transform;
+            //GuardEffect.transform.position = new Vector3(0.0f, 0.5f, 0.0f);
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
@@ -309,6 +322,7 @@ public class Guardian_Data : MonoBehaviour
                         ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
                     }
                 }
+                AttackAudio.PlayOneShot(AttackAudio.clip);
                 AttackFlag = false;
             }
         }

@@ -13,6 +13,10 @@ public class ButtonCol : MonoBehaviour
     private GameObject Player2;
     private GameObject Player3;
 
+    private GameObject Chara1Area;
+    private GameObject Chara2Area;
+    private GameObject Chara3Area;
+
     //選択した攻撃までの時間
     public static float Time;
 
@@ -45,6 +49,12 @@ public class ButtonCol : MonoBehaviour
                 Player3 = GameObject.Find("P2_Chara3");
                 animator3 = Player3.GetComponent<Animator>();
             }
+            Chara1Area = Player1.transform.GetChild(4).gameObject;
+            Chara2Area = Player2.transform.GetChild(4).gameObject;
+            Chara3Area = Player3.transform.GetChild(4).gameObject;
+            Chara1Area.SetActive(false);
+            Chara2Area.SetActive(false);
+            Chara3Area.SetActive(false);
         }
     }
 
@@ -72,8 +82,6 @@ public class ButtonCol : MonoBehaviour
         {
             animator3.SetBool("Attack", true);
         }
-        //Debug.Log(ChangeChara.nowChara + " Attack");
-        //Knight_Data.AttackFlag = false;
     }
 
     //スキル1
@@ -94,7 +102,7 @@ public class ButtonCol : MonoBehaviour
             if (Medic_Data.SkillFlag2 == false)
             {
                 Medic_Data.SkillFlag1 = true;
-                //animator2.SetBool("Skill1", true);
+                animator2.SetBool("Skill1", true);
             }
         }
         //ガーディアンの場合
@@ -142,5 +150,81 @@ public class ButtonCol : MonoBehaviour
         Debug.Log(ChangeChara.nowChara + " Special2");
     }
 
+    public void Skill1AreaOn()
+    {
+        //ナイトの場合
+        if (ChangeChara.nowChara == 0)
+        {
+            if (Player1.GetComponent<Status>().SkillArea1 == true)
+            {
+                Chara1Area.SetActive(true);
+            }
+
+        }
+        //メディックの場合
+        else if (ChangeChara.nowChara == 1)
+        {
+            if (Player2.GetComponent<Status>().SkillArea1 == true)
+            {
+                Chara2Area.SetActive(true);
+            }
+        }
+        //ガーディアンの場合
+        else if (ChangeChara.nowChara == 2)
+        {
+            if (Player3.GetComponent<Status>().SkillArea1 == true)
+            {
+                Chara3Area.SetActive(true);
+            }
+        }
+    }
+
+    public void Skill2AreaOn()
+    {
+        //ナイトの場合
+        if (ChangeChara.nowChara == 0)
+        {
+            if (Player1.GetComponent<Status>().SkillArea2 == true)
+            {
+                Chara1Area.SetActive(true);
+            }
+
+        }
+        //メディックの場合
+        else if (ChangeChara.nowChara == 1)
+        {
+            if (Player2.GetComponent<Status>().SkillArea2 == true)
+            {
+                Chara2Area.SetActive(true);
+            }
+        }
+        //ガーディアンの場合
+        else if (ChangeChara.nowChara == 2)
+        {
+            if (Player3.GetComponent<Status>().SkillArea2 == true)
+            {
+                Chara3Area.SetActive(true);
+            }
+        }
+    }
+
+    public void AreaOff()
+    {
+        //ナイトの場合
+        if (ChangeChara.nowChara == 0)
+        {
+            Chara1Area.SetActive(false);
+        }
+        //メディックの場合
+        else if (ChangeChara.nowChara == 1)
+        {
+            Chara2Area.SetActive(false);
+        }
+        //ガーディアンの場合
+        else if (ChangeChara.nowChara == 2)
+        {
+            Chara3Area.SetActive(false);
+        }
+    }
 
 }

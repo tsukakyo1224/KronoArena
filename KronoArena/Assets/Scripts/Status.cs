@@ -17,6 +17,9 @@ public class Status : MonoBehaviour
     [SerializeField] public Sprite SkillIcon1;
     [SerializeField] public Sprite SkillIcon2;
 
+    [SerializeField] public bool SkillArea1;
+    [SerializeField] public bool SkillArea2;
+
     public Slider hpSlider;
 
     public float MaxHP;

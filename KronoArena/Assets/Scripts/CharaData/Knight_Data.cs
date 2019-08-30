@@ -67,6 +67,8 @@ public class Knight_Data : MonoBehaviour
     //オーディオ
     private AudioSource AttackAudio;
 
+    private GameObject SkillArea;
+
 
     // Start is called before the first frame update
     void Start()

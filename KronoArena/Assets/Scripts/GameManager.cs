@@ -548,7 +548,7 @@ public class GameManager : MonoBehaviour
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
-            Camera.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            /*Camera.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
             //カメラ
             if (PhotonNetwork.player.ID == 1)
@@ -558,7 +558,7 @@ public class GameManager : MonoBehaviour
             else if (PhotonNetwork.player.ID == 2)
             {
                 Camera.transform.rotation = Quaternion.Euler(20.0f, 0.0f, 0.0f);
-            }
+            }*/
         }
         else
         {
@@ -572,7 +572,7 @@ public class GameManager : MonoBehaviour
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
 
-            //カメラ
+            /*//カメラ
             if (PhotonNetwork.player.ID == 1)
             {
                 Camera.transform.rotation = Quaternion.Euler(20.0f, 180.0f, 180.0f);
@@ -580,7 +580,7 @@ public class GameManager : MonoBehaviour
             else if (PhotonNetwork.player.ID == 2)
             {
                 Camera.transform.rotation = Quaternion.Euler(20.0f, 0.0f, 180.0f);
-            }
+            }*/
 
 
         }

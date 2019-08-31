@@ -70,7 +70,8 @@ public class GetCenterPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.cameraflag == true)
+        //if (GameManager.cameraflag == true)
+        if(PhotonNetwork.playerList.Length == 2)
         {
             transList.Add(GameObject.Find("P1_Chara1").transform);
             transList.Add(GameObject.Find("P1_Chara2").transform);
@@ -80,7 +81,14 @@ public class GetCenterPoint : MonoBehaviour
             transList.Add(GameObject.Find("P2_Chara3").transform);
             //CameraFlag = true;
         }
-
+        if(PhotonNetwork.player.ID == 1)
+        {
+            this.transform.position = new Vector3(0.0f, 5.0f, 10.0f);
+        }
+        else if(PhotonNetwork.player.ID == 2)
+        {
+            this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
+        }
 
         i = ChangeChara.nowChara;
 

@@ -82,11 +82,15 @@ public class GetCenterPoint : MonoBehaviour
     void Update()
     {
         //if (GameManager.cameraflag == true)
-        if(PhotonNetwork.playerList.Length == 2 && CameraFlag== false && Network_01.gameplayflag == true)
+        if(PhotonNetwork.player.ID == 1 && CameraFlag== false && Network_01.gameplayflag == true)
         {
             transList.Add(GameObject.Find("P1_Chara1").transform);
             transList.Add(GameObject.Find("P1_Chara2").transform);
             transList.Add(GameObject.Find("P1_Chara3").transform);
+            CameraFlag = true;
+        }
+        else if(PhotonNetwork.player.ID == 2 && CameraFlag == false && Network_01.gameplayflag == true)
+        {
             transList.Add(GameObject.Find("P2_Chara1").transform);
             transList.Add(GameObject.Find("P2_Chara2").transform);
             transList.Add(GameObject.Find("P2_Chara3").transform);

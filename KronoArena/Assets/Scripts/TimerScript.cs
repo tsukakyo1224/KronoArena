@@ -82,6 +82,7 @@ public class TimerScript : MonoBehaviour
     [PunRPC]
     public void SecondUp()
     {
+        Debug.Log("+3秒")
         if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
             (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
         {

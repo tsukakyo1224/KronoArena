@@ -70,7 +70,7 @@ public class TimerScript : MonoBehaviour
             if (TotalTime < 0.0f)
             {
                 GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
-                photonView.RPC("ScondUp", PhotonTargets.All);
+                photonView.RPC("SecondUp", PhotonTargets.All);
                 //TotalTime += 10.0f;
                 Debug.Log("TimeTurnChange");
             }

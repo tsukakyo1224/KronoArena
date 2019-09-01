@@ -43,4 +43,10 @@ public class Network_01 : MonoBehaviour
         // 引数でルーム名を指定できる
         PhotonNetwork.CreateRoom("myRoomName");
     }
+
+    public void Leave()
+    {
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.LoadLevel("Main");
+    }
 }

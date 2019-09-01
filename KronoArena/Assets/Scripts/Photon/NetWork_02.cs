@@ -79,15 +79,6 @@ public class NetWork_02 : MonoBehaviour
                 GameManager.cameraflag = true;
             }
         }
-
-        // 左クリックをしたらマッチング環境にCubeのインスタンスを生成する
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            // 生成したオブジェクトに力を加える
-            //Rigidbody objRB = obj.GetComponent<Rigidbody>();
-            //objRB.AddForce(Vector3.forward * 20f, ForceMode.Impulse);
-        }
     }
 
     public void CharaNameChange()

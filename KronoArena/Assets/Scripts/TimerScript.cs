@@ -50,12 +50,8 @@ public class TimerScript : MonoBehaviour
             //ターン切り替え
             if (TotalTime < 0.0f)
             {
-                //PhotonView photonView = GetComponent<PhotonView>();
-                //photonView.RPC("ChangeTurn", PhotonTargets.All);
-                //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-                //TurnCol.ChangeTurn();
                 GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
-                TotalTime += 10.0f;
+                //TotalTime += 10.0f;
                 Debug.Log("time");
             }
         }

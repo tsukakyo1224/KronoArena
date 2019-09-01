@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GetCenterPoint : MonoBehaviour
 {
+    private bool CameraFlag;
+
     /*
     public List<Transform> transList = new List<Transform>();   //カメラ範囲内におさめたいオブジェクトのリスト
     private Transform cameraPos;
@@ -15,7 +17,7 @@ public class GetCenterPoint : MonoBehaviour
     private float distance;
     private float cameraHeight = 1.5f;  //カメラが地面にめり込まないようにカメラを浮かせる高さ
 
-    private bool CameraFlag;
+   
 
     void Start()
     {
@@ -65,21 +67,30 @@ public class GetCenterPoint : MonoBehaviour
     {
         //cameraPos = GameObject.Find("CameraPosition").GetComponent<Transform>();
 
+        if (PhotonNetwork.player.ID == 1)
+        {
+            this.transform.position = new Vector3(0.0f, 5.0f, 10.0f);
+        }
+        else if (PhotonNetwork.player.ID == 2)
+        {
+            this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
+        }
+        CameraFlag = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         //if (GameManager.cameraflag == true)
-        if(PhotonNetwork.playerList.Length == 2)
+        if(PhotonNetwork.playerList.Length == 1 && CameraFlag== false)
         {
             transList.Add(GameObject.Find("P1_Chara1").transform);
             transList.Add(GameObject.Find("P1_Chara2").transform);
             transList.Add(GameObject.Find("P1_Chara3").transform);
-            transList.Add(GameObject.Find("P2_Chara1").transform);
-            transList.Add(GameObject.Find("P2_Chara2").transform);
-            transList.Add(GameObject.Find("P2_Chara3").transform);
-            //CameraFlag = true;
+            //transList.Add(GameObject.Find("P2_Chara1").transform);
+            //transList.Add(GameObject.Find("P2_Chara2").transform);
+            //transList.Add(GameObject.Find("P2_Chara3").transform);
+            CameraFlag = true;
         }
         if(PhotonNetwork.player.ID == 1)
         {
@@ -98,5 +109,27 @@ public class GetCenterPoint : MonoBehaviour
         center = pos / 3;
         this.transform.LookAt(center);          //CenterPointのポジションを中心に配置
         //cameraPos.LookAt(this.transform);           //CameraPositionを中心の方向に向かせる
+
+        if(PhotonNetwork.player.ID == 1) {
+            if (TurnCol.P1_Turn == true)
+            {
+                this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, this.transform.rotation.y, 0.0f);
+            }
+            else
+            {
+                this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, this.transform.rotation.y, 180.0f);
+            }
+        }
+        else if (PhotonNetwork.player.ID == 2)
+        {
+            if (TurnCol.P2_Turn == true)
+            {
+                this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, this.transform.rotation.y, 0.0f);
+            }
+            else
+            {
+                this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, this.transform.rotation.y, 180.0f);
+            }
+        }
     }
 }

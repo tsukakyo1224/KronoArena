@@ -104,7 +104,7 @@ public class TimerScript : MonoBehaviour
         else
         {
             //データの受信
-            Count = (int)(float)stream.ReceiveNext();
+            Count = (int)stream.ReceiveNext();
         }
     }
 }

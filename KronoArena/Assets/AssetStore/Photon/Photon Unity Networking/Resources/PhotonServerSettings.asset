@@ -56,4 +56,5 @@ MonoBehaviour:
   - Guardian_Effect
   - GuardOn
   - GuardOff
+  - SecondUp
   DisableAutoOpenWizard: 1

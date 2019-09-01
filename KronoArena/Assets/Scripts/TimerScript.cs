@@ -89,7 +89,7 @@ public class TimerScript : MonoBehaviour
             TotalTime += 3.0f;
         }
     }
-
+    /*
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -102,5 +102,5 @@ public class TimerScript : MonoBehaviour
             //データの受信
             TotalTime = (int)(float)stream.ReceiveNext();
         }
-    }
+    }*/
 }

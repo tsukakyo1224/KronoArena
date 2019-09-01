@@ -1786,6 +1786,7 @@ GameObject:
   - component: {fileID: 669602744}
   - component: {fileID: 669602745}
   - component: {fileID: 669602746}
+  - component: {fileID: 669602747}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1819,6 +1820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef53929b79d8b406397c8fa25f5e41bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
 --- !u!114 &669602741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,6 +2063,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fe7df473bb34a16a70f14a59110461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &669602747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669602738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 669602740}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 2
+  instantiationId: 2
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &704933595
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+    //-------------------------UI(イメージ、テキスト)-------------------------
+
     //キャラごとの攻撃までの時間用テキスト(左上)
     public static GameObject CharaAttackTime1;
     public static GameObject CharaAttackTime2;
@@ -36,12 +39,11 @@ public class GameManager : MonoBehaviour
     public static GameObject SkillGaugeIcon2;
     public static GameObject SkillGaugeIcon3;
 
+    //ターン用テキスト
+    public static GameObject TurnText;
 
-    //キャラクター用オブジェクト
-    public static GameObject Chara1;
-    public static GameObject Chara2;
-    public static GameObject Chara3;
-
+    //タイマーテキスト
+    public static GameObject TimeText;
 
     //操作キャラクター用オブジェクト
     public static GameObject OpeCharaIcon;  //キャラアイコン
@@ -50,14 +52,21 @@ public class GameManager : MonoBehaviour
     public static Slider OpeCharaHPSlider;    //キャラのHP
     public static GameObject OpeCharaHPText;    //キャラのHPテキスト
 
+    //結果画面(Win or Lose)
+    public Image WinLose;
+
+    //ターン用イメージ
+    public static Image TurnImage;
+
     //ターン切り替えボタン
     public static GameObject TurnChangeButton;
 
-    //ターン用テキスト
-    public static GameObject TurnText;
+    //-------------------------オブジェクト-------------------------
 
-    //タイマーテキスト
-    public static GameObject TimeText;
+    //キャラクター用オブジェクト
+    public static GameObject Chara1;
+    public static GameObject Chara2;
+    public static GameObject Chara3;
 
     //カメラ
     public static GameObject Camera;
@@ -66,13 +75,13 @@ public class GameManager : MonoBehaviour
     private PhotonView photonView;
     private PhotonTransformView photonTransformView;
 
+    //カメラフラグ
     public static bool cameraflag = false;
 
     //ゲーム勝利用ポイント
     public static int P1_GP = 0;
     public static int P2_GP = 0;
 
-    public Image WinLose;
 
     private AudioSource AttackAudio;
 
@@ -131,7 +140,10 @@ public class GameManager : MonoBehaviour
         //砂時計ボタン(ターンチェンジ)
         TurnChangeButton = GameObject.Find("HourGlass");
 
-        TurnText = GameObject.Find("TurnText");
+        //ターン表示用Image
+        TurnImage = GameObject.Find("TurnImage").GetComponent<Image>();
+
+        //TurnText = GameObject.Find("TurnText");
 
         TimeText = GameObject.Find("Time");
 
@@ -465,6 +477,7 @@ public class GameManager : MonoBehaviour
             AttackButton1.SetActive(true);
             AttackButton2.SetActive(true);
             AttackButton3.SetActive(true);
+            TurnImage.sprite = Resources.Load<Sprite>("YourTurn");
             //TurnText.GetComponent<Text>().text = "My turn";
         }
         else if((TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) ||
@@ -477,6 +490,7 @@ public class GameManager : MonoBehaviour
             AttackButton1.SetActive(false);
             AttackButton2.SetActive(false);
             AttackButton3.SetActive(false);
+            TurnImage.sprite = Resources.Load<Sprite>("EnemyTurn");
             //TurnText.GetComponent<Text>().text = "Your turn";
         }
     }

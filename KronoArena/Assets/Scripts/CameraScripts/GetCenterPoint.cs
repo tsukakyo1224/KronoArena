@@ -109,7 +109,7 @@ public class GetCenterPoint : MonoBehaviour
         center = pos / 3;
         this.transform.LookAt(center);          //CenterPointのポジションを中心に配置
         //cameraPos.LookAt(this.transform);           //CameraPositionを中心の方向に向かせる
-
+        /*
         if(PhotonNetwork.player.ID == 1) {
             if (TurnCol.P1_Turn == true)
             {
@@ -130,6 +130,6 @@ public class GetCenterPoint : MonoBehaviour
             {
                 this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, this.transform.rotation.y, 180.0f);
             }
-        }
+        }*/
     }
 }

@@ -50,7 +50,7 @@ public class TimerScript : MonoBehaviour
                 TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
 
                 FlagTime += Time.deltaTime;
-                if(FlagTime <= 10.0f)
+                if(FlagTime >= 10.0f)
                 {
                     HourGlassFlag = true;
                 }

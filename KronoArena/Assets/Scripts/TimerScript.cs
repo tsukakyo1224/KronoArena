@@ -11,21 +11,24 @@ public class TimerScript : MonoBehaviour
     //時間制限テキスト
     private GameObject TimeText;
 
+    //砂時計押せるようになりまでのフラグ
+    public static bool HourGlassFlag;
+
+    //
+    public static float FlagTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        /*//初期値
-        if(PhotonNetwork.player.ID == 1)
-        {
-            TotalTime = 15.0f;
-        }
-        else if(PhotonNetwork.player.ID == 2)
-        {
-            TotalTime = 15.0f;
-        }*/
+        //初期時間(現時点ではお互いに15秒)
         TotalTime = 15.0f;
+
         //タイマーテキスト
         TimeText = GameObject.Find("Time");
+
+        //ターン替えできるflag
+        HourGlassFlag = false;
+
     }
 
     // Update is called once per frame
@@ -45,6 +48,12 @@ public class TimerScript : MonoBehaviour
             {
                 TotalTime += Time.deltaTime;
                 TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+
+                FlagTime += Time.deltaTime;
+                if(FlagTime <= 10.0f)
+                {
+                    HourGlassFlag = true;
+                }
             }
 
             //ターン切り替え

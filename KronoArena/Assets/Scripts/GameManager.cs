@@ -470,10 +470,11 @@ public class GameManager : MonoBehaviour
         if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
         {
-            //CharaChangeButton1.GetComponent<Button>().interactable = true;
-            //CharaChangeButton2.GetComponent<Button>().interactable = true;
-            //CharaChangeButton3.GetComponent<Button>().interactable = true;
-            TurnChangeButton.GetComponent<Button>().interactable = true;
+            //10秒以上経ったらターン入れ替えボタンを押せるように
+            if(TimerScript.HourGlassFlag == true)
+            {
+                TurnChangeButton.GetComponent<Button>().interactable = true;
+            }
             AttackButton1.SetActive(true);
             AttackButton2.SetActive(true);
             AttackButton3.SetActive(true);
@@ -483,9 +484,6 @@ public class GameManager : MonoBehaviour
         else if((TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)) 
         {
-            //CharaChangeButton1.GetComponent<Button>().interactable = false;
-            //CharaChangeButton2.GetComponent<Button>().interactable = false;
-            //CharaChangeButton3.GetComponent<Button>().interactable = false;
             TurnChangeButton.GetComponent<Button>().interactable = false;
             AttackButton1.SetActive(false);
             AttackButton2.SetActive(false);
@@ -561,18 +559,6 @@ public class GameManager : MonoBehaviour
             CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-
-            /*Camera.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-
-            //カメラ
-            if (PhotonNetwork.player.ID == 1)
-            {
-                Camera.transform.rotation = Quaternion.Euler(20.0f, 180.0f, 0.0f);
-            }
-            else if (PhotonNetwork.player.ID == 2)
-            {
-                Camera.transform.rotation = Quaternion.Euler(20.0f, 0.0f, 0.0f);
-            }*/
         }
         else
         {
@@ -585,18 +571,6 @@ public class GameManager : MonoBehaviour
             CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
-
-            /*//カメラ
-            if (PhotonNetwork.player.ID == 1)
-            {
-                Camera.transform.rotation = Quaternion.Euler(20.0f, 180.0f, 180.0f);
-            }
-            else if (PhotonNetwork.player.ID == 2)
-            {
-                Camera.transform.rotation = Quaternion.Euler(20.0f, 0.0f, 180.0f);
-            }*/
-
-
         }
     }
 

@@ -37,21 +37,17 @@ public class TurnCol : MonoBehaviour
 
     public void ChangeTurn()
     {
-        //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-        //this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         if (photonView.isMine)
         {
             photonView.RPC("Turn_Change", PhotonTargets.All);
         }
-
     }
 
 
     [PunRPC]
     public void Turn_Change()
     {
-        //this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         //プレイヤー2に移る
         if (P1_Turn == true)
         {
@@ -65,6 +61,8 @@ public class TurnCol : MonoBehaviour
             P2_Turn = false;
         }
         GameManager.TurnChangeImage();
+        TimerScript.HourGlassFlag = false;
+        TimerScript.FlagTime = 0.0f;
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

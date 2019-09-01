@@ -82,25 +82,30 @@ public class TimerScript : MonoBehaviour
     [PunRPC]
     public void SecondUp()
     {
-        Debug.Log("+3秒");
         if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
             (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
         {
-            TotalTime += 3.0f;
+            if(Count < 5)
+            {
+                TotalTime += 3.0f;
+                Count++;
+                Debug.Log("+3秒、残り回数" + Count + "回");
+            }
+
         }
     }
-    /*
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
             //データの送信
-            stream.SendNext(TotalTime);
+            stream.SendNext(Count);
         }
         else
         {
             //データの受信
-            TotalTime = (int)(float)stream.ReceiveNext();
+            Count = (int)(float)stream.ReceiveNext();
         }
-    }*/
+    }
 }

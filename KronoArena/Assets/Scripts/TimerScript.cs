@@ -88,10 +88,9 @@ public class TimerScript : MonoBehaviour
             if(Count < 5)
             {
                 TotalTime += 3.0f;
-                Count++;
-                Debug.Log("+3秒、残り回数" + Count + "回");
+                Debug.Log("+3秒、残り回数" + (4-Count) + "回");
             }
-
+            Count++;
         }
     }
 

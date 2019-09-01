@@ -43,19 +43,19 @@ public class TimerScript : MonoBehaviour
             {
                 TotalTime -= Time.deltaTime;
                 TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+
+                FlagTime += Time.deltaTime;
+                Debug.Log(FlagTime);
+                if (FlagTime >= 10.0f)
+                {
+                    HourGlassFlag = true;
+                    Debug.Log(HourGlassFlag);
+                }
             }
             else
             {
                 TotalTime += Time.deltaTime;
                 TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
-
-                FlagTime += Time.deltaTime;
-                Debug.Log(FlagTime);
-                if(FlagTime >= 10.0f)
-                {
-                    HourGlassFlag = true;
-                    Debug.Log(HourGlassFlag);
-                }
             }
 
             //ターン切り替え

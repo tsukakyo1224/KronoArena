@@ -17,6 +17,9 @@ public class TimerScript : MonoBehaviour
     //
     public static float FlagTime;
 
+    //秒数増えるカウント
+    public static int Count;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,9 @@ public class TimerScript : MonoBehaviour
 
         //ターン替えできるflag
         HourGlassFlag = false;
+
+        //秒数増えるカウント
+        Count = 0;
 
     }
 
@@ -61,7 +67,7 @@ public class TimerScript : MonoBehaviour
             {
                 GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
                 //TotalTime += 10.0f;
-                Debug.Log("time");
+                Debug.Log("TimeTurnChange");
             }
         }
 

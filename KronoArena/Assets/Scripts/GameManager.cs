@@ -626,25 +626,4 @@ public class GameManager : MonoBehaviour
         WinLose.sprite = Resources.Load<Sprite>("Lose");
         WinLose.gameObject.SetActive(true);
     }
-
-    //名前とtagの送受信
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.isWriting)
-        {
-            //データの送信
-            //stream.SendNext(P1_GP);
-            //stream.SendNext(P2_GP);
-        }
-        else
-        {
-            //データの受信
-            //P1_GP = (int)stream.ReceiveNext();
-            //P2_GP = (int)stream.ReceiveNext();
-        }
-    }
-
-
-
-
 }

@@ -280,12 +280,16 @@ public class Medic_Data : MonoBehaviour
             //対象キャラとの距離表示
             if (obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0)
             {
-                float random = Random.Range(0.9f, 1.1f);
                 if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
                 {
-                    obj.GetComponent<Status>().HP -=
-                    (int)((this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10)) * random);
-                    AttackFlag = true;
+                    float random = Random.Range(0.9f, 1.1f);    //ランダム関数
+                    float damage;   //ダメージ量
+                    //ダメージを与える
+                    damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    damage *= random;
+                    obj.GetComponent<Status>().HP -= (int)damage;
+                    //表示
+                    Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
                 }
             }
         }

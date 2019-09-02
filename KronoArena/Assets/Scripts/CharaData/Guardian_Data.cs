@@ -313,13 +313,14 @@ public class Guardian_Data : MonoBehaviour
                     // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
                     if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)
                     {
-                        float random = Random.Range(0.9f, 1.1f);
+                        float random = Random.Range(0.9f, 1.1f);    //ランダム関数
+                        float damage;   //ダメージ量
                         //ダメージを与える
-                        obj.GetComponent<Status>().HP -=
-                        (int)((this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10)) * random);
-
-                        Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
-                        ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
+                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                        damage *= random;
+                        obj.GetComponent<Status>().HP -= (int)damage;
+                        //表示
+                        Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
                     }
                 }
                 AttackAudio.PlayOneShot(AttackAudio.clip);
@@ -345,11 +346,14 @@ public class Guardian_Data : MonoBehaviour
             {
                 if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
                 {
-                    float random = Random.Range(0.9f, 1.1f);
-
-                    obj.GetComponent<Status>().HP -=
-                    (int)((this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10)) * random);
-                    AttackFlag = true;
+                    float random = Random.Range(0.9f, 1.1f);    //ランダム関数
+                    float damage;   //ダメージ量
+                                    //ダメージを与える
+                    damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    damage *= random;
+                    obj.GetComponent<Status>().HP -= (int)damage;
+                    //表示
+                    Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
                 }
             }
         }

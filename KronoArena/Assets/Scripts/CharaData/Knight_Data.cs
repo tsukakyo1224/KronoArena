@@ -321,7 +321,7 @@ public class Knight_Data : MonoBehaviour
                         damage *= random;
                         obj.GetComponent<Status>().HP -= (int)damage;
 
-                        Debug.Log(this.name + "が" + obj + "に" + damage + "ダメージ");
+                        Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
                     }
                 }
                 AttackAudio.PlayOneShot(AttackAudio.clip);

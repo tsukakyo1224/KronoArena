@@ -91,8 +91,8 @@ public class DestoryEffect : MonoBehaviour {
                 //ダメージを与える
                 damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
                 damage *= random;
-                Debug.Log(random);
-                Debug.Log(damage);
+                Debug.Log(this.GetComponent<Status>().Attack);
+                Debug.Log((1 + obj.GetComponent<Status>().Defense) / 10);
                 obj.GetComponent<Status>().HP -= (int)damage;
                 //表示
                 Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");

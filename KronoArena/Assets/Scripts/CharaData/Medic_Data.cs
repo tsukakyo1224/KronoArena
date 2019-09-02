@@ -286,6 +286,8 @@ public class Medic_Data : MonoBehaviour
                     float damage;   //ダメージ量
                     //ダメージを与える
                     damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    Debug.Log(random);
+                    Debug.Log(damage);
                     damage *= random;
                     obj.GetComponent<Status>().HP -= (int)damage;
                     //表示

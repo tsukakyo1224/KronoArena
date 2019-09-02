@@ -274,9 +274,11 @@ public class Knight_Data : MonoBehaviour
             //3m以下なら体力攻撃判定
             if (dist < 3)
             {
+                float random = Random.Range(0.9f, 1.1f);
+
                 //ダメージを与える
                 obj.GetComponent<Status>().HP -=
-                (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                (int)((this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10)) * random);
 
                 Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
                 ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
@@ -312,10 +314,10 @@ public class Knight_Data : MonoBehaviour
                     // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
                     if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)
                     {
-                        //Debug.Log(obj.name);
+                        float random = Random.Range(0.9f, 1.1f);
                         //ダメージを与える
                         obj.GetComponent<Status>().HP -=
-                        (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                        (int)((this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10)) * random);
 
                         Debug.Log(this.name + "が" + obj + "に" + (int)(this.GetComponent<Status>().Attack /
                         ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
@@ -347,8 +349,9 @@ public class Knight_Data : MonoBehaviour
             {
                 if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
                 {
+                    float random = Random.Range(0.9f, 1.1f);
                     obj.GetComponent<Status>().HP -=
-                    (int)(this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    (int)((this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10)) * random);
                     AttackFlag = true;
                 }
             }

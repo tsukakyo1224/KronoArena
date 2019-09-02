@@ -86,8 +86,9 @@ public class DestoryEffect : MonoBehaviour {
             Guardian();
             if (AttackFlag == false)
             {
+                float random = Random.Range(0.9f, 1.1f);
                 obj.GetComponent<Status>().HP -=
-                    (int)(this.GetComponent<Status>().Magic_Attack / ((1 + obj.GetComponent<Status>().Magic_Defense) / 10));
+                    (int)((this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10)) * random);
                 Debug.Log(obj + "に" + (int)(this.GetComponent<Status>().Magic_Attack /
                     ((1 + obj.GetComponent<Status>().Defense) / 10)) + "ダメージ");
             }

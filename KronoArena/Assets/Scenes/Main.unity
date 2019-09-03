@@ -3345,7 +3345,7 @@ MonoBehaviour:
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
+  ownershipTransfer: 1
   ObservedComponents:
   - {fileID: 1091786898}
   ObservedComponentsFoldoutOpen: 1
@@ -5562,6 +5562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39dfce9ede9a04ebaa4a38d0a99b823c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0
 --- !u!1 &1747083613
 GameObject:
   m_ObjectHideFlags: 0

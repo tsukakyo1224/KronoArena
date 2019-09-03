@@ -181,7 +181,7 @@ public class Guardian_Data : MonoBehaviour
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
 
-                    animator.SetBool("Skill2_Trigger", true);
+                    //animator.SetBool("Skill2_Trigger", true);
                     //スキル1発動系を初期値に
                     SkillFlag2 = false;
                     Skill_Start = 0.0f;

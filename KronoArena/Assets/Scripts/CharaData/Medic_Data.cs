@@ -169,7 +169,7 @@ public class Medic_Data : MonoBehaviour
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
                     this.GetComponent<Status>().Heel += 100.0f;
 
-                    animator.SetBool("Skill2_Trigger", true);
+                    //animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
                     Skill_Start = 0.0f;
                     LimitFlag2 = true;

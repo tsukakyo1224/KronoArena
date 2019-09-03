@@ -176,7 +176,7 @@ public class Knight_Data : MonoBehaviour
                 if (Skill_Start >= 1.0f)
                 {
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 4);
-                    animator.SetBool("Skill2_Trigger", true);
+                    //animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
                     Skill_Start = 0.0f;
                     this.GetComponent<Status>().Attack += 300.0f;

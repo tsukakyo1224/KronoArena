@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
             {
                 OperateImage1 = Chara1.transform.GetChild(5).gameObject;
             }
-            if (Chara3 != null)
+            if (Chara2 != null)
             {
                 OperateImage2 = Chara2.transform.GetChild(5).gameObject;
             }

@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     public static GameObject OpeCharaHPText;    //キャラのHPテキスト
 
     //結果画面(Win or Lose)
-    public Image WinLose;
+    public static Image WinLose;
 
     //ターン用イメージ
     public static Image TurnImage;
@@ -67,6 +67,11 @@ public class GameManager : MonoBehaviour
     public static GameObject Chara1;
     public static GameObject Chara2;
     public static GameObject Chara3;
+
+    //キャラの頭上の三角
+    public static GameObject OperateImage1;
+    public static GameObject OperateImage2;
+    public static GameObject OperateImage3;
 
     //カメラ
     public static GameObject Camera;
@@ -157,6 +162,10 @@ public class GameManager : MonoBehaviour
         WinLose = GameObject.Find("WinLose").GetComponent<Image>();
         WinLose.gameObject.SetActive(false);
 
+        //最初は非表示に
+        //OperateImage1.SetActive(false);
+        //OperateImage2.SetActive(false);
+        //OperateImage3.SetActive(false);
 
         //最初は非表示に
         CharaAttackTime1.SetActive(false);
@@ -208,6 +217,16 @@ public class GameManager : MonoBehaviour
             CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 50.0f, 0.0f);
             CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 46.0f, 0.0f);
             CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
+
+            //キャラの頭上の三角
+            OperateImage1 = Chara1.transform.GetChild(5).gameObject;
+            OperateImage2 = Chara2.transform.GetChild(5).gameObject;
+            OperateImage3 = Chara3.transform.GetChild(5).gameObject;
+
+            //三角を毎回非表示に
+            OperateImage1.SetActive(false);
+            OperateImage2.SetActive(false);
+            OperateImage3.SetActive(false);
 
             //操作キャラ変更時に操作キャラクター表示の変更
             //現時点でナイト確定
@@ -268,6 +287,9 @@ public class GameManager : MonoBehaviour
                 ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
                 ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
 
+                //頭上の三角を付ける
+                OperateImage1.SetActive(true);
+
                 //操作キャラは右に出す
                 CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 221.9f, 0.0f);
                 CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 216.5f, 0.0f);
@@ -325,6 +347,9 @@ public class GameManager : MonoBehaviour
                 {
                     SkillGaugeIcon3.GetComponent<Image>().fillAmount = 0.0f;
                 }
+
+                //頭上の三角を付ける
+                OperateImage2.SetActive(true);
 
                 //攻撃時間用テキスト
                 ATime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
@@ -385,6 +410,9 @@ public class GameManager : MonoBehaviour
                 {
                     SkillGaugeIcon3.GetComponent<Image>().fillAmount = 0.0f;
                 }
+
+                //頭上の三角を付ける
+                OperateImage3.SetActive(true);
 
                 //攻撃時間用テキスト
                 ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
@@ -480,6 +508,8 @@ public class GameManager : MonoBehaviour
             AttackButton2.SetActive(true);
             AttackButton3.SetActive(true);
             TurnImage.sprite = Resources.Load<Sprite>("YourTurn");
+            SkillGaugeIcon2.SetActive(true);
+            SkillGaugeIcon3.SetActive(true);
             //TurnText.GetComponent<Text>().text = "My turn";
         }
         else if((TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) ||
@@ -491,6 +521,8 @@ public class GameManager : MonoBehaviour
             AttackButton2.SetActive(false);
             AttackButton3.SetActive(false);
             TurnImage.sprite = Resources.Load<Sprite>("EnemyTurn");
+            SkillGaugeIcon2.SetActive(false);
+            SkillGaugeIcon3.SetActive(false);
             //TurnText.GetComponent<Text>().text = "Your turn";
         }
     }
@@ -547,6 +579,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //ターン入れ替え時にUI反転
     public static void TurnChangeImage()
     {
         if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
@@ -561,6 +594,8 @@ public class GameManager : MonoBehaviour
             CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            WinLose.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            TurnImage.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
         else
         {
@@ -573,6 +608,8 @@ public class GameManager : MonoBehaviour
             CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
 
             TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            WinLose.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            TurnImage.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
         }
     }
 

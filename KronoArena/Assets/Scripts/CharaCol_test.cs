@@ -52,7 +52,7 @@ public class CharaCol_test : MonoBehaviour
 
             //AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
             AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
-            Debug.Log(clipinfo[0].clip.name);
+            //Debug.Log(clipinfo[0].clip.name);
 
             if(clipinfo[0].clip.name == "attack01" || clipinfo[0].clip.name == "attack02" || clipinfo[0].clip.name == "attack03")
             {

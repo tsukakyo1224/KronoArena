@@ -25,6 +25,7 @@ public class MultipleTargetCamera : MonoBehaviour
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
+        CameraFlag = false;
     }
 
     // Update is called once per frame
@@ -67,16 +68,18 @@ public class MultipleTargetCamera : MonoBehaviour
             offset = new Vector3(0.0f, 5.0f, -20.0f);
             //this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
         }
+        if(CameraFlag == true)
+        {
+            i = ChangeChara.nowChara;
 
+            pos2 = targets[i].position;
+            pos = new Vector3(0, 0, 0);
+            pos = targets[0].position + targets[1].position + targets[2].position + pos2;
+            center = pos / 3;
+            this.transform.LookAt(center);          //CenterPointのポジションを中心に配置
+            //cameraPos.LookAt(this.transform);           //CameraPositionを中心の方向に向かせる
+        }
 
-        i = ChangeChara.nowChara;
-
-        pos2 = targets[i].position;
-        pos = new Vector3(0, 0, 0);
-        pos = targets[0].position + targets[1].position + targets[2].position + pos2;
-        center = pos / 3;
-        this.transform.LookAt(center);          //CenterPointのポジションを中心に配置
-        //cameraPos.LookAt(this.transform);           //CameraPositionを中心の方向に向かせる
     }
     private void Reset()
     {

@@ -1780,14 +1780,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 669602739}
-  - component: {fileID: 669602740}
+  - component: {fileID: 669602747}
   - component: {fileID: 669602741}
+  - component: {fileID: 669602740}
   - component: {fileID: 669602742}
   - component: {fileID: 669602743}
   - component: {fileID: 669602744}
   - component: {fileID: 669602745}
   - component: {fileID: 669602746}
-  - component: {fileID: 669602747}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3268,9 +3268,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091786896}
+  - component: {fileID: 1091786899}
   - component: {fileID: 1091786897}
   - component: {fileID: 1091786898}
-  - component: {fileID: 1091786899}
   m_Layer: 0
   m_Name: CameraParent
   m_TagString: Untagged

@@ -2239,9 +2239,6 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 2
     Name: Skill2_Trigger
-  - Type: 9
-    SynchronizeType: 0
-    Name: Turn
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -2336,7 +2333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Knight
-  HP: 2326
+  HP: 1326
   Attack: 785
   Magic_Attack: 45
   Defense: 159

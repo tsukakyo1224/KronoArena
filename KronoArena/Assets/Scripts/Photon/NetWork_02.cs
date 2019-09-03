@@ -12,11 +12,13 @@ public class NetWork_02 : MonoBehaviour
     GameObject P2_Chara2;
     GameObject P2_Chara3;
     public float time;
+    private bool StartFlag;
 
     // Start is called before the first frame update
     void Start()
     {
         time = 0;
+        StartFlag = false;
     }
 
     // Update is called once per frame
@@ -82,9 +84,10 @@ public class NetWork_02 : MonoBehaviour
             }
         }
         time += Time.deltaTime;
-        if(PhotonNetwork.player.ID == 2 && time >= 2.0f)
+        if (PhotonNetwork.player.ID == 2 && time >= 2.0f && StartFlag == false)
         {
             GameObject.Find("CameraParent").GetComponent<MultipleTargetCamera>().AddCharaOn();
+            StartFlag = true;
         }
     }
 

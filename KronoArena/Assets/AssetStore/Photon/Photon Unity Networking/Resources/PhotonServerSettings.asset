@@ -57,4 +57,5 @@ MonoBehaviour:
   - GuardOn
   - GuardOff
   - SecondUp
+  - AddChara
   DisableAutoOpenWizard: 1

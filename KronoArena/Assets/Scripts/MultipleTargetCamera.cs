@@ -137,7 +137,7 @@ public class MultipleTargetCamera : MonoBehaviour
     public void AddCharaOn()
     {
         Debug.Log("bbb");
-        this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
+        //this.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
         photonView.RPC("AddChara", PhotonTargets.All);
     }
 

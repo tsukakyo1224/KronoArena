@@ -126,6 +126,7 @@ public class Knight_Data : MonoBehaviour
                 if (EffectFlag == false)
                 {
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 1);
+                    animator.SetBool("Skill1", true);
                 }
 
                 //スキル1時間が0になったら発動
@@ -134,7 +135,7 @@ public class Knight_Data : MonoBehaviour
 
                     //エフェクト発動
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 2);
-
+                    animator.SetBool("Skill1_Trigger", true);
                     this.GetComponent<Status>().Attack += 800.0f;
                     //回転攻撃
                     photonView.RPC("RollDamage", PhotonTargets.All);
@@ -170,13 +171,14 @@ public class Knight_Data : MonoBehaviour
                 if (EffectFlag == false)
                 {
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 3);
+                    animator.SetBool("Skill2", true);
                 }
 
                 //スキル2時間が0になったら発動
                 if (Skill_Start >= 1.0f)
                 {
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 4);
-                    //animator.SetBool("Skill2_Trigger", true);
+                    animator.SetBool("Skill2_Trigger", true);
                     SkillFlag2 = false;
                     Skill_Start = 0.0f;
                     this.GetComponent<Status>().Attack += 300.0f;

@@ -109,6 +109,7 @@ public class Medic_Data : MonoBehaviour
                 if (EffectFlag == false)
                 {
                     photonView.RPC("Medic_Effect", PhotonTargets.All, 1);
+                    animator.SetBool("Skill1", true);
                 }
 
                 //スキル1時間が0になったら発動
@@ -116,7 +117,7 @@ public class Medic_Data : MonoBehaviour
                 {
                     //エフェクト発動
                     photonView.RPC("Medic_Effect", PhotonTargets.All, 2);
-                    //animator.SetBool("Skill1_Trigger", true);
+                    animator.SetBool("Skill1_Trigger", true);
                     SkillFlag1 = false;
                     Skill_Start = 0.0f;
 
@@ -157,14 +158,15 @@ public class Medic_Data : MonoBehaviour
                 if (EffectFlag == false)
                 {
                     photonView.RPC("Medic_Effect", PhotonTargets.All, 3);
+                    animator.SetBool("Skill2", true);
                 }
 
                     //スキル2時間が0になったら発動
                     if (Skill_Start >= 1.0f)
                 {
-                    //Medic_BuffEffect();
                     //エフェクト発動
                     photonView.RPC("Medic_Effect", PhotonTargets.All, 4);
+                    animator.SetBool("Skill2_Trigger", true);
                     this.GetComponent<Status>().Defense += 100.0f;
                     this.GetComponent<Status>().Magic_Defense += 100.0f;
                     this.GetComponent<Status>().Heel += 100.0f;

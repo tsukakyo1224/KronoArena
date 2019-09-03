@@ -38,7 +38,7 @@ public class MultipleTargetCamera : MonoBehaviour
         }
         else if (PhotonNetwork.player.ID == 2)
         {
-            offset = new Vector3(0.0f, 5.0f, -20.0f);
+            offset = new Vector3(0.0f, 10.0f, -20.0f);
             //this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
         }
         if(CameraFlag == true)
@@ -47,8 +47,9 @@ public class MultipleTargetCamera : MonoBehaviour
 
             pos2 = targets[i].position;
             pos = new Vector3(0, 0, 0);
-            pos = targets[0].position + targets[1].position + targets[2].position + pos2;
-            center = pos / 3;
+            pos = targets[0].position + targets[1].position + targets[2].position + 
+                targets[3].position + targets[4].position + targets[5].position + pos2;
+            center = pos / 6;
             this.transform.LookAt(center);          //CenterPointのポジションを中心に配置
             //cameraPos.LookAt(this.transform);           //CameraPositionを中心の方向に向かせる
         }

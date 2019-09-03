@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
     public static GameObject AttackButton3;
 
     //キャラ攻撃時間テキスト
-    public static GameObject ATime2;
-    public static GameObject ATime3;
+    //public static GameObject ATime2;
+    //public static GameObject ATime3;
     public static GameObject SkillGaugeIcon2;
     public static GameObject SkillGaugeIcon3;
 
@@ -104,9 +104,9 @@ public class GameManager : MonoBehaviour
         photonView = PhotonView.Get(this);
 
         //キャラごとの攻撃までの時間用テキスト代入
-        CharaAttackTime1 = GameObject.Find("AttackTime1");
-        CharaAttackTime2 = GameObject.Find("AttackTime2");
-        CharaAttackTime3 = GameObject.Find("AttackTime3");
+        //CharaAttackTime1 = GameObject.Find("AttackTime1");
+        //CharaAttackTime2 = GameObject.Find("AttackTime2");
+        //CharaAttackTime3 = GameObject.Find("AttackTime3");
 
         //キャラクターバー用オブジェクト代入
         CharaBar1 = GameObject.Find("CharacterBar1");
@@ -124,8 +124,8 @@ public class GameManager : MonoBehaviour
         AttackButton3 = GameObject.Find("Attack3");
 
         //攻撃時間用テキスト
-        ATime2 = GameObject.Find("ATime2");
-        ATime3 = GameObject.Find("ATime3");
+        //ATime2 = GameObject.Find("ATime2");
+        //ATime3 = GameObject.Find("ATime3");
 
         //キャラ切り替えボタン用オブジェクト
         CharaChangeButton1 = GameObject.Find("ChangeChara1");
@@ -168,9 +168,9 @@ public class GameManager : MonoBehaviour
         //OperateImage3.SetActive(false);
 
         //最初は非表示に
-        CharaAttackTime1.SetActive(false);
-        CharaAttackTime2.SetActive(false);
-        CharaAttackTime3.SetActive(false);
+        //CharaAttackTime1.SetActive(false);
+        //CharaAttackTime2.SetActive(false);
+        //CharaAttackTime3.SetActive(false);
 
         //最初は表示に
         AttackButton1.SetActive(true);
@@ -284,8 +284,8 @@ public class GameManager : MonoBehaviour
                 }
 
                 //攻撃時間用テキスト
-                ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
-                ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
+                //ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
+                //ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
 
                 //頭上の三角を付ける
                 OperateImage1.SetActive(true);
@@ -352,8 +352,8 @@ public class GameManager : MonoBehaviour
                 OperateImage2.SetActive(true);
 
                 //攻撃時間用テキスト
-                ATime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
-                ATime3.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
+                //ATime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
+                //ATime3.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
 
 
                 CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 137.2f, 0.0f);
@@ -415,8 +415,8 @@ public class GameManager : MonoBehaviour
                 OperateImage3.SetActive(true);
 
                 //攻撃時間用テキスト
-                ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
-                ATime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
+                //ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
+                //ATime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
 
                 CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 50.0f, 0.0f);
                 CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 46.0f, 0.0f);
@@ -452,7 +452,7 @@ public class GameManager : MonoBehaviour
             }
 
             //左上の攻撃時間表示判定
-            CharaAttackText();
+            //CharaAttackText();
 
             //ターン入れ替え時に画面反転
             TurnChangeImage();
@@ -593,7 +593,7 @@ public class GameManager : MonoBehaviour
             CharaChangeButton2.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
-            TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            //TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             WinLose.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             TurnImage.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
@@ -607,7 +607,7 @@ public class GameManager : MonoBehaviour
             CharaChangeButton2.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
             CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
 
-            TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            //TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
             WinLose.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
             TurnImage.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
         }

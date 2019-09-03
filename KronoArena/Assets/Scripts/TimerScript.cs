@@ -9,10 +9,13 @@ public class TimerScript : MonoBehaviour
     public static float TotalTime;
 
     //時間制限テキスト
-    private GameObject TimeText;
+    //private GameObject TimeText;
 
     //砂時計押せるようになりまでのフラグ
     public static bool HourGlassFlag;
+
+    //+3秒用イメージ
+    public static Image secondsUp;
 
     //
     public static float FlagTime;
@@ -29,13 +32,15 @@ public class TimerScript : MonoBehaviour
         TotalTime = 15.0f;
 
         //タイマーテキスト
-        TimeText = GameObject.Find("Time");
+        //TimeText = GameObject.Find("Time");
 
         //ターン替えできるflag
         HourGlassFlag = false;
 
         //秒数増えるカウント
         Count = 0;
+
+        //
 
         photonView = GetComponent<PhotonView>();
 
@@ -52,7 +57,7 @@ public class TimerScript : MonoBehaviour
                 (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
             {
                 TotalTime -= Time.deltaTime;
-                TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+                //TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
 
                 FlagTime += Time.deltaTime;
                 if (FlagTime >= 10.0f)
@@ -63,7 +68,7 @@ public class TimerScript : MonoBehaviour
             else
             {
                 TotalTime += Time.deltaTime;
-                TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+                //TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
             }
 
             //ターン切り替え
@@ -91,6 +96,7 @@ public class TimerScript : MonoBehaviour
                 Debug.Log("+3秒、残り回数" + (4-Count) + "回");
             }
         }
+
         Count++;
     }
 

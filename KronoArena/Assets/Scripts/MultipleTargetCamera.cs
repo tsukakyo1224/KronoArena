@@ -121,4 +121,17 @@ public class MultipleTargetCamera : MonoBehaviour
         photonView.RPC("AddChara", PhotonTargets.All);
     }
 
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            //stream.SendNext(this.transform.position);
+
+        }
+        else
+        {
+            //this.transform.position = (Vector3)stream.ReceiveNext();　//現在のポジションを受信
+        }
+    }
+
 }

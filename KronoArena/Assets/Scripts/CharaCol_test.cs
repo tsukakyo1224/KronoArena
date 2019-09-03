@@ -9,6 +9,8 @@ public class CharaCol_test : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public float playerSpeed;
     private Animator animator;
+    //private Animation anim;
+
 
     private PhotonView photonView;
     private PhotonTransformView photonTransformView;
@@ -22,6 +24,7 @@ public class CharaCol_test : MonoBehaviour
         player = this.gameObject;
         playerSpeed = ControlOnOffChara.walkSpeed;
         animator = GetComponent<Animator>();
+        //anim = GetComponent<Animation>();
 
         photonView = PhotonView.Get(this);
     }
@@ -29,6 +32,13 @@ public class CharaCol_test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //走り続ける防止
+        if ((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == false) ||
+            (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false))
+        {
+            animator.SetBool("Run", false);
+        }
+
         if (photonView.isMine && this.GetComponent<Status>().ActionFlag ==false)
         {
             if(PhotonNetwork.player.ID==1 && TurnCol.P1_Turn == false)
@@ -36,6 +46,15 @@ public class CharaCol_test : MonoBehaviour
                 return;
             }
             if(PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false)
+            {
+                return;
+            }
+
+            //AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+            AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
+            Debug.Log(clipinfo[0].clip.name);
+
+            if(clipinfo[0].clip.name == "attack01" || clipinfo[0].clip.name == "attack02" || clipinfo[0].clip.name == "attack03")
             {
                 return;
             }
@@ -78,7 +97,7 @@ public class CharaCol_test : MonoBehaviour
                     }
                 }
                 //プレイヤー2は操作を逆に
-                else if(PhotonNetwork.player.ID == 2)
+                else if (PhotonNetwork.player.ID == 2)
                 {
                     Vector3 currentTapPoint = Input.mousePosition;
                     //指をずらしたときのベクトルを取得
@@ -112,22 +131,17 @@ public class CharaCol_test : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 animator.SetBool("Run", false);
-                animator.SetBool("Turn", true);
             }
-
             //現在の移動速度
             velocity = characterController.velocity;
             //移動速度を指定
             photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
+            //if (!(anim.IsPlaying("attack01") || anim.IsPlaying("attack02") || anim.IsPlaying("attack03")))
+            //if (!anim.IsPlaying("attack01"))
+            //{
 
+            //}
         }
-        //走り続ける防止
-        if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == false) ||
-            (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == false))
-        {
-            animator.SetBool("Run", false);
-        }
-
     }
 
 

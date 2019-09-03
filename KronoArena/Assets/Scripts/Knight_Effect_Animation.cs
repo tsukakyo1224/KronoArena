@@ -14,14 +14,14 @@ public class Knight_Effect_Animation : StateMachineBehaviour
             if (TurnCol.P1_Turn == true)
             {
                 Kn = GameObject.Find("P1_Chara1");
-                Kn.GetComponent<Status>().ActionFlag = true;
+                //Kn.GetComponent<Status>().ActionFlag = true;
                 Kn.GetComponent<Knight_Data>().Damage();
             }
 
             else if (TurnCol.P2_Turn == true)
             {
                 Kn = GameObject.Find("P2_Chara1");
-                Kn.GetComponent<Status>().ActionFlag = true;
+                //Kn.GetComponent<Status>().ActionFlag = true;
                 Kn.GetComponent<Knight_Data>().Damage();
             }
         }
@@ -36,6 +36,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        /*
         if (stateInfo.IsName("attack01") || stateInfo.IsName("attack02") || stateInfo.IsName("attack03"))
         {
             GameObject Kn;
@@ -50,7 +51,7 @@ public class Knight_Effect_Animation : StateMachineBehaviour
                 Kn = GameObject.Find("P2_Chara1");
                 Kn.GetComponent<Status>().ActionFlag = false;
             }
-        }
+        }*/
 
         /*if (stateInfo.IsName("rollwait"))
         {

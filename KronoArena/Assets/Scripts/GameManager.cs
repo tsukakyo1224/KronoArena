@@ -258,6 +258,9 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPSlider.value = Chara1.GetComponent<Status>().HP;
                     OpeCharaHPText.GetComponent<Text>().text = Chara1.GetComponent<Status>().HP +
                        "/" + Chara1.GetComponent<Status>().MaxHP;
+
+                    //頭上の三角を付ける
+                    OperateImage1.SetActive(true);
                 }
                 else
                 {
@@ -294,9 +297,6 @@ public class GameManager : MonoBehaviour
                 //ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
                 //ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
 
-                //頭上の三角を付ける
-                OperateImage1.SetActive(true);
-
                 //操作キャラは右に出す
                 CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 221.9f, 0.0f);
                 CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 216.5f, 0.0f);
@@ -324,6 +324,9 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPSlider.value = Chara2.GetComponent<Status>().HP;
                     OpeCharaHPText.GetComponent<Text>().text = Chara2.GetComponent<Status>().HP +
                        "/" + Chara2.GetComponent<Status>().MaxHP;
+
+                    //頭上の三角を付ける
+                    OperateImage2.SetActive(true);
                 }
                 else
                 {
@@ -355,9 +358,6 @@ public class GameManager : MonoBehaviour
                     SkillGaugeIcon3.GetComponent<Image>().fillAmount = 0.0f;
                 }
 
-                //頭上の三角を付ける
-                OperateImage2.SetActive(true);
-
                 //攻撃時間用テキスト
                 //ATime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
                 //ATime3.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
@@ -387,6 +387,8 @@ public class GameManager : MonoBehaviour
                     OpeCharaHPSlider.value = Chara3.GetComponent<Status>().HP;
                     OpeCharaHPText.GetComponent<Text>().text = Chara3.GetComponent<Status>().HP +
                        "/" + Chara3.GetComponent<Status>().MaxHP;
+                    //頭上の三角を付ける
+                    OperateImage3.SetActive(true);
                 }
                 else
                 {
@@ -417,9 +419,6 @@ public class GameManager : MonoBehaviour
                 {
                     SkillGaugeIcon3.GetComponent<Image>().fillAmount = 0.0f;
                 }
-
-                //頭上の三角を付ける
-                OperateImage3.SetActive(true);
 
                 //攻撃時間用テキスト
                 //ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));

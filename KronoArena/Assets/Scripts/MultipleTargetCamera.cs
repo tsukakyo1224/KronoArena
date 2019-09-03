@@ -31,33 +31,6 @@ public class MultipleTargetCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //if (GameManager.cameraflag == true)
-        /*if (PhotonNetwork.player.ID == 1 && CameraFlag == false && Network_01.gameplayflag == true)
-        {
-            targets.Add(GameObject.Find("P1_Chara1").transform);
-            targets.Add(GameObject.Find("P1_Chara2").transform);
-            targets.Add(GameObject.Find("P1_Chara3").transform);
-            CameraFlag = true;
-        }
-        else if (PhotonNetwork.player.ID == 2 && CameraFlag == false && Network_01.gameplayflag == true)
-        {
-            targets.Add(GameObject.Find("P2_Chara1").transform);
-            targets.Add(GameObject.Find("P2_Chara2").transform);
-            targets.Add(GameObject.Find("P2_Chara3").transform);
-            CameraFlag = true;
-        }*/
-        /*
-        if (PhotonNetwork.playerList.Length == 2 && CameraFlag == false && Network_01.gameplayflag == true)
-        {
-            targets.Add(GameObject.Find("P1_Chara1").transform);
-            targets.Add(GameObject.Find("P1_Chara2").transform);
-            targets.Add(GameObject.Find("P1_Chara3").transform);
-            targets.Add(GameObject.Find("P2_Chara1").transform);
-            targets.Add(GameObject.Find("P2_Chara2").transform);
-            targets.Add(GameObject.Find("P2_Chara3").transform);
-            CameraFlag = true;
-        }*/
         if (PhotonNetwork.player.ID == 1)
         {
             offset = new Vector3(0.0f, 10.0f, 20.0f);
@@ -68,7 +41,7 @@ public class MultipleTargetCamera : MonoBehaviour
             offset = new Vector3(0.0f, 5.0f, -20.0f);
             //this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
         }
-        if(CameraFlag == true)
+        if(CameraFlag == true && PhotonNetwork.playerList.Length == 2)
         {
             i = ChangeChara.nowChara;
 

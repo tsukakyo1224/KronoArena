@@ -219,9 +219,18 @@ public class GameManager : MonoBehaviour
             CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
 
             //キャラの頭上の三角
-            OperateImage1 = Chara1.transform.GetChild(5).gameObject;
-            OperateImage2 = Chara2.transform.GetChild(5).gameObject;
-            OperateImage3 = Chara3.transform.GetChild(5).gameObject;
+            if(Chara1 != null)
+            {
+                OperateImage1 = Chara1.transform.GetChild(5).gameObject;
+            }
+            if (Chara3 != null)
+            {
+                OperateImage2 = Chara2.transform.GetChild(5).gameObject;
+            }
+            if (Chara3 != null)
+            {
+                OperateImage3 = Chara3.transform.GetChild(5).gameObject;
+            }
 
             //三角を毎回非表示に
             OperateImage1.SetActive(false);

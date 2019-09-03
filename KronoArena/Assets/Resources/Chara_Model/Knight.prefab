@@ -2337,10 +2337,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Knight
   HP: 2326
-  Attack: 985
+  Attack: 685
   Magic_Attack: 45
   Defense: 179
-  Magic_Defense: 85
+  Magic_Defense: 103
   Speed: 2
   Heel: 0
   AttackIcon: {fileID: 21300000, guid: a3ec86105a1df4b21b64cc3a987efd73, type: 3}

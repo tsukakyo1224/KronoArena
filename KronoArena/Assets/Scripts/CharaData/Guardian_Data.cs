@@ -66,8 +66,8 @@ public class Guardian_Data : MonoBehaviour
     {
         CharaName = "ガーディアン";
         JobIconImage = Resources.Load<Sprite>("JobIcon/Guardian");
-        SkillTime1 = 15.0f;     //スキル1発動時間
-        SkillTime2 = 20.0f;     //スキル2発動時間
+        SkillTime1 = 10.0f;     //スキル1発動時間
+        SkillTime2 = 15.0f;     //スキル2発動時間
         Skill1_Limit = 30.0f;   //スキル1持続時間
         Skill2_Limit = 10.0f;   //スキル2持続時間
         Skill_Start = 0.0f;
@@ -123,8 +123,8 @@ public class Guardian_Data : MonoBehaviour
                 {
                     //エフェクト発動
                     photonView.RPC("Guardian_Effect", PhotonTargets.All, 2);
-                    this.GetComponent<Status>().Defense += 200.0f;
-                    this.GetComponent<Status>().Magic_Defense += 200.0f;
+                    this.GetComponent<Status>().Defense += 150.0f;
+                    this.GetComponent<Status>().Magic_Defense += 150.0f;
 
                     //アニメーション発動
                     //animator.SetBool("Skill1_Trigger", true);
@@ -144,8 +144,8 @@ public class Guardian_Data : MonoBehaviour
                 Skill1_Limit -= Time.deltaTime;
                 if (Skill1_Limit <= 0)
                 {
-                    this.GetComponent<Status>().Defense -= 200.0f;
-                    this.GetComponent<Status>().Magic_Defense -= 200.0f;
+                    this.GetComponent<Status>().Defense -= 150.0f;
+                    this.GetComponent<Status>().Magic_Defense -= 150.0f;
                     //持続時間フラグを初期値に
                     LimitFlag1 = false;
                     Skill1_Limit = 30.0f;

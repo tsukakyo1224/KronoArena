@@ -81,8 +81,8 @@ public class Knight_Data : MonoBehaviour
         AttackIcon = Resources.Load<Sprite>("AttackIcon/AttackIcon1");
         SkillIcon1 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
-        SkillTime1 = 20.0f;
-        SkillTime2 = 10.0f;
+        SkillTime1 = 10.0f;
+        SkillTime2 = 5.0f;
         Skill1_Limit = 3.0f;
         Skill2_Limit = 10.0f;
         Skill_Start = 0.0f;
@@ -135,7 +135,7 @@ public class Knight_Data : MonoBehaviour
                     //エフェクト発動
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 2);
 
-                    this.GetComponent<Status>().Attack += 1000.0f;
+                    this.GetComponent<Status>().Attack += 800.0f;
                     //回転攻撃
                     photonView.RPC("RollDamage", PhotonTargets.All);
                     SkillFlag1 = false;
@@ -152,7 +152,7 @@ public class Knight_Data : MonoBehaviour
                 Skill1_Limit -= Time.deltaTime;
                 if (Skill1_Limit <= 0)
                 {
-                    this.GetComponent<Status>().Attack -= 1000.0f;
+                    this.GetComponent<Status>().Attack -= 800.0f;
                     LimitFlag1 = false;
                     Skill1_Limit = 3.0f;
                 }

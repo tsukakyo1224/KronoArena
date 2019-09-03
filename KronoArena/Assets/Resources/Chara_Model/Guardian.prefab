@@ -1924,10 +1924,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Guardian
   HP: 3384
-  Attack: 709
+  Attack: 409
   Magic_Attack: 0
-  Defense: 302
-  Magic_Defense: 245
+  Defense: 258
+  Magic_Defense: 205
   Speed: 1
   Heel: 0
   AttackIcon: {fileID: 21300000, guid: a3ec86105a1df4b21b64cc3a987efd73, type: 3}

@@ -63,8 +63,8 @@ public class Medic_Data : MonoBehaviour
     {
         CharaName = "メディック";
         JobIconImage = Resources.Load<Sprite>("JobIcon/Medic");
-        SkillTime1 = 20.0f;
-        SkillTime2 = 10.0f;
+        SkillTime1 = 15.0f;
+        SkillTime2 = 5.0f;
         Skill2_Limit = 60.0f;
         Skill_Start = 0.0f;
         SkillFlag1 = false;

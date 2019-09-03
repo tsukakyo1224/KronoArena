@@ -124,6 +124,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
     public void AddCharaOn()
     {
+        Debug.Log("bbb");
         photonView.RPC("AddChara", PhotonTargets.All);
     }
 

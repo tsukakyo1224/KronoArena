@@ -41,7 +41,7 @@ public class MultipleTargetCamera : MonoBehaviour
             offset = new Vector3(0.0f, 5.0f, -20.0f);
             //this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
         }
-        if(CameraFlag == true && PhotonNetwork.playerList.Length == 2)
+        if(CameraFlag == true)
         {
             i = ChangeChara.nowChara;
 

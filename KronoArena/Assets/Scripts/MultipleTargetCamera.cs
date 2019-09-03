@@ -33,17 +33,25 @@ public class MultipleTargetCamera : MonoBehaviour
     {
         if (PhotonNetwork.player.ID == 1)
         {
-            offset = new Vector3(0.0f, 10.0f, 20.0f);
+            offset = new Vector3(0.0f, 5.0f, 20.0f);
             //this.transform.position = new Vector3(0.0f, 5.0f, 10.0f);
         }
         else if (PhotonNetwork.player.ID == 2)
         {
-            offset = new Vector3(0.0f, 10.0f, -20.0f);
+            offset = new Vector3(0.0f, 5.0f, -20.0f);
             //this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
         }
         if(CameraFlag == true)
         {
-            i = ChangeChara.nowChara;
+            if(PhotonNetwork.player.ID == 1)
+            {
+                i = ChangeChara.nowChara;
+            }
+            else if(PhotonNetwork.player.ID == 2)
+            {
+                i = (ChangeChara.nowChara) + 3;
+            }
+
 
             pos2 = targets[i].position;
             pos = new Vector3(0, 0, 0);

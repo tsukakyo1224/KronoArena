@@ -19,12 +19,20 @@ public class MultipleTargetCamera : MonoBehaviour
     private Vector3 pos2 = new Vector3();
     private Vector3 center = new Vector3();
     private int i = 0;
+
+    private PhotonView photonView;
+
+    private void Start()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
+
     // Update is called once per frame
     void Update()
     {
 
         //if (GameManager.cameraflag == true)
-        if (PhotonNetwork.player.ID == 1 && CameraFlag == false && Network_01.gameplayflag == true)
+        /*if (PhotonNetwork.player.ID == 1 && CameraFlag == false && Network_01.gameplayflag == true)
         {
             targets.Add(GameObject.Find("P1_Chara1").transform);
             targets.Add(GameObject.Find("P1_Chara2").transform);
@@ -37,9 +45,9 @@ public class MultipleTargetCamera : MonoBehaviour
             targets.Add(GameObject.Find("P2_Chara2").transform);
             targets.Add(GameObject.Find("P2_Chara3").transform);
             CameraFlag = true;
-        }
-
-        /*if (PhotonNetwork.playerList.Length == 2 && CameraFlag == false && Network_01.gameplayflag == true)
+        }*/
+        /*
+        if (PhotonNetwork.playerList.Length == 2 && CameraFlag == false && Network_01.gameplayflag == true)
         {
             targets.Add(GameObject.Find("P1_Chara1").transform);
             targets.Add(GameObject.Find("P1_Chara2").transform);
@@ -110,4 +118,22 @@ public class MultipleTargetCamera : MonoBehaviour
         }
         return bounds.center;
     }
+
+    public void AddCharaOn()
+    {
+        photonView.RPC("AddChara", PhotonTargets.All);
+    }
+
+    [PunRPC]
+    public void AddChara()
+    {
+        targets.Add(GameObject.Find("P1_Chara1").transform);
+        targets.Add(GameObject.Find("P1_Chara2").transform);
+        targets.Add(GameObject.Find("P1_Chara3").transform);
+        targets.Add(GameObject.Find("P2_Chara1").transform);
+        targets.Add(GameObject.Find("P2_Chara2").transform);
+        targets.Add(GameObject.Find("P2_Chara3").transform);
+        CameraFlag = true;
+    }
+
 }

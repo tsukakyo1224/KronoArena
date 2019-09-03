@@ -77,6 +77,7 @@ public class NetWork_02 : MonoBehaviour
                 P2_Chara3.tag = "Player2";
 
                 GameManager.cameraflag = true;
+                GameObject.Find("CameraParent").GetComponent<MultipleTargetCamera>().AddCharaOn();
             }
         }
     }

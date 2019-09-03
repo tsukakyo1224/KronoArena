@@ -244,7 +244,6 @@ public class Knight_Data : MonoBehaviour
         }
         else if (num == 4)
         {
-            this.GetComponent<Status>().ActionFlag = true;
             animator.SetBool("Skill2", false);
             animator.SetBool("Skill2_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;

@@ -122,12 +122,6 @@ public class MultipleTargetCamera : MonoBehaviour
         return bounds.center;
     }
 
-    public void AddCharaOn()
-    {
-        Debug.Log("bbb");
-        photonView.RPC("AddChara", PhotonTargets.All);
-    }
-
     [PunRPC]
     public void AddChara()
     {
@@ -138,6 +132,12 @@ public class MultipleTargetCamera : MonoBehaviour
         targets.Add(GameObject.Find("P2_Chara2").transform);
         targets.Add(GameObject.Find("P2_Chara3").transform);
         CameraFlag = true;
+    }
+
+    public void AddCharaOn()
+    {
+        Debug.Log("bbb");
+        photonView.RPC("AddChara", PhotonTargets.All);
     }
 
 }

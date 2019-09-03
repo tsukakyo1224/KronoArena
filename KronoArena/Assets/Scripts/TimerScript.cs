@@ -40,7 +40,8 @@ public class TimerScript : MonoBehaviour
         //秒数増えるカウント
         Count = 0;
 
-        //
+        //+3秒イメージ
+        //secondsUp.sprite = 
 
         photonView = GetComponent<PhotonView>();
 

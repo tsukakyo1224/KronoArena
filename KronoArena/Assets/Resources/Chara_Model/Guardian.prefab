@@ -1933,6 +1933,7 @@ MonoBehaviour:
   AttackIcon: {fileID: 21300000, guid: a3ec86105a1df4b21b64cc3a987efd73, type: 3}
   SkillIcon1: {fileID: 21300000, guid: 7ca3ff6caef2943aa87bb0d7ee6ae5ad, type: 3}
   SkillIcon2: {fileID: 21300000, guid: f91b7f14f0f8c4587873d6f5be310679, type: 3}
+  Chara: 1
   SkillArea1: 0
   SkillArea2: 1
   hpSlider: {fileID: 0}
@@ -5341,7 +5342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5313048964775701095
 RectTransform:
   m_ObjectHideFlags: 0

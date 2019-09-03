@@ -17,6 +17,8 @@ public class Status : MonoBehaviour
     [SerializeField] public Sprite SkillIcon1;
     [SerializeField] public Sprite SkillIcon2;
 
+    [SerializeField] public bool Chara;
+
     [SerializeField] public bool SkillArea1;
     [SerializeField] public bool SkillArea2;
 
@@ -56,7 +58,7 @@ public class Status : MonoBehaviour
         }
 
 
-        if (HP < 0)
+        if (HP < 0 && Chara == true)
         {
             CharaDied();
             //photonView.RPC("CharaDied", PhotonTargets.All);

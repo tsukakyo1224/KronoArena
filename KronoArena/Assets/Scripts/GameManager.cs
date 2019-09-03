@@ -222,20 +222,18 @@ public class GameManager : MonoBehaviour
             if(Chara1 != null)
             {
                 OperateImage1 = Chara1.transform.GetChild(5).gameObject;
+                OperateImage1.SetActive(false);
             }
             if (Chara2 != null)
             {
                 OperateImage2 = Chara2.transform.GetChild(5).gameObject;
+                OperateImage2.SetActive(false);
             }
             if (Chara3 != null)
             {
                 OperateImage3 = Chara3.transform.GetChild(5).gameObject;
+                OperateImage3.SetActive(false);
             }
-
-            //三角を毎回非表示に
-            OperateImage1.SetActive(false);
-            OperateImage2.SetActive(false);
-            OperateImage3.SetActive(false);
 
             //操作キャラ変更時に操作キャラクター表示の変更
             //現時点でナイト確定

@@ -205,8 +205,8 @@ public class Knight_Data : MonoBehaviour
     {
         if (num == 1)
         {
-            Debug.Log(this + "スキル1ため");
-            //animator.SetBool("Skill1_Trigger", false);
+            //Debug.Log(this + "スキル1ため");
+            animator.SetBool("Skill1_Trigger", false);
             animator.SetBool("Skill1", true);
             var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
@@ -220,7 +220,7 @@ public class Knight_Data : MonoBehaviour
         else if (num == 2)
         {
             Debug.Log(this + "スキル1発動");
-            //animator.SetBool("Skill1", false);
+            animator.SetBool("Skill1", false);
             animator.SetBool("Skill1_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
@@ -232,7 +232,7 @@ public class Knight_Data : MonoBehaviour
         }
         else if (num == 3)
         {
-            //animator.SetBool("Skill2_Trigger", false);
+            animator.SetBool("Skill2_Trigger", false);
             animator.SetBool("Skill2", true);
             var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
@@ -245,7 +245,7 @@ public class Knight_Data : MonoBehaviour
         else if (num == 4)
         {
             this.GetComponent<Status>().ActionFlag = true;
-            //animator.SetBool("Skill2", false);
+            animator.SetBool("Skill2", false);
             animator.SetBool("Skill2_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||

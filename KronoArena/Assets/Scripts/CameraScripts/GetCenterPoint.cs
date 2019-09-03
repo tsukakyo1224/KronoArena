@@ -66,15 +66,6 @@ public class GetCenterPoint : MonoBehaviour
     void Start()
     {
         //cameraPos = GameObject.Find("CameraPosition").GetComponent<Transform>();
-
-        if (PhotonNetwork.player.ID == 1)
-        {
-            this.transform.position = new Vector3(0.0f, 5.0f, 10.0f);
-        }
-        else if (PhotonNetwork.player.ID == 2)
-        {
-            this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
-        }
         CameraFlag = false;
     }
 
@@ -96,6 +87,7 @@ public class GetCenterPoint : MonoBehaviour
             transList.Add(GameObject.Find("P2_Chara3").transform);
             CameraFlag = true;
         }
+        /*
         if(PhotonNetwork.player.ID == 1)
         {
             this.transform.position = new Vector3(0.0f, 5.0f, 10.0f);
@@ -103,7 +95,7 @@ public class GetCenterPoint : MonoBehaviour
         else if(PhotonNetwork.player.ID == 2)
         {
             this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
-        }
+        }*/
 
         i = ChangeChara.nowChara;
 

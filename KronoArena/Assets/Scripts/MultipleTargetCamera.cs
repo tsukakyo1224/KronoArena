@@ -56,7 +56,7 @@ public class MultipleTargetCamera : MonoBehaviour
         }
         else if (PhotonNetwork.player.ID == 2)
         {
-            offset = new Vector3(0.0f, 5.0f, -10.0f);
+            offset = new Vector3(0.0f, 5.0f, -20.0f);
             //this.transform.position = new Vector3(0.0f, 5.0f, -10.0f);
         }
 

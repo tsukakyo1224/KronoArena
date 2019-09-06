@@ -71,16 +71,24 @@ public class ButtonCol : MonoBehaviour
     {
         if (ChangeChara.nowChara == 0)
         {
-            animator1.SetBool("Attack", true);
-
+            if (Knight_Data.SkillFlag1 == false && Knight_Data.SkillFlag2 == false)
+            {
+                animator1.SetBool("Attack", true);
+            }
         }
         else if (ChangeChara.nowChara == 1)
         {
-            animator2.SetBool("Attack", true);
+            if (Medic_Data.SkillFlag1 == false && Medic_Data.SkillFlag2 == false)
+            {
+                animator2.SetBool("Attack", true);
+            }
         }
         else if (ChangeChara.nowChara == 2)
         {
-            animator3.SetBool("Attack", true);
+            if (Guardian_Data.SkillFlag1 == false && Guardian_Data.SkillFlag2 == false)
+            {
+                animator3.SetBool("Attack", true);
+            }
         }
     }
 
@@ -90,28 +98,29 @@ public class ButtonCol : MonoBehaviour
         //ナイトの場合
         if (ChangeChara.nowChara == 0)
         {
-            if (Knight_Data.SkillFlag2 == false)
+            if (Knight_Data.SkillFlag1 == false && Knight_Data.SkillFlag2 == false)
             {
                 Knight_Data.SkillFlag1 = true;
-                animator1.SetBool("Skill1", true);
+                Debug.Log("ないとボタン1");
+                //animator1.SetBool("Skill1", true);
             }
         }
         //メディックの場合
         else if (ChangeChara.nowChara == 1)
         {
-            if (Medic_Data.SkillFlag2 == false)
+            if (Medic_Data.SkillFlag1 == false && Medic_Data.SkillFlag2 == false)
             {
                 Medic_Data.SkillFlag1 = true;
-                animator2.SetBool("Skill1", true);
+                //animator2.SetBool("Skill1", true);
             }
         }
         //ガーディアンの場合
         else if (ChangeChara.nowChara == 2)
         {
-            if (Guardian_Data.SkillFlag2 == false)
+            if (Guardian_Data.SkillFlag1 == false && Guardian_Data.SkillFlag2 == false)
             {
                 Guardian_Data.SkillFlag1 = true;
-                animator3.SetBool("Skill1", true);
+                //animator3.SetBool("Skill1", true);
             }
         }
         Debug.Log(ChangeChara.nowChara + " Special1");
@@ -123,7 +132,7 @@ public class ButtonCol : MonoBehaviour
         //ナイトの場合
         if (ChangeChara.nowChara == 0)
         {
-            if (Knight_Data.SkillFlag1 == false)
+            if (Knight_Data.SkillFlag1 == false && Knight_Data.SkillFlag2 == false)
             {
                 Knight_Data.SkillFlag2 = true;
                 animator1.SetBool("Skill2", true);
@@ -132,7 +141,7 @@ public class ButtonCol : MonoBehaviour
         //メディックの場合
         else if (ChangeChara.nowChara == 1)
         {
-            if (Medic_Data.SkillFlag1 == false)
+            if (Medic_Data.SkillFlag1 == false && Medic_Data.SkillFlag2 == false)
             {
                 Medic_Data.SkillFlag2 = true;
                 animator2.SetBool("Skill2", true);
@@ -141,7 +150,7 @@ public class ButtonCol : MonoBehaviour
         //ガーディアンの場合
         else if (ChangeChara.nowChara == 2)
         {
-            if (Guardian_Data.SkillFlag1 == false)
+            if (Guardian_Data.SkillFlag1 == false && Guardian_Data.SkillFlag2 == false)
             {
                 Guardian_Data.SkillFlag2 = true;
                 animator3.SetBool("Skill2", true);
@@ -150,6 +159,7 @@ public class ButtonCol : MonoBehaviour
         Debug.Log(ChangeChara.nowChara + " Special2");
     }
 
+    //スキル1範囲表示
     public void Skill1AreaOn()
     {
         //ナイトの場合
@@ -179,6 +189,7 @@ public class ButtonCol : MonoBehaviour
         }
     }
 
+    //スキル2範囲表示
     public void Skill2AreaOn()
     {
         //ナイトの場合

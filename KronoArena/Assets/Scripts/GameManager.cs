@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
     //結果画面(Win or Lose)
     public static Image WinLose;
 
+    //+3秒用テキスト
+    public static Image SecondUp;
+
     //ターン用イメージ
     public static Image TurnImage;
 
@@ -151,6 +154,10 @@ public class GameManager : MonoBehaviour
         //TurnText = GameObject.Find("TurnText");
 
         TimeText = GameObject.Find("Time");
+
+        //+3秒テキスト
+        SecondUp = GameObject.Find("+3seconds").GetComponent<Image>();
+        SecondUp.gameObject.SetActive(false);
 
         //スキルゲージ
         SkillGaugeIcon2 = GameObject.Find("SkillGaugeIcon2");

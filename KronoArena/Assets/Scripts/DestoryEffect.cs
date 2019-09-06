@@ -24,7 +24,7 @@ public class DestoryEffect : MonoBehaviour {
         }
         if (this.gameObject.name == "Heel(Clone)")
         {
-            Destroy(this.gameObject, 20f);
+            Destroy(this.gameObject, 15f);
         }
         if (this.gameObject.name == "HeelShower(Clone)")
         {
@@ -36,12 +36,12 @@ public class DestoryEffect : MonoBehaviour {
         }
         if (this.gameObject.name == "Medic_BuffSet(Clone)")
         {
-            Destroy(this.gameObject, 10f);
+            Destroy(this.gameObject, 5f);
         }
         //ナイト
         if (this.gameObject.name == "Knight_RollSet(Clone)")
         {
-            Destroy(this.gameObject, 20f);
+            Destroy(this.gameObject, 15f);
         }
         if (this.gameObject.name == "Knight_Roll(Clone)")
         {
@@ -49,7 +49,7 @@ public class DestoryEffect : MonoBehaviour {
         }
         if (this.gameObject.name == "Knight_BuffSet(Clone)")
         {
-            Destroy(this.gameObject, 10f);
+            Destroy(this.gameObject, 5f);
         }
         if (this.gameObject.name == "Knight_Buff(Clone)")
         {
@@ -58,7 +58,7 @@ public class DestoryEffect : MonoBehaviour {
         //ガーディアン
         if (this.gameObject.name == "Guardian_BuffSet1(Clone)")
         {
-            Destroy(this.gameObject, 15f);
+            Destroy(this.gameObject, 10f);
         }
         if (this.gameObject.name == "Guardian_Buff1(Clone)")
         {
@@ -66,7 +66,7 @@ public class DestoryEffect : MonoBehaviour {
         }
         if (this.gameObject.name == "Guardian_BigShieldSet(Clone)")
         {
-            Destroy(this.gameObject, 20f);
+            Destroy(this.gameObject, 15f);
         }
         if (this.gameObject.name == "Guardian_BigShield(Clone)")
         {

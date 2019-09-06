@@ -221,11 +221,12 @@ public class Medic_Data : MonoBehaviour
             animator.SetBool("Skill1_Trigger", false);
             animator.SetBool("Skill1", true);
             var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
-            if((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+            EffectFlag = true;
+            this.GetComponent<Status>().ActionFlag = true;
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
-                EffectFlag = true;
-                this.GetComponent<Status>().ActionFlag = true;
+
             }
         }
 
@@ -234,11 +235,12 @@ public class Medic_Data : MonoBehaviour
             animator.SetBool("Skill1", false);
             animator.SetBool("Skill1_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
+            EffectFlag = false;
+            this.GetComponent<Status>().ActionFlag = false;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
-                EffectFlag = false;
-                this.GetComponent<Status>().ActionFlag = false;
+
             }
         }
         else if(num == 3)
@@ -246,11 +248,12 @@ public class Medic_Data : MonoBehaviour
             animator.SetBool("Skill2_Trigger", false);
             animator.SetBool("Skill2", true);
             var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
+            EffectFlag = true;
+            this.GetComponent<Status>().ActionFlag = true;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
-                EffectFlag = true;
-                this.GetComponent<Status>().ActionFlag = true;
+
             }
         }
         else if(num == 4)
@@ -258,11 +261,12 @@ public class Medic_Data : MonoBehaviour
             animator.SetBool("Skill2", false);
             animator.SetBool("Skill2_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
+            EffectFlag = false;
+            this.GetComponent<Status>().ActionFlag = false;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
-                EffectFlag = false;
-                this.GetComponent<Status>().ActionFlag = false;
+
             }
         }
     }

@@ -54,7 +54,7 @@ public class MultipleTargetCamera : MonoBehaviour
             pos2 = targets[i].position;
             pos = new Vector3(0, 0, 0);
             int count = 0;
-            for(int i = 0; i<6; i++)
+            for(int i = 0; i<3; i++)
             {
                 if (targets[i].name != null)
                 {
@@ -122,6 +122,15 @@ public class MultipleTargetCamera : MonoBehaviour
         targets.Add(GameObject.Find("P2_Chara3").transform);
         CameraFlag = true;
     }
+    /*
+    [PunRPC]
+    public void AddChara()
+    {
+        targets.Add(GameObject.Find("P1_Chara1").transform);
+        targets.Add(GameObject.Find("P1_Chara2").transform);
+        targets.Add(GameObject.Find("P1_Chara3").transform);
+        CameraFlag = true;
+    }*/
 
     public void AddCharaOn()
     {

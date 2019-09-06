@@ -69,6 +69,9 @@ public class Knight_Data : MonoBehaviour
 
     private GameObject SkillArea;
 
+    //強制終了用
+    public float EndTime = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -108,6 +111,7 @@ public class Knight_Data : MonoBehaviour
         //オーディオ代入
         AttackAudio = GetComponent<AudioSource>();
 
+
     }
 
     // Update is called once per frame
@@ -120,13 +124,15 @@ public class Knight_Data : MonoBehaviour
             {
                 //スキル1時間減少
                 Skill_Start += 1.0f / SkillTime1 * Time.deltaTime;
+                Debug.Log(Skill_Start);
                 //SkillTime1 -= Time.deltaTime;
 
                 //待機エフェクト発動
                 if (EffectFlag == false)
                 {
+                    Debug.Log("ないとエフェクト1");
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 1);
-                    animator.SetBool("Skill1", true);
+                    //animator.SetBool("Skill1", true);
                 }
 
                 //スキル1時間が0になったら発動
@@ -198,6 +204,15 @@ public class Knight_Data : MonoBehaviour
                     Debug.Log("ナイトの攻撃力が元に戻った");
                 }
             }
+            //アニメーター強制終了
+            AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
+            if (clipinfo[0].clip.name == "rollwait"){
+                EndTime += Time.deltaTime;
+                if(EndTime >= 5.0f)
+                {
+                    photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
+                }
+            }
         }
     }
 
@@ -207,54 +222,67 @@ public class Knight_Data : MonoBehaviour
     {
         if (num == 1)
         {
-            //Debug.Log(this + "スキル1ため");
-            animator.SetBool("Skill1_Trigger", false);
+            Debug.Log(this + "ナイトエフェクト1発動");
+            //animator.SetBool("Skill1_Trigger", false);
             animator.SetBool("Skill1", true);
             var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
+            EffectFlag = true;
+            this.GetComponent<Status>().ActionFlag = true;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
-                EffectFlag = true;
-                this.GetComponent<Status>().ActionFlag = true;
+                //EffectFlag = true;
+                //this.GetComponent<Status>().ActionFlag = true;
             }
         }
 
         else if (num == 2)
         {
             Debug.Log(this + "スキル1発動");
-            animator.SetBool("Skill1", false);
+            //animator.SetBool("Skill1", false);
             animator.SetBool("Skill1_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
+            EffectFlag = false;
+            this.GetComponent<Status>().ActionFlag = false;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
-                EffectFlag = false;
-                this.GetComponent<Status>().ActionFlag = false;
+                //EffectFlag = false;
+                //this.GetComponent<Status>().ActionFlag = false;
             }
         }
         else if (num == 3)
         {
-            animator.SetBool("Skill2_Trigger", false);
+            //animator.SetBool("Skill2_Trigger", false);
             animator.SetBool("Skill2", true);
             var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
+            EffectFlag = true;
+            this.GetComponent<Status>().ActionFlag = true;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
-                EffectFlag = true;
-                this.GetComponent<Status>().ActionFlag = true;
+                //EffectFlag = true;
+                //this.GetComponent<Status>().ActionFlag = true;
             }
         }
         else if (num == 4)
         {
-            animator.SetBool("Skill2", false);
-            animator.SetBool("Skill2_Trigger", true);
+            //animator.SetBool("Skill2", false);
+
             var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
+            EffectFlag = false;
+            this.GetComponent<Status>().ActionFlag = false;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
-                EffectFlag = false;
-                this.GetComponent<Status>().ActionFlag = false;
+                //EffectFlag = true;
+                //this.GetComponent<Status>().ActionFlag = false;
             }
+        }
+        else if(num == 5)
+        {
+            animator.SetBool("AnimEnd", true);
+            EndTime = 0.0f;
         }
     }
 
@@ -273,7 +301,7 @@ public class Knight_Data : MonoBehaviour
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
-            Debug.Log(obj.name + "との距離は" + dist + "m");
+            //Debug.Log(obj.name + "との距離は" + dist + "m");
             //3m以下なら体力攻撃判定
             if (dist < 3)
             {

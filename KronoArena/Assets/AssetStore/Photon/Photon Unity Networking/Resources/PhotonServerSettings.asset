@@ -58,4 +58,5 @@ MonoBehaviour:
   - GuardOff
   - SecondUp
   - AddChara
+  - CharaActiveFalse
   DisableAutoOpenWizard: 1

@@ -57,11 +57,10 @@ public class Status : MonoBehaviour
             }
         }
 
-
         if (HP < 0 && Chara == true)
         {
             CharaDied();
-            //photonView.RPC("CharaDied", PhotonTargets.All);
+            photonView.RPC("CharaActiveFalse", PhotonTargets.All);
         }
     }
 
@@ -166,19 +165,28 @@ public class Status : MonoBehaviour
         }
     }
 
-
-    //[PunRPC]
     void CharaDied()
     {
 
         if (this.tag == "Player1")
         {
             GameManager.P1_GP += 1;
-            Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P1_GP + "体)");
         }
         if (this.tag == "Player2")
         {
             GameManager.P2_GP += 1;
+        }
+    }
+
+    [PunRPC]
+    void CharaActiveFalse()
+    {
+        if (this.tag == "Player1")
+        {
+            Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P1_GP + "体)");
+        }
+        if (this.tag == "Player2")
+        {
             Debug.Log(this.name + "がやられた。(" + "倒した数" + GameManager.P2_GP + "体)");
         }
         //左上のHPバーを0にする

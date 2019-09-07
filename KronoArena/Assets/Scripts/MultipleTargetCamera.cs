@@ -19,7 +19,8 @@ public class MultipleTargetCamera : MonoBehaviour
     private Vector3 pos2 = new Vector3();
     private Vector3 center = new Vector3();
     private int i = 0;
-    public int count = 5;
+    private int maxcount = 6;
+    private int count = 0;
 
     private PhotonView photonView;
 
@@ -54,15 +55,16 @@ public class MultipleTargetCamera : MonoBehaviour
 
             pos2 = targets[i].position;
             pos = new Vector3(0, 0, 0);
-            for(int i = 0; i<count; i++)
+            for(int i = 0; i<maxcount; i++)
             {
-                Debug.Log("aa");
+                Debug.Log(i);
                 if (targets[i] != null)
                 {
                     pos += targets[i].position;
                     count++;
                 }
             }
+            maxcount = count;
             count = 0;
             pos += pos2;
             center = pos / count;

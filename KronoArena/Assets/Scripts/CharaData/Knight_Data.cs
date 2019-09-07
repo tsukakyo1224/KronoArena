@@ -72,6 +72,9 @@ public class Knight_Data : MonoBehaviour
     //強制終了用
     public float EndTime = 0.0f;
 
+    //
+    public bool RollFlag;
+
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +96,8 @@ public class Knight_Data : MonoBehaviour
         SkillFlag2 = false;
         LimitFlag1 = false;
         LimitFlag2 = false;
+
+        RollFlag = false;
 
         AttackFlag = false;
 
@@ -298,8 +303,10 @@ public class Knight_Data : MonoBehaviour
         {
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
-            Guardian();
-            //3m以下なら体力攻撃判定
+            RollFlag = true;
+            Guardian2();
+            RollFlag = false;
+            //6m以下なら体力攻撃判定
             if (dist < 6 && AttackFlag == false)
             {
                 float random = Random.Range(0.9f, 1.1f);    //ランダム関数
@@ -375,7 +382,7 @@ public class Knight_Data : MonoBehaviour
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
-            if(obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0)
+            if(obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0f)
             {
                 if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
                 {
@@ -389,6 +396,46 @@ public class Knight_Data : MonoBehaviour
                     Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
                     AttackAudio.PlayOneShot(AttackAudio.clip);
                     AttackFlag = true;
+                }
+            }
+        }
+    }
+
+    //回転ダメージ用
+    void Guardian2()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
+        if (this.tag == "Player2")
+        {
+            targets = GameObject.FindGameObjectsWithTag("Player1");
+        }
+        foreach (GameObject obj in targets)
+        {
+            // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+            float dist = Vector3.Distance(obj.transform.position, transform.position);
+            //対象キャラとの距離表示
+            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 6.0f)
+            {
+                if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
+                {
+                    foreach(GameObject obj2 in targets)
+                    {
+                        // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
+                        float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
+                        if (dist2 < 2.0f)
+                        {
+                            float random = Random.Range(0.9f, 1.1f);    //ランダム関数
+                            float damage;   //ダメージ量
+                                            //ダメージを与える
+                            damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                            damage *= random;
+                            obj.GetComponent<Status>().HP -= (int)damage;
+                            //表示
+                            Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
+                            AttackAudio.PlayOneShot(AttackAudio.clip);
+                            AttackFlag = true;
+                        }
+                    }
                 }
             }
         }

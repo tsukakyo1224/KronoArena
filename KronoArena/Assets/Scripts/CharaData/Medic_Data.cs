@@ -198,8 +198,9 @@ public class Medic_Data : MonoBehaviour
         }
         //アニメーター強制終了
         AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
-        if (clipinfo[0].clip.name == "heal01")
+        if (clipinfo[0].clip.name == "heel01")
         {
+            Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 17.0f)
             {
@@ -208,19 +209,18 @@ public class Medic_Data : MonoBehaviour
         }
         else if (clipinfo[0].clip.name == "skill01")
         {
-            //Debug.Log(EndTime);
+            Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 7.0f)
             {
                 photonView.RPC("Medic_Effect", PhotonTargets.All, 5);
             }
         }
-        if(clipinfo[0].clip.name == "Wait")
+        if(clipinfo[0].clip.name == "Waite")
         {
             //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
         }
-        Debug.Log(EndTime);
         Debug.Log(clipinfo[0].clip.name);
     }
 

@@ -261,7 +261,7 @@ public class Knight_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
-            EndTime = 0.0f;
+            //EndTime = 0.0f;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
@@ -290,7 +290,7 @@ public class Knight_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
-            EndTime = 0.0f;
+            //EndTime = 0.0f;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                  PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {

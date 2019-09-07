@@ -216,8 +216,9 @@ public class Medic_Data : MonoBehaviour
                 photonView.RPC("Medic_Effect", PhotonTargets.All, 5);
             }
         }
-        else if(clipinfo[0].clip.name == "wait")
+        if(clipinfo[0].clip.name == "Wait")
         {
+            animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
         }
     }
@@ -248,11 +249,6 @@ public class Medic_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(HeelArea, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = true;
             this.GetComponent<Status>().ActionFlag = true;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-
-            }
         }
 
         else if(num == 2)
@@ -263,11 +259,6 @@ public class Medic_Data : MonoBehaviour
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
             EndTime = 0.0f;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-
-            }
         }
         else if(num == 3)
         {
@@ -276,11 +267,6 @@ public class Medic_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(Medic_BuffSet, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = true;
             this.GetComponent<Status>().ActionFlag = true;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-
-            }
         }
         else if(num == 4)
         {
@@ -290,16 +276,11 @@ public class Medic_Data : MonoBehaviour
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
             EndTime = 0.0f;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-
-            }
         }
         else if (num == 5)
         {
             animator.SetBool("AnimEnd", true);
-            EndTime = 0.0f;
+            //EndTime = 0.0f;
         }
     }
 

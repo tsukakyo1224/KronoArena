@@ -237,6 +237,11 @@ public class Guardian_Data : MonoBehaviour
                 photonView.RPC("Guardian_Effect", PhotonTargets.All, 5);
             }
         }
+        if (clipinfo[0].clip.name == "Wait")
+        {
+            animator.SetBool("AnimEnd", true);
+            EndTime = 0.0f;
+        }
 
     }
 

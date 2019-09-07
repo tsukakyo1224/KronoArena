@@ -211,7 +211,7 @@ public class Knight_Data : MonoBehaviour
         {
             Debug.Log(EndTime);
             EndTime += Time.deltaTime;
-            if (EndTime >= 13.0f)
+            if (EndTime >= 12.0f)
             {
                 photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
             }
@@ -220,7 +220,7 @@ public class Knight_Data : MonoBehaviour
         {
             Debug.Log(EndTime);
             EndTime += Time.deltaTime;
-            if (EndTime >= 8.0f)
+            if (EndTime >= 7.0f)
             {
                 photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
             }
@@ -239,35 +239,21 @@ public class Knight_Data : MonoBehaviour
     {
         if (num == 1)
         {
-            Debug.Log(this + "ナイトエフェクト1発動");
             //animator.SetBool("Skill1_Trigger", false);
             animator.SetBool("Skill1", true);
             var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = true;
             this.GetComponent<Status>().ActionFlag = true;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-                //EffectFlag = true;
-                //this.GetComponent<Status>().ActionFlag = true;
-            }
         }
         //EndTime=0をwaitno時に
         else if (num == 2)
         {
-            Debug.Log(this + "スキル1発動");
             //animator.SetBool("Skill1", false);
             animator.SetBool("Skill1_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
             //EndTime = 0.0f;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-                //EffectFlag = false;
-                //this.GetComponent<Status>().ActionFlag = false;
-            }
         }
         else if (num == 3)
         {
@@ -276,12 +262,6 @@ public class Knight_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = true;
             this.GetComponent<Status>().ActionFlag = true;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-                //EffectFlag = true;
-                //this.GetComponent<Status>().ActionFlag = true;
-            }
         }
         else if (num == 4)
         {
@@ -291,12 +271,6 @@ public class Knight_Data : MonoBehaviour
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
             //EndTime = 0.0f;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                 PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-                //EffectFlag = true;
-                //this.GetComponent<Status>().ActionFlag = false;
-            }
         }
         else if(num == 5)
         {

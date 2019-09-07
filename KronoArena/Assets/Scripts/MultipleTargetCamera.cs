@@ -19,6 +19,7 @@ public class MultipleTargetCamera : MonoBehaviour
     private Vector3 pos2 = new Vector3();
     private Vector3 center = new Vector3();
     private int i = 0;
+    public int count = 6;
 
     private PhotonView photonView;
 
@@ -47,21 +48,21 @@ public class MultipleTargetCamera : MonoBehaviour
             }
             else if(PhotonNetwork.player.ID == 2)
             {
-                i = (ChangeChara.nowChara) + 3;
+                i = ChangeChara.nowChara + 3;
             }
 
 
             pos2 = targets[i].position;
             pos = new Vector3(0, 0, 0);
-            int count = 0;
-            for(int i = 0; i<3; i++)
+            for(int j = 0; j<count; j++)
             {
-                if (targets[i].name != null)
+                if (targets[j].name != null)
                 {
-                    pos += targets[i].position;
+                    pos += targets[j].position;
                     count++;
                 }
             }
+            count = 0;
             //pos = targets[0].position + targets[1].position + targets[2].position + 
             //    targets[3].position + targets[4].position + targets[5].position + pos2;
             center = pos / count;

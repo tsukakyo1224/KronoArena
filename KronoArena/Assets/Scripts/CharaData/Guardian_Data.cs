@@ -348,9 +348,9 @@ public class Guardian_Data : MonoBehaviour
                         obj.GetComponent<Status>().HP -= (int)damage;
                         //表示
                         Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
+                        AttackAudio.PlayOneShot(AttackAudio.clip);
                     }
                 }
-                AttackAudio.PlayOneShot(AttackAudio.clip);
                 AttackFlag = false;
             }
         }
@@ -381,6 +381,7 @@ public class Guardian_Data : MonoBehaviour
                     obj.GetComponent<Status>().HP -= (int)damage;
                     //表示
                     Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
+                    AttackFlag = true;
                 }
             }
         }

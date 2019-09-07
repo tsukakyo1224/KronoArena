@@ -130,7 +130,6 @@ public class Knight_Data : MonoBehaviour
                 //待機エフェクト発動
                 if (EffectFlag == false)
                 {
-                    Debug.Log("ないとエフェクト1");
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 1);
                     //animator.SetBool("Skill1", true);
                 }
@@ -299,10 +298,9 @@ public class Knight_Data : MonoBehaviour
         {
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
-            //対象キャラとの距離表示
-            //Debug.Log(obj.name + "との距離は" + dist + "m");
+            Guardian();
             //3m以下なら体力攻撃判定
-            if (dist < 6)
+            if (dist < 6 && AttackFlag == false)
             {
                 float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                 float damage;   //ダメージ量
@@ -313,6 +311,7 @@ public class Knight_Data : MonoBehaviour
                 //表示
                 Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
             }
+            AttackFlag = false;
         }
 
     }
@@ -352,9 +351,9 @@ public class Knight_Data : MonoBehaviour
                         obj.GetComponent<Status>().HP -= (int)damage;
                         //表示
                         Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
+                        AttackAudio.PlayOneShot(AttackAudio.clip);
                     }
                 }
-                AttackAudio.PlayOneShot(AttackAudio.clip);
                 AttackFlag = false;
             }
         }

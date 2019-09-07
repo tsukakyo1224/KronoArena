@@ -68,7 +68,7 @@ public class MultipleTargetCamera : MonoBehaviour
             pos += pos2;
             center = pos / maxcount;
             this.transform.LookAt(center);          //CenterPointのポジションを中心に配置
-            Debug.Log(center);
+            //Debug.Log(center);
             //cameraPos.LookAt(this.transform);           //CameraPositionを中心の方向に向かせる
         }
 

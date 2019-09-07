@@ -218,7 +218,7 @@ public class Medic_Data : MonoBehaviour
         }
         if(clipinfo[0].clip.name == "Wait")
         {
-            animator.SetBool("AnimEnd", true);
+            //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
         }
     }

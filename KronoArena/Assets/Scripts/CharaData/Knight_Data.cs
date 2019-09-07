@@ -228,9 +228,10 @@ public class Knight_Data : MonoBehaviour
         //waitなら0秒に
         if (clipinfo[0].clip.name == "Wait")
         {
+            //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
         }
-        Debug.Log(EndTime);
+        //Debug.Log(this.name + EndTime);
     }
 
     //ナイトのエフェクト

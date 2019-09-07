@@ -222,7 +222,7 @@ public class Guardian_Data : MonoBehaviour
         {
             Debug.Log(EndTime);
             EndTime += Time.deltaTime;
-            if (EndTime >= 17.0f)
+            if (EndTime >= 12.0f)
             {
 
                 photonView.RPC("Guardian_Effect", PhotonTargets.All, 5);
@@ -232,14 +232,14 @@ public class Guardian_Data : MonoBehaviour
         {
             Debug.Log(EndTime);
             EndTime += Time.deltaTime;
-            if (EndTime >= 7.0f)
+            if (EndTime >= 17.0f)
             {
                 photonView.RPC("Guardian_Effect", PhotonTargets.All, 5);
             }
         }
         if (clipinfo[0].clip.name == "Wait")
         {
-            animator.SetBool("AnimEnd", true);
+            //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
         }
 
@@ -303,7 +303,7 @@ public class Guardian_Data : MonoBehaviour
         else if (num == 5)
         {
             animator.SetBool("AnimEnd", true);
-            EndTime = 0.0f;
+            //EndTime = 0.0f;
         }
     }
 

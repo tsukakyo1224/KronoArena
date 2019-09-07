@@ -54,17 +54,16 @@ public class MultipleTargetCamera : MonoBehaviour
 
             pos2 = targets[i].position;
             pos = new Vector3(0, 0, 0);
-            for(int j = 0; j<count; j++)
+            for(int i = 0; i<count; i++)
             {
-                if (targets[j].name != null)
+                if (targets[i].name != null)
                 {
-                    pos += targets[j].position;
+                    pos += targets[i].position;
                     count++;
                 }
             }
             count = 0;
-            //pos = targets[0].position + targets[1].position + targets[2].position + 
-            //    targets[3].position + targets[4].position + targets[5].position + pos2;
+            pos += pos2;
             center = pos / count;
             this.transform.LookAt(center);          //CenterPointのポジションを中心に配置
             //cameraPos.LookAt(this.transform);           //CameraPositionを中心の方向に向かせる

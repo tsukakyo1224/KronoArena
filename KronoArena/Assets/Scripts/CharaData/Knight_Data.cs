@@ -303,9 +303,7 @@ public class Knight_Data : MonoBehaviour
         {
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
-            RollFlag = true;
             Guardian2();
-            RollFlag = false;
             //6m以下なら体力攻撃判定
             if (dist < 6 && AttackFlag == false)
             {
@@ -414,27 +412,23 @@ public class Knight_Data : MonoBehaviour
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
-            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 6.0f)
+            //if (obj.GetComponent<Status>().Name == "Guardian" && dist < 6.0f)
+            if(dist < 6.0f)
             {
-                if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
+                foreach(GameObject obj2 in targets)
                 {
-                    foreach(GameObject obj2 in targets)
+                    float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
+                    if(dist2 < 2.0f && obj2.name == "Guardian")
                     {
-                        // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
-                        float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
-                        if (dist2 < 2.0f)
-                        {
-                            float random = Random.Range(0.9f, 1.1f);    //ランダム関数
-                            float damage;   //ダメージ量
-                                            //ダメージを与える
-                            damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
-                            damage *= random;
-                            obj.GetComponent<Status>().HP -= (int)damage;
-                            //表示
-                            Debug.Log(obj2　+ "を肩代わりした。" + this.name + "が" + obj2 + "に" + (int)damage + "ダメージ");
-                            AttackAudio.PlayOneShot(AttackAudio.clip);
-                            AttackFlag = true;
-                        }
+                        float random = Random.Range(0.9f, 1.1f);    //ランダム関数
+                        float damage;   //ダメージ量
+                                        //ダメージを与える
+                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                        damage *= random;
+                        obj.GetComponent<Status>().HP -= (int)damage;
+                        //表示
+                        Debug.Log(obj2 + "を肩代わりした。" + this.name + "が" + obj2 + "に" + (int)damage + "ダメージ");
+                        AttackAudio.PlayOneShot(AttackAudio.clip);
                     }
                 }
             }

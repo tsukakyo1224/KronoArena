@@ -418,8 +418,8 @@ public class Knight_Data : MonoBehaviour
                 foreach(GameObject obj2 in targets)
                 {
                     float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
-                    if(dist2 < 2.0f && obj2.GetComponent<Status>().Name == "Guardian" &&
-                        obj.GetComponent<Guardian_Data>().GuardFlag == true)
+                    if(obj2.GetComponent<Status>().Name == "Guardian")
+                        //obj.GetComponent<Guardian_Data>().GuardFlag == true)
                     {
                         float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                         float damage;   //ダメージ量

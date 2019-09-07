@@ -53,6 +53,9 @@ public class Medic_Data : MonoBehaviour
     [SerializeField] private static GameObject Medic_Buff;
     [SerializeField] private static GameObject Medic_BuffSet;
 
+    //強制終了用
+    public float EndTime = 0.0f;
+
     //位置情報
     public static Vector3 position;
     public static Vector3 forword;
@@ -94,9 +97,7 @@ public class Medic_Data : MonoBehaviour
         forword = this.transform.forward;
         quat = this.transform.rotation;
 
-        //if (photonView.isMine)
-        if(PhotonNetwork.player.ID == 1 && this.tag == "Player1" ||
-            PhotonNetwork.player.ID == 2 && this.tag == "Player2")
+        if (photonView.isMine)
         {
             //スキル1発動
             if (SkillFlag1 == true && SkillFlag2 == false)
@@ -195,6 +196,30 @@ public class Medic_Data : MonoBehaviour
 
             }
         }
+        //アニメーター強制終了
+        AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
+        if (clipinfo[0].clip.name == "heel01")
+        {
+            Debug.Log(EndTime);
+            EndTime += Time.deltaTime;
+            if (EndTime >= 17.0f)
+            {
+                photonView.RPC("Madic_Effect", PhotonTargets.All, 5);
+            }
+        }
+        else if (clipinfo[0].clip.name == "skill01")
+        {
+            Debug.Log(EndTime);
+            EndTime += Time.deltaTime;
+            if (EndTime >= 7.0f)
+            {
+                photonView.RPC("Medic_Effect", PhotonTargets.All, 5);
+            }
+        }
+        else if(clipinfo[0].clip.name == "wait")
+        {
+            EndTime = 0.0f;
+        }
     }
 
     public void Attack()
@@ -237,6 +262,7 @@ public class Medic_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
+            EndTime = 0.0f;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
@@ -263,11 +289,17 @@ public class Medic_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
+            EndTime = 0.0f;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
 
             }
+        }
+        else if (num == 5)
+        {
+            animator.SetBool("AnimEnd", true);
+            EndTime = 0.0f;
         }
     }
 

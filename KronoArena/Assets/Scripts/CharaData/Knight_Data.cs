@@ -124,7 +124,7 @@ public class Knight_Data : MonoBehaviour
             {
                 //スキル1時間減少
                 Skill_Start += 1.0f / SkillTime1 * Time.deltaTime;
-                Debug.Log(Skill_Start);
+                //Debug.Log(Skill_Start);
                 //SkillTime1 -= Time.deltaTime;
 
                 //待機エフェクト発動
@@ -204,16 +204,33 @@ public class Knight_Data : MonoBehaviour
                     Debug.Log("ナイトの攻撃力が元に戻った");
                 }
             }
-            //アニメーター強制終了
-            AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
-            if (clipinfo[0].clip.name == "rollwait"){
-                EndTime += Time.deltaTime;
-                if(EndTime >= 5.0f)
-                {
-                    photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
-                }
+        }
+        //アニメーター強制終了
+        AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
+        if (clipinfo[0].clip.name == "rollwait")
+        {
+            Debug.Log(EndTime);
+            EndTime += Time.deltaTime;
+            if (EndTime >= 13.0f)
+            {
+                photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
             }
         }
+        else if (clipinfo[0].clip.name == "skillwait")
+        {
+            Debug.Log(EndTime);
+            EndTime += Time.deltaTime;
+            if (EndTime >= 8.0f)
+            {
+                photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
+            }
+        }
+        //waitなら0秒に
+        if (clipinfo[0].clip.name == "Wait")
+        {
+            EndTime = 0.0f;
+        }
+        Debug.Log(EndTime);
     }
 
     //ナイトのエフェクト
@@ -235,7 +252,7 @@ public class Knight_Data : MonoBehaviour
                 //this.GetComponent<Status>().ActionFlag = true;
             }
         }
-
+        //EndTime=0をwaitno時に
         else if (num == 2)
         {
             Debug.Log(this + "スキル1発動");
@@ -244,6 +261,7 @@ public class Knight_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
+            EndTime = 0.0f;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
@@ -272,6 +290,7 @@ public class Knight_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
+            EndTime = 0.0f;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                  PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
@@ -282,7 +301,7 @@ public class Knight_Data : MonoBehaviour
         else if(num == 5)
         {
             animator.SetBool("AnimEnd", true);
-            EndTime = 0.0f;
+            //EndTime = 0.0f;
         }
     }
 

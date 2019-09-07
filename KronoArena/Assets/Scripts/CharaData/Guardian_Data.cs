@@ -61,6 +61,9 @@ public class Guardian_Data : MonoBehaviour
     //オーディオ
     private AudioSource AttackAudio;
 
+    //強制終了用
+    public float EndTime = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -213,6 +216,27 @@ public class Guardian_Data : MonoBehaviour
                 }
             }
         }
+        //アニメーター強制終了
+        AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
+        if (clipinfo[0].clip.name == "skill01_1")
+        {
+            Debug.Log(EndTime);
+            EndTime += Time.deltaTime;
+            if (EndTime >= 17.0f)
+            {
+
+                photonView.RPC("Guardian_Effect", PhotonTargets.All, 5);
+            }
+        }
+        else if (clipinfo[0].clip.name == "skill02_1")
+        {
+            Debug.Log(EndTime);
+            EndTime += Time.deltaTime;
+            if (EndTime >= 7.0f)
+            {
+                photonView.RPC("Guardian_Effect", PhotonTargets.All, 5);
+            }
+        }
 
     }
 
@@ -252,6 +276,7 @@ public class Guardian_Data : MonoBehaviour
             animator.SetBool("Skill1", false);
             animator.SetBool("Skill1_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
+            EndTime = 0.0f;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
@@ -281,12 +306,18 @@ public class Guardian_Data : MonoBehaviour
             // 作成したオブジェクトを子として登録
             GuardEffect.transform.parent = transform;
             //GuardEffect.transform.position = new Vector3(0.0f, 0.5f, 0.0f);
+            EndTime = 0.0f;
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
                     PhotonNetwork.player.ID == 2 && this.tag == "Player2")
             {
                 EffectFlag = false;
                 this.GetComponent<Status>().ActionFlag = false;
             }
+        }
+        else if (num == 5)
+        {
+            animator.SetBool("AnimEnd", true);
+            EndTime = 0.0f;
         }
     }
 

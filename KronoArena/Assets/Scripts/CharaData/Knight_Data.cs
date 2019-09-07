@@ -240,7 +240,7 @@ public class Knight_Data : MonoBehaviour
     {
         if (num == 1)
         {
-            //animator.SetBool("Skill1_Trigger", false);
+            animator.SetBool("Skill1_Trigger", false);
             animator.SetBool("Skill1", true);
             var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = true;
@@ -249,7 +249,7 @@ public class Knight_Data : MonoBehaviour
         //EndTime=0をwaitno時に
         else if (num == 2)
         {
-            //animator.SetBool("Skill1", false);
+            animator.SetBool("Skill1", false);
             animator.SetBool("Skill1_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
@@ -258,7 +258,7 @@ public class Knight_Data : MonoBehaviour
         }
         else if (num == 3)
         {
-            //animator.SetBool("Skill2_Trigger", false);
+            animator.SetBool("Skill2_Trigger", false);
             animator.SetBool("Skill2", true);
             var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = true;
@@ -266,8 +266,8 @@ public class Knight_Data : MonoBehaviour
         }
         else if (num == 4)
         {
-            //animator.SetBool("Skill2", false);
-
+            animator.SetBool("Skill2", false);
+            animator.SetBool("Skill2_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill2, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;

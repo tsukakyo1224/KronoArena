@@ -20,10 +20,12 @@ public class ButtonCol : MonoBehaviour
     //選択した攻撃までの時間
     public static float Time;
 
+    public static bool CharaTrigger;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        CharaTrigger = false;
     }
 
     // Update is called once per frame
@@ -237,4 +239,13 @@ public class ButtonCol : MonoBehaviour
         }
     }
 
+    public void CharaColOn()
+    {
+        CharaTrigger = true;
+    }
+
+    public void CharaColOff()
+    {
+        CharaTrigger = false;
+    }
 }

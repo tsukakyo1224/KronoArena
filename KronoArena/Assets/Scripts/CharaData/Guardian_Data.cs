@@ -249,7 +249,7 @@ public class Guardian_Data : MonoBehaviour
             EndTime = 0.0f;
 
         }
-        Debug.Log(this.name + clipinfo[0].clip.name);
+        //Debug.Log(this.name + clipinfo[0].clip.name);
     }
 
 

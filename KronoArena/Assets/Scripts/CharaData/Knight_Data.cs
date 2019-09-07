@@ -418,17 +418,19 @@ public class Knight_Data : MonoBehaviour
                 foreach(GameObject obj2 in targets)
                 {
                     float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
-                    if(dist2 < 2.0f && obj2.name == "Guardian")
+                    if(dist2 < 2.0f && obj2.GetComponent<Status>().Name == "Guardian" &&
+                        obj.GetComponent<Guardian_Data>().GuardFlag == true)
                     {
                         float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                         float damage;   //ダメージ量
                                         //ダメージを与える
-                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                        damage = (this.GetComponent<Status>().Attack / ((1 + obj2.GetComponent<Status>().Defense) / 10));
                         damage *= random;
-                        obj.GetComponent<Status>().HP -= (int)damage;
+                        obj2.GetComponent<Status>().HP -= (int)damage;
                         //表示
                         Debug.Log(obj2 + "を肩代わりした。" + this.name + "が" + obj2 + "に" + (int)damage + "ダメージ");
                         AttackAudio.PlayOneShot(AttackAudio.clip);
+                        AttackFlag == true;
                     }
                 }
             }

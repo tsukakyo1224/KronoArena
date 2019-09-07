@@ -101,7 +101,6 @@ public class ButtonCol : MonoBehaviour
             if (Knight_Data.SkillFlag1 == false && Knight_Data.SkillFlag2 == false)
             {
                 Knight_Data.SkillFlag1 = true;
-                Debug.Log("ないとボタン1");
                 //animator1.SetBool("Skill1", true);
             }
         }

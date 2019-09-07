@@ -430,7 +430,7 @@ public class Knight_Data : MonoBehaviour
                         //表示
                         Debug.Log(obj2 + "を肩代わりした。" + this.name + "が" + obj2 + "に" + (int)damage + "ダメージ");
                         AttackAudio.PlayOneShot(AttackAudio.clip);
-                        AttackFlag == true;
+                        AttackFlag = true;
                     }
                 }
             }

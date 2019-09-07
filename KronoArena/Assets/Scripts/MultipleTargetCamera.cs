@@ -106,7 +106,7 @@ public class MultipleTargetCamera : MonoBehaviour
     {
         if (targets.Count == 1) return targets[0].position;
         var bounds = new Bounds(targets[0].position, Vector3.zero);
-        for (int i = 0; i < targets.Count; i++)
+        for (int i = 0; i < maxcount; i++)
         {
             bounds.Encapsulate(targets[i].position);
         }

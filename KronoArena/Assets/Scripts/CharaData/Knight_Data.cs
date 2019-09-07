@@ -84,7 +84,7 @@ public class Knight_Data : MonoBehaviour
         AttackIcon = Resources.Load<Sprite>("AttackIcon/AttackIcon1");
         SkillIcon1 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon1");
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
-        SkillTime1 = 10.0f;
+        SkillTime1 = 15.0f;
         SkillTime2 = 5.0f;
         Skill1_Limit = 3.0f;
         Skill2_Limit = 10.0f;
@@ -142,7 +142,7 @@ public class Knight_Data : MonoBehaviour
                     //エフェクト発動
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 2);
                     animator.SetBool("Skill1_Trigger", true);
-                    this.GetComponent<Status>().Attack += 800.0f;
+                    this.GetComponent<Status>().Attack += 1500.0f;
                     //回転攻撃
                     photonView.RPC("RollDamage", PhotonTargets.All);
                     SkillFlag1 = false;
@@ -159,7 +159,7 @@ public class Knight_Data : MonoBehaviour
                 Skill1_Limit -= Time.deltaTime;
                 if (Skill1_Limit <= 0)
                 {
-                    this.GetComponent<Status>().Attack -= 800.0f;
+                    this.GetComponent<Status>().Attack -= 1500.0f;
                     LimitFlag1 = false;
                     Skill1_Limit = 3.0f;
                 }
@@ -302,7 +302,7 @@ public class Knight_Data : MonoBehaviour
             //対象キャラとの距離表示
             //Debug.Log(obj.name + "との距離は" + dist + "m");
             //3m以下なら体力攻撃判定
-            if (dist < 3)
+            if (dist < 6)
             {
                 float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                 float damage;   //ダメージ量

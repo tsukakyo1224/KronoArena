@@ -96,7 +96,6 @@ public class DestoryEffect : MonoBehaviour {
                 Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
             }
             GameObject.Find("GameManager").GetComponent<GameManager>().AudioPlay();
-
             AttackFlag = false;
         }
         Destroy(this.gameObject);

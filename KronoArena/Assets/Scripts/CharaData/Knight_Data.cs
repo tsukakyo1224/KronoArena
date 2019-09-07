@@ -388,6 +388,7 @@ public class Knight_Data : MonoBehaviour
                     obj.GetComponent<Status>().HP -= (int)damage;
                     //表示
                     Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
+                    AttackFlag = true;
                 }
             }
         }

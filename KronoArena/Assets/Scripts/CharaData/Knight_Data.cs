@@ -420,7 +420,7 @@ public class Knight_Data : MonoBehaviour
                     float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
                     if(obj2.GetComponent<Status>().Name == "Guardian")
                     {
-                        if(obj.GetComponent<Guardian_Data>().GuardFlag == true)
+                        if(obj2.GetComponent<Guardian_Data>().GuardFlag == true)
                         {
                             float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                             float damage;   //ダメージ量

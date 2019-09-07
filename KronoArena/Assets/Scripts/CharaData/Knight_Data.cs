@@ -226,7 +226,7 @@ public class Knight_Data : MonoBehaviour
         if (clipinfo[0].clip.name == "run")
         {
             EndTime += Time.deltaTime;
-            if (EndTime >= 5.0f)
+            if (EndTime >= 1.0f)
             {
                 photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
             }
@@ -234,6 +234,7 @@ public class Knight_Data : MonoBehaviour
         //waitなら0秒に
         if (clipinfo[0].clip.name == "Wait")
         {
+            animator.SetBool("AnimEnd", false);
             EndTime = 0.0f;
         }
     }

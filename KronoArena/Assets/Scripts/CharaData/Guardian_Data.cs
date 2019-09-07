@@ -238,14 +238,14 @@ public class Guardian_Data : MonoBehaviour
         if (clipinfo[0].clip.name == "run(Guardian)")
         {
             EndTime += Time.deltaTime;
-            if (EndTime >= 5.0f)
+            if (EndTime >= 1.0f)
             {
                 photonView.RPC("Guardian_Effect", PhotonTargets.All, 5);
             }
         }
         if (clipinfo[0].clip.name == "Wait(Guardian)")
         {
-            //animator.SetBool("AnimEnd", true);
+            animator.SetBool("AnimEnd", false);
             EndTime = 0.0f;
 
         }

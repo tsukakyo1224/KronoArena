@@ -214,7 +214,15 @@ public class Medic_Data : MonoBehaviour
                 photonView.RPC("Medic_Effect", PhotonTargets.All, 5);
             }
         }
-        if(clipinfo[0].clip.name == "Wait(Medic)")
+        if (clipinfo[0].clip.name == "run(Medic)")
+        {
+            EndTime += Time.deltaTime;
+            if (EndTime >= 5.0f)
+            {
+                photonView.RPC("Medic_Effect", PhotonTargets.All, 5);
+            }
+        }
+        if (clipinfo[0].clip.name == "Wait(Medic)")
         {
             //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;

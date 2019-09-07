@@ -209,7 +209,6 @@ public class Knight_Data : MonoBehaviour
         AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
         if (clipinfo[0].clip.name == "rollwait")
         {
-            //Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 12.0f)
             {
@@ -218,9 +217,16 @@ public class Knight_Data : MonoBehaviour
         }
         else if (clipinfo[0].clip.name == "skillwait")
         {
-            Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 7.0f)
+            {
+                photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
+            }
+        }
+        if (clipinfo[0].clip.name == "run")
+        {
+            EndTime += Time.deltaTime;
+            if (EndTime >= 5.0f)
             {
                 photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
             }
@@ -228,10 +234,8 @@ public class Knight_Data : MonoBehaviour
         //waitなら0秒に
         if (clipinfo[0].clip.name == "Wait")
         {
-            //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
         }
-        //Debug.Log(this.name + EndTime);
     }
 
     //ナイトのエフェクト

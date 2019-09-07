@@ -209,7 +209,7 @@ public class Knight_Data : MonoBehaviour
         AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
         if (clipinfo[0].clip.name == "rollwait")
         {
-            Debug.Log(EndTime);
+            //Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 12.0f)
             {

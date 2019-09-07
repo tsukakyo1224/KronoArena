@@ -221,6 +221,7 @@ public class Medic_Data : MonoBehaviour
             //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
         }
+        Debug.Log(EndTime);
     }
 
     public void Attack()

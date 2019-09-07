@@ -258,7 +258,7 @@ public class Medic_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(HeelShower, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
-            EndTime = 0.0f;
+            //EndTime = 0.0f;
         }
         else if(num == 3)
         {
@@ -275,7 +275,7 @@ public class Medic_Data : MonoBehaviour
             var instantiateEffect = GameObject.Instantiate(Medic_Buff, this.transform.position, Quaternion.identity) as GameObject;
             EffectFlag = false;
             this.GetComponent<Status>().ActionFlag = false;
-            EndTime = 0.0f;
+            //EndTime = 0.0f;
         }
         else if (num == 5)
         {

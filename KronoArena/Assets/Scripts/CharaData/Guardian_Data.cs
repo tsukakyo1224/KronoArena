@@ -268,12 +268,8 @@ public class Guardian_Data : MonoBehaviour
             animator.SetBool("Skill1_Trigger", false);
             animator.SetBool("Skill1", true);
             var instantiateEffect = GameObject.Instantiate(Skill1_Set, this.transform.position, Quaternion.identity) as GameObject;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-                EffectFlag = true;
-                this.GetComponent<Status>().ActionFlag = true;
-            }
+            EffectFlag = true;
+            this.GetComponent<Status>().ActionFlag = true;
         }
 
         else if (num == 2)
@@ -281,25 +277,16 @@ public class Guardian_Data : MonoBehaviour
             animator.SetBool("Skill1", false);
             animator.SetBool("Skill1_Trigger", true);
             var instantiateEffect = GameObject.Instantiate(Skill1, this.transform.position, Quaternion.identity) as GameObject;
-            EndTime = 0.0f;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-                EffectFlag = false;
-                this.GetComponent<Status>().ActionFlag = false;
-            }
+            EffectFlag = false;
+            this.GetComponent<Status>().ActionFlag = false;
         }
         else if (num == 3)
         {
             animator.SetBool("Skill2_Trigger", false);
             animator.SetBool("Skill2", true);
             var instantiateEffect = GameObject.Instantiate(Skill2_Set, this.transform.position, Quaternion.identity) as GameObject;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-                EffectFlag = true;
-                this.GetComponent<Status>().ActionFlag = true;
-            }
+            EffectFlag = true;
+            this.GetComponent<Status>().ActionFlag = true;
         }
         else if (num == 4)
         {
@@ -310,14 +297,8 @@ public class Guardian_Data : MonoBehaviour
                 new Vector3(0.0f, 0.5f, 0.0f), Quaternion.identity) as GameObject;
             // 作成したオブジェクトを子として登録
             GuardEffect.transform.parent = transform;
-            //GuardEffect.transform.position = new Vector3(0.0f, 0.5f, 0.0f);
-            EndTime = 0.0f;
-            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
-                    PhotonNetwork.player.ID == 2 && this.tag == "Player2")
-            {
-                EffectFlag = false;
-                this.GetComponent<Status>().ActionFlag = false;
-            }
+            EffectFlag = false;
+            this.GetComponent<Status>().ActionFlag = false;
         }
         else if (num == 5)
         {

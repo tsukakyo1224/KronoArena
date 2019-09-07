@@ -56,7 +56,7 @@ public class MultipleTargetCamera : MonoBehaviour
             pos = new Vector3(0, 0, 0);
             for(int i = 0; i<count; i++)
             {
-                if (targets[i].name != null)
+                if (targets[i] != null)
                 {
                     pos += targets[i].position;
                     count++;

@@ -200,28 +200,25 @@ public class Medic_Data : MonoBehaviour
         AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
         if (clipinfo[0].clip.name == "heel01")
         {
-            Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 17.0f)
             {
                 photonView.RPC("Madic_Effect", PhotonTargets.All, 5);
             }
         }
-        else if (clipinfo[0].clip.name == "skill01")
+        else if (clipinfo[0].clip.name == "skill01(Medic)")
         {
-            Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 7.0f)
             {
                 photonView.RPC("Medic_Effect", PhotonTargets.All, 5);
             }
         }
-        if(clipinfo[0].clip.name == "Waite")
+        if(clipinfo[0].clip.name == "Wait(Medic)")
         {
             //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
         }
-        Debug.Log(clipinfo[0].clip.name);
     }
 
     public void Attack()

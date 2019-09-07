@@ -331,13 +331,13 @@ ModelImporter:
     4300090: pCylinder1
     4300092: pCylinder2
     4300094: polySurface47
-    7400000: Waite(Medic)
+    7400000: Wait(Medic)
     7400002: attack01(Medic)
     7400004: attack02(Medic)
     7400006: attack03(Medic)
     7400008: run(Medic)
-    7400010: heal01(Medic)
-    7400012: heal02(Medic)
+    7400010: heel01
+    7400012: heel02
     7400014: skill01(Medic)
     7400016: skill02(Medic)
     9500000: //RootNode
@@ -431,7 +431,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Waite(Medic)
+      name: Wait(Medic)
       takeName: Take 001
       firstFrame: 1
       lastFrame: 24
@@ -571,7 +571,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: heal01(Medic)
+      name: heel01
       takeName: Take 001
       firstFrame: 103
       lastFrame: 115
@@ -599,7 +599,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: heal02(Medic)
+      name: heel02
       takeName: Take 001
       firstFrame: 115
       lastFrame: 126

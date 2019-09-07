@@ -218,9 +218,8 @@ public class Guardian_Data : MonoBehaviour
         }
         //アニメーター強制終了
         AnimatorClipInfo[] clipinfo = animator.GetCurrentAnimatorClipInfo(0);
-        if (clipinfo[0].clip.name == "skill01_1")
+        if (clipinfo[0].clip.name == "skill01_1(Guardian)")
         {
-            Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 12.0f)
             {
@@ -228,21 +227,21 @@ public class Guardian_Data : MonoBehaviour
                 photonView.RPC("Guardian_Effect", PhotonTargets.All, 5);
             }
         }
-        else if (clipinfo[0].clip.name == "skill02_1")
+        else if (clipinfo[0].clip.name == "skill02_1(Guardian)")
         {
-            Debug.Log(EndTime);
             EndTime += Time.deltaTime;
             if (EndTime >= 17.0f)
             {
                 photonView.RPC("Guardian_Effect", PhotonTargets.All, 5);
             }
         }
-        if (clipinfo[0].clip.name == "Wait")
+        if (clipinfo[0].clip.name == "Wait(Guardian)")
         {
             //animator.SetBool("AnimEnd", true);
             EndTime = 0.0f;
-        }
 
+        }
+        Debug.Log(this.name + clipinfo[0].clip.name);
     }
 
 

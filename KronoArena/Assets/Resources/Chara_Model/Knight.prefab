@@ -2177,6 +2177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndTime: 0
+  RollFlag: 0
 --- !u!114 &7177726288430820402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2337,7 +2338,7 @@ MonoBehaviour:
   HP: 1326
   Attack: 785
   Magic_Attack: 45
-  Defense: 159
+  Defense: 139
   Magic_Defense: 83
   Speed: 2
   Heel: 0

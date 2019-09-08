@@ -413,15 +413,16 @@ public class Knight_Data : MonoBehaviour
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
             //if (obj.GetComponent<Status>().Name == "Guardian" && dist < 6.0f)
-            if(dist < 6.0f)
+            if(dist < 6.0f && obj.GetComponent<Status>().Name != "Guardian")
             {
                 foreach(GameObject obj2 in targets)
                 {
                     float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
-                    if(obj2.GetComponent<Status>().Name == "Guardian")
+                    if(obj2.GetComponent<Status>().Name == "Guardian" && dist < 2.0f)
                     {
                         if(obj2.GetComponent<Guardian_Data>().GuardFlag == true)
                         {
+                            Debug.Log(obj2);
                             float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                             float damage;   //ダメージ量
                                             //ダメージを与える
@@ -432,6 +433,7 @@ public class Knight_Data : MonoBehaviour
                             Debug.Log(obj2 + "を肩代わりした。" + this.name + "が" + obj2 + "に" + (int)damage + "ダメージ");
                             AttackAudio.PlayOneShot(AttackAudio.clip);
                             AttackFlag = true;
+                            break;
                         }
                     }
                 }

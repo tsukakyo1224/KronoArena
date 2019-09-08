@@ -352,7 +352,7 @@ public class Knight_Data : MonoBehaviour
                         float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                         float damage;   //ダメージ量
                         //ダメージを与える
-                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 20));
+                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 5));
                         damage *= random;
                         obj.GetComponent<Status>().HP -= (int)damage;
                         //表示

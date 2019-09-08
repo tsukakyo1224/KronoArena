@@ -214,7 +214,7 @@ public class Knight_Data : MonoBehaviour
         if (clipinfo[0].clip.name == "rollwait")
         {
             EndTime += Time.deltaTime;
-            if (EndTime >= 12.0f)
+            if (EndTime >= 17.0f)
             {
                 photonView.RPC("Knight_Effect", PhotonTargets.All, 5);
             }
@@ -352,7 +352,7 @@ public class Knight_Data : MonoBehaviour
                         float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                         float damage;   //ダメージ量
                         //ダメージを与える
-                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 20));
                         damage *= random;
                         obj.GetComponent<Status>().HP -= (int)damage;
                         //表示

@@ -343,7 +343,7 @@ public class Guardian_Data : MonoBehaviour
                         float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                         float damage;   //ダメージ量
                         //ダメージを与える
-                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 20));
                         damage *= random;
                         obj.GetComponent<Status>().HP -= (int)damage;
                         //表示
@@ -376,7 +376,7 @@ public class Guardian_Data : MonoBehaviour
                     float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                     float damage;   //ダメージ量
                                     //ダメージを与える
-                    damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                    damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 20));
                     damage *= random;
                     obj.GetComponent<Status>().HP -= (int)damage;
                     //表示

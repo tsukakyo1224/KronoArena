@@ -417,8 +417,8 @@ public class Knight_Data : MonoBehaviour
             {
                 foreach(GameObject obj2 in targets)
                 {
-                    Debug.Log(obj2);
                     float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
+                    Debug.Log(dist2);
                     if(obj2.GetComponent<Status>().Name == "Guardian" && dist < 2.0f)
                     {
                         if(obj2.GetComponent<Guardian_Data>().GuardFlag == true)

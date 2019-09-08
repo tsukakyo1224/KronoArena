@@ -381,7 +381,7 @@ public class Knight_Data : MonoBehaviour
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
-            if(obj.GetComponent<Status>().Name == "Guardian" && dist < 1.5f)
+            if(obj.GetComponent<Status>().Name == "Guardian" && dist < 2.6f)
             {
                 if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
                 {
@@ -412,15 +412,16 @@ public class Knight_Data : MonoBehaviour
         {
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
+            Debug.Log(obj + "との距離は" + dist);
             //対象キャラとの距離表示
             //if (obj.GetComponent<Status>().Name == "Guardian" && dist < 6.0f)
-            if(dist < 6.0f && obj.GetComponent<Status>().Name != "Guardian")
+            if (dist < 5.0f && obj.GetComponent<Status>().Name != "Guardian")
             {
                 foreach(GameObject obj2 in targets)
                 {
                     float dist2 = Vector3.Distance(obj2.transform.position, obj.transform.position);
                     //Debug.Log(obj + "と" + obj2 + "の距離は" + dist2);
-                    if(obj2.GetComponent<Status>().Name == "Guardian" && dist2 < 2.0f)
+                    if(obj2.GetComponent<Status>().Name == "Guardian" && dist2 < 2.6f)
                     {
                         if(obj2.GetComponent<Guardian_Data>().GuardFlag == true)
                         {
@@ -438,7 +439,7 @@ public class Knight_Data : MonoBehaviour
                     }
                 }
             }
-            if(AttackFlag == false && dist < 6)
+            if(AttackFlag == false && dist < 5.0f)
             {
                 float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                 float damage;   //ダメージ量
@@ -447,6 +448,7 @@ public class Knight_Data : MonoBehaviour
                 damage *= random;
                 obj.GetComponent<Status>().HP -= (int)damage;
                 //表示
+
                 Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
             }
             AttackFlag = false;

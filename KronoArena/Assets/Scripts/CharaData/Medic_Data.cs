@@ -135,7 +135,7 @@ public class Medic_Data : MonoBehaviour
                         //対象キャラとの距離表示
                         Debug.Log(obj.name + "との距離は" + dist + "m");
                         //3m以下なら体力回復判定
-                        if (dist < 4.5)
+                        if (dist < 9.1f)
                         {
                             obj.GetComponent<Status>().HP += this.GetComponent<Status>().Heel;
                             if (obj.GetComponent<Status>().HP > obj.GetComponent<Status>().MaxHP)
@@ -303,7 +303,7 @@ public class Medic_Data : MonoBehaviour
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
-            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0)
+            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 2.6)
             {
                 if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
                 {

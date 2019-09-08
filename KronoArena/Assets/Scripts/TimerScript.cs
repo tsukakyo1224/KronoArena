@@ -95,10 +95,12 @@ public class TimerScript : MonoBehaviour
             {
                 TotalTime += 3.0f;
                 Debug.Log("+3秒、残り回数" + (4-Count) + "回");
-
             }
         }
-
+        if(Count < 5)
+        {
+            Sand.sand_time += 3.0f;
+        }
         Count++;
     }
 

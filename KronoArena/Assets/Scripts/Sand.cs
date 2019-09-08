@@ -14,6 +14,7 @@ public class Sand : MonoBehaviour
     public GameObject MyDown;
     public GameObject YouUp;
     public GameObject YouDown;
+    public static float sand_time;
 
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class Sand : MonoBehaviour
         MyDown.SetActive(false);
         YouUp.SetActive(false);
         YouDown.SetActive(false);
+        sand_time = 30.0f;
     }
 
     // Update is called once per frame
@@ -40,8 +42,8 @@ public class Sand : MonoBehaviour
             MyDown.SetActive(true);
             YouUp.SetActive(false);
             YouDown.SetActive(false);
-            UIobj1.fillAmount = 1 - (TimerScript.TotalTime / 30.0f);
-            UIobj2.fillAmount = TimerScript.TotalTime / 30.0f;
+            UIobj1.fillAmount = 1 - (TimerScript.TotalTime / sand_time);
+            UIobj2.fillAmount = TimerScript.TotalTime / sand_time;
         }
         else
         {
@@ -49,9 +51,8 @@ public class Sand : MonoBehaviour
             MyDown.SetActive(false);
             YouUp.SetActive(true);
             YouDown.SetActive(true);
-            UIobj3.fillAmount = TimerScript.TotalTime / 30.0f;
-            UIobj4.fillAmount = 1 - (TimerScript.TotalTime / 30.0f);
+            UIobj3.fillAmount = TimerScript.TotalTime / sand_time;
+            UIobj4.fillAmount = 1 - (TimerScript.TotalTime / sand_time);
         }
-
     }
 }

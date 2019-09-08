@@ -168,8 +168,8 @@ public class Medic_Data : MonoBehaviour
                     //エフェクト発動
                     photonView.RPC("Medic_Effect", PhotonTargets.All, 4);
                     animator.SetBool("Skill2_Trigger", true);
-                    this.GetComponent<Status>().Defense += 100.0f;
-                    this.GetComponent<Status>().Magic_Defense += 100.0f;
+                    this.GetComponent<Status>().Attack += 200.0f;
+                    this.GetComponent<Status>().Magic_Attack += 200.0f;
                     this.GetComponent<Status>().Heel += 100.0f;
 
                     //animator.SetBool("Skill2_Trigger", true);
@@ -186,8 +186,8 @@ public class Medic_Data : MonoBehaviour
                 {
                     //エフェクト発動
 
-                    this.GetComponent<Status>().Defense -= 100.0f;
-                    this.GetComponent<Status>().Magic_Defense -= 100.0f;
+                    this.GetComponent<Status>().Attack -= 200.0f;
+                    this.GetComponent<Status>().Magic_Attack -= 200.0f;
                     this.GetComponent<Status>().Heel -= 100.0f;
                     LimitFlag2 = false;
                     Skill2_Limit = 60.0f;

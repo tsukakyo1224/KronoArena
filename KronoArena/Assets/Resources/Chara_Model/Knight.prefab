@@ -2335,7 +2335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Knight
-  HP: 2014
+  HP: 1467
   Attack: 785
   Magic_Attack: 45
   Defense: 162

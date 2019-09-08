@@ -300,6 +300,7 @@ public class Knight_Data : MonoBehaviour
             targets = GameObject.FindGameObjectsWithTag("Player1");
         }
         Guardian2();
+        /*
         foreach (GameObject obj in targets)
         {
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
@@ -317,7 +318,7 @@ public class Knight_Data : MonoBehaviour
                 Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
             }
             AttackFlag = false;
-        }
+        }*/
 
     }
 
@@ -437,6 +438,18 @@ public class Knight_Data : MonoBehaviour
                         }
                     }
                 }
+            }
+            if(AttackFlag == false)
+            {
+                float random = Random.Range(0.9f, 1.1f);    //ランダム関数
+                float damage;   //ダメージ量
+                                //ダメージを与える
+                damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 10));
+                damage *= random;
+                obj.GetComponent<Status>().HP -= (int)damage;
+                //表示
+                Debug.Log(this.name + "が" + obj + "に" + (int)damage + "ダメージ");
+                AttackFlag = false;
             }
         }
     }

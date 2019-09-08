@@ -184,8 +184,8 @@ public class Guardian_Data : MonoBehaviour
                     //GuardFlag = true;
                     photonView.RPC("GuardOn", PhotonTargets.All);
 
-                    this.GetComponent<Status>().Defense += 100.0f;
-                    this.GetComponent<Status>().Magic_Defense += 100.0f;
+                    this.GetComponent<Status>().Defense -= 100.0f;
+                    this.GetComponent<Status>().Magic_Defense -= 100.0f;
 
                     //animator.SetBool("Skill2_Trigger", true);
                     //スキル1発動系を初期値に
@@ -205,8 +205,8 @@ public class Guardian_Data : MonoBehaviour
 
                 if (Skill2_Limit <= 0)
                 {
-                    this.GetComponent<Status>().Defense -= 100.0f;
-                    this.GetComponent<Status>().Magic_Defense -= 100.0f;
+                    this.GetComponent<Status>().Defense += 100.0f;
+                    this.GetComponent<Status>().Magic_Defense += 100.0f;
                     //持続時間フラグを初期値に
                     LimitFlag2 = false;
                     Skill2_Limit = 10.0f;

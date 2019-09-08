@@ -1515,7 +1515,7 @@ MonoBehaviour:
   Name: Medic
   HP: 1817
   Attack: 52
-  Magic_Attack: 431
+  Magic_Attack: 481
   Defense: 155
   Magic_Defense: 107
   Speed: 3

@@ -438,7 +438,7 @@ public class Knight_Data : MonoBehaviour
                     }
                 }
             }
-            if(AttackFlag == false)
+            if(AttackFlag == false && dist < 6)
             {
                 float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                 float damage;   //ダメージ量

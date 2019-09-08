@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Medic
-  HP: 839
+  HP: 1002
   Attack: 52
   Magic_Attack: 431
   Defense: 126

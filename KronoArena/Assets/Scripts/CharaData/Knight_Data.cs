@@ -162,7 +162,7 @@ public class Knight_Data : MonoBehaviour
                 Skill1_Limit -= Time.deltaTime;
                 if (Skill1_Limit <= 0)
                 {
-                    this.GetComponent<Status>().Attack -= 1500.0f;
+                    this.GetComponent<Status>().Attack -= 2500.0f;
                     LimitFlag1 = false;
                     Skill1_Limit = 3.0f;
                 }
@@ -293,7 +293,7 @@ public class Knight_Data : MonoBehaviour
     public void RollDamage()
     {
         //回転攻撃判定
-        this.GetComponent<Status>().Attack += 1500.0f;
+        this.GetComponent<Status>().Attack += 2500.0f;
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
         if (this.tag == "Player2")
         {

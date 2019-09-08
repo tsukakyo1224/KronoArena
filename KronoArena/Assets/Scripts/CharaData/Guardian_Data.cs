@@ -343,7 +343,7 @@ public class Guardian_Data : MonoBehaviour
                         float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                         float damage;   //ダメージ量
                         //ダメージを与える
-                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 20));
+                        damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 7.5f));
                         damage *= random;
                         obj.GetComponent<Status>().HP -= (int)damage;
                         //表示
@@ -369,14 +369,14 @@ public class Guardian_Data : MonoBehaviour
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
-            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 2.0)
+            if (obj.GetComponent<Status>().Name == "Guardian" && dist < 1.5f)
             {
                 if (obj.GetComponent<Guardian_Data>().GuardFlag == true)
                 {
                     float random = Random.Range(0.9f, 1.1f);    //ランダム関数
                     float damage;   //ダメージ量
                                     //ダメージを与える
-                    damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 5));
+                    damage = (this.GetComponent<Status>().Attack / ((1 + obj.GetComponent<Status>().Defense) / 7.5f));
                     damage *= random;
                     obj.GetComponent<Status>().HP -= (int)damage;
                     //表示

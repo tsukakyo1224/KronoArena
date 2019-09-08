@@ -2339,7 +2339,7 @@ MonoBehaviour:
   Attack: 785
   Magic_Attack: 45
   Defense: 162
-  Magic_Defense: 83
+  Magic_Defense: 73
   Speed: 2
   Heel: 0
   AttackIcon: {fileID: 21300000, guid: a3ec86105a1df4b21b64cc3a987efd73, type: 3}

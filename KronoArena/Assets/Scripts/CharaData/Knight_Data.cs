@@ -146,7 +146,6 @@ public class Knight_Data : MonoBehaviour
                     //エフェクト発動
                     photonView.RPC("Knight_Effect", PhotonTargets.All, 2);
                     animator.SetBool("Skill1_Trigger", true);
-                    this.GetComponent<Status>().Attack += 2000.0f;
                     //回転攻撃
                     photonView.RPC("RollDamage", PhotonTargets.All);
                     SkillFlag1 = false;
@@ -294,6 +293,7 @@ public class Knight_Data : MonoBehaviour
     public void RollDamage()
     {
         //回転攻撃判定
+        this.GetComponent<Status>().Attack += 2000.0f;
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Player2");
         if (this.tag == "Player2")
         {

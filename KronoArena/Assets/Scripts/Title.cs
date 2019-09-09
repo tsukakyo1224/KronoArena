@@ -30,10 +30,7 @@ public class Title : MonoBehaviour {
 			if (alfa <= 0) {
 				UPDOWN = false;
 			}
-		}	
+		}
+			
 	}
-    public void FadeOutOn()
-    {
-        GameObject.Find("Panel").GetComponent<FadeController>().isFadeOut = true;
-    }
 }

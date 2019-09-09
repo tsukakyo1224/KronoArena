@@ -85,8 +85,8 @@ public class GameManager : MonoBehaviour
     public static GameObject Camera;
 
     //Photon同期用
-    private PhotonView photonView;
-    private PhotonTransformView photonTransformView;
+    //private PhotonView photonView;
+    //private PhotonTransformView photonTransformView;
 
 
     //ゲーム勝利用ポイント
@@ -98,17 +98,20 @@ public class GameManager : MonoBehaviour
 
     //-------------------------フラグ-------------------------
     //キャラクター生成フラグ
-    public static bool CharaMakeFlag;
+    public static bool CharaMakeFlag = false;
+
     //ゲーム準備フラグ
 
     //ゲームスタート時フラグ
-    public static bool GameStartFlag;
+    public static bool GameStartFlag = false;
 
     //ゲームプレイ中フラグ
-    public static bool GamePlayFlag;
+    public static bool GamePlayFlag = false;
 
-    //カメラフラグ
+    //カメラフラグ(スタート時にキャラクターをズームして写すカメラフラグ)(falseで)
     public static bool CameraFlag = false;
+
+    public static bool CameraStartFlag = false;
 
 
     // Start is called before the first frame update
@@ -116,8 +119,8 @@ public class GameManager : MonoBehaviour
     {
 
         //Photon同期用
-        photonTransformView = GetComponent<PhotonTransformView>();
-        photonView = PhotonView.Get(this);
+        //photonTransformView = GetComponent<PhotonTransformView>();
+        //photonView = PhotonView.Get(this);
 
         //キャラごとの攻撃までの時間用テキスト代入
         //CharaAttackTime1 = GameObject.Find("AttackTime1");
@@ -162,7 +165,7 @@ public class GameManager : MonoBehaviour
         OpeCharaIcon = GameObject.Find("OpeCharaIcon");
         OpeCharaName = GameObject.Find("OpeCharaName");
         OpeCharaJobIcon = GameObject.Find("OpeCharaJobIcon").GetComponent<Image>();
-        OpeCharaHPSlider = GameObject.Find("BackGround").transform.Find("OpeCharaHPSlider").GetComponent<Slider>();
+        OpeCharaHPSlider = GameObject.Find("OpeCharaHPSlider").GetComponent<Slider>();
         OpeCharaHPText = GameObject.Find("OpeCharaHPText");
 
         //砂時計ボタン(ターンチェンジ)
@@ -197,7 +200,7 @@ public class GameManager : MonoBehaviour
         CharaChangeButton2.GetComponent<Button>().interactable = true;
         CharaChangeButton3.GetComponent<Button>().interactable = true;
 
-        //
+        //オーディオ
         AudioSource[] audioSources = GetComponents<AudioSource>();
         MedicAudio = audioSources[1];
 
@@ -223,15 +226,15 @@ public class GameManager : MonoBehaviour
             //左上のバーを初期位置に
             CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 221.9f, 0.0f);
             CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 216.5f, 0.0f);
-            CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 195.0f, 0.0f);
+            //CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 195.0f, 0.0f);
 
             CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 137.2f, 0.0f);
             CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 133.0f, 0.0f);
-            CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 110.0f, 0.0f);
+            //CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 110.0f, 0.0f);
 
             CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 50.0f, 0.0f);
             CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 46.0f, 0.0f);
-            CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
+            //CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
 
             //キャラの頭上の三角
             if(Chara1 != null)
@@ -315,7 +318,7 @@ public class GameManager : MonoBehaviour
                 //操作キャラは右に出す
                 CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 221.9f, 0.0f);
                 CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 216.5f, 0.0f);
-                CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 195.0f, 0.0f);
+                //CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 195.0f, 0.0f);
 
 
             }
@@ -380,7 +383,7 @@ public class GameManager : MonoBehaviour
 
                 CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 137.2f, 0.0f);
                 CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 133.0f, 0.0f);
-                CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 110.0f, 0.0f);
+                //CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 110.0f, 0.0f);
             }
             //現時点でガーディアン確定
             else if (ChangeChara.nowChara == 2)
@@ -441,7 +444,7 @@ public class GameManager : MonoBehaviour
 
                 CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 50.0f, 0.0f);
                 CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 46.0f, 0.0f);
-                CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 25.0f, 0.0f);
+                //CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 25.0f, 0.0f);
             }
 
             //
@@ -595,7 +598,6 @@ public class GameManager : MonoBehaviour
             CharaChangeButton2.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
-            //TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             WinLose.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             TurnImage.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
@@ -609,7 +611,6 @@ public class GameManager : MonoBehaviour
             CharaChangeButton2.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
             CharaChangeButton3.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
 
-            //TimeText.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
             WinLose.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
             TurnImage.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
         }
@@ -624,7 +625,6 @@ public class GameManager : MonoBehaviour
     void GameWin()
     {
         Debug.Log("GAME CLEAR");
-        //TurnText.GetComponent<Text>().text = "Game Win";
         WinLose.sprite = Resources.Load<Sprite>("Win");
         WinLose.gameObject.SetActive(true);
     }
@@ -632,7 +632,6 @@ public class GameManager : MonoBehaviour
     void GameLose()
     {
         Debug.Log("GAME LOSE");
-        //TurnText.GetComponent<Text>().text = "Game Lose";
         WinLose.sprite = Resources.Load<Sprite>("Lose");
         WinLose.gameObject.SetActive(true);
     }

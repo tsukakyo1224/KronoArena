@@ -71,6 +71,10 @@ public class GameManager : MonoBehaviour
     //砂時計の鎖
     public static Image Kusari;
 
+    //UIの親
+    private GameObject Button;
+    private GameObject BackGround;
+
     //-------------------------オブジェクト-------------------------
 
     //キャラクター用オブジェクト
@@ -189,6 +193,12 @@ public class GameManager : MonoBehaviour
         //カメラオブジェクト
         Camera = GameObject.Find("Main Camera");
 
+        //UIの親
+        Button = GameObject.Find("Button");
+        BackGround = GameObject.Find("BackGround");
+        Button.SetActive(false);
+        BackGround.SetActive(false);
+
         WinLose = GameObject.Find("WinLose").GetComponent<Image>();
         WinLose.gameObject.SetActive(false);
 
@@ -226,15 +236,15 @@ public class GameManager : MonoBehaviour
                 Chara3 = GameObject.Find("P2_Chara3");
             }
             //左上のバーを初期位置に
-            CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 221.9f, 0.0f);
+            //CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 221.9f, 0.0f);
             CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 216.5f, 0.0f);
             //CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 195.0f, 0.0f);
 
-            CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 137.2f, 0.0f);
+            //CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 137.2f, 0.0f);
             CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 133.0f, 0.0f);
             //CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 110.0f, 0.0f);
 
-            CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 50.0f, 0.0f);
+            //CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 50.0f, 0.0f);
             CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 46.0f, 0.0f);
             //CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
 
@@ -318,7 +328,7 @@ public class GameManager : MonoBehaviour
                 //ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
 
                 //操作キャラは右に出す
-                CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 221.9f, 0.0f);
+                //CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 221.9f, 0.0f);
                 CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 216.5f, 0.0f);
                 //CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 195.0f, 0.0f);
 
@@ -383,7 +393,7 @@ public class GameManager : MonoBehaviour
                 //ATime3.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
 
 
-                CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 137.2f, 0.0f);
+                //CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 137.2f, 0.0f);
                 CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 133.0f, 0.0f);
                 //CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 110.0f, 0.0f);
             }
@@ -444,7 +454,7 @@ public class GameManager : MonoBehaviour
                 //ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
                 //ATime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
 
-                CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 50.0f, 0.0f);
+                //CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 50.0f, 0.0f);
                 CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 46.0f, 0.0f);
                 //CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 25.0f, 0.0f);
             }
@@ -620,6 +630,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UIAnim()
+    {
+        BackGround.SetActive(true);
+        Button.SetActive(true);
+        GameStartFlag = true;
+        GamePlayFlag = true;
+    }
     public void AudioPlay()
     {
         MedicAudio.PlayOneShot(MedicAudio.clip);

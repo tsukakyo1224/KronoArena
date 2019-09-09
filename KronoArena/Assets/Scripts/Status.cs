@@ -37,7 +37,7 @@ public class Status : MonoBehaviour
     {
         MaxHP = HP;
 
-        StutusPut();
+        //StutusPut();
 
         ActionFlag = false;
 
@@ -49,17 +49,26 @@ public class Status : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((PhotonNetwork.player.ID == 1 && this.tag=="Player1") ||
-            (PhotonNetwork.player.ID == 2 && this.tag == "Player2")){
-            if(this.GetComponent<Status>().Name != "")
-            {
-                hpSlider.value = this.HP;
-            }
+        if(GameManager.GameStartFlag == true)
+        {
+            StutusPut();
         }
 
-        if (HP < 0 && Chara == true)
+        if(GameManager.GamePlayFlag == true)
         {
-            photonView.RPC("CharaActiveFalse", PhotonTargets.All);
+            if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
+            (PhotonNetwork.player.ID == 2 && this.tag == "Player2"))
+            {
+                if (this.GetComponent<Status>().Name != "")
+                {
+                    hpSlider.value = this.HP;
+                }
+            }
+
+            if (HP < 0 && Chara == true)
+            {
+                photonView.RPC("CharaActiveFalse", PhotonTargets.All);
+            }
         }
     }
 

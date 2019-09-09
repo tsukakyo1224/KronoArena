@@ -47,7 +47,8 @@ public class StartCol : MonoBehaviour
         }
         if(StartFlag == true)
         {
-
+            GameObject.Find("GameManager").GetComponent<GameManager>().UIAnim();
+            StartFlag = false;
         }
     }
 }

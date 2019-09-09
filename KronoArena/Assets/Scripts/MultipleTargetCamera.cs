@@ -124,6 +124,7 @@ public class MultipleTargetCamera : MonoBehaviour
         targets.Add(GameObject.Find("P2_Chara2").transform);
         targets.Add(GameObject.Find("P2_Chara3").transform);
         CameraFlag = true;
+        GameObject.Find("GameManager").GetComponent<StartCol>().preparation = true;
     }
     /*
     [PunRPC]

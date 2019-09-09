@@ -59,6 +59,7 @@ public class TimerScript : MonoBehaviour
                 TotalTime -= Time.deltaTime;
                 //TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
 
+                //ターン切り替え用のフラグ
                 FlagTime += Time.deltaTime;
                 if (FlagTime >= 10.0f)
                 {

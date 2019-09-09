@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
 
     //ターン切り替えボタン
     public static GameObject TurnChangeButton;
+    //砂時計の鎖
+    public static Image Kusari;
 
     //-------------------------オブジェクト-------------------------
 
@@ -118,10 +120,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        //Photon同期用
-        //photonTransformView = GetComponent<PhotonTransformView>();
-        //photonView = PhotonView.Get(this);
-
         //キャラごとの攻撃までの時間用テキスト代入
         //CharaAttackTime1 = GameObject.Find("AttackTime1");
         //CharaAttackTime2 = GameObject.Find("AttackTime2");
@@ -170,6 +168,10 @@ public class GameManager : MonoBehaviour
 
         //砂時計ボタン(ターンチェンジ)
         TurnChangeButton = GameObject.Find("HourGlass");
+        TurnChangeButton.GetComponent<Button>().enabled = false;
+        //鎖
+        Kusari = GameObject.Find("Kusari").GetComponent<Image>();
+        Kusari.gameObject.SetActive(true);
 
         //ターン表示用Image
         TurnImage = GameObject.Find("TurnImage").GetComponent<Image>();
@@ -177,8 +179,8 @@ public class GameManager : MonoBehaviour
         TimeText = GameObject.Find("Time");
 
         //+3秒テキスト
-        SecondUp = GameObject.Find("+3seconds").GetComponent<Image>();
-        SecondUp.gameObject.SetActive(false);
+        //SecondUp = GameObject.Find("+3seconds").GetComponent<Image>();
+        //SecondUp.gameObject.SetActive(false);
 
         //スキルゲージ
         SkillGaugeIcon2 = GameObject.Find("SkillGaugeIcon2");
@@ -526,6 +528,7 @@ public class GameManager : MonoBehaviour
             if(TimerScript.HourGlassFlag == true)
             {
                 TurnChangeButton.GetComponent<Button>().enabled = true;
+                Kusari.gameObject.SetActive(false);
             }
             AttackButton1.SetActive(true);
             AttackButton2.SetActive(true);
@@ -538,6 +541,7 @@ public class GameManager : MonoBehaviour
             (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)) 
         {
             TurnChangeButton.GetComponent<Button>().enabled = false;
+            Kusari.gameObject.SetActive(true);
             AttackButton1.SetActive(false);
             AttackButton2.SetActive(false);
             AttackButton3.SetActive(false);

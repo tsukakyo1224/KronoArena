@@ -61,6 +61,7 @@ public class Status : MonoBehaviour
             {
                 if (this.GetComponent<Status>().Name != "")
                 {
+                    GameManager.GameStartFlag = false;
                     hpSlider.value = this.HP;
                 }
             }

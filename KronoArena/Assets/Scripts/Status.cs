@@ -83,17 +83,18 @@ public class Status : MonoBehaviour
                 hpSlider.maxValue = HP;
                 hpSlider.value = HP;
             }
-            if (this.name == "P1_Chara2")
+            else if (this.name == "P1_Chara2")
             {
                 hpSlider = GameObject.Find("Player2HP").GetComponent<Slider>();
                 hpSlider.maxValue = HP;
                 hpSlider.value = HP;
             }
-            if(this.name == "P1_Chara3")
+            else if(this.name == "P1_Chara3")
             {
                 hpSlider = GameObject.Find("Player3HP").GetComponent<Slider>();
                 hpSlider.maxValue = HP;
                 hpSlider.value = HP;
+                GameManager.GameStartFlag = false;
             }
 
         }
@@ -116,6 +117,7 @@ public class Status : MonoBehaviour
                 hpSlider = GameObject.Find("Player3HP").GetComponent<Slider>();
                 hpSlider.maxValue = HP;
                 hpSlider.value = HP;
+                GameManager.GameStartFlag = false;
             }
         }
     }

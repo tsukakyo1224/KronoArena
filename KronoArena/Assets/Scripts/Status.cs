@@ -54,14 +54,14 @@ public class Status : MonoBehaviour
             StutusPut();
         }
 
-        if(GameManager.GamePlayFlag == true)
+        if(GameManager.GamePlayFlag == true && GameManager.GameStartFlag == false)
         {
             if ((PhotonNetwork.player.ID == 1 && this.tag == "Player1") ||
             (PhotonNetwork.player.ID == 2 && this.tag == "Player2"))
             {
                 if (this.GetComponent<Status>().Name != "")
                 {
-                    GameManager.GameStartFlag = false;
+                    //GameManager.GameStartFlag = false;
                     hpSlider.value = this.HP;
                 }
             }
@@ -83,13 +83,13 @@ public class Status : MonoBehaviour
                 hpSlider.maxValue = HP;
                 hpSlider.value = HP;
             }
-            else if (this.name == "P1_Chara2")
+            if (this.name == "P1_Chara2")
             {
                 hpSlider = GameObject.Find("Player2HP").GetComponent<Slider>();
                 hpSlider.maxValue = HP;
                 hpSlider.value = HP;
             }
-            else if(this.name == "P1_Chara3")
+            if(this.name == "P1_Chara3")
             {
                 hpSlider = GameObject.Find("Player3HP").GetComponent<Slider>();
                 hpSlider.maxValue = HP;

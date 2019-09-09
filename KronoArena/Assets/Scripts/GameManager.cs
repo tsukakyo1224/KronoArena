@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public static GameObject CharaAttackTime2;
     public static GameObject CharaAttackTime3;
 
+    //キャラごとの攻撃までの時間用砂時計(左上)
+    public static Image CharaAttackHours1;
+    public static Image CharaAttackHours2;
+    public static Image CharaAttackHours3;
+
     //キャラ切り替えボタン用オブジェクト
     public static GameObject CharaChangeButton1;
     public static GameObject CharaChangeButton2;
@@ -83,19 +88,27 @@ public class GameManager : MonoBehaviour
     private PhotonView photonView;
     private PhotonTransformView photonTransformView;
 
-    //カメラフラグ
-    public static bool cameraflag = false;
 
     //ゲーム勝利用ポイント
     public static int P1_GP = 0;
     public static int P2_GP = 0;
 
 
-    private AudioSource AttackAudio;
+    private AudioSource MedicAudio;
 
-    //キャラクターの残り数
-    //public static GameObject[] Player1Tag;
-    //public static GameObject[] Player2Tag;
+    //-------------------------フラグ-------------------------
+    //キャラクター生成フラグ
+    public static bool CharaMakeFlag;
+    //ゲーム準備フラグ
+
+    //ゲームスタート時フラグ
+    public static bool GameStartFlag;
+
+    //ゲームプレイ中フラグ
+    public static bool GamePlayFlag;
+
+    //カメラフラグ
+    public static bool CameraFlag = false;
 
 
     // Start is called before the first frame update
@@ -110,6 +123,13 @@ public class GameManager : MonoBehaviour
         //CharaAttackTime1 = GameObject.Find("AttackTime1");
         //CharaAttackTime2 = GameObject.Find("AttackTime2");
         //CharaAttackTime3 = GameObject.Find("AttackTime3");
+
+        CharaAttackHours1 = GameObject.Find("Character1_HourGlass").GetComponent<Image>();
+        CharaAttackHours2 = GameObject.Find("Character2_HourGlass").GetComponent<Image>();
+        CharaAttackHours3 = GameObject.Find("Character3_HourGlass").GetComponent<Image>();
+        CharaAttackHours1.gameObject.SetActive(false);
+        CharaAttackHours2.gameObject.SetActive(false);
+        CharaAttackHours3.gameObject.SetActive(false);
 
         //キャラクターバー用オブジェクト代入
         CharaBar1 = GameObject.Find("CharacterBar1");
@@ -151,8 +171,6 @@ public class GameManager : MonoBehaviour
         //ターン表示用Image
         TurnImage = GameObject.Find("TurnImage").GetComponent<Image>();
 
-        //TurnText = GameObject.Find("TurnText");
-
         TimeText = GameObject.Find("Time");
 
         //+3秒テキスト
@@ -169,16 +187,6 @@ public class GameManager : MonoBehaviour
         WinLose = GameObject.Find("WinLose").GetComponent<Image>();
         WinLose.gameObject.SetActive(false);
 
-        //最初は非表示に
-        //OperateImage1.SetActive(false);
-        //OperateImage2.SetActive(false);
-        //OperateImage3.SetActive(false);
-
-        //最初は非表示に
-        //CharaAttackTime1.SetActive(false);
-        //CharaAttackTime2.SetActive(false);
-        //CharaAttackTime3.SetActive(false);
-
         //最初は表示に
         AttackButton1.SetActive(true);
         AttackButton2.SetActive(true);
@@ -191,7 +199,7 @@ public class GameManager : MonoBehaviour
 
         //
         AudioSource[] audioSources = GetComponents<AudioSource>();
-        AttackAudio = audioSources[1];
+        MedicAudio = audioSources[1];
 
     }
 
@@ -257,8 +265,8 @@ public class GameManager : MonoBehaviour
                 }
                 OpeCharaName.GetComponent<Text>().text = Knight_Data.CharaName;
                 OpeCharaJobIcon.sprite = Knight_Data.JobIconImage;
-                //存在しているのなら表示
 
+                //存在しているのなら表示
                 if (Chara1 != null)
                 {
                     OpeCharaHPSlider.maxValue = Chara1.GetComponent<Status>().MaxHP;
@@ -465,7 +473,7 @@ public class GameManager : MonoBehaviour
             }
 
             //左上の攻撃時間表示判定
-            //CharaAttackText();
+            CharaAttackText();
 
             //ターン入れ替え時に画面反転
             TurnChangeImage();
@@ -515,7 +523,6 @@ public class GameManager : MonoBehaviour
             if(TimerScript.HourGlassFlag == true)
             {
                 TurnChangeButton.GetComponent<Button>().enabled = true;
-                //TurnChangeButton.GetComponent<Button>().interactable = true;
             }
             AttackButton1.SetActive(true);
             AttackButton2.SetActive(true);
@@ -523,72 +530,54 @@ public class GameManager : MonoBehaviour
             TurnImage.sprite = Resources.Load<Sprite>("YourTurn");
             SkillGaugeIcon2.SetActive(true);
             SkillGaugeIcon3.SetActive(true);
-            //TurnText.GetComponent<Text>().text = "My turn";
         }
         else if((TurnCol.P1_Turn == false && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == false && PhotonNetwork.player.ID == 2)) 
         {
             TurnChangeButton.GetComponent<Button>().enabled = false;
-            //TurnChangeButton.GetComponent<Button>().interactable = false;
             AttackButton1.SetActive(false);
             AttackButton2.SetActive(false);
             AttackButton3.SetActive(false);
             TurnImage.sprite = Resources.Load<Sprite>("EnemyTurn");
             SkillGaugeIcon2.SetActive(false);
             SkillGaugeIcon3.SetActive(false);
-            //TurnText.GetComponent<Text>().text = "Your turn";
         }
     }
 
-    //左上の攻撃時間テキスト表示判定
+    //左上の攻撃時間砂時計用
     public void CharaAttackText()
     {
         //ナイト
-        if (Knight_Data.SkillFlag1 == true)
+        if (Knight_Data.SkillFlag1 == true || Knight_Data.SkillFlag2 == true)
         {
-            CharaAttackTime1.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
-            CharaAttackTime1.SetActive(true);
+            CharaAttackHours1.gameObject.SetActive(true);
         }
-        if (Knight_Data.SkillFlag2 == true)
+        else if (Knight_Data.SkillFlag1 == false && Knight_Data.SkillFlag2 == false)
         {
-            CharaAttackTime1.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
-            CharaAttackTime1.SetActive(true);
-        }
-        if (Knight_Data.SkillFlag1 == false && Knight_Data.SkillFlag2 == false)
-        {
-            CharaAttackTime1.SetActive(false);
+            CharaAttackHours1.gameObject.SetActive(false);
         }
 
         //メディック
-        if (Medic_Data.SkillFlag1 == true)
+        if (Medic_Data.SkillFlag1 == true || Medic_Data.SkillFlag2 == true)
         {
-            CharaAttackTime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
-            CharaAttackTime2.SetActive(true);
+            CharaAttackHours2.gameObject.SetActive(true);
         }
-        if (Medic_Data.SkillFlag2 == true)
+        else if (Medic_Data.SkillFlag1 == false && Medic_Data.SkillFlag2 == false)
         {
-            CharaAttackTime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
-            CharaAttackTime2.SetActive(true);
-        }
-        if (Medic_Data.SkillFlag1 == false && Medic_Data.SkillFlag2 == false)
-        {
-            CharaAttackTime2.SetActive(false);
+            CharaAttackHours2.gameObject.SetActive(false);
         }
 
         //ガーディアン
-        if (Guardian_Data.SkillFlag1 == true)
+        if (Guardian_Data.SkillFlag1 == true || Guardian_Data.SkillFlag2 == true)
         {
-            CharaAttackTime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
-            CharaAttackTime3.SetActive(true);
+            //CharaAttackTime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
+            //CharaAttackTime3.SetActive(true);
+            CharaAttackHours3.gameObject.SetActive(true);
         }
-        if (Guardian_Data.SkillFlag2 == true)
+        else if (Guardian_Data.SkillFlag1 == false && Guardian_Data.SkillFlag2 == false)
         {
-            CharaAttackTime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
-            CharaAttackTime3.SetActive(true);
-        }
-        if (Guardian_Data.SkillFlag1 == false && Guardian_Data.SkillFlag2 == false)
-        {
-            CharaAttackTime3.SetActive(false);
+            //CharaAttackTime3.SetActive(false);
+            CharaAttackHours3.gameObject.SetActive(false);
         }
     }
 
@@ -628,37 +617,8 @@ public class GameManager : MonoBehaviour
 
     public void AudioPlay()
     {
-        AttackAudio.PlayOneShot(AttackAudio.clip);
+        MedicAudio.PlayOneShot(MedicAudio.clip);
     }
-
-    /*
-    void CharaCheck()
-    {
-        Player1Tag = GameObject.FindGameObjectsWithTag("Player1");
-        Player2Tag = GameObject.FindGameObjectsWithTag("Player2");
-        if(Player1Tag.Length <= 0)
-        {
-            if (PhotonNetwork.player.ID == 1)
-            {
-                GameLose();
-            }
-            else if (PhotonNetwork.player.ID == 2)
-            {
-                GameWin();
-            }
-        }
-        else if(Player2Tag.Length <= 0)
-        {
-            if (PhotonNetwork.player.ID == 1)
-            {
-                GameWin();
-            }
-            else if (PhotonNetwork.player.ID == 2)
-            {
-                GameLose();
-            }
-        }
-    }*/
 
 
     void GameWin()

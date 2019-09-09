@@ -53,7 +53,7 @@ public class NetWork_02 : MonoBehaviour
                 P1_Chara3.name = "P1_Chara3";
                 P1_Chara3.tag = "Player1";
 
-                GameManager.cameraflag = true;
+                GameManager.CameraFlag = true;
             }
             else if(PhotonNetwork.player.ID == 2)
             {
@@ -79,7 +79,7 @@ public class NetWork_02 : MonoBehaviour
                 P2_Chara3.name = "P2_Chara3";
                 P2_Chara3.tag = "Player2";
 
-                GameManager.cameraflag = true;
+                GameManager.CameraFlag = true;
             }
         }
         time += Time.deltaTime;

@@ -59,7 +59,6 @@ public class Status : MonoBehaviour
 
         if (HP < 0 && Chara == true)
         {
-            CharaDied();
             photonView.RPC("CharaActiveFalse", PhotonTargets.All);
         }
     }
@@ -162,19 +161,6 @@ public class Status : MonoBehaviour
             this.Magic_Defense = (float)stream.ReceiveNext();
             this.Speed = (float)stream.ReceiveNext();
             this.Heel = (float)stream.ReceiveNext();
-        }
-    }
-
-    void CharaDied()
-    {
-
-        if (this.tag == "Player1")
-        {
-
-        }
-        if (this.tag == "Player2")
-        {
-
         }
     }
 

@@ -647,10 +647,9 @@ public class GameManager : MonoBehaviour
             Chara3.GetComponent<Status>().Defense += 100.0f;
             Chara3.GetComponent<Status>().Magic_Defense += 100.0f;
             Debug.Log("防御バフが終わった。");
-
-            BuffTime = 0.0f;
-            BuffFlag = false;
         }
+        BuffTime = 0.0f;
+        BuffFlag = false;
     }
 
     //-------------------------------------左上の攻撃時間砂時計用-------------------------------------

@@ -591,39 +591,38 @@ public class GameManager : MonoBehaviour
     //-------------------------------------砂時計でターンチェンジした際に自分のキャラにバフ-------------------------------------
     public void Buff()
     {
-        int random = Random.Range(1,100);    //ランダム関数
-        if(BuffTime > 0.0f)
+        if (BuffTime > 0.0f)
         {
-            BuffTime = TimerScript.TotalTime * 3.0f;
-            Debug.Log(BuffTime + "秒間ステータスキープ");
-            return;
+            BuffClose();
         }
+
+        //int random = Random.Range(1,100);    //ランダム関数
         BuffTime = TimerScript.TotalTime * 3.0f;
         BuffFlag = true;
 
         //キャラクター攻撃力アップ
-        if(1 <= random && random <= 40)
+        if(TimerScript.TotalTime >= 10.0f)
         {
-            Chara1.GetComponent<Status>().Attack += 100.0f;
-            Chara1.GetComponent<Status>().Magic_Attack += 100.0f;
-            Chara2.GetComponent<Status>().Attack += 100.0f;
-            Chara2.GetComponent<Status>().Magic_Attack += 100.0f;
-            Chara3.GetComponent<Status>().Attack += 100.0f;
-            Chara3.GetComponent<Status>().Magic_Attack += 100.0f;
+            Chara1.GetComponent<Status>().Attack += 1000.0f;
+            Chara1.GetComponent<Status>().Magic_Attack += 1000.0f;
+            Chara2.GetComponent<Status>().Attack += 1000.0f;
+            Chara2.GetComponent<Status>().Magic_Attack += 1000.0f;
+            Chara3.GetComponent<Status>().Attack += 1000.0f;
+            Chara3.GetComponent<Status>().Magic_Attack += 1000.0f;
 
             BuffNum = 1;
 
             Debug.Log(BuffTime + "秒間、攻撃力が100アップ。");
         }
         //キャラクター防御アップ
-        else if(41 <= random && random <= 100)
+        else if(TimerScript.TotalTime < 10.0f)
         {
-            Chara1.GetComponent<Status>().Defense += 100.0f;
-            Chara1.GetComponent<Status>().Magic_Defense += 100.0f;
-            Chara2.GetComponent<Status>().Defense += 100.0f;
-            Chara2.GetComponent<Status>().Magic_Defense += 100.0f;
-            Chara3.GetComponent<Status>().Defense += 100.0f;
-            Chara3.GetComponent<Status>().Magic_Defense += 100.0f;
+            Chara1.GetComponent<Status>().Defense += 50.0f;
+            Chara1.GetComponent<Status>().Magic_Defense += 50.0f;
+            Chara2.GetComponent<Status>().Defense += 50.0f;
+            Chara2.GetComponent<Status>().Magic_Defense += 50.0f;
+            Chara3.GetComponent<Status>().Defense += 50.0f;
+            Chara3.GetComponent<Status>().Magic_Defense += 50.0f;
 
             BuffNum = 2;
 
@@ -636,22 +635,22 @@ public class GameManager : MonoBehaviour
     {
         if(BuffNum == 1)
         {
-            Chara1.GetComponent<Status>().Attack -= 100.0f;
-            Chara1.GetComponent<Status>().Magic_Attack -= 100.0f;
-            Chara2.GetComponent<Status>().Attack -= 100.0f;
-            Chara2.GetComponent<Status>().Magic_Attack -= 100.0f;
-            Chara3.GetComponent<Status>().Attack -= 100.0f;
-            Chara3.GetComponent<Status>().Magic_Attack -= 100.0f;
+            Chara1.GetComponent<Status>().Attack -= 1000.0f;
+            Chara1.GetComponent<Status>().Magic_Attack -= 1000.0f;
+            Chara2.GetComponent<Status>().Attack -= 1000.0f;
+            Chara2.GetComponent<Status>().Magic_Attack -= 1000.0f;
+            Chara3.GetComponent<Status>().Attack -= 1000.0f;
+            Chara3.GetComponent<Status>().Magic_Attack -= 1000.0f;
             Debug.Log("攻撃バフが終わった。");
         }
         else if (BuffNum == 2)
         {
-            Chara1.GetComponent<Status>().Defense += 100.0f;
-            Chara1.GetComponent<Status>().Magic_Defense += 100.0f;
-            Chara2.GetComponent<Status>().Defense += 100.0f;
-            Chara2.GetComponent<Status>().Magic_Defense += 100.0f;
-            Chara3.GetComponent<Status>().Defense += 100.0f;
-            Chara3.GetComponent<Status>().Magic_Defense += 100.0f;
+            Chara1.GetComponent<Status>().Defense += 50.0f;
+            Chara1.GetComponent<Status>().Magic_Defense += 50.0f;
+            Chara2.GetComponent<Status>().Defense += 50.0f;
+            Chara2.GetComponent<Status>().Magic_Defense += 50.0f;
+            Chara3.GetComponent<Status>().Defense += 50.0f;
+            Chara3.GetComponent<Status>().Magic_Defense += 50.0f;
             Debug.Log("防御バフが終わった。");
         }
         BuffTime = 0.0f;

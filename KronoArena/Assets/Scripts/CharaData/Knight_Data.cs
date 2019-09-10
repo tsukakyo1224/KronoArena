@@ -335,7 +335,7 @@ public class Knight_Data : MonoBehaviour
             // 対象となるGameObjectとの距離を調べ、近くだったら何らかの処理をする
             float dist = Vector3.Distance(obj.transform.position, transform.position);
             //対象キャラとの距離表示
-            if (dist < 1.0 && obj.tag != this.tag)
+            if (dist < 1.8 && obj.tag != this.tag)
             {
                 Guardian();
                 if (AttackFlag == false)

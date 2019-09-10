@@ -14,6 +14,7 @@ public class StartCol : MonoBehaviour
     private bool FadeInFlag = false; //フェードインするまでのフラグ
     public bool StartCameraFlag = false;   //フェードインしてカメラのアニメータをオンにするまでのフラグ
     public bool StartFlag = false;  //ゲームスタートフラグ
+    private float t;
 
 
     // Start is called before the first frame update
@@ -47,8 +48,12 @@ public class StartCol : MonoBehaviour
         }
         if(StartFlag == true)
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().UIAnim();
-            StartFlag = false;
+            t += Time.deltaTime;
+            if(t >= 1.0f)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().UIAnim();
+                StartFlag = false;
+            }
         }
     }
 }

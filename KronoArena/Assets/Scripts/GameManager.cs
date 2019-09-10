@@ -647,8 +647,8 @@ public class GameManager : MonoBehaviour
     public void BGMPlay()
     {
         BGM.PlayOneShot(BGM.clip);
-        GameObject.Find("Sand_MyUp").GetComponent<Animator>().enabled = false;
-        GameObject.Find("Sand_YouUp").GetComponent<Animator>().enabled = false;
+        //GameObject.Find("Sand_MyUp").GetComponent<Animator>().enabled = false;
+        //GameObject.Find("Sand_YouUp").GetComponent<Animator>().enabled = false;
         GameObject.Find("Attack1").GetComponent<Animator>().enabled = false;
         GameObject.Find("Attack2").GetComponent<Animator>().enabled = false;
         GameObject.Find("Attack3").GetComponent<Animator>().enabled = false;

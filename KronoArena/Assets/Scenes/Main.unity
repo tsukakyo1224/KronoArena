@@ -2730,7 +2730,6 @@ GameObject:
   - component: {fileID: 879291313}
   - component: {fileID: 879291314}
   - component: {fileID: 879291315}
-  - component: {fileID: 879291316}
   m_Layer: 5
   m_Name: Sand_YouUp
   m_TagString: Untagged
@@ -2803,7 +2802,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879291311}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ff64233439057484f9a4376e57a5aaf5, type: 2}
   m_CullingMode: 0
@@ -2814,18 +2813,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &879291316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 879291311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8e15fcd3ed84dd5b22f323ef0e0c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &921604823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,7 +4060,6 @@ GameObject:
   - component: {fileID: 1372042572}
   - component: {fileID: 1372042573}
   - component: {fileID: 1372042574}
-  - component: {fileID: 1372042575}
   m_Layer: 5
   m_Name: Sand_MyUp
   m_TagString: Untagged
@@ -4136,7 +4122,7 @@ MonoBehaviour:
   m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
 --- !u!95 &1372042574
 Animator:
@@ -4146,7 +4132,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372042570}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 024bc4e398e7d4cbab89606e8abb9794, type: 2}
   m_CullingMode: 0
@@ -4157,18 +4143,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1372042575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372042570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8e15fcd3ed84dd5b22f323ef0e0c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1375776977
 GameObject:
   m_ObjectHideFlags: 0

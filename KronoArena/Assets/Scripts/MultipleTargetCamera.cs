@@ -79,7 +79,7 @@ public class MultipleTargetCamera : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (targets.Count == 0) return;
+        if (targets.Count == 0 || PhotonNetwork.playerList.Length != 2) return;
         Move();
         Zoom();
     }

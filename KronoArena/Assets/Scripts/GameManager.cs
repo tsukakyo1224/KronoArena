@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
 
     private AudioSource BGM;
     private AudioSource MedicAudio;
+    private AudioSource BattleStartAudio;
 
     //-------------------------フラグ-------------------------
     //キャラクター生成フラグ
@@ -216,6 +217,7 @@ public class GameManager : MonoBehaviour
         AudioSource[] audioSources = GetComponents<AudioSource>();
         BGM = audioSources[0];
         MedicAudio = audioSources[1];
+        BattleStartAudio = audioSources[2];
 
     }
 
@@ -649,19 +651,20 @@ public class GameManager : MonoBehaviour
         MedicAudio.PlayOneShot(MedicAudio.clip);
     }
 
-    //BGM再生(ついでに砂時計のアニメーション外す)
+    public void BattleStartPlay()
+    {
+        BattleStartAudio.PlayOneShot(BattleStartAudio.clip);
+        //BGMPlayを2.0秒後に呼び出す
+        Invoke("BGMPlay", 0.5f);
+
+    }
+
+    //BGM再生
     public void BGMPlay()
     {
+        GameObject.Find("GameManager").GetComponent<StartCol>().TimeStartFlag = true;
+        Debug.Log("Start");
         BGM.PlayOneShot(BGM.clip);
-        //GameObject.Find("Sand_MyUp").GetComponent<Animator>().enabled = false;
-        //GameObject.Find("Sand_YouUp").GetComponent<Animator>().enabled = false;
-        /*
-        if(PhotonNetwork.player.ID == 1)
-        {
-            GameObject.Find("Attack1").GetComponent<Animator>().enabled = false;
-            GameObject.Find("Attack2").GetComponent<Animator>().enabled = false;
-            GameObject.Find("Attack3").GetComponent<Animator>().enabled = false;
-        }*/
     }
 
 

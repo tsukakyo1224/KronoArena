@@ -15,7 +15,7 @@ public class StartCol : MonoBehaviour
     private bool FadeInFlag = false; //フェードインするまでのフラグ
     public bool StartCameraFlag = false;   //フェードインしてカメラのアニメータをオンにするまでのフラグ
     public bool StartFlag = false;  //ゲームスタートフラグ
-    public bool TimeStartFlag = false;
+    public bool TimeStartFlag = false;  //時間が動き出すフラグ
     private float t;
 
 
@@ -60,10 +60,10 @@ public class StartCol : MonoBehaviour
             {
                 GameObject.Find("GameManager").GetComponent<GameManager>().UIAnim();
             }
-            if(t >= 2.0f)
+            //戦闘開始音を流す
+            if(t >= 2.5f)
             {
-                TimeStartFlag = true;
-                GameObject.Find("GameManager").GetComponent<GameManager>().BGMPlay();
+                GameObject.Find("GameManager").GetComponent<GameManager>().BattleStartPlay();
                 StartFlag = false;
             }
         }

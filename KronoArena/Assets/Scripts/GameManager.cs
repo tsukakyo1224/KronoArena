@@ -541,9 +541,12 @@ public class GameManager : MonoBehaviour
                 TurnChangeButton.GetComponent<Button>().enabled = true;
                 Kusari.gameObject.SetActive(false);
             }
-            AttackButton1.SetActive(true);
-            AttackButton2.SetActive(true);
-            AttackButton3.SetActive(true);
+            AttackButton1.GetComponent<Image>().enabled = true;
+            AttackButton1.GetComponent<Button>().enabled = true;
+            AttackButton2.GetComponent<Image>().enabled = true;
+            AttackButton2.GetComponent<Button>().enabled = true;
+            AttackButton3.GetComponent<Image>().enabled = true;
+            AttackButton3.GetComponent<Button>().enabled = true;
             TurnImage.sprite = Resources.Load<Sprite>("YourTurn");
             SkillGaugeIcon2.SetActive(true);
             SkillGaugeIcon3.SetActive(true);
@@ -553,9 +556,12 @@ public class GameManager : MonoBehaviour
         {
             TurnChangeButton.GetComponent<Button>().enabled = false;
             Kusari.gameObject.SetActive(true);
-            AttackButton1.SetActive(false);
-            AttackButton2.SetActive(false);
-            AttackButton3.SetActive(false);
+            AttackButton1.GetComponent<Image>().enabled = false;
+            AttackButton1.GetComponent<Button>().enabled = false;
+            AttackButton2.GetComponent<Image>().enabled = false;
+            AttackButton2.GetComponent<Button>().enabled = false;
+            AttackButton3.GetComponent<Image>().enabled = false;
+            AttackButton3.GetComponent<Button>().enabled = false;
             TurnImage.sprite = Resources.Load<Sprite>("EnemyTurn");
             SkillGaugeIcon2.SetActive(false);
             SkillGaugeIcon3.SetActive(false);

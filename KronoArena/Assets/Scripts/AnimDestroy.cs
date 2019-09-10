@@ -14,20 +14,16 @@ public class AnimDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //DesTime += Time.deltaTime;
+        DesTime += Time.deltaTime;
         if(GameObject.Find("TurnCol").GetComponent<TurnCol>().TurnNum == 1)
         {
             this.GetComponent<Animator>().enabled = true;
-            //if (PhotonNetwork.player.ID == 1 && this.name == "Sand_MyUp")
-            //{
-
-
-            //}
-            //else if (PhotonNetwork.player.ID == 2 && this.name == "Sand_YouUp")
-            //{
-            //    this.GetComponent<Animator>().enabled = true;
-            //}
-        }else
+        }
+        else
+        {
+            this.GetComponent<Animator>().enabled = false;
+        }
+        if(DesTime >= 1.0f)
         {
             this.GetComponent<Animator>().enabled = false;
         }

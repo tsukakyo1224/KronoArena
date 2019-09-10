@@ -25,10 +25,10 @@ public class Sand : MonoBehaviour
         YouUp = GameObject.Find("Sand_YouUp");
         YouDown = GameObject.Find("Sand_YouDown");
 
-        MyUp.SetActive(false);
-        MyDown.SetActive(false);
-        YouUp.SetActive(false);
-        YouDown.SetActive(false);
+        MyUp.GetComponent<Image>().enabled = false;
+        MyDown.GetComponent<Image>().enabled = false;
+        YouUp.GetComponent<Image>().enabled = false;
+        YouDown.GetComponent<Image>().enabled = false;
         sand_time = 30.0f;
     }
 
@@ -38,19 +38,19 @@ public class Sand : MonoBehaviour
         if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
             (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
         {
-            MyUp.SetActive(true);
-            MyDown.SetActive(true);
-            YouUp.SetActive(false);
-            YouDown.SetActive(false);
+            MyUp.GetComponent<Image>().enabled = true;
+            MyDown.GetComponent<Image>().enabled = true;
+            YouUp.GetComponent<Image>().enabled = false;
+            YouDown.GetComponent<Image>().enabled = false;
             UIobj1.fillAmount = 1 - (TimerScript.TotalTime / sand_time);
             UIobj2.fillAmount = TimerScript.TotalTime / sand_time;
         }
         else
         {
-            MyUp.SetActive(false);
-            MyDown.SetActive(false);
-            YouUp.SetActive(true);
-            YouDown.SetActive(true);
+            MyUp.GetComponent<Image>().enabled = false;
+            MyDown.GetComponent<Image>().enabled = false;
+            YouUp.GetComponent<Image>().enabled = true;
+            YouDown.GetComponent<Image>().enabled = true;
             UIobj3.fillAmount = TimerScript.TotalTime / sand_time;
             UIobj4.fillAmount = 1 - (TimerScript.TotalTime / sand_time);
         }

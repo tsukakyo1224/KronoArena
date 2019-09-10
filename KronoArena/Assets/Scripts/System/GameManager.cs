@@ -496,7 +496,7 @@ public class GameManager : MonoBehaviour
                 CharaChangeButton3.GetComponent<Button>().interactable = true;
             }
 
-            //左上の攻撃時間表示判定
+            //左上の小さい砂時計表示判定
             CharaAttackText();
 
             //ターン入れ替え時に画面反転
@@ -504,6 +504,17 @@ public class GameManager : MonoBehaviour
 
             //キャラの数を数える
             //CharaCheck();
+
+            //バフ判定
+            if(BuffFlag == true)
+            {
+                BuffTime -= Time.deltaTime;
+                if(BuffTime <= 0.0f)
+                {
+                    BuffClose();
+                }
+            }
+
 
 
             //----------------------------------終了判定----------------------------------
@@ -607,6 +618,9 @@ public class GameManager : MonoBehaviour
             Chara2.GetComponent<Status>().Magic_Defense += 100.0f;
             Chara3.GetComponent<Status>().Defense += 100.0f;
             Chara3.GetComponent<Status>().Magic_Defense += 100.0f;
+
+            BuffNum = 2;
+
             Debug.Log(BuffTime + "秒間、防御力が100アップ。");
         }
 
@@ -614,7 +628,29 @@ public class GameManager : MonoBehaviour
 
     public void BuffClose()
     {
+        if(BuffNum == 1)
+        {
+            Chara1.GetComponent<Status>().Attack -= 100.0f;
+            Chara1.GetComponent<Status>().Magic_Attack -= 100.0f;
+            Chara2.GetComponent<Status>().Attack -= 100.0f;
+            Chara2.GetComponent<Status>().Magic_Attack -= 100.0f;
+            Chara3.GetComponent<Status>().Attack -= 100.0f;
+            Chara3.GetComponent<Status>().Magic_Attack -= 100.0f;
+            Debug.Log("攻撃バフが終わった。");
+        }
+        else if (BuffNum == 2)
+        {
+            Chara1.GetComponent<Status>().Defense += 100.0f;
+            Chara1.GetComponent<Status>().Magic_Defense += 100.0f;
+            Chara2.GetComponent<Status>().Defense += 100.0f;
+            Chara2.GetComponent<Status>().Magic_Defense += 100.0f;
+            Chara3.GetComponent<Status>().Defense += 100.0f;
+            Chara3.GetComponent<Status>().Magic_Defense += 100.0f;
+            Debug.Log("防御バフが終わった。");
 
+            BuffTime = 0.0f;
+            BuffFlag = false;
+        }
     }
 
     //-------------------------------------左上の攻撃時間砂時計用-------------------------------------

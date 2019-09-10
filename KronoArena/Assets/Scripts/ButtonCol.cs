@@ -63,6 +63,9 @@ public class ButtonCol : MonoBehaviour
     //ターンチェンジ(自キャラにランダムでバフ)
     public void TurnChange()
     {
+        //バフ関数呼び出し
+        GameObject.Find("GameManager").GetComponent<GameManager>().Buff();
+
         GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
         Debug.Log("button");
     }

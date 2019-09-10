@@ -14,6 +14,8 @@ public class TurnCol : MonoBehaviour
     [SerializeField]
     public bool p2turn;
 
+    public int TurnNum = 1;
+
     public PhotonView photonView;
 
 
@@ -63,6 +65,7 @@ public class TurnCol : MonoBehaviour
         GameManager.TurnChangeImage();
         TimerScript.HourGlassFlag = false;
         TimerScript.FlagTime = 0.0f;
+        TurnNum += 1;
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

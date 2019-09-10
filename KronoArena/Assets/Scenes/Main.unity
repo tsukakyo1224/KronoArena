@@ -346,7 +346,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148702621}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ff2218a7a360a47e99fd408b1aff92a7, type: 2}
   m_CullingMode: 0
@@ -883,7 +883,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257606637}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 625e654f055c04c8ca3641df627fecf9, type: 2}
   m_CullingMode: 0
@@ -1485,6 +1485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1turn: 0
   p2turn: 0
+  TurnNum: 1
   photonView: {fileID: 0}
 --- !u!114 &534753703
 MonoBehaviour:
@@ -2828,7 +2829,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879291311}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ff64233439057484f9a4376e57a5aaf5, type: 2}
   m_CullingMode: 0
@@ -4171,7 +4172,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372042570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 024bc4e398e7d4cbab89606e8abb9794, type: 2}
   m_CullingMode: 0
@@ -4926,7 +4927,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464775236}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7da62e7dc23b1443496e2bf100751531, type: 2}
   m_CullingMode: 0
@@ -5829,7 +5830,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1135, y: 638}
+  m_SizeDelta: {x: 1140, y: 640}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!328 &1657159207
 VideoPlayer:

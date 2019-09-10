@@ -2081,6 +2081,7 @@ MonoBehaviour:
   preparation: 1
   StartCameraFlag: 0
   StartFlag: 0
+  TimeStartFlag: 0
 --- !u!1 &704933595
 GameObject:
   m_ObjectHideFlags: 0

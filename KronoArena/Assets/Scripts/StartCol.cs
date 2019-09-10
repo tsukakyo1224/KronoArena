@@ -8,6 +8,7 @@ public class StartCol : MonoBehaviour
 
     private GameObject NowLoading;
     private Image Panel;
+    private AudioSource CameraBGM;
 
     public bool preparation = false;
     private bool NLFlag = false;    //NowLoadingが消えるまでのフラグ
@@ -23,6 +24,8 @@ public class StartCol : MonoBehaviour
     {
         NowLoading = GameObject.Find("NowLoading");
         Panel = GameObject.Find("Panel").GetComponent<Image>();
+        AudioSource[] audioSources = GameObject.Find("Camera").GetComponents<AudioSource>();
+        CameraBGM = audioSources[0];
     }
 
     // Update is called once per frame
@@ -46,11 +49,14 @@ public class StartCol : MonoBehaviour
         {
             GameObject.Find("Camera").GetComponent<Animator>().enabled = true;
             StartCameraFlag = false;
+            //DelayMethodを3.5秒後に呼び出す
+            Invoke("CameraBGMOn", 1.0f);
+
         }
         if(StartFlag == true)
         {
             t += Time.deltaTime;
-            if(t >= 1.0f)
+            if (t >= 1.0f)
             {
                 GameObject.Find("GameManager").GetComponent<GameManager>().UIAnim();
             }
@@ -61,5 +67,10 @@ public class StartCol : MonoBehaviour
                 StartFlag = false;
             }
         }
+    }
+
+    public void CameraBGMOn()
+    {
+        CameraBGM.PlayOneShot(CameraBGM.clip);
     }
 }

@@ -655,12 +655,13 @@ public class GameManager : MonoBehaviour
         BGM.PlayOneShot(BGM.clip);
         //GameObject.Find("Sand_MyUp").GetComponent<Animator>().enabled = false;
         //GameObject.Find("Sand_YouUp").GetComponent<Animator>().enabled = false;
+        /*
         if(PhotonNetwork.player.ID == 1)
         {
             GameObject.Find("Attack1").GetComponent<Animator>().enabled = false;
             GameObject.Find("Attack2").GetComponent<Animator>().enabled = false;
             GameObject.Find("Attack3").GetComponent<Animator>().enabled = false;
-        }
+        }*/
     }
 
 

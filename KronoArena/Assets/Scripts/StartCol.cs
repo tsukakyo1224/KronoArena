@@ -10,9 +10,12 @@ public class StartCol : MonoBehaviour
     private Image Panel;
     private AudioSource CameraBGM;
 
+    private GameObject Sord1;
+    private GameObject Sord2;
+
     public bool preparation = false;
     private bool NLFlag = false;    //NowLoadingが消えるまでのフラグ
-    private bool FadeInFlag = false; //フェードインするまでのフラグ
+    //private bool FadeInFlag = false; //フェードインするまでのフラグ
     public bool StartCameraFlag = false;   //フェードインしてカメラのアニメータをオンにするまでのフラグ
     public bool StartFlag = false;  //ゲームスタートフラグ
     public bool TimeStartFlag = false;  //時間が動き出すフラグ
@@ -26,6 +29,11 @@ public class StartCol : MonoBehaviour
         Panel = GameObject.Find("Panel").GetComponent<Image>();
         AudioSource[] audioSources = GameObject.Find("Camera").GetComponents<AudioSource>();
         CameraBGM = audioSources[0];
+        //Sord1 = GameObject.Find("BackGround").transform.FindChild("StartSord1").gameObject;
+
+        //Sord2 = GameObject.Find("BackGround").transform.FindChild("StartSord2").gameObject;
+        //Debug.Log(Sord1 + "  " + Sord2);
+
     }
 
     // Update is called once per frame
@@ -59,6 +67,14 @@ public class StartCol : MonoBehaviour
             if (t >= 1.0f)
             {
                 GameObject.Find("GameManager").GetComponent<GameManager>().UIAnim();
+                Sord1 = GameObject.Find("StartSord1");
+                Sord2 = GameObject.Find("StartSord2");
+            }
+            //剣のエフェクト
+            if(t >= 2.0f)
+            {
+                Sord1.GetComponent<Animator>().enabled = true;
+                Sord2.GetComponent<Animator>().enabled = true;
             }
             //戦闘開始音を流す
             if(t >= 2.5f)

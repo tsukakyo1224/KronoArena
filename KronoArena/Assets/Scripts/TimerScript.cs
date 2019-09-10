@@ -82,7 +82,6 @@ public class TimerScript : MonoBehaviour
                 Debug.Log("TimeTurnChange");
             }
         }
-        Debug.Log(TotalTime);
 
     }
 

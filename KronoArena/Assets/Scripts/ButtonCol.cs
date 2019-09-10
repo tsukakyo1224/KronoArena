@@ -60,10 +60,11 @@ public class ButtonCol : MonoBehaviour
         }
     }
 
+    //ターンチェンジ(自キャラにランダムでバフ)
     public void TurnChange()
     {
-        //GameObject.Find("TurnCol").GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.player.ID);
-        //TurnCol.ChangeTurn();
+        //バフ
+
         GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
         Debug.Log("button");
     }

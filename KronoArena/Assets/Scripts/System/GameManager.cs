@@ -120,6 +120,11 @@ public class GameManager : MonoBehaviour
 
     public static bool CameraStartFlag = false;
 
+    //バフのフラグ、バフの時間
+    public bool BuffFlag = false;
+    public float BuffTime = 0.0f;
+    public int BuffNum = 0; //攻撃UP:1, 防御UP:2
+
 
     // Start is called before the first frame update
     void Start()
@@ -226,6 +231,7 @@ public class GameManager : MonoBehaviour
     {
         if (Network_01.gameplayflag == true)
         {
+            //キャラクターを入れる
             if(PhotonNetwork.player.ID == 1)
             {
                 Chara1 = GameObject.Find("P1_Chara1");
@@ -240,15 +246,15 @@ public class GameManager : MonoBehaviour
             }
             //左上のバーを初期位置に
             //CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 221.9f, 0.0f);
-            CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 216.5f, 0.0f);
+            //CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 216.5f, 0.0f);
             //CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 195.0f, 0.0f);
 
             //CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 137.2f, 0.0f);
-            CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 133.0f, 0.0f);
+            //CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 133.0f, 0.0f);
             //CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 110.0f, 0.0f);
 
             //CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 50.0f, 0.0f);
-            CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 46.0f, 0.0f);
+            //CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 46.0f, 0.0f);
             //CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
 
             //キャラの頭上の三角
@@ -462,7 +468,7 @@ public class GameManager : MonoBehaviour
                 //CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 25.0f, 0.0f);
             }
 
-            //
+            //キャラが死んだ時にチェンジできないように
             if(Chara1 == null)
             {
                 CharaChangeButton1.GetComponent<Button>().interactable = false;
@@ -532,8 +538,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-
-        //ターン切り替えの時の処理
+        //-------------------------------------ターン切り替えの時の処理-------------------------------------
         if ((TurnCol.P1_Turn == true && PhotonNetwork.player.ID == 1) ||
             (TurnCol.P2_Turn == true && PhotonNetwork.player.ID == 2))
         {
@@ -569,8 +574,50 @@ public class GameManager : MonoBehaviour
             SkillGaugeIcon3.SetActive(false);
         }
     }
+    //-------------------------------------UpDate終了-------------------------------------
 
-    //左上の攻撃時間砂時計用
+
+    //-------------------------------------砂時計でターンチェンジした際に自分のキャラにバフ-------------------------------------
+    public void Buff()
+    {
+        int random = Random.Range(1,100);    //ランダム関数
+        BuffTime = TimerScript.TotalTime * 3.0f;
+        BuffFlag = true;
+
+        //キャラクター攻撃力アップ
+        if(1 <= random && random <= 40)
+        {
+            Chara1.GetComponent<Status>().Attack += 100.0f;
+            Chara1.GetComponent<Status>().Magic_Attack += 100.0f;
+            Chara2.GetComponent<Status>().Attack += 100.0f;
+            Chara2.GetComponent<Status>().Magic_Attack += 100.0f;
+            Chara3.GetComponent<Status>().Attack += 100.0f;
+            Chara3.GetComponent<Status>().Magic_Attack += 100.0f;
+
+            BuffNum = 1;
+
+            Debug.Log(BuffTime + "秒間、攻撃力が100アップ。");
+        }
+        //キャラクター防御アップ
+        else if(41 <= random && random <= 100)
+        {
+            Chara1.GetComponent<Status>().Defense += 100.0f;
+            Chara1.GetComponent<Status>().Magic_Defense += 100.0f;
+            Chara2.GetComponent<Status>().Defense += 100.0f;
+            Chara2.GetComponent<Status>().Magic_Defense += 100.0f;
+            Chara3.GetComponent<Status>().Defense += 100.0f;
+            Chara3.GetComponent<Status>().Magic_Defense += 100.0f;
+            Debug.Log(BuffTime + "秒間、防御力が100アップ。");
+        }
+
+    }
+
+    public void BuffClose()
+    {
+
+    }
+
+    //-------------------------------------左上の攻撃時間砂時計用-------------------------------------
     public void CharaAttackText()
     {
         //ナイト
@@ -607,7 +654,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //ターン入れ替え時にUI反転
+    //-------------------------------------ターン入れ替え時にUI反転-------------------------------------
     public static void TurnChangeImage()
     {
         if((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
@@ -638,7 +685,7 @@ public class GameManager : MonoBehaviour
             TurnImage.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
         }
     }
-
+    //-------------------------------------スタート前処理------------------------------------
     public void UIAnim()
     {
         BackGround.SetActive(true);
@@ -646,6 +693,8 @@ public class GameManager : MonoBehaviour
         GameStartFlag = true;
         GamePlayFlag = true;
     }
+
+    //-------------------------------------オーディオ------------------------------------
     public void AudioPlay()
     {
         MedicAudio.PlayOneShot(MedicAudio.clip);
@@ -654,7 +703,7 @@ public class GameManager : MonoBehaviour
     public void BattleStartPlay()
     {
         BattleStartAudio.PlayOneShot(BattleStartAudio.clip);
-        //BGMPlayを2.0秒後に呼び出す
+        //BGMPlayを0.5秒後に呼び出す
         Invoke("BGMPlay", 0.5f);
 
     }
@@ -667,7 +716,7 @@ public class GameManager : MonoBehaviour
         BGM.PlayOneShot(BGM.clip);
     }
 
-
+    //------------------------------------勝敗判定------------------------------------
     void GameWin()
     {
         Debug.Log("GAME CLEAR");

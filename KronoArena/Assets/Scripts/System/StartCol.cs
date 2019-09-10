@@ -29,10 +29,6 @@ public class StartCol : MonoBehaviour
         Panel = GameObject.Find("Panel").GetComponent<Image>();
         AudioSource[] audioSources = GameObject.Find("Camera").GetComponents<AudioSource>();
         CameraBGM = audioSources[0];
-        //Sord1 = GameObject.Find("BackGround").transform.FindChild("StartSord1").gameObject;
-
-        //Sord2 = GameObject.Find("BackGround").transform.FindChild("StartSord2").gameObject;
-        //Debug.Log(Sord1 + "  " + Sord2);
 
     }
 
@@ -75,6 +71,8 @@ public class StartCol : MonoBehaviour
             {
                 Sord1.GetComponent<Animator>().enabled = true;
                 Sord2.GetComponent<Animator>().enabled = true;
+                Destroy(Sord1, 1.5f);
+                Destroy(Sord2, 1.5f);
             }
             //戦闘開始音を流す
             if(t >= 2.5f)

@@ -53,12 +53,12 @@ public class StartCol : MonoBehaviour
             if(t >= 1.0f)
             {
                 GameObject.Find("GameManager").GetComponent<GameManager>().UIAnim();
-                StartFlag = false;
             }
             if(t >= 2.0f)
             {
                 TimeStartFlag = true;
                 Debug.Log("Start");
+                StartFlag = false;
             }
         }
     }

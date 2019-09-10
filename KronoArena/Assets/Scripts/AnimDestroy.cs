@@ -17,15 +17,19 @@ public class AnimDestroy : MonoBehaviour
         //DesTime += Time.deltaTime;
         if(GameObject.Find("TurnCol").GetComponent<TurnCol>().TurnNum == 1)
         {
-            if (PhotonNetwork.player.ID == 1 && this.name == "Sand_MyUp")
-            {
-                this.GetComponent<Animator>().enabled = true;
+            this.GetComponent<Animator>().enabled = true;
+            //if (PhotonNetwork.player.ID == 1 && this.name == "Sand_MyUp")
+            //{
 
-            }
-            else if (PhotonNetwork.player.ID == 2 && this.name == "Sand_YouUp")
-            {
-                this.GetComponent<Animator>().enabled = true;
-            }
+
+            //}
+            //else if (PhotonNetwork.player.ID == 2 && this.name == "Sand_YouUp")
+            //{
+            //    this.GetComponent<Animator>().enabled = true;
+            //}
+        }else
+        {
+            this.GetComponent<Animator>().enabled = false;
         }
     }
 }

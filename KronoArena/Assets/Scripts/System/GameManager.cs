@@ -592,6 +592,12 @@ public class GameManager : MonoBehaviour
     public void Buff()
     {
         int random = Random.Range(1,100);    //ランダム関数
+        if(BuffTime > 0.0f)
+        {
+            BuffTime = TimerScript.TotalTime * 3.0f;
+            Debug.Log(BuffTime + "秒間ステータスキープ");
+            return;
+        }
         BuffTime = TimerScript.TotalTime * 3.0f;
         BuffFlag = true;
 

@@ -41,7 +41,7 @@ public class MultipleTargetCamera : MonoBehaviour
         {
             offset = new Vector3(-5.0f, 8.0f, -20.0f);
         }
-        if(CameraFlag == true)
+        if(CameraFlag == true && PhotonNetwork.playerList.Length == 2)
         {
             if(PhotonNetwork.player.ID == 1)
             {

@@ -50,7 +50,8 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PhotonNetwork.playerList.Length == 2 && Network_01.gameplayflag == true)
+        if(PhotonNetwork.playerList.Length == 2 && Network_01.gameplayflag == true &&
+            GameObject.Find("GameManager").GetComponent<StartCol>().TimeStartFlag == true)
         {
             //時間
             if ((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
@@ -59,7 +60,7 @@ public class TimerScript : MonoBehaviour
                 TotalTime -= Time.deltaTime;
                 //TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
 
-                //ターン切り替え用のフラグ
+                //ターン切り替え
                 FlagTime += Time.deltaTime;
                 if (FlagTime >= 10.0f)
                 {

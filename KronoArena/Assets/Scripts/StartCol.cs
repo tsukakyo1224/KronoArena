@@ -14,6 +14,7 @@ public class StartCol : MonoBehaviour
     private bool FadeInFlag = false; //フェードインするまでのフラグ
     public bool StartCameraFlag = false;   //フェードインしてカメラのアニメータをオンにするまでのフラグ
     public bool StartFlag = false;  //ゲームスタートフラグ
+    public bool TimeStartFlag = false;
     private float t;
 
 
@@ -53,6 +54,11 @@ public class StartCol : MonoBehaviour
             {
                 GameObject.Find("GameManager").GetComponent<GameManager>().UIAnim();
                 StartFlag = false;
+            }
+            if(t >= 2.0f)
+            {
+                TimeStartFlag = true;
+                Debug.Log("Start");
             }
         }
     }

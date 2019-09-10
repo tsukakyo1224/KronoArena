@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
     public static int P1_GP = 0;
     public static int P2_GP = 0;
 
-
+    private AudioSource BGM;
     private AudioSource MedicAudio;
 
     //-------------------------フラグ-------------------------
@@ -214,6 +214,7 @@ public class GameManager : MonoBehaviour
 
         //オーディオ
         AudioSource[] audioSources = GetComponents<AudioSource>();
+        BGM = audioSources[0];
         MedicAudio = audioSources[1];
 
     }
@@ -640,6 +641,11 @@ public class GameManager : MonoBehaviour
     public void AudioPlay()
     {
         MedicAudio.PlayOneShot(MedicAudio.clip);
+    }
+
+    public void BGMPlay()
+    {
+        BGM.PlayOneShot(BGM.clip);
     }
 
 

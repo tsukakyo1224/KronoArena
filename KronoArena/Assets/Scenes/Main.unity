@@ -1913,6 +1913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TurnChangeUI: {fileID: 0}
+  TurnAudio: {fileID: 0}
   WinFlag: 0
   LoseFlag: 0
   StopTimeFlag: 0
@@ -3024,6 +3025,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1793860135235866, guid: cd74db7366edf4c37ad8d6eae7bc3e87, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65681278718887688, guid: cd74db7366edf4c37ad8d6eae7bc3e87,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64560624627235334, guid: cd74db7366edf4c37ad8d6eae7bc3e87,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

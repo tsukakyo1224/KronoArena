@@ -124,6 +124,9 @@ public class GameManager : MonoBehaviour
 
     public static bool CameraStartFlag = false;
 
+    //エンドフラグ
+    public bool EndFlag = false;
+
     //ターン変更時に時間を止めるフラグ
     public bool StopTimeFlag = false;
 
@@ -274,19 +277,6 @@ public class GameManager : MonoBehaviour
                 Chara2 = GameObject.Find("P2_Chara2");
                 Chara3 = GameObject.Find("P2_Chara3");
             }
-            //左上のバーを初期位置に
-            //CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 221.9f, 0.0f);
-            //CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 216.5f, 0.0f);
-            //CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 195.0f, 0.0f);
-
-            //CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 137.2f, 0.0f);
-            //CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 133.0f, 0.0f);
-            //CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 110.0f, 0.0f);
-
-            //CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-305.0f, 50.0f, 0.0f);
-            //CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-468.0f, 46.0f, 0.0f);
-            //CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-388.0f, 25.0f, 0.0f);
-
             //キャラの頭上の三角
             if(Chara1 != null)
             {
@@ -562,6 +552,13 @@ public class GameManager : MonoBehaviour
                     GameWin();
                 }
             }
+
+            //シーン切り替え
+            if(EndFlag == true && (!WinAudio.isPlaying || !LoseAudio.isPlaying))
+            {
+                this.GetComponent<SceneChange>().Finish();
+            }
+
         }
 
         //-------------------------------------ターン切り替えの時の処理-------------------------------------
@@ -828,7 +825,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME CLEAR");
         WinLose.sprite = Resources.Load<Sprite>("Win");
         WinLose.gameObject.SetActive(true);
+        BGM.GetComponent<AudioSource>().volume = 0.0f;
         WinAudio.Play();
+        EndFlag = true;
     }
 
     void GameLose()
@@ -836,6 +835,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME LOSE");
         WinLose.sprite = Resources.Load<Sprite>("Lose");
         WinLose.gameObject.SetActive(true);
+        BGM.GetComponent<AudioSource>().volume = 0.0f;
         LoseAudio.Play();
+        EndFlag = true;
     }
 }

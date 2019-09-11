@@ -15,4 +15,9 @@ public class SceneChange : MonoBehaviour
         GameObject.Find("PhotonManager").GetComponent<Network_01>().Leave();
         //SceneManager.LoadScene("Title");
     }
+
+    public void Finish()
+    {
+        SceneManager.LoadScene("Thank you");
+    }
 }

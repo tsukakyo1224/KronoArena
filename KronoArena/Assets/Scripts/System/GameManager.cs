@@ -125,7 +125,8 @@ public class GameManager : MonoBehaviour
     public static bool CameraStartFlag = false;
 
     //エンドフラグ
-    public bool EndFlag = false;
+    public bool WinFlag = false;
+    public bool LoseFlag = false;
 
     //ターン変更時に時間を止めるフラグ
     public bool StopTimeFlag = false;
@@ -554,11 +555,10 @@ public class GameManager : MonoBehaviour
             }
 
             //シーン切り替え
-            if(EndFlag == true && (!WinAudio.isPlaying || !LoseAudio.isPlaying))
+            if((WinFlag == true && !WinAudio.isPlaying) || (LoseFlag == true && !LoseAudio.isPlaying))
             {
                 this.GetComponent<SceneChange>().Finish();
             }
-
         }
 
         //-------------------------------------ターン切り替えの時の処理-------------------------------------
@@ -827,7 +827,7 @@ public class GameManager : MonoBehaviour
         WinLose.gameObject.SetActive(true);
         BGM.GetComponent<AudioSource>().volume = 0.0f;
         WinAudio.Play();
-        EndFlag = true;
+        WinFlag = true;
     }
 
     void GameLose()
@@ -837,6 +837,6 @@ public class GameManager : MonoBehaviour
         WinLose.gameObject.SetActive(true);
         BGM.GetComponent<AudioSource>().volume = 0.0f;
         LoseAudio.Play();
-        EndFlag = true;
+        LoseFlag = true;
     }
 }

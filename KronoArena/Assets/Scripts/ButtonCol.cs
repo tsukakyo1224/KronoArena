@@ -65,7 +65,8 @@ public class ButtonCol : MonoBehaviour
     {
         //バフ関数呼び出し
         GameObject.Find("GameManager").GetComponent<GameManager>().Buff();
-
+        //入れ替えるために一瞬時間を止める
+        GameObject.Find("GameManager").GetComponent<GameManager>().StopTime();
         GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
         Debug.Log("button");
     }

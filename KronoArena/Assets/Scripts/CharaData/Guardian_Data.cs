@@ -105,7 +105,8 @@ public class Guardian_Data : MonoBehaviour
     void Update()
     {
 
-        if (photonView.isMine)
+        if (photonView.isMine &&
+            GameObject.Find("GameManager").GetComponent<GameManager>().StopTimeFlag == false)
         {
             //スキル1発動
             //発動効果：物理防御力と魔法防御力を200UP

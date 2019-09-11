@@ -50,39 +50,41 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PhotonNetwork.playerList.Length == 2 && Network_01.gameplayflag == true &&
-            GameObject.Find("GameManager").GetComponent<StartCol>().TimeStartFlag == true)
+        if(GameObject.Find("GameManager").GetComponent<GameManager>().StopTimeFlag == false)
         {
-            //時間
-            if ((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
-                (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
+            if (PhotonNetwork.playerList.Length == 2 && Network_01.gameplayflag == true &&
+            GameObject.Find("GameManager").GetComponent<StartCol>().TimeStartFlag == true)
             {
-                TotalTime -= Time.deltaTime;
-                //TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+                //時間
+                if ((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
+                    (PhotonNetwork.player.ID == 2 && TurnCol.P2_Turn == true))
+                {
+                    TotalTime -= Time.deltaTime;
+                    //TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+
+                    //ターン切り替え
+                    FlagTime += Time.deltaTime;
+                    if (FlagTime >= 10.0f)
+                    {
+                        HourGlassFlag = true;
+                    }
+                }
+                else
+                {
+                    TotalTime += Time.deltaTime;
+                    //TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
+                }
 
                 //ターン切り替え
-                FlagTime += Time.deltaTime;
-                if (FlagTime >= 10.0f)
+                if (TotalTime < 0.0f)
                 {
-                    HourGlassFlag = true;
+                    GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
+                    photonView.RPC("SecondUp", PhotonTargets.All);
+                    //TotalTime += 10.0f;
+                    Debug.Log("TimeTurnChange");
                 }
             }
-            else
-            {
-                TotalTime += Time.deltaTime;
-                //TimeText.GetComponent<Text>().text = ("" + TotalTime.ToString("f2"));
-            }
-
-            //ターン切り替え
-            if (TotalTime < 0.0f)
-            {
-                GameObject.Find("TurnCol").GetComponent<TurnCol>().ChangeTurn();
-                photonView.RPC("SecondUp", PhotonTargets.All);
-                //TotalTime += 10.0f;
-                Debug.Log("TimeTurnChange");
-            }
         }
-
     }
 
 

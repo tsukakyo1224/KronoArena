@@ -66,6 +66,9 @@ public class TurnCol : MonoBehaviour
         TimerScript.HourGlassFlag = false;
         TimerScript.FlagTime = 0.0f;
         TurnNum += 1;
+
+        //時間を止める
+        GameObject.Find("GameManager").GetComponent<GameManager>().StopTime();
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
     private GameObject Button;
     private GameObject BackGround;
 
+    public GameObject TurnChangeUI;
+
     //-------------------------オブジェクト-------------------------
 
     //キャラクター用オブジェクト
@@ -120,10 +122,21 @@ public class GameManager : MonoBehaviour
 
     public static bool CameraStartFlag = false;
 
+    //ターン変更時に時間を止めるフラグ
+    public bool StopTimeFlag = false;
+
     //バフのフラグ、バフの時間
     public bool BuffFlag = false;
     public float BuffTime = 0.0f;
     public int BuffNum = 0; //攻撃UP:1, 防御UP:2
+
+    //-------------------------アニメーター-------------------------
+    public Animator CharaBarAnim1;
+    public Animator CharaButtonAnim1;
+    public Animator CharaBarAnim2;
+    public Animator CharaButtonAnim2;
+    public Animator CharaBarAnim3;
+    public Animator CharaButtonAnim3;
 
 
     // Start is called before the first frame update
@@ -146,6 +159,9 @@ public class GameManager : MonoBehaviour
         CharaBar1 = GameObject.Find("CharacterBar1");
         CharaBar2 = GameObject.Find("CharacterBar2");
         CharaBar3 = GameObject.Find("CharacterBar3");
+        CharaBarAnim1 = CharaBar1.GetComponent<Animator>();
+        CharaBarAnim2 = CharaBar2.GetComponent<Animator>();
+        CharaBarAnim3 = CharaBar3.GetComponent<Animator>();
 
         CharaHP1 = GameObject.Find("Player1HP");
         CharaHP2 = GameObject.Find("Player2HP");
@@ -164,10 +180,13 @@ public class GameManager : MonoBehaviour
         //キャラ切り替えボタン用オブジェクト
         CharaChangeButton1 = GameObject.Find("ChangeChara1");
         CharaChangeButton1.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaMiniIcon_Knight");
+        CharaButtonAnim1 = CharaChangeButton1.GetComponent<Animator>();
         CharaChangeButton2 = GameObject.Find("ChangeChara2");
         CharaChangeButton2.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaMiniIcon_Medic");
+        CharaButtonAnim2 = CharaChangeButton2.GetComponent<Animator>();
         CharaChangeButton3 = GameObject.Find("ChangeChara3");
         CharaChangeButton3.GetComponent<Image>().sprite = Resources.Load<Sprite>("CharaIcon/CharaMiniIcon_Guardion");
+        CharaButtonAnim3 = CharaChangeButton3.GetComponent<Animator>();
 
         //操作キャラクター用オブジェクト(右下)
         OpeCharaIcon = GameObject.Find("OpeCharaIcon");
@@ -188,6 +207,11 @@ public class GameManager : MonoBehaviour
 
         TimeText = GameObject.Find("Time");
 
+        //
+        TurnChangeUI = GameObject.Find("TurnChangeUI");
+        //TurnChangeUI.GetComponent<Image>().enabled = false;
+        TurnChangeUI.SetActive(false);
+
         //+3秒テキスト
         //SecondUp = GameObject.Find("+3seconds").GetComponent<Image>();
         //SecondUp.gameObject.SetActive(false);
@@ -198,12 +222,6 @@ public class GameManager : MonoBehaviour
 
         //カメラオブジェクト
         Camera = GameObject.Find("Main Camera");
-
-        //UIの親
-        Button = GameObject.Find("Button");
-        BackGround = GameObject.Find("BackGround");
-        Button.SetActive(false);
-        BackGround.SetActive(false);
 
         WinLose = GameObject.Find("WinLose").GetComponent<Image>();
         WinLose.gameObject.SetActive(false);
@@ -224,12 +242,20 @@ public class GameManager : MonoBehaviour
         MedicAudio = audioSources[1];
         BattleStartAudio = audioSources[2];
 
+        //UIの親
+        Button = GameObject.Find("Button");
+        BackGround = GameObject.Find("BackGround");
+        Button.SetActive(false);
+        BackGround.SetActive(false);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Network_01.gameplayflag == true)
+        if (Network_01.gameplayflag == true &&
+            GameObject.Find("GameManager").GetComponent<StartCol>().TimeStartFlag == true)
         {
             //キャラクターを入れる
             if(PhotonNetwork.player.ID == 1)
@@ -336,11 +362,6 @@ public class GameManager : MonoBehaviour
                 //ATime2.GetComponent<Text>().text = ("" + Knight_Data.SkillTime1.ToString("f2"));
                 //ATime3.GetComponent<Text>().text = ("" + Knight_Data.SkillTime2.ToString("f2"));
 
-                //操作キャラは右に出す
-                //CharaChangeButton1.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 221.9f, 0.0f);
-                CharaBar1.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 216.5f, 0.0f);
-                //CharaHP1.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 195.0f, 0.0f);
-
 
             }
             //現時点でメディック確定
@@ -400,11 +421,6 @@ public class GameManager : MonoBehaviour
                 //攻撃時間用テキスト
                 //ATime2.GetComponent<Text>().text = ("" + Medic_Data.SkillTime1.ToString("f2"));
                 //ATime3.GetComponent<Text>().text = ("" + Medic_Data.SkillTime2.ToString("f2"));
-
-
-                //CharaChangeButton2.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 137.2f, 0.0f);
-                CharaBar2.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 133.0f, 0.0f);
-                //CharaHP2.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 110.0f, 0.0f);
             }
             //現時点でガーディアン確定
             else if (ChangeChara.nowChara == 2)
@@ -462,10 +478,6 @@ public class GameManager : MonoBehaviour
                 //攻撃時間用テキスト
                 //ATime2.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime1.ToString("f2"));
                 //ATime3.GetComponent<Text>().text = ("" + Guardian_Data.SkillTime2.ToString("f2"));
-
-                //CharaChangeButton3.GetComponent<RectTransform>().localPosition = new Vector3(-255.0f, 50.0f, 0.0f);
-                CharaBar3.GetComponent<RectTransform>().localPosition = new Vector3(-418.0f, 46.0f, 0.0f);
-                //CharaHP3.GetComponent<RectTransform>().localPosition = new Vector3(-338.0f, 25.0f, 0.0f);
             }
 
             //キャラが死んだ時にチェンジできないように
@@ -587,6 +599,20 @@ public class GameManager : MonoBehaviour
     }
     //-------------------------------------UpDate終了-------------------------------------
 
+    //-------------------------------------時間を止める、動かす-------------------------------------
+    public void StopTime()
+    {
+        TurnChangeUI.SetActive(true);
+        StopTimeFlag = true;
+        //Time.timeScale = 0f;
+    }
+
+    public void StartTime()
+    {
+        StopTimeFlag = false;
+        TurnChangeUI.SetActive(false);
+        //Time.timeScale = 1f;
+    }
 
     //-------------------------------------砂時計でターンチェンジした際に自分のキャラにバフ-------------------------------------
     public void Buff()

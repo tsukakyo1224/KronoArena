@@ -89,7 +89,7 @@ public class Knight_Data : MonoBehaviour
         SkillIcon2 = Resources.Load<Sprite>("AttackIcon/KnightSkillIcon2");
         SkillTime1 = 15.0f;
         SkillTime2 = 5.0f;
-        Skill1_Limit = 3.0f;
+        Skill1_Limit = 2.0f;
         Skill2_Limit = 10.0f;
         Skill_Start = 0.0f;
         SkillFlag1 = false;
@@ -122,7 +122,8 @@ public class Knight_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(photonView.isMine)
+        if(photonView.isMine &&
+            GameObject.Find("GameManager").GetComponent<GameManager>().StopTimeFlag == false)
         {
             //スキル1発動
             if (SkillFlag1 == true && SkillFlag2 == false)

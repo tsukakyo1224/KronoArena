@@ -97,7 +97,8 @@ public class Medic_Data : MonoBehaviour
         forword = this.transform.forward;
         quat = this.transform.rotation;
 
-        if (photonView.isMine)
+        if (photonView.isMine &&
+            GameObject.Find("GameManager").GetComponent<GameManager>().StopTimeFlag == false)
         {
             //スキル1発動
             if (SkillFlag1 == true && SkillFlag2 == false)

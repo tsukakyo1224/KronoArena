@@ -10,9 +10,11 @@ public class ChangeChara : MonoBehaviour
     [SerializeField]
     private List<GameObject> charaLists;
 
+    public GameObject GM;
+
     void Start()
     {
-
+        GM = GameObject.Find("GameManager");
     }
 
     void Update()
@@ -62,14 +64,20 @@ public class ChangeChara : MonoBehaviour
                 flag = false;
             }
             //　操作するキャラクターと操作しないキャラクターで機能のオン・オフをする
-            //charaLists[i].GetComponent<ControlOnOffChara>().enabled = flag;
             charaLists[i].GetComponent<CharaCol_test>().enabled = flag;
             //　キャラクターのアニメーションを最初の状態にする為アニメーションパラメータのSpeedを0にする
             //charaLists[i].GetComponent<Animator>().SetFloat("Speed", 0);
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        //Debug.Log("現在のキャラ番号" + nowChara);
+        GM.GetComponent<GameManager>().CharaBarAnim1.SetBool("On", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim1.SetBool("On", true);
+        GM.GetComponent<GameManager>().CharaBarAnim1.SetBool("Off", false);
+        GM.GetComponent<GameManager>().CharaButtonAnim1.SetBool("Off", false);
+        GM.GetComponent<GameManager>().CharaBarAnim2.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim2.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaBarAnim3.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim3.SetBool("Off", true);
     }
 
     public void Change2(int tempNowChara)
@@ -97,7 +105,15 @@ public class ChangeChara : MonoBehaviour
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        //Debug.Log("現在のキャラ番号" + nowChara);
+        GM.GetComponent<GameManager>().CharaBarAnim1.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim1.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaBarAnim2.SetBool("On", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim2.SetBool("On", true);
+        GM.GetComponent<GameManager>().CharaBarAnim2.SetBool("Off", false);
+        GM.GetComponent<GameManager>().CharaButtonAnim2.SetBool("Off", false);
+        GM.GetComponent<GameManager>().CharaBarAnim3.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim3.SetBool("Off", true);
+
     }
 
     public void Change3(int tempNowChara)
@@ -125,7 +141,14 @@ public class ChangeChara : MonoBehaviour
         }
         //　次の操作キャラクターを現在操作しているキャラクターに設定して終了
         nowChara = nextChara;
-        //Debug.Log("現在のキャラ番号" + nowChara);
+        GM.GetComponent<GameManager>().CharaBarAnim1.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim1.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaBarAnim2.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim2.SetBool("Off", true);
+        GM.GetComponent<GameManager>().CharaBarAnim3.SetBool("On", true);
+        GM.GetComponent<GameManager>().CharaButtonAnim3.SetBool("On", true);
+        GM.GetComponent<GameManager>().CharaBarAnim3.SetBool("Off", false);
+        GM.GetComponent<GameManager>().CharaButtonAnim3.SetBool("Off", false);
     }
 
 

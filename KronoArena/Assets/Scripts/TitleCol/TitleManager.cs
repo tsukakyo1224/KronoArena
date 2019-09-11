@@ -23,7 +23,7 @@ public class TitleManager : MonoBehaviour
         if(AudioFlag == true)
         {
             OPBGM.GetComponent<AudioSource>().volume -= 0.002f;
-            SandBGM.GetComponent<AudioSource>().volume -= 0.002f;
+            SandBGM.GetComponent<AudioSource>().volume -= 0.008f;
         }
 
     }

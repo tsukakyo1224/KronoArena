@@ -19,6 +19,9 @@ public class HomingLaser : MonoBehaviour
     // 着弾時間
     float period = 2f;
 
+    public float threshold = 500f;
+    public float intensity = 1f;
+
     //一番近いキャラの情報を見つけるやつ
     public float dis;
 
@@ -55,7 +58,7 @@ public class HomingLaser : MonoBehaviour
                 Vector3 playerPos = this.transform.position; // プレイヤーの位置
                 Vector3 enemyPos = obj.transform.position; // 敵の位置
 
-                float angle = 30.0f;    //攻撃範囲内の角度
+                float angle = 120.0f;    //攻撃範囲内の角度
 
                 // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
                 if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)
@@ -86,28 +89,20 @@ public class HomingLaser : MonoBehaviour
             int numParticlesAlive = ps.GetParticles(m_Particles);
             for (int i = 0; i < numParticlesAlive; i++)
             {
-                var velocity = m_Particles[i].velocity;
-                var position = m_Particles[i].position;
-                // ターゲットへのベクトル
-                //target.position.x, target.position.y+0.5f, target.position.z
-                var direction = ps.transform.InverseTransformPoint(target.TransformPoint(target.position)) - position;
-                // ターゲットまでの角度
-                float angleDiff = Vector3.Angle(velocity, direction);
-                // 回転角
-                float angleAdd = (_rotSpeed * Time.deltaTime);
-                // ターゲットへ向けるクォータニオン
-                Quaternion rotTarget = Quaternion.FromToRotation(velocity, direction);
-                if (angleDiff <= angleAdd)
+                var velocity = ps.transform.TransformPoint(m_Particles[i].velocity);
+                var position = ps.transform.TransformPoint(m_Particles[i].position);
+                var period = m_Particles[i].remainingLifetime * 0.9f;
+                //ターゲットと自分自身の差
+                var diff = target.TransformPoint(target.position) - position;
+                Vector3 accel = (diff - velocity * period) * 2f / (period * period);
+                //加速度が一定以上だと追尾を弱くする
+                if (accel.magnitude > threshold)
                 {
-                    // ターゲットが回転角以内なら完全にターゲットの方を向く
-                    m_Particles[i].velocity = (rotTarget * velocity);
+                    accel = accel.normalized * threshold;
                 }
-                else
-                {
-                    // ターゲットが回転角の外なら、指定角度だけターゲットに向ける
-                    float t = (angleAdd / angleDiff);
-                    m_Particles[i].velocity = Quaternion.Slerp(Quaternion.identity, rotTarget, t) * velocity;
-                }
+                // 速度の計算
+                velocity += accel * Time.deltaTime * intensity;
+                m_Particles[i].velocity = ps.transform.InverseTransformPoint(velocity);
             }
             ps.SetParticles(m_Particles, numParticlesAlive);
 

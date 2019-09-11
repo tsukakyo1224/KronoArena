@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
     private AudioSource BattleStartAudio;
     private AudioSource WinAudio;
     private AudioSource LoseAudio;
-    private AudioSource TurnAudio;
+    public AudioSource TurnAudio;
 
     //-------------------------フラグ-------------------------
     //キャラクター生成フラグ

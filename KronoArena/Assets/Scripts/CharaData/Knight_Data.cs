@@ -164,7 +164,7 @@ public class Knight_Data : MonoBehaviour
                 {
                     this.GetComponent<Status>().Attack -= 4000.0f;
                     LimitFlag1 = false;
-                    Skill1_Limit = 3.0f;
+                    Skill1_Limit = 2.0f;
                 }
 
             }
@@ -344,7 +344,7 @@ public class Knight_Data : MonoBehaviour
                     Vector3 playerPos = this.transform.position; // プレイヤーの位置
                     Vector3 enemyPos = obj.transform.position; // 敵の位置
 
-                    float angle = 30.0f;    //攻撃範囲内の角度
+                    float angle = 60.0f;    //攻撃範囲内の角度
 
                     // プレイヤーと敵を結ぶ線と視線の角度差がangle以内なら当たり
                     if (Vector3.Angle((enemyPos - playerPos).normalized, eyeDir) <= angle)

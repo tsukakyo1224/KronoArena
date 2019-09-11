@@ -89,7 +89,8 @@ public class HomingLaser : MonoBehaviour
                 var velocity = m_Particles[i].velocity;
                 var position = m_Particles[i].position;
                 // ターゲットへのベクトル
-                var direction = ps.transform.InverseTransformPoint(target.TransformPoint(target.position.x, target.position.y+0.5f, target.position.z)) - position;
+                //target.position.x, target.position.y+0.5f, target.position.z
+                var direction = ps.transform.InverseTransformPoint(target.TransformPoint(target.position)) - position;
                 // ターゲットまでの角度
                 float angleDiff = Vector3.Angle(velocity, direction);
                 // 回転角

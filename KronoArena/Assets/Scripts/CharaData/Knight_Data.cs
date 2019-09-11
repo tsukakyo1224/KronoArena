@@ -122,8 +122,7 @@ public class Knight_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(photonView.isMine &&
-            GameObject.Find("GameManager").GetComponent<GameManager>().StopTimeFlag == false)
+        if(photonView.isMine)
         {
             //スキル1発動
             if (SkillFlag1 == true && SkillFlag2 == false)

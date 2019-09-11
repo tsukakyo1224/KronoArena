@@ -4782,6 +4782,7 @@ GameObject:
   - component: {fileID: 8547809879341033476}
   - component: {fileID: 1985422141443342860}
   - component: {fileID: 4107077733313247600}
+  - component: {fileID: 2186635682270469260}
   m_Layer: 0
   m_Name: HolyBall
   m_TagString: Untagged
@@ -9779,7 +9780,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245404818782664}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd8d3e4e7319d4463aa4b13d49177714, type: 3}
   m_Name: 
@@ -9787,5 +9788,22 @@ MonoBehaviour:
   acceleration: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   tmp: {fileID: 0}
+  threshold: 500
+  intensity: 0
   dis: 0
   _rotSpeed: 180
+--- !u!114 &2186635682270469260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245404818782664}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a024678fa8ca149dd80bec00a2df371b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
+  dis: 0

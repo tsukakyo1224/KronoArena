@@ -20,7 +20,7 @@ public class HomingLaser : MonoBehaviour
     float period = 2f;
 
     public float threshold = 500f;
-    public float intensity = 1f;
+    public float intensity = 0f;
 
     //一番近いキャラの情報を見つけるやつ
     public float dis;
@@ -33,7 +33,7 @@ public class HomingLaser : MonoBehaviour
 
     void Start()
     {
-        ps = GetComponent<ParticleSystem>();
+        ps = this.GetComponent<ParticleSystem>();
 
 
         dis = 100.0f;

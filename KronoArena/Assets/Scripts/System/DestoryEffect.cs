@@ -81,7 +81,7 @@ public class DestoryEffect : MonoBehaviour {
 
     //オブジェクトがぶつかった時
     void OnParticleCollision(GameObject obj) {
-		if (obj.tag != this.tag && AttackObject == true)
+		if (obj.tag != this.tag && AttackObject == true && (obj.tag == "Player1" || obj.tag == "Player2"))
         {
             Guardian();
             if (AttackFlag == false)

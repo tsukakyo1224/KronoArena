@@ -9787,6 +9787,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
+  dis: 0
+  _rotspeed: 180
 --- !u!54 &8668921160665357632
 Rigidbody:
   m_ObjectHideFlags: 0

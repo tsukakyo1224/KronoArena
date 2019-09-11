@@ -51,8 +51,9 @@ public class TimerScript : MonoBehaviour
     void Update()
     {
         //if(GameObject.Find("GameManager").GetComponent<GameManager>().StopTimeFlag == false)
-        {
-            if (PhotonNetwork.playerList.Length == 2 && Network_01.gameplayflag == true)
+        //{
+            if (PhotonNetwork.playerList.Length == 2 && Network_01.gameplayflag == true &&
+            GameObject.Find("GameManager").GetComponent<StartCol>().TimeStartFlag == true)
             {
                 //時間
                 if ((PhotonNetwork.player.ID == 1 && TurnCol.P1_Turn == true) ||
@@ -83,7 +84,7 @@ public class TimerScript : MonoBehaviour
                     Debug.Log("TimeTurnChange");
                 }
             }
-        }
+        //}
     }
 
 

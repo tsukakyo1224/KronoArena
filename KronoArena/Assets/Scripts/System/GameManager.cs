@@ -553,12 +553,6 @@ public class GameManager : MonoBehaviour
                     GameWin();
                 }
             }
-
-            //シーン切り替え
-            if((WinFlag == true && !WinAudio.isPlaying) || (LoseFlag == true && !LoseAudio.isPlaying))
-            {
-                this.GetComponent<SceneChange>().Finish();
-            }
         }
 
         //-------------------------------------ターン切り替えの時の処理-------------------------------------
@@ -595,6 +589,12 @@ public class GameManager : MonoBehaviour
             TurnImage.sprite = Resources.Load<Sprite>("EnemyTurn");
             SkillGaugeIcon2.SetActive(false);
             SkillGaugeIcon3.SetActive(false);
+        }
+
+        //シーン切り替え
+        if ((WinFlag == true && !WinAudio.isPlaying) || (LoseFlag == true && !LoseAudio.isPlaying))
+        {
+            this.GetComponent<SceneChange>().Finish();
         }
     }
     //-------------------------------------UpDate終了-------------------------------------

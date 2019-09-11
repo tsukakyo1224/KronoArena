@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour
     private AudioSource BGM;
     private AudioSource MedicAudio;
     private AudioSource BattleStartAudio;
+    private AudioSource WinAudio;
+    private AudioSource LoseAudio;
 
     //-------------------------フラグ-------------------------
     //キャラクター生成フラグ
@@ -241,6 +243,8 @@ public class GameManager : MonoBehaviour
         BGM = audioSources[0];
         MedicAudio = audioSources[1];
         BattleStartAudio = audioSources[2];
+        WinAudio = audioSources[3];
+        LoseAudio = audioSources[4];
 
         //UIの親
         Button = GameObject.Find("Button");
@@ -558,7 +562,6 @@ public class GameManager : MonoBehaviour
                     GameWin();
                 }
             }
-
         }
 
         //-------------------------------------ターン切り替えの時の処理-------------------------------------
@@ -816,7 +819,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject.Find("GameManager").GetComponent<StartCol>().TimeStartFlag = true;
         Debug.Log("Start");
-        BGM.PlayOneShot(BGM.clip);
+        BGM.Play();
     }
 
     //------------------------------------勝敗判定------------------------------------
@@ -825,6 +828,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME CLEAR");
         WinLose.sprite = Resources.Load<Sprite>("Win");
         WinLose.gameObject.SetActive(true);
+        WinAudio.Play();
     }
 
     void GameLose()
@@ -832,5 +836,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME LOSE");
         WinLose.sprite = Resources.Load<Sprite>("Lose");
         WinLose.gameObject.SetActive(true);
+        LoseAudio.Play();
     }
 }

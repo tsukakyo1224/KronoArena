@@ -203,7 +203,7 @@ public class Medic_Data : MonoBehaviour
             EndTime += Time.deltaTime;
             if (EndTime >= 17.0f)
             {
-                photonView.RPC("Madic_Effect", PhotonTargets.All, 5);
+                photonView.RPC("Medic_Effect", PhotonTargets.All, 5);
             }
         }
         else if (clipinfo[0].clip.name == "skill01(Medic)")

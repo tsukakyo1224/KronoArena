@@ -15,6 +15,7 @@ public class HomingLaser : MonoBehaviour
     public Vector3 acceleration;
     // ターゲットをセットする
     public Transform target;
+    public Transform tmp;
     // 着弾時間
     float period = 2f;
 
@@ -63,10 +64,14 @@ public class HomingLaser : MonoBehaviour
                     {
                         dis = dist;
                         target = obj.transform;
+                        tmp = target;
                     }
                 }
             }
         }
+
+        //tmp.transform.position = new Vector3(tmp.position.x, 1.0f, tmp.position.z);
+
     }
 
 
@@ -84,7 +89,7 @@ public class HomingLaser : MonoBehaviour
                 var velocity = m_Particles[i].velocity;
                 var position = m_Particles[i].position;
                 // ターゲットへのベクトル
-                var direction = ps.transform.InverseTransformPoint(target.TransformPoint(target.position)) - position;
+                var direction = ps.transform.InverseTransformPoint(target.TransformPoint(target.position.x, target.position.y+0.5f, target.position.z)) - position;
                 // ターゲットまでの角度
                 float angleDiff = Vector3.Angle(velocity, direction);
                 // 回転角
@@ -134,12 +139,6 @@ public class HomingLaser : MonoBehaviour
             }
         }*/
             Debug.Log(this.velocity);
-        }
-
-        void FixedUpdate()
-        {
-            // 移動処理
-            //rigid.MovePosition(transform.position + velocity * Time.deltaTime);
         }
 
     }

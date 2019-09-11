@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
     private AudioSource BattleStartAudio;
     private AudioSource WinAudio;
     private AudioSource LoseAudio;
+    private AudioSource TurnAudio;
 
     //-------------------------フラグ-------------------------
     //キャラクター生成フラグ
@@ -249,6 +250,7 @@ public class GameManager : MonoBehaviour
         BattleStartAudio = audioSources[2];
         WinAudio = audioSources[3];
         LoseAudio = audioSources[4];
+        TurnAudio = audioSources[5];
 
         //UIの親
         Button = GameObject.Find("Button");
@@ -604,6 +606,7 @@ public class GameManager : MonoBehaviour
     {
         TurnChangeUI.SetActive(true);
         StopTimeFlag = true;
+        TurnAudio.PlayOneShot(TurnAudio.clip);
         //Time.timeScale = 0f;
     }
 
